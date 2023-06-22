@@ -21,8 +21,14 @@ export default function SearchForm() {
         // Prevent the default
         event.preventDefault();
         // set the search value
-        const search = { searchType, searchInput }
-        console.log(search);
+        // const search = { searchType, searchInput }
+        // console.log(search);
+        // set the search for axios
+        const search = `${baseURL}${searchInput}+${searchType}`;
+        // Search the google database
+        axios.get(search).then((response) => {
+            console.log(response.data);
+        })
     }
 
     return (
@@ -38,7 +44,7 @@ export default function SearchForm() {
                     <option value="Title">Title</option>
                     <option value="Author">Author</option>
                     <option value="Subject">Subject</option>
-                    <option value="ISBN">ISBN</option>
+                    <option value="isbn">ISBN</option>
                 </select>
                 {/* Input search information */}
                 <input 
