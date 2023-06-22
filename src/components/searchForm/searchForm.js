@@ -15,7 +15,9 @@ export default function SearchForm() {
     const handleSubmit = (event) => {
         // Prevent the default
         event.preventDefault();
-        console.log(searchInput);
+        // set the search value
+        const search = { searchType, searchInput }
+        console.log(search);
     }
 
     return (
