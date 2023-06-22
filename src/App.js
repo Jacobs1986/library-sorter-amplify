@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
     return (
-        <div>The App is ready to go!</div>
+        <div>This is the library home page.</div>
     );
 }
 
