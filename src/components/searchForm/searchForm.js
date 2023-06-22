@@ -6,6 +6,8 @@ import { useState } from "react";
 import "./searchForm.css";
 
 export default function SearchForm() {
+    // Hook for the search type
+    const [ searchType, setSearchType ] = useState('');
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
 
@@ -21,7 +23,11 @@ export default function SearchForm() {
             <form onSubmit={handleSubmit}>
                 {/* Type of search */}
                 <label for="search">Search by:</label>
-                <select id="search" name="search">
+                <select 
+                    id="search" 
+                    name="search" 
+                    onChange={event => setSearchType(event.target.value)}
+                    value={searchType}>
                     <option value="Title">Title</option>
                     <option value="Author">Author</option>
                     <option value="Subject">Subject</option>
