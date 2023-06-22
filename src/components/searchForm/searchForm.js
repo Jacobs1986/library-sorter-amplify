@@ -8,16 +8,24 @@ import "./searchForm.css";
 export default function SearchForm() {
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
+
+    // Search function
+    const handleSubmit = (event) => {
+        // Prevent the default
+        event.preventDefault();
+        console.log(searchInput);
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 {/* Type of search */}
                 <label for="search">Search by:</label>
                 <select id="search" name="search">
-                    <option>Title</option>
-                    <option>Author</option>
-                    <option>Subject</option>
-                    <option>ISBN</option>
+                    <option value="Title">Title</option>
+                    <option value="Author">Author</option>
+                    <option value="Subject">Subject</option>
+                    <option value="ISBN">ISBN</option>
                 </select>
                 {/* Input search information */}
                 <input 
