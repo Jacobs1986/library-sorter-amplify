@@ -2,13 +2,16 @@ import React from "react";
 // Import hooks
 import { useState } from "react";
 // Import axios
-import axios from "axios";
+// import axios from "axios";
 
 // CSS File
 import "./searchForm.css";
 
+// Import search function
+import searchForBook from "./search-api.js";
+
 // Set the base URL from Google Books
-const baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
+// const baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
 export default function SearchForm() {
     // Hook for the search type
@@ -20,12 +23,17 @@ export default function SearchForm() {
     const handleSubmit = (event) => {
         // Prevent the default
         event.preventDefault();
+        // Setup the searchInfo variable
+        const searchInfo = { input: searchInput, type: searchType}
+        // Pass info to function 
+        const result = searchForBook(searchInfo);
+        console.log(result);
         // set the search for axios
-        const search = `${baseURL}${searchInput}+${searchType}`;
+        // const search = `${baseURL}${searchInput}+${searchType}`;
         // Search the google database
-        axios.get(search).then((response) => {
-            console.log(response.data);
-        })
+        // axios.get(search).then((response) => {
+        //     console.log(response.data);
+        // })
     }
 
     return (
