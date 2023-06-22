@@ -1,9 +1,13 @@
 import React from "react";
+// Import hooks
+import { useState } from "react";
 
 // CSS File
 import "./searchForm.css";
 
 export default function SearchForm() {
+    // Hook for search input
+    const [ searchInput, setSearchInput ] = useState('');
     return (
         <div>
             <form>
@@ -19,6 +23,8 @@ export default function SearchForm() {
                 <input 
                     type="text"
                     placeholder="Enter search here"
+                    onChange={event => setSearchInput(event.target.value)}
+                    value={searchInput}
                 />
                 <button type="submit">Search</button>
             </form>
