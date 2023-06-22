@@ -41,10 +41,11 @@ export default function SearchForm() {
                     name="search" 
                     onChange={event => setSearchType(event.target.value)}
                     value={searchType}>
-                    <option value="Title">Title</option>
-                    <option value="Author">Author</option>
-                    <option value="Subject">Subject</option>
+                    <option value="intitle">Title</option>
+                    <option value="inauthor">Author</option>
+                    <option value="subject">Subject</option>
                     <option value="isbn">ISBN</option>
+                    <option value="inpublisher">Publisher</option>
                 </select>
                 {/* Input search information */}
                 <input 
