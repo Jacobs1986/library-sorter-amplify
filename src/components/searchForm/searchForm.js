@@ -7,7 +7,7 @@ import "./searchForm.css";
 
 export default function SearchForm() {
     // Hook for the search type
-    const [ searchType, setSearchType ] = useState('');
+    const [ searchType, setSearchType ] = useState('Title');
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
 
