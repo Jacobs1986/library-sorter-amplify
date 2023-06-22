@@ -1,4 +1,4 @@
-var alert;
+var alert = "Search type not recognized";
 
 function searchForBook(searchInfo) {
     switch(searchInfo.type) {
@@ -11,7 +11,7 @@ function searchForBook(searchInfo) {
             return alert;
         }
         default:
-            return
+            return alert;
     }
 }
 
