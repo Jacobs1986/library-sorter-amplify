@@ -15,7 +15,7 @@ import searchForBook from "./search-api.js";
 
 export default function SearchForm() {
     // Hook for the search type
-    const [ searchType, setSearchType ] = useState('Title');
+    const [ searchType, setSearchType ] = useState('intitle');
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
 
