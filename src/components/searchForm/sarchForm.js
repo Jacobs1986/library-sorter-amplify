@@ -3,7 +3,7 @@ import React from "react";
 // CSS File
 import "./searchForm.css";
 
-export default function searchForm() {
+export default function SearchForm() {
     return (
         <div>
             <form>
