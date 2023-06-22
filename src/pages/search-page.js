@@ -1,7 +1,7 @@
 import React from "react";
 
 // Components
-import SearchForm from "../components/searchForm/sarchForm";
+import SearchForm from "../components/searchForm/searchForm";
 
 export default function Search() {
     return (
