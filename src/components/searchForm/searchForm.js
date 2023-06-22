@@ -20,9 +20,6 @@ export default function SearchForm() {
     const handleSubmit = (event) => {
         // Prevent the default
         event.preventDefault();
-        // set the search value
-        // const search = { searchType, searchInput }
-        // console.log(search);
         // set the search for axios
         const search = `${baseURL}${searchInput}+${searchType}`;
         // Search the google database
