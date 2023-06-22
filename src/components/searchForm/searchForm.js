@@ -1,9 +1,14 @@
 import React from "react";
 // Import hooks
 import { useState } from "react";
+// Import axios
+import axios from "axios";
 
 // CSS File
 import "./searchForm.css";
+
+// Set the base URL from Google Books
+const baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
 export default function SearchForm() {
     // Hook for the search type
