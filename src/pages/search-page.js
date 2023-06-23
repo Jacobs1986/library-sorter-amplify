@@ -4,6 +4,9 @@ import React, { createContext, useState } from "react";
 import SearchForm from "../components/searchForm/searchForm";
 import SearchDisplay from "../components/searchDisplay/searchDisplay";
 
+// Create a context
+export const ResultContext = createContext();
+
 export default function Search() {
     return (
         <div>
