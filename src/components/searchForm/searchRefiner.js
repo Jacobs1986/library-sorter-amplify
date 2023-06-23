@@ -18,8 +18,14 @@ function googleSearch(searchInfo) {
             // return param
             return param;
         }
+        // Title, author, subjec
         default: {
-            param = "The title, author, subject or publisher will be used in the search";
+            // Set type variable
+            type = searchInfo.terms;
+            // set input by replacing spaces with +
+            input = searchInfo.input.replace(/ /g, '+');
+            // set to the new param
+            param = `${baseURL}${input}+${type}`;
             return param;
         }
     }
