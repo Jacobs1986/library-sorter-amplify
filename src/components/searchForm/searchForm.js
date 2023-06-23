@@ -1,6 +1,6 @@
 import React from "react";
 // Import hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // CSS File
 import "./searchForm.css";
@@ -8,13 +8,21 @@ import "./searchForm.css";
 // Import search function
 import searchForBook from "./search-api.js";
 
-// Set the base URL from Google Books
-
 export default function SearchForm() {
     // Hook for the search type
     const [ searchType, setSearchType ] = useState('intitle');
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
+    // Hook for results
+    const [ result, setResult ] = useState('');
+
+    useEffect(() => {
+        if (result) {
+            console.log(result);
+        } else {
+            console.log('There is no data to display')
+        }
+    }, [result])
 
     // Search function
     const handleSubmit = (event) => {
@@ -23,8 +31,8 @@ export default function SearchForm() {
         // Setup the searchInfo variable
         const searchInfo = { input: searchInput, type: searchType}
         // Pass info to function 
-        const result = searchForBook(searchInfo);
-        console.log(result);
+        setResult(searchForBook(searchInfo));
+        // console.log(result);
         // set the search for axios
         // const search = `${baseURL}${searchInput}+${searchType}`;
         // Search the google database

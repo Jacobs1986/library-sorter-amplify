@@ -1,16 +1,16 @@
 // Import axios
-// import axios from "axios";
+import axios from "axios";
 
 var alert = "Search type not recognized";
 // // Variables
-// var input;
-// var type;
-// var search;
-// var result;
+var input;
+var type;
+var search;
+var result;
 
-// const baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
+const baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
-function searchForBook(searchInfo) {
+async function searchForBook(searchInfo) {
     switch(searchInfo.type) {
         // Title Search
         case "intitle": {
@@ -26,15 +26,13 @@ function searchForBook(searchInfo) {
         case "isbn": {
             alert = "The ISBN will be searched for";
             // set type and input variables
-            // input = searchInfo.input;
-            // type = searchInfo.type;
+            input = searchInfo.input;
+            type = searchInfo.type;
             // // set search variable
-            // search = `${baseURL}${input}+${type}`;
+            search = `${baseURL}${input}+${type}`;
             // // search for the info
-            // axios.get(search).then((response) => {
-            //     return response.data
-            // })
-            return alert;
+            result = await axios.get(search);
+            return result;
         }
         default:
             return alert;
