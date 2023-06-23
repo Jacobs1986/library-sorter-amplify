@@ -1,23 +1,44 @@
 import React from "react";
 // Import hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // CSS File
 import "./searchForm.css";
 
+// Import search function
+import googleSearch from "./searchRefiner";
+
+// Import axios
+import axios from "axios";
+
 export default function SearchForm() {
     // Hook for the search type
-    const [ searchType, setSearchType ] = useState('Title');
+    const [ searchTerm, setSearchTerm ] = useState('intitle');
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
+    // Hook for results
+    const [ result, setResult ] = useState('');
+
+    useEffect(() => {
+        if (result) {
+            console.log(result);
+        }
+    }, [result])
 
     // Search function
     const handleSubmit = (event) => {
         // Prevent the default
         event.preventDefault();
-        // set the search value
-        const search = { searchType, searchInput }
-        console.log(search);
+        // Setup the searchInfo variable
+        const searchInfo = { input: searchInput.toLowerCase(), terms: searchTerm}
+        // Pass info to function and set variable
+        const searchParam = googleSearch(searchInfo);
+        // Perform the api search
+        axios.get(searchParam).then((response) => {
+            setResult(response.data);
+        }).catch((error) => {
+            setResult(error);
+        })
     }
 
     return (
@@ -28,12 +49,13 @@ export default function SearchForm() {
                 <select 
                     id="search" 
                     name="search" 
-                    onChange={event => setSearchType(event.target.value)}
-                    value={searchType}>
-                    <option value="Title">Title</option>
-                    <option value="Author">Author</option>
-                    <option value="Subject">Subject</option>
-                    <option value="ISBN">ISBN</option>
+                    onChange={event => setSearchTerm(event.target.value)}
+                    value={searchTerm}>
+                    <option value="intitle">Title</option>
+                    <option value="inauthor">Author</option>
+                    <option value="subject">Subject</option>
+                    <option value="isbn">ISBN</option>
+                    <option value="inpublisher">Publisher</option>
                 </select>
                 {/* Input search information */}
                 <input 
