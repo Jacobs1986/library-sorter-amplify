@@ -10,10 +10,10 @@ export const ResultContext = createContext();
 export default function Search() {
     const [ result, setResult ] = useState('');
     return (
-        <div>
+        <ResultContext.Provider value={{ result, setResult }}>
             <h1>Search for a book</h1>
             <SearchForm />
             <SearchDisplay />
-        </div>
+        </ResultContext.Provider>
     );
 };
