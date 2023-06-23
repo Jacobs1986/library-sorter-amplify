@@ -8,6 +8,9 @@ import "./searchForm.css";
 // Import search function
 import googleSearch from "./searchRefiner";
 
+// Import axios
+import axios from "axios";
+
 export default function SearchForm() {
     // Hook for the search type
     const [ searchTerm, setSearchTerm ] = useState('intitle');
@@ -30,7 +33,12 @@ export default function SearchForm() {
         const searchInfo = { input: searchInput.toLowerCase(), terms: searchTerm}
         // Pass info to function and set variable
         const searchParam = googleSearch(searchInfo);
-        console.log(searchParam);
+        // Perform the api search
+        axios.get(searchParam).then((response) => {
+            setResult(response.data);
+        }).catch((error) => {
+            setResult(error);
+        })
     }
 
     return (
