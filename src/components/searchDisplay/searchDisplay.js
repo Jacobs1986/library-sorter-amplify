@@ -32,7 +32,15 @@ export default function SearchDisplay() {
                     There is nothing to display
                 </div> :
                 <div>
-                    {resultArray[0].volumeInfo.title}
+                    {/* Map the results */}
+                    {resultArray.map(book => (
+                        <div key={book.id}>
+                            {/* Book Title */}
+                            <h2>{book.volumeInfo.title}</h2>
+                            {/* Display the book cover */}
+                            <p>{book.volumeInfo.imageLinks.thumbnail}</p>
+                        </div>
+                    ))}
                 </div>  
         }
         </div>
