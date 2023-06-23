@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import "./searchForm.css";
 
 // Import search function
-// import searchForBook from "./search-api.js";
+import googleSearch from "./searchRefiner";
 
 export default function SearchForm() {
     // Hook for the search type
@@ -28,15 +28,9 @@ export default function SearchForm() {
         event.preventDefault();
         // Setup the searchInfo variable
         const searchInfo = { input: searchInput, type: searchType}
-        // Pass info to function 
-        // setResult(searchForBook(searchInfo));
-        // console.log(result);
-        // set the search for axios
-        // const search = `${baseURL}${searchInput}+${searchType}`;
-        // Search the google database
-        // axios.get(search).then((response) => {
-        //     console.log(response.data);
-        // })
+        // Pass info to function and set variable
+        const searchParam = googleSearch(searchInfo);
+        console.log(searchParam);
     }
 
     return (
