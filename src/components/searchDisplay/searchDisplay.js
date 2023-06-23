@@ -1,4 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, {
+    useContext,
+    useEffect,
+    useState
+} from "react";
 
 // CSS File
 import "./searchDisplay.css";
@@ -9,16 +13,18 @@ import { ResultContext } from "../../pages/search-page";
 export default function SearchDisplay() {
     // Bring in result from ResultContext
     const { result } = useContext(ResultContext);
+    const [resultArray, setResultArray] = useState([]);
 
     useEffect(() => {
+        // Ser the result to resultArray
         if (result) {
-            console.log('A search was made')
-        } else {
-            console.log('No search has been performed')
+            setResultArray(result.items);
         }
     }, [result])
-    
+
     return (
-        <div>The search display will go here.</div>
+        <div>
+            {!resultArray ? <div>There is no results</div> : <div>The results will be displayed here</div>} 
+        </div>
     );
 };
