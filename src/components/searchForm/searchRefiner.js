@@ -1,15 +1,22 @@
 // Make function for a google search
 function googleSearch(searchInfo) {
-    let alert;
-    switch(searchInfo.type) {
+    let type;
+    let input;
+    let param;
+    switch(searchInfo.terms) {
         // ISBN Search
         case "isbn": {
-            alert = "The ISBN will be used to search for a book";
-            return alert;
+            // Put the input and type from searchInfo into their own variables
+            input = searchInfo.input;
+            type = searchInfo.terms
+            // set the search param
+            param = input+type
+            // return param
+            return param;
         }
         default: {
-            alert = "The title, author, subject or publisher will be used in the search";
-            return alert;
+            param = "The title, author, subject or publisher will be used in the search";
+            return param;
         }
     }
 }
