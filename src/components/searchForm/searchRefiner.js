@@ -1,5 +1,9 @@
+// URL base for the google search
+const baseURL = 'https://www.googleapis.com/books/v1/volumes?q='
+
 // Make function for a google search
 function googleSearch(searchInfo) {
+    // Create variables
     let type;
     let input;
     let param;
@@ -10,7 +14,7 @@ function googleSearch(searchInfo) {
             input = searchInfo.input;
             type = searchInfo.terms
             // set the search param
-            param = input+type
+            param = `${baseURL}${input}+${type}`
             // return param
             return param;
         }
