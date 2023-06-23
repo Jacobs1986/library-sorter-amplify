@@ -14,7 +14,7 @@ function googleSearch(searchInfo) {
             input = searchInfo.input;
             type = searchInfo.terms
             // set the search param
-            param = `${baseURL}${input}+${type}&maxResults=20`
+            param = `${baseURL}${input}+${type}`
             // return param
             return param;
         }
@@ -25,7 +25,7 @@ function googleSearch(searchInfo) {
             // set input by replacing spaces with +
             input = searchInfo.input.replace(/ /g, '+');
             // set to the new param
-            param = `${baseURL}${input}+${type}`;
+            param = `${baseURL}${input}+${type}&maxResults=20`;
             return param;
         }
     }
