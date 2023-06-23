@@ -24,7 +24,31 @@ export default function SearchDisplay() {
 
     return (
         <div>
-            {!resultArray ? <div>There is no results</div> : <div>The results will be displayed here</div>} 
+            {!resultArray || resultArray.length === 0 ?
+                <div>
+                    There are no results
+                </div> :
+                <div>
+                    {/* Title of book */}
+                    <h2>{resultArray[0].volumeInfo.title}: {resultArray[0].volumeInfo.subtitle}</h2>
+                    {/* Bookcover */}
+                    <img
+                        src={resultArray[0].volumeInfo.imageLinks.thumbnail}
+                        alt="Book cover"
+                    />
+                    {/* Author */}
+                    <p>Author: {resultArray[0].volumeInfo.authors[0]}</p>
+                    {/* Publisher */}
+                    <p>Publisher: {resultArray[0].volumeInfo.publisher}</p>
+                    {/* Published Date */}
+                    <p>Published Date: {resultArray[0].volumeInfo.publishedDate}</p>
+                    {/* ISBN */}
+                    <p>ISBN: {resultArray[0].volumeInfo.industryIdentifiers[0].identifier}</p>
+                    {/* Description */}
+                    <h4>Description</h4>
+                    <p>{resultArray[0].volumeInfo.description}</p>
+                </div>
+            }
         </div>
     );
 };
