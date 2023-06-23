@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 
 // Components
 import SearchForm from "../components/searchForm/searchForm";
