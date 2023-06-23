@@ -32,17 +32,26 @@ export default function SearchDisplay() {
                     There is nothing to display
                 </div> :
                 <div>
-                    {/* Map the results */}
                     {resultArray.map(book => (
                         <div key={book.id}>
                             {/* Book Title */}
                             <h2>{book.volumeInfo.title}</h2>
-                            {/* Display the book cover */}
-                            <p>{book.volumeInfo.imageLinks.thumbnail}</p>
+                            {/* Book Cover */}
+                            <img
+                                src={book.volumeInfo.imageLinks.smallThumbnail}
+                                alt="Book cover"
+                            />
                         </div>
                     ))}
-                </div>  
-        }
+                    {/* Book Title */}
+                    {/* {resultArray[0].volumeInfo.title} */}
+                    {/* Book Cover */}
+                    {/* <img 
+                        src={resultArray[0].volumeInfo.imageLinks.smallThumbnail}
+                        alt="Book cover"
+                    /> */}
+                </div>
+            }
         </div>
     );
 };
