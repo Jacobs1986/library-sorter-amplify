@@ -14,7 +14,7 @@ function googleSearch(searchInfo) {
             input = searchInfo.input;
             type = searchInfo.terms
             // set the search param
-            param = `${baseURL}${input}+${type}`
+            param = `${baseURL}${input}+${type}&maxResults=20`
             // return param
             return param;
         }
