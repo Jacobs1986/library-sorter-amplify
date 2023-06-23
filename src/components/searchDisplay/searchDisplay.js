@@ -24,25 +24,28 @@ export default function SearchDisplay() {
 
     return (
         <div>
-            {!resultArray || resultArray.length === 0 ?
-                <div>
-                    There are no results
-                </div> :
-                <div>
-                    {resultArray.map(book => (
-                        <div key={book.id}>
-                            {/* Book Title */}
-                            <h2>{book.volumeInfo.title}</h2>
-                            {/* Bookcover */}
-                            {!book.volumeInfo.imageLinks.thumbnail ?
-                                <div>No cover</div> :
-                                <img
-                                    src={book.volumeInfo.imageLinks.thumbnail}
-                                    alt="Book Cover"
-                                />}
-                        </div>
-                    ))}
-                </div>
+            This is where the results will go
+        </div>
+        // <div>
+        //     {!resultArray || resultArray.length === 0 ?
+        //         <div>
+        //             There are no results
+        //         </div> :
+        //         <div>
+        //             {resultArray.map(book => (
+        //                 <div key={book.id}>
+        //                     {/* Book Title */}
+        //                     <h2>{book.volumeInfo.title}</h2>
+        //                     {/* Bookcover */}
+        //                     {!book.volumeInfo.imageLinks.thumbnail ?
+        //                         <div>No cover</div> :
+        //                         <img
+        //                             src={book.volumeInfo.imageLinks.thumbnail}
+        //                             alt="Book Cover"
+        //                         />}
+        //                 </div>
+        //             ))}
+        //         </div>
                 // <div>
                 //     {/* Title of book
                 //     <h2>{resultArray[0].volumeInfo.title}: {resultArray[0].volumeInfo.subtitle}</h2>
@@ -63,7 +66,7 @@ export default function SearchDisplay() {
                 //     <h4>Description</h4>
                 //     <p>{resultArray[0].volumeInfo.description}</p> */}
                 // </div>
-            }
-        </div>
+        //     }
+        // </div>
     );
 };
