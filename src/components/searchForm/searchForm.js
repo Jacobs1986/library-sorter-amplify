@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import "./searchForm.css";
 
 // Import search function
-import searchForBook from "./search-api.js";
+// import searchForBook from "./search-api.js";
 
 export default function SearchForm() {
     // Hook for the search type
@@ -19,8 +19,6 @@ export default function SearchForm() {
     useEffect(() => {
         if (result) {
             console.log(result);
-        } else {
-            console.log('There is no data to display')
         }
     }, [result])
 
@@ -31,7 +29,7 @@ export default function SearchForm() {
         // Setup the searchInfo variable
         const searchInfo = { input: searchInput, type: searchType}
         // Pass info to function 
-        setResult(searchForBook(searchInfo));
+        // setResult(searchForBook(searchInfo));
         // console.log(result);
         // set the search for axios
         // const search = `${baseURL}${searchInput}+${searchType}`;
