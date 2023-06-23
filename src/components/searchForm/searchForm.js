@@ -27,7 +27,7 @@ export default function SearchForm() {
         // Prevent the default
         event.preventDefault();
         // Setup the searchInfo variable
-        const searchInfo = { input: searchInput, terms: searchTerm}
+        const searchInfo = { input: searchInput.toLowerCase(), terms: searchTerm}
         // Pass info to function and set variable
         const searchParam = googleSearch(searchInfo);
         console.log(searchParam);
