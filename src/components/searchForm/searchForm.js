@@ -1,9 +1,10 @@
-import React from "react";
-// Import hooks
-import { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 // CSS File
 import "./searchForm.css";
+
+// Import context
+import { ResultContext } from "../../pages/search-page";
 
 // Import search function
 import googleSearch from "./searchRefiner";
@@ -17,13 +18,13 @@ export default function SearchForm() {
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
     // Hook for results
-    const [ result, setResult ] = useState('');
+    const { setResult } = useContext(ResultContext);
 
-    useEffect(() => {
-        if (result) {
-            console.log(result);
-        }
-    }, [result])
+    // useEffect(() => {
+    //     if (result) {
+    //         console.log(result);
+    //     }
+    // }, [result])
 
     // Search function
     const handleSubmit = (event) => {
