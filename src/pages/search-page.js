@@ -5,15 +5,15 @@ import SearchForm from "../components/searchForm/searchForm";
 import SearchDisplay from "../components/searchDisplay/searchDisplay";
 
 // Create a context
-export const ResultContext = createContext();
+export const SearchContext = createContext();
 
 export default function Search() {
-    const [ result, setResult ] = useState('');
+    const [ search, setSearch ] = useState('');
     return (
-        <ResultContext.Provider value={{ result, setResult }}>
+        <SearchContext.Provider value={{ search, setSearch }}>
             <h1>Search for a book</h1>
             <SearchForm />
             <SearchDisplay />
-        </ResultContext.Provider>
+        </SearchContext.Provider>
     );
 };
