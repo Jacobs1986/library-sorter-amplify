@@ -18,6 +18,7 @@ function googleSearch(searchInfo) {
             // return param
             return param;
         }
+        // Title search
         case "intitle": {
             // set input by replacing spaces with +
             input = searchInfo.input.replace(/ /g, '+');
