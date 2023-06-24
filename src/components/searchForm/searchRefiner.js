@@ -18,6 +18,13 @@ function googleSearch(searchInfo) {
             // return param
             return param;
         }
+        case "intitle": {
+            // set input by replacing spaces with +
+            input = searchInfo.input.replace(/ /g, '+');
+            // set the new param
+            param = `${baseURL}${input}`;
+            return param
+        }
         // Title, author, subject
         default: {
             // Set type variable
