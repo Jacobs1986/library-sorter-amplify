@@ -26,8 +26,8 @@ function googleSearch(searchInfo) {
             param = `${baseURL}${input}`;
             return param
         }
-        // Title, author, subject
-        default: {
+        // author
+        case "inauthoer": {
             // Set type variable
             type = searchInfo.terms;
             // set input by replacing spaces with +
@@ -36,6 +36,9 @@ function googleSearch(searchInfo) {
             param = `${baseURL}${type}:${input}&maxResults=10`;
             return param;
         }
+        // Title, author, subject
+        default:
+            return
     }
 }
 
