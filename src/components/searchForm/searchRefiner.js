@@ -33,7 +33,7 @@ function googleSearch(searchInfo) {
             // set input by replacing spaces with +
             input = searchInfo.input.replace(/ /g, '+');
             // set to the new param
-            param = `${baseURL}${input}&maxResults=40`;
+            param = `${baseURL}${input}&maxResults=20`;
             return param;
         }
         // Title, author, subject
