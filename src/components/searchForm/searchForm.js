@@ -4,7 +4,7 @@ import React, { useState, useContext } from "react";
 import "./searchForm.css";
 
 // Import context
-import { ResultContext } from "../../pages/search-page";
+import { SearchContext } from "../../pages/search-page";
 
 // Import search function
 import googleSearch from "./searchRefiner";
@@ -14,6 +14,8 @@ export default function SearchForm() {
     const [ searchTerm, setSearchTerm ] = useState('intitle');
     // Hook for search input
     const [ searchInput, setSearchInput ] = useState('');
+    // Import context
+    const { setSearch } = useContext(SearchContext);
 
     // Search function
     const handleSubmit = (event) => {
@@ -22,6 +24,7 @@ export default function SearchForm() {
         // Setup the searchInfo variable
         const searchInfo = { input: searchInput.toLowerCase(), terms: searchTerm}
         // Pass info to function and set variable
+        setSearch(googleSearch(searchInfo));
     }
 
     return (
