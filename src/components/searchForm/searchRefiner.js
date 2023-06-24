@@ -27,7 +27,7 @@ function googleSearch(searchInfo) {
             return param
         }
         // author
-        case "inauthoer": {
+        case "inauthor": {
             // Set type variable
             type = searchInfo.terms;
             // set input by replacing spaces with +
