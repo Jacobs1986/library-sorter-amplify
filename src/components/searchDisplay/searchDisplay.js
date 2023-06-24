@@ -22,7 +22,7 @@ export default function SearchDisplay() {
         if (search) {
             // Do API search
             axios.get(search).then((response) => {
-                console.log(response.data.items);
+                setResult(response.data.items);
             })
         }
     }, [search])
