@@ -14,20 +14,31 @@ function googleSearch(searchInfo) {
             input = searchInfo.input;
             type = searchInfo.terms
             // set the search param
-            param = `${baseURL}${input}+${type}`
+            param = `${baseURL}${type}:${input}`
             // return param
             return param;
         }
-        // Title, author, subjec
-        default: {
+        // Title search
+        case "intitle": {
+            // set input by replacing spaces with +
+            input = searchInfo.input.replace(/ /g, '+');
+            // set the new param
+            param = `${baseURL}${input}`;
+            return param
+        }
+        // author
+        case "inauthor": {
             // Set type variable
             type = searchInfo.terms;
             // set input by replacing spaces with +
             input = searchInfo.input.replace(/ /g, '+');
             // set to the new param
-            param = `${baseURL}${input}+${type}`;
+            param = `${baseURL}${input}&maxResults=40`;
             return param;
         }
+        // Title, author, subject
+        default:
+            return
     }
 }
 
