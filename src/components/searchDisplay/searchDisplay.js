@@ -32,38 +32,39 @@ export default function SearchDisplay() {
 
     // Set display hook
     useEffect(() => {
-        setDisplay(result);
+        if (!result) {
+            return
+        } else {
+            setDisplay(result);
+            setResult('');
+        }
     }, [result])
 
     return (
         <div>
-            {!display || display.length === 0 ? null :
+            {!display ? null :
                 // Map the results
                 <div>
-                    {display.items.map((book) => {
-                        return (
-                            <div key={book.id}>
-                                {/* Book Title */}
-                                <h2>{book.volumeInfo.title}</h2>
-                                {/* Book Cover */}
-                                <img 
-                                    src = {
-                                        book.volumeInfo.imageLinks === undefined 
-                                        ? require("./blank-cover.jpeg")
-                                        : `${book.volumeInfo.imageLinks.thumbnail}`
-                                    }
-                                    alt = "Book Cover"
-                                />
-                            </div>
-                        )
-                    })}
+                    {/* If there are no results */}
+                    {display.totalItems === 0 ? <div>No results</div> :
+                        <div>
+                            {display.items.map((book, i) => (
+                                <div key={i}>
+                                    {/* Book Title */}
+                                    <h2>{book.volumeInfo.title}</h2>
+                                    {/* Book Cover */}
+                                    <img 
+                                        src = {
+                                            book.volumeInfo.imageLinks === undefined
+                                            ? require("./blank-cover.jpeg")
+                                            : `${book.volumeInfo.imageLinks.thumbnail}`
+                                        }
+                                        alt = "Book Cover"
+                                    />
+                                </div>
+                            ))}
+                        </div>}
                 </div>
-                // <div>
-                //     {/* Book Title */}
-                //     <h2>{display.items[0].volumeInfo.title}</h2>
-                //     {/* Book Cover */}
-                //     <p>{display.items[0].volumeInfo.imageLinks.thumbnail}</p>
-                // </div>
             }
         </div>
     );
