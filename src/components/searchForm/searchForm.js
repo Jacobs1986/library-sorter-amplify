@@ -59,7 +59,7 @@ export default function SearchForm() {
                 </div>
                 <div className="row">
                     <div class="col-12">
-                        <input type="submit" value="Search" />
+                        <input type="submit" value="Search" id="searchFormSubmit"/>
                     </div>
                 </div>
             </form>
