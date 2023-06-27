@@ -22,7 +22,7 @@ export default function SearchForm() {
         // Prevent the default
         event.preventDefault();
         // Setup the searchInfo variable
-        const searchInfo = { input: searchInput.toLowerCase(), terms: searchTerm}
+        const searchInfo = { input: searchInput, terms: searchTerm}
         // Pass info to function and set variable
         setSearch(googleSearch(searchInfo));
     }
@@ -39,9 +39,7 @@ export default function SearchForm() {
                     value={searchTerm}>
                     <option value="intitle">Title</option>
                     <option value="inauthor">Author</option>
-                    <option value="subject">Subject</option>
                     <option value="isbn">ISBN</option>
-                    <option value="inpublisher">Publisher</option>
                 </select>
                 {/* Input search information */}
                 <input 
