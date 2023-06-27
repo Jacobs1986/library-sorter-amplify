@@ -50,17 +50,36 @@ export default function SearchDisplay() {
                         <div>
                             {display.items.map((book, i) => (
                                 <div key={i}>
+                                    {/* Check if imageLinks is undefined */}
+                                    {book.volumeInfo.imageLinks !== undefined
+                                    // If imageLinks in not undefined
+                                        ? <img
+                                            src={book.volumeInfo.imageLinks.thumbnail}
+                                            alt="Book Cover"
+                                        />
+                                        :
+                                        // If imageLinks is undefined 
+                                        <>
+                                            {/* Book Title */}
+                                            <h2>{book.volumeInfo.title}</h2>
+                                            {/* Cover image */}
+                                            <img 
+                                                src={require("./blank-cover.jpeg")}
+                                                alt="Book cover"
+                                            />
+                                        </>
+                                    }
                                     {/* Book Title */}
-                                    <h2>{book.volumeInfo.title}</h2>
+                                    {/* <h2>{book.volumeInfo.title}</h2> */}
                                     {/* Book Cover */}
-                                    <img 
+                                    {/* <img 
                                         src = {
                                             book.volumeInfo.imageLinks === undefined
                                             ? require("./blank-cover.jpeg")
                                             : `${book.volumeInfo.imageLinks.thumbnail}`
                                         }
                                         alt = "Book Cover"
-                                    />
+                                    /> */}
                                 </div>
                             ))}
                         </div>}
