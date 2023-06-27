@@ -24,7 +24,7 @@ function googleSearch(searchInfo) {
             input = searchInfo.input.replace(/ /g, '+');
             // set the new param
             // eslint-disable-next-line no-useless-escape
-            param = `${baseURL}intitle:\"${input}\"&maxResults=40`;
+            param = `${baseURL}${input}&maxResults=40`;
             return param
         }
         // author
