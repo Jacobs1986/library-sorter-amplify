@@ -29,7 +29,7 @@ export default function SearchForm() {
     }
 
     return (
-        <div>
+        <div className="container">
             <form onSubmit={handleSubmit}>
                 {/* Type of search */}
                 <label htmlFor="search">Search by:</label>
