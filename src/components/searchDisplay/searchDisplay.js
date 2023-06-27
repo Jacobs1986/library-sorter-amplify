@@ -49,7 +49,7 @@ export default function SearchDisplay() {
                                 <img 
                                     src = {
                                         book.volumeInfo.imageLinks === undefined 
-                                        ? ""
+                                        ? require("./blank-cover.jpeg")
                                         : `${book.volumeInfo.imageLinks.thumbnail}`
                                     }
                                     alt = "Book Cover"
