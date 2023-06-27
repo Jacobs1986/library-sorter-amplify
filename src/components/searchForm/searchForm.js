@@ -49,7 +49,7 @@ export default function SearchForm() {
                     onChange={event => setSearchInput(event.target.value)}
                     value={searchInput}
                 />
-                <button type="submit">Search</button>
+                <input type="submit" value="Searcn" />
             </form>
         </div>
     );
