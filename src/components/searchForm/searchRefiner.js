@@ -23,7 +23,6 @@ function googleSearch(searchInfo) {
             // set input by replacing spaces with +
             input = searchInfo.input.replace(/ /g, '+');
             // set the new param
-            // eslint-disable-next-line no-useless-escape
             param = `${baseURL}${input}&maxResults=40`;
             return param
         }
