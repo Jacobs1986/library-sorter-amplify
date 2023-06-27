@@ -23,7 +23,8 @@ function googleSearch(searchInfo) {
             // set input by replacing spaces with +
             input = searchInfo.input.replace(/ /g, '+');
             // set the new param
-            param = `${baseURL}intitle:/"${input}/"&maxResults=40`;
+            // eslint-disable-next-line no-useless-escape
+            param = `${baseURL}intitle:\"${input}\"&maxResults=40`;
             return param
         }
         // author
