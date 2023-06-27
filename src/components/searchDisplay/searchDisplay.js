@@ -41,15 +41,15 @@ export default function SearchDisplay() {
     }, [result])
 
     return (
-        <div>
+        <div className="container" id="displayContainer">
             {!display ? null :
                 // Map the results
-                <div>
+                <div className="row">
                     {/* If there are no results */}
                     {display.totalItems === 0 ? <div>No results</div> :
                         <div>
                             {display.items.map((book, i) => (
-                                <div key={i}>
+                                <div key={i} className="col-2">
                                     {/* Check if imageLinks is undefined */}
                                     {book.volumeInfo.imageLinks !== undefined
                                     // If imageLinks in not undefined
@@ -69,17 +69,6 @@ export default function SearchDisplay() {
                                             />
                                         </>
                                     }
-                                    {/* Book Title */}
-                                    {/* <h2>{book.volumeInfo.title}</h2> */}
-                                    {/* Book Cover */}
-                                    {/* <img 
-                                        src = {
-                                            book.volumeInfo.imageLinks === undefined
-                                            ? require("./blank-cover.jpeg")
-                                            : `${book.volumeInfo.imageLinks.thumbnail}`
-                                        }
-                                        alt = "Book Cover"
-                                    /> */}
                                 </div>
                             ))}
                         </div>}
