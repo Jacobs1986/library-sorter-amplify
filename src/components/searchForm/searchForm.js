@@ -32,7 +32,7 @@ export default function SearchForm() {
         <div>
             <form onSubmit={handleSubmit}>
                 {/* Type of search */}
-                <label for="search">Search by:</label>
+                <label htmlFor="search">Search by:</label>
                 <select 
                     id="search" 
                     name="search" 
