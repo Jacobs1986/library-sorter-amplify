@@ -24,7 +24,7 @@ export default function SearchForm() {
         // Setup the searchInfo variable
         const searchInfo = { input: searchInput, terms: searchTerm}
         // Pass info to function and set variable
-        console.log(googleSearch(searchInfo));
+        setSearch(googleSearch(searchInfo));
     }
 
     return (
