@@ -46,20 +46,17 @@ export default function SearchDisplay() {
         <>
             {development ?
                 <div className="displayContainer">
-                    <div className="flip-card">
-                        <dic className="flip-card-inner">
-                            <div className="flip-card-front">
-                                <img 
-                                    src="./Images/blank-cover.jpeg"
-                                    alt="Book Cover"
-                                />
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="./Images/blank-cover.jpeg" alt="Avatar" style={{ width:"300px", height:"300px" }}/>
                             </div>
-                            <div className="flip-card-back">
-                                View info button
+                            <div class="flip-card-back">
+                                <h1>Click here to view info</h1>
                             </div>
-                        </dic>
+                        </div>
                     </div>
-                </div> :
+                </div>:
                 <div className="displayContainer">
                     {/* First check to see if display is undefined */}
                     {!display ? null :
