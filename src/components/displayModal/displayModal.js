@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "./displayModal.css";
 
 export default function DisplayModal() {
-    const [ showModal, setShowModal ] = useState("block")
+    const [showModal, setShowModal] = useState("block")
 
     // Create the function for opening the modal
     const handleOpenModal = () => {
@@ -15,11 +15,11 @@ export default function DisplayModal() {
     const handleCloseModal = () => {
         setShowModal("none");
     }
-    
+
     return (
         <>
             <button onClick={handleOpenModal}>Open modal</button>
-            <div className="modal" style={{ display: `${showModal}`}}>
+            <div className="modal" style={{ display: `${showModal}` }}>
                 <div className="modal-content">
                     <div className="modal-header">
                         <span className="close" onClick={handleCloseModal}>&times;</span>
