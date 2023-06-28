@@ -57,6 +57,33 @@ export default function SearchDisplay() {
                         <h4>Book Title</h4>
                     </div>
                 </div>
+                <div className="displayCard">
+                    <div className="cardImage">
+                        <img
+                            src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            alt="Book cover"
+                        />
+                    </div>
+                </div>
+                <div className="displayCard">
+                    <div className="cardImage">
+                        <img
+                            src={require("./blank-cover.jpeg")}
+                            alt="Book cover"
+                        />
+                    </div>
+                    <div className="bookTitle">
+                        <h4>Book Title</h4>
+                    </div>
+                </div>
+                <div className="displayCard">
+                    <div className="cardImage">
+                        <img
+                            src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            alt="Book cover"
+                        />
+                    </div>
+                </div>
             </div> :
             <>
                 The development is off
