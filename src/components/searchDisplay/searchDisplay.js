@@ -44,15 +44,34 @@ export default function SearchDisplay() {
 
     if (development) {
         return (
-            // Container for a card
-            <div className="card">
-                <img 
-                    src={require("./blank-cover.jpeg")}
-                    alt="Book cover"
-                    style={{ width: "100%" }}
-                />
-                <div className="cardContainer">
-                    <h4>Book title</h4>
+            <div className="container" id="displayContainer">
+                <div className="row">
+                    {/* Card for if there is a book cover */}
+                    <div className="col-2">
+                        <div className="card">
+                            <img
+                                src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                                alt="Book cover"
+                                style={{ width: "100%" }}
+                            />
+                            {/* <div className="cardContainer">
+                            <h4>Book title</h4>
+                        </div> */}
+                        </div>
+                    </div>
+                    {/* Card for if there is no book cover */}
+                    <div className="col-2">
+                        <div className="card">
+                            <img
+                                src={require("./blank-cover.jpeg")}
+                                alt="Book cover"
+                                style={{ width: "100%" }}
+                            />
+                            <div className="cardContainer">
+                                <h4>Book title</h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
