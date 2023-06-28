@@ -50,6 +50,9 @@ export default function SearchDisplay() {
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <img src="./Images/blank-cover.jpeg" alt="Avatar" style={{ width:"300px", height:"300px" }}/>
+                                <div>
+                                    <h4>Book title</h4>
+                                </div>
                             </div>
                             <div class="flip-card-back">
                                 <h1>Click here to view info</h1>
