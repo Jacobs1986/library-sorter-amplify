@@ -19,7 +19,7 @@ export default function DisplayModal() {
     return (
         <>
             <button onClick={handleOpenModal}>Open modal</button>
-            <div id="myModal" className="modal" style={{ display: `${showModal}`}}>
+            <div className="modal" style={{ display: `${showModal}`}}>
                 <div className="modal-content">
                     <span className="close" onClick={handleCloseModal}>&times;</span>
                     <p>Some text in the Modal...</p>
