@@ -20,7 +20,7 @@ export default function SearchDisplay() {
     // Creating a display hook 
     const [display, setDisplay] = useState();
     // Variable that allows for development
-    const development = true;
+    const development = false;
 
     useEffect(() => {
         if (search) {
@@ -42,75 +42,16 @@ export default function SearchDisplay() {
         }
     }, [result])
 
-    if (development) {
-        return (
-            <div className="container" id="displayContainer">
-                <div className="row">
-                    {/* Card for if there is a book cover */}
-                    <div className="col-2">
-                        <div className="card">
-                            <img
-                                src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-                                alt="Book cover"
-                                style={{ width: "100%" }}
-                            />
-                            {/* <div className="cardContainer">
-                            <h4>Book title</h4>
-                        </div> */}
-                        </div>
-                    </div>
-                    {/* Card for if there is no book cover */}
-                    <div className="col-2">
-                        <div className="card">
-                            <img
-                                src={require("./blank-cover.jpeg")}
-                                alt="Book cover"
-                                style={{ width: "100%" }}
-                            />
-                            <div className="cardContainer">
-                                <h4>Book title</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
-    } else {
-        return (
-            <div className="container" id="displayContainer">
-                {!display ? null :
-                    // Map the results
-                    <div className="row">
-                        {/* If there are no results */}
-                        {display.totalItems === 0 ? <div>No results</div> :
-                            <div>
-                                {display.items.map((book, i) => (
-                                    <div key={i} className="col-2">
-                                        {/* Check if imageLinks is undefined */}
-                                        {book.volumeInfo.imageLinks !== undefined
-                                            // If imageLinks in not undefined
-                                            ? <img
-                                                src={book.volumeInfo.imageLinks.thumbnail}
-                                                alt="Book Cover"
-                                            />
-                                            :
-                                            // If imageLinks is undefined 
-                                            <>
-                                                {/* Book Title */}
-                                                <h2>{book.volumeInfo.title}</h2>
-                                                {/* Cover image */}
-                                                <img
-                                                    src={require("./blank-cover.jpeg")}
-                                                    alt="Book cover"
-                                                />
-                                            </>
-                                        }
-                                    </div>
-                                ))}
-                            </div>}
-                    </div>
-                }
-            </div>
-        );
-    }
+    return (
+        <>
+            {development ? 
+            <>
+                The development is on
+            </> :
+            <>
+                The development is off
+            </>    
+        }
+        </>
+    )
 };
