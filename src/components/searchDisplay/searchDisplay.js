@@ -19,6 +19,8 @@ export default function SearchDisplay() {
     const [result, setResult] = useState();
     // Creating a display hook 
     const [display, setDisplay] = useState();
+    // Variable that allows for development
+    const development = true;
 
     useEffect(() => {
         if (search) {
@@ -41,39 +43,69 @@ export default function SearchDisplay() {
     }, [result])
 
     return (
-        <div className="container" id="displayContainer">
-            {!display ? null :
-                // Map the results
-                <div className="row">
-                    {/* If there are no results */}
-                    {display.totalItems === 0 ? <div>No results</div> :
-                        <div>
-                            {display.items.map((book, i) => (
-                                <div key={i} className="col-2">
-                                    {/* Check if imageLinks is undefined */}
-                                    {book.volumeInfo.imageLinks !== undefined
-                                    // If imageLinks in not undefined
-                                        ? <img
-                                            src={book.volumeInfo.imageLinks.thumbnail}
-                                            alt="Book Cover"
-                                        />
-                                        :
-                                        // If imageLinks is undefined 
+        <>
+            {development ?
+                <div className="displayContainer">
+                    <div className="displayCard">
+                        <div className="cardImage">
+                            <img
+                                src="./Images/blank-cover.jpeg"
+                                alt="Book cover"
+                            />
+                        </div>
+                        <div className="bookTitle">
+                            <h4>Book Title</h4>
+                        </div>
+                    </div>
+                </div> :
+                <div className="displayContainer">
+                    {/* First check to see if display is undefined */}
+                    {!display ? null :
+                        <>
+                            {/* Now check to see if totalItems is 0 */}
+                            {display.totalItems === 0 ?
+                                // If this is true display no results
+                                <>
+                                    <h1>No results</h1>
+                                </> :
+                                // Results will be displayed here
+                                <>
+                                    {/* Map the results */}
+                                    {display.items.map((book, i) => (
                                         <>
-                                            {/* Book Title */}
-                                            <h2>{book.volumeInfo.title}</h2>
-                                            {/* Cover image */}
-                                            <img 
-                                                src={require("./blank-cover.jpeg")}
-                                                alt="Book cover"
-                                            />
+                                            {/* Check to see if imageLinks is undefined */}
+                                            {book.volumeInfo.imageLinks === undefined ?
+                                                // Display card with blank cover jpeg
+                                                <div className="displayCard" key={i}>
+                                                    <div className="cardImage">
+                                                        <img
+                                                            src="./Images/blank-cover.jpeg"
+                                                            alt="Book cover"
+                                                        />
+                                                    </div>
+                                                    <div className="bookTitle">
+                                                        <h4>{book.volumeInfo.title}</h4>
+                                                    </div>
+                                                </div> :
+                                                // Display book cover if not true
+                                                <div className="displayCard" key={i}>
+                                                    <div className="cardImage">
+                                                        <img
+                                                            src={book.volumeInfo.imageLinks.thumbnail}
+                                                            alt="Book cover"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                            }
                                         </>
-                                    }
-                                </div>
-                            ))}
-                        </div>}
+                                    ))}
+                                </>
+                            }
+                        </>
+                    }
                 </div>
             }
-        </div>
-    );
+        </>
+    )
 };

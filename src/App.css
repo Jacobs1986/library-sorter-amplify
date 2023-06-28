@@ -9,6 +9,12 @@
     padding: 20px;
 }
 
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 /* Set the column widths for a desktop */
 .col-1 {
     width: 8.33%;
@@ -62,10 +68,4 @@
 [class*="col-"] {
     float: left;
     padding: 15px;
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
 }
