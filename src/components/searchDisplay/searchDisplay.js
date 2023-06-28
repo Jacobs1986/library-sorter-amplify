@@ -46,16 +46,18 @@ export default function SearchDisplay() {
         <>
             {development ?
                 <div className="displayContainer">
-                    <div className="displayCard">
-                        <div className="cardImage">
-                            <img
-                                src="./Images/blank-cover.jpeg"
-                                alt="Book cover"
-                            />
-                        </div>
-                        <div className="bookTitle">
-                            <h4>Book Title</h4>
-                        </div>
+                    <div className="flip-card">
+                        <dic className="flip-card-inner">
+                            <div className="flip-card-front">
+                                <img 
+                                    src="./Images/blank-cover.jpeg"
+                                    alt="Book Cover"
+                                />
+                            </div>
+                            <div className="flip-card-back">
+                                View info button
+                            </div>
+                        </dic>
                     </div>
                 </div> :
                 <div className="displayContainer">
