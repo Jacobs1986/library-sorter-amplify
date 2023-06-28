@@ -41,10 +41,20 @@ export default function SearchDisplay() {
             setResult('');
         }
     }, [result])
-    
+
     if (development) {
         return (
-            <div>Development mode is on</div>
+            // Container for a card
+            <div className="card">
+                <img 
+                    src={require("./blank-cover.jpeg")}
+                    alt="Book cover"
+                    style={{ width: "100%" }}
+                />
+                <div className="cardContainer">
+                    <h4>Book title</h4>
+                </div>
+            </div>
         )
     } else {
         return (
