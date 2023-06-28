@@ -87,3 +87,7 @@
 .bookInfo > p {
     font-size: 1.5em;
 } 
+
+#descriptionParagraph {
+    font-size: 1em;
+}
