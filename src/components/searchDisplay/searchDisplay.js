@@ -20,7 +20,7 @@ export default function SearchDisplay() {
     // Creating a display hook 
     const [display, setDisplay] = useState();
     // Variable that allows for development
-    const development = true;
+    const development = false;
 
     useEffect(() => {
         if (search) {
@@ -44,51 +44,95 @@ export default function SearchDisplay() {
 
     return (
         <>
-            {development ? 
-            <div className="displayContainer">
-                <div className="displayCard">
-                    <div className="cardImage">
-                        <img
-                            src={require("./blank-cover.jpeg")}
-                            alt="Book cover"
-                        />
+            {development ?
+                <div className="displayContainer">
+                    <div className="displayCard">
+                        <div className="cardImage">
+                            <img
+                                src={require("./blank-cover.jpeg")}
+                                alt="Book cover"
+                            />
+                        </div>
+                        <div className="bookTitle">
+                            <h4>Book Title</h4>
+                        </div>
                     </div>
-                    <div className="bookTitle">
-                        <h4>Book Title</h4>
+                    <div className="displayCard">
+                        <div className="cardImage">
+                            <img
+                                src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                                alt="Book cover"
+                            />
+                        </div>
                     </div>
+                    <div className="displayCard">
+                        <div className="cardImage">
+                            <img
+                                src={require("./blank-cover.jpeg")}
+                                alt="Book cover"
+                            />
+                        </div>
+                        <div className="bookTitle">
+                            <h4>Book Title</h4>
+                        </div>
+                    </div>
+                    <div className="displayCard">
+                        <div className="cardImage">
+                            <img
+                                src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                                alt="Book cover"
+                            />
+                        </div>
+                    </div>
+                </div> :
+                <div className="displayContainer">
+                    {/* First check to see if display is undefined */}
+                    {!display ? null :
+                        <>
+                            {/* Now check to see if totalItems is 0 */}
+                            {display.totalItems === 0 ?
+                                // If this is true display no results
+                                <>
+                                    <h1>No results</h1>
+                                </> :
+                                // Results will be displayed here
+                                <>
+                                    {/* Map the results */}
+                                    {display.items.map((book, i) => (
+                                        <>
+                                            {/* Check to see if imageLinks is undefined */}
+                                            {book.volumeInfo.imageLinks === undefined ?
+                                                // Display card with blank cover jpeg
+                                                <div className="displayCard" key={i}>
+                                                    <div className="cardImage">
+                                                        <img
+                                                            src={require("./blank-cover.jpeg")}
+                                                            alt="Book cover"
+                                                        />
+                                                    </div>
+                                                    <div className="bookTitle">
+                                                        <h4>{book.volumeInfo.title}</h4>
+                                                    </div>
+                                                </div> :
+                                                // Display book cover if not true
+                                                <div className="displayCard" key={i}>
+                                                    <div className="cardImage">
+                                                        <img
+                                                            src={book.volumeInfo.imageLinks.thumbnail}
+                                                            alt="Book cover"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                            }
+                                        </>
+                                    ))}
+                                </>
+                            }
+                        </>
+                    }
                 </div>
-                <div className="displayCard">
-                    <div className="cardImage">
-                        <img
-                            src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-                            alt="Book cover"
-                        />
-                    </div>
-                </div>
-                <div className="displayCard">
-                    <div className="cardImage">
-                        <img
-                            src={require("./blank-cover.jpeg")}
-                            alt="Book cover"
-                        />
-                    </div>
-                    <div className="bookTitle">
-                        <h4>Book Title</h4>
-                    </div>
-                </div>
-                <div className="displayCard">
-                    <div className="cardImage">
-                        <img
-                            src="http://books.google.com/books/content?id=4B5f_1IoVoYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-                            alt="Book cover"
-                        />
-                    </div>
-                </div>
-            </div> :
-            <>
-                The development is off
-            </>    
-        }
+            }
         </>
     )
 };
