@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "./displayModal.css";
 
 export default function DisplayModal() {
-    const [showModal, setShowModal] = useState("block")
+    const [showModal, setShowModal] = useState("none")
 
     // Create the function for opening the modal
     const handleOpenModal = () => {
