@@ -47,10 +47,12 @@ export default function SearchDisplay() {
             {development ? 
             <div className="displayContainer">
                 <div className="displayCard">
-                    <img 
-                        src={require("./blank-cover.jpeg")}
-                        alt="Book cover"
-                    />
+                    <div className="cardImage">
+                        <img
+                            src={require("./blank-cover.jpeg")}
+                            alt="Book cover"
+                        />
+                    </div>
                     <div className="bookTitle">
                         <h4>Book Title</h4>
                     </div>
