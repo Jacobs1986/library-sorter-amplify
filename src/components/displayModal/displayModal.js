@@ -1,26 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
 // CSS File
 import "./displayModal.css";
 
 export default function DisplayModal() {
-    // Set modal variable
-    const modal = document.getElementById("myModal");
-    // Get the class name of the span
-    const span = document.getElementsByClassName("close");
+    const [ showModal, setShowModal ] = useState("none")
 
     // Create the function for opening the modal
-    const handleOpenModal = (event) => {
-        event.preventDefault();
-        modal.style.display = "block";
+    const handleOpenModal = () => {
+        setShowModal("block");
+    }
+
+    // Close the modal
+    const handleCloseModal = () => {
+        setShowModal("none");
     }
     
     return (
         <>
             <button onClick={handleOpenModal}>Open modal</button>
-            <div id="myModal" className="modal">
-                <div className="modal-content" >
-                    <span className="close">&times;</span>
+            <div id="myModal" className="modal" style={{ display: `${showModal}`}}>
+                <div className="modal-content">
+                    <span className="close" onClick={handleCloseModal}>&times;</span>
                     <p>Some text in the Modal...</p>
                 </div>
             </div>
