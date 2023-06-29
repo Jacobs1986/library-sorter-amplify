@@ -103,6 +103,9 @@ export default function SearchDisplay() {
                                                     <div className="bookTitle">
                                                         <h4>{book.volumeInfo.title}</h4>
                                                     </div>
+                                                    <div className="middle">
+                                                        <div className="text">View more info</div>
+                                                    </div>
                                                 </div> :
                                                 // Display book cover if not true
                                                 <div className="displayCard" key={i}>
@@ -111,6 +114,9 @@ export default function SearchDisplay() {
                                                             src={book.volumeInfo.imageLinks.thumbnail}
                                                             alt="Book cover"
                                                         />
+                                                    </div>
+                                                    <div className="middle">
+                                                        <div className="text">View more info</div>
                                                     </div>
                                                 </div>
 
