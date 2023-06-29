@@ -17,7 +17,9 @@ export default function DisplayModal() {
     // set googleBookId hook
     const { googleBookId } = useContext(GoogleBookId);
     // show modal hook
-    const [showModal, setShowModal] = useState("none")
+    const [showModal, setShowModal] = useState("none");
+    // hook for volumeInfo
+    const [volumeInfo, setVolumeInfo] = useState();
 
     // Create the function for opening the modal
     // const handleOpenModal = () => {
@@ -27,14 +29,22 @@ export default function DisplayModal() {
     useEffect(() => {
         if (googleBookId) {
             axios.get(`https://www.googleapis.com/books/v1/volumes/${googleBookId}`).then((res) => {
-                console.log(res.data);
+                setVolumeInfo(res.data);
             })
         }
     }, [googleBookId])
 
+    // Display modal with all of the content
+    useEffect(() => {
+        if (volumeInfo) {
+            setShowModal("block");
+        }
+    }, [volumeInfo])
+
     // Close the modal
     const handleCloseModal = () => {
         setShowModal("none");
+        setVolumeInfo('');
     }
 
     return (
