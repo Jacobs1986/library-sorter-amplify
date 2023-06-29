@@ -50,6 +50,10 @@
     text-align: center;
 }
 
+.text:hover {
+    cursor: pointer;
+}
+
 .bookTitle > h4 {
     text-align: center;
 }
