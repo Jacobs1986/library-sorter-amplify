@@ -79,7 +79,7 @@ export default function SearchDisplay() {
                                                 <div className="displayCard" key={i}>
                                                     <div className="cardImage">
                                                         <img
-                                                            src="./Images/blank-cover.jpeg"
+                                                            src="./Images/blank-cover.png"
                                                             alt="Book cover"
                                                         />
                                                     </div>
