@@ -29,7 +29,7 @@ export default function DisplayModal() {
     useEffect(() => {
         if (googleBookId) {
             axios.get(`https://www.googleapis.com/books/v1/volumes/${googleBookId}`).then((res) => {
-                // console.log(googleBookId);
+                console.log(googleBookId);
                 setBookInfo(res.data);
             })
         }
