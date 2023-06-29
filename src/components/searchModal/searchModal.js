@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { 
+    useState,
+    useContext,
+    useEffect
+ } from "react";
 
 // CSS File
 import "./searchModal.css";
 
+// Import GoogleBookId
+import { GoogleBookId } from "../../pages/search-page";
+
 export default function DisplayModal() {
+    // set googleBookId hook
+    const { googleBookId } = useContext(GoogleBookId);
+    // show modal hook
     const [showModal, setShowModal] = useState("none")
 
     // Create the function for opening the modal
     // const handleOpenModal = () => {
     //     setShowModal("block");
     // }
+    // Run when googleBookId changes
+    useEffect(() => {
+        if (googleBookId) {
+            console.log(googleBookId)
+        }
+    }, [googleBookId])
 
     // Close the modal
     const handleCloseModal = () => {
