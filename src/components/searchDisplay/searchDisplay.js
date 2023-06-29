@@ -42,6 +42,11 @@ export default function SearchDisplay() {
         }
     }, [result])
 
+    // Function that will handle getting the book id
+    const handleGetBookId = (e, book) => {
+        console.log(`The book id is: ${book}`);
+    }
+
     return (
         <>
             {development ?
@@ -70,7 +75,7 @@ export default function SearchDisplay() {
                                                 className="coverImage" style={{ width: "100%" }}
                                             />
                                             <div className="middle">
-                                                <div className="coverButton">View More Info</div>
+                                                <div className="coverButton" value={book.id} onClick={(e) => handleGetBookId(e, book.id)}>View More Info</div>
                                             </div>
                                             {/* Check to see if imagesLink is undefined, if it is show the book title */}
                                             {book.volumeInfo.imageLinks === undefined ?
