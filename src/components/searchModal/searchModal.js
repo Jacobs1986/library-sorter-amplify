@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // CSS File
-import "./displayModal.css";
+import "./searchModal.css";
 
 export default function DisplayModal() {
     const [showModal, setShowModal] = useState("none")

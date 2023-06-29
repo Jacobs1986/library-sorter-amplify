@@ -20,7 +20,7 @@ export default function SearchDisplay() {
     // Creating a display hook 
     const [display, setDisplay] = useState();
     // Variable that allows for development
-    const development = true;
+    const development = false;
 
     useEffect(() => {
         if (search) {
@@ -79,7 +79,7 @@ export default function SearchDisplay() {
                                                 <div className="displayCard" key={i}>
                                                     <div className="cardImage">
                                                         <img
-                                                            src="./Images/blank-cover.jpeg"
+                                                            src="./Images/blank-cover.png"
                                                             alt="Book cover"
                                                         />
                                                     </div>
