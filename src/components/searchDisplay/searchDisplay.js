@@ -20,7 +20,7 @@ export default function SearchDisplay() {
     // Creating a display hook 
     const [display, setDisplay] = useState();
     // Variable that allows for development
-    const development = !false;
+    const development = false;
 
     useEffect(() => {
         if (search) {
@@ -46,7 +46,27 @@ export default function SearchDisplay() {
         <>
             {development ?
                 <div className="displayContainer">
-                    
+                    <div className="coverContainer">
+                        <img
+                            src="./Images/blank-cover.png"
+                            alt="Book cover"
+                            className="image" style={{ width: "100%" }}
+                        />
+                        <div className="middle">
+                            <div className="text">View more info</div>
+                        </div>
+                        <div>Book title</div>
+                    </div>
+                    <div className="coverContainer">
+                        <img
+                            src="http://books.google.com/books/content?id=wlvqDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                            alt="Book cover"
+                            className="image" style={{ width: "100%" }}
+                        />
+                        <div className="middle">
+                            <div className="text">View more info</div>
+                        </div>
+                    </div>
                 </div> :
                 <div className="displayContainer">
                     {/* First check to see if display is undefined */}
@@ -66,28 +86,26 @@ export default function SearchDisplay() {
                                             {/* Check to see if imageLinks is undefined */}
                                             {book.volumeInfo.imageLinks === undefined ?
                                                 // Display card with blank cover jpeg
-                                                <div className="displayCard" key={i}>
-                                                    <div className="cardImage">
-                                                        <img
-                                                            src="./Images/blank-cover.png"
-                                                            alt="Book cover"
-                                                        />
-                                                    </div>
-                                                    <div className="bookTitle">
-                                                        <h4>{book.volumeInfo.title}</h4>
-                                                    </div>
+                                                <div className="coverContainer" key={i}>
+                                                    <img
+                                                        src="./Images/blank-cover.png"
+                                                        alt="Book cover"
+                                                        className="image" style={{ width: "100%" }}
+                                                    />
                                                     <div className="middle">
                                                         <div className="text">View more info</div>
                                                     </div>
+                                                    <div>
+                                                        <h4>{book.volumeInfo.title}</h4>
+                                                    </div>
                                                 </div> :
                                                 // Display book cover if not true
-                                                <div className="displayCard" key={i}>
-                                                    <div className="cardImage">
-                                                        <img
-                                                            src={book.volumeInfo.imageLinks.thumbnail}
-                                                            alt="Book cover"
-                                                        />
-                                                    </div>
+                                                <div className="coverContainer" key={i}>
+                                                    <img
+                                                        src={book.volumeInfo.imageLinks.thumbnail}
+                                                        alt="Book cover"
+                                                        className="image" style={{ width: "100%" }}
+                                                    />
                                                     <div className="middle">
                                                         <div className="text">View more info</div>
                                                     </div>
