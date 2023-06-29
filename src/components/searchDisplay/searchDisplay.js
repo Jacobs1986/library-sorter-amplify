@@ -46,27 +46,7 @@ export default function SearchDisplay() {
         <>
             {development ?
                 <div className="displayContainer">
-                    <div className="coverContainer">
-                        <img
-                            src="./Images/blank-cover.png"
-                            alt="Book cover"
-                            className="image" style={{ width: "100%" }}
-                        />
-                        <div className="middle">
-                            <div className="text">View more info</div>
-                        </div>
-                        <div>Book title</div>
-                    </div>
-                    <div className="coverContainer">
-                        <img
-                            src="http://books.google.com/books/content?id=wlvqDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-                            alt="Book cover"
-                            className="image" style={{ width: "100%" }}
-                        />
-                        <div className="middle">
-                            <div className="text">View more info</div>
-                        </div>
-                    </div>
+                    <div>Development goes here</div>
                 </div> :
                 <div className="displayContainer">
                     {/* First check to see if display is undefined */}
