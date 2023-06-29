@@ -20,7 +20,7 @@ export default function SearchDisplay() {
     // Creating a display hook 
     const [display, setDisplay] = useState();
     // Variable that allows for development
-    const development = false;
+    const development = !false;
 
     useEffect(() => {
         if (search) {
@@ -46,34 +46,7 @@ export default function SearchDisplay() {
         <>
             {development ?
                 <div className="displayContainer">
-                    <div className="displayCard">
-                        <div className="cardImage">
-                            <img
-                                src="./Images/blank-cover.png"
-                                alt="Book cover"
-                            />
-                        </div>
-                        <div className="bookTitle">
-                            <h4>Book Title</h4>
-                        </div>
-                        <div className="middle">
-                            <div className="text">View more info</div>
-                        </div>
-                    </div>
-                    <div className="displayCard">
-                        <div className="cardImage">
-                            <img
-                                src="./Images/blank-cover.png"
-                                alt="Book cover"
-                            />
-                        </div>
-                        <div className="bookTitle">
-                            <h4>Book Title</h4>
-                        </div>
-                        <div className="middle">
-                            <div className="text">View more info</div>
-                        </div>
-                    </div>
+                    
                 </div> :
                 <div className="displayContainer">
                     {/* First check to see if display is undefined */}
