@@ -70,12 +70,12 @@ export default function SearchDisplay() {
                                                     <img
                                                         src="./Images/blank-cover.png"
                                                         alt="Book cover"
-                                                        className="image" style={{ width: "100%" }}
+                                                        className="coverImage" style={{ width: "100%" }}
                                                     />
                                                     <div className="middle">
                                                         <div className="text">View more info</div>
                                                     </div>
-                                                    <div>
+                                                    <div className="bookTitle">
                                                         <h4>{book.volumeInfo.title}</h4>
                                                     </div>
                                                 </div> :
@@ -84,7 +84,7 @@ export default function SearchDisplay() {
                                                     <img
                                                         src={book.volumeInfo.imageLinks.thumbnail}
                                                         alt="Book cover"
-                                                        className="image" style={{ width: "100%" }}
+                                                        className="coverImage" style={{ width: "100%" }}
                                                     />
                                                     <div className="middle">
                                                         <div className="text">View more info</div>
