@@ -62,37 +62,24 @@ export default function SearchDisplay() {
                                 <>
                                     {/* Map the results */}
                                     {display.items.map((book, i) => (
-                                        <>
-                                            {/* Check to see if imageLinks is undefined */}
+                                        <div className="coverContainer" key={i}>
+                                            <img
+                                                // Check to see if the imagesLink is undefined
+                                                src={book.volumeInfo.imageLinks === undefined ? "./Images/blank-cover.png" : book.volumeInfo.imageLinks.thumbnail}
+                                                alt="Book cover"
+                                                className="coverImage" style={{ width: "100%" }}
+                                            />
+                                            <div className="middle">
+                                                <div className="coverButton">View More Info</div>
+                                            </div>
+                                            {/* Check to see if imagesLink is undefined, if it is show the book title */}
                                             {book.volumeInfo.imageLinks === undefined ?
-                                                // Display card with blank cover jpeg
-                                                <div className="coverContainer" key={i}>
-                                                    <img
-                                                        src="./Images/blank-cover.png"
-                                                        alt="Book cover"
-                                                        className="coverImage" style={{ width: "100%" }}
-                                                    />
-                                                    <div className="middle">
-                                                        <div className="coverButton">View More Info</div>
-                                                    </div>
-                                                    <div className="bookTitle">
-                                                        <h4>{book.volumeInfo.title}</h4>
-                                                    </div>
+                                                <div className="bookTitle">
+                                                    <h4>{book.volumeInfo.title}</h4>
                                                 </div> :
-                                                // Display book cover if not true
-                                                <div className="coverContainer" key={i}>
-                                                    <img
-                                                        src={book.volumeInfo.imageLinks.thumbnail}
-                                                        alt="Book cover"
-                                                        className="coverImage" style={{ width: "100%" }}
-                                                    />
-                                                    <div className="middle">
-                                                        <div className="coverButton">View More Info</div>
-                                                    </div>
-                                                </div>
-
+                                                <div></div>
                                             }
-                                        </>
+                                        </div>
                                     ))}
                                 </>
                             }
