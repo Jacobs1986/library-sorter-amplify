@@ -42,7 +42,7 @@
     opacity: 1;
 }
 
-.text {
+.coverButton {
     background-color: #04aa6d;
     color: white;
     font-size: 19px;
@@ -50,7 +50,7 @@
     text-align: center;
 }
 
-.text:hover {
+.coverButton:hover {
     cursor: pointer;
 }
 
