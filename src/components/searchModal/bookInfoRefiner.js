@@ -3,7 +3,7 @@ const bookInfoRefiner = (bookInfo) => {
     // Set the title
     const title = bookInfo.volumeInfo.title;
     // Set the author(s)
-    const author = bookInfo.volumeInfo.authors[0]
+    const author = bookInfo.volumeInfo.authors.join(", ")
     // Set the information to info
     const info = {title: title, author: author}
     return info
