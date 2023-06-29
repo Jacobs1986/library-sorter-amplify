@@ -21,8 +21,10 @@ export default function DisplayModal() {
     const { googleBookId } = useContext(GoogleBookId);
     // show modal hook
     const [showModal, setShowModal] = useState("none");
-    // hook for volumeInfo
+    // hook for bookInfo
     const [bookInfo, setBookInfo] = useState();
+    // Set the volumeInfo
+    const [volumeInfo, setVolumeInfo] = useState()
 
     useEffect(() => {
         if (googleBookId) {
@@ -37,23 +39,25 @@ export default function DisplayModal() {
     useEffect(() => {
         if (bookInfo) {
             console.log(bookInfoRefiner(bookInfo))
+            setVolumeInfo(bookInfoRefiner(bookInfo));
+            setShowModal("block");
         }
     }, [bookInfo])
 
     // Close the modal
     const handleCloseModal = () => {
         setShowModal("none");
-        setBookInfo('');
+        setVolumeInfo('');
     }
 
     return (
         <>
-            {!bookInfo ? <div></div> :
+            {!volumeInfo ? <div></div> :
                 <div className="modal" style={{ display: `${showModal}` }}>
                     <div className="modal-content">
                         <div className="modal-header">
                             <span className="close" onClick={handleCloseModal}>&times;</span>
-                            <h2>Title goes here</h2>
+                            <h2>{volumeInfo.title}</h2>
                         </div>
                         <div className="modal-body container">
                             <div className="row">
