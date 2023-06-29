@@ -56,6 +56,9 @@ export default function SearchDisplay() {
                         <div className="bookTitle">
                             <h4>Book Title</h4>
                         </div>
+                        <div className="middle">
+                            <div className="text">View more info</div>
+                        </div>
                     </div>
                 </div> :
                 <div className="displayContainer">
