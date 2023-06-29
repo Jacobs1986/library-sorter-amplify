@@ -20,7 +20,7 @@ export default function SearchDisplay() {
     // Creating a display hook 
     const [display, setDisplay] = useState();
     // Variable that allows for development
-    const development = !false;
+    const development = false;
 
     useEffect(() => {
         if (search) {
