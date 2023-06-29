@@ -13,6 +13,9 @@ import { GoogleBookId } from "../../pages/search-page";
 // Import axios
 import axios from "axios";
 
+// Import book refiner function
+import bookInfoRefiner from "./bookInfoRefiner";
+
 export default function DisplayModal() {
     // set googleBookId hook
     const { googleBookId } = useContext(GoogleBookId);
@@ -21,15 +24,10 @@ export default function DisplayModal() {
     // hook for volumeInfo
     const [bookInfo, setBookInfo] = useState();
 
-    // Create the function for opening the modal
-    // const handleOpenModal = () => {
-    //     setShowModal("block");
-    // }
-    // Run when googleBookId changes
     useEffect(() => {
         if (googleBookId) {
             axios.get(`https://www.googleapis.com/books/v1/volumes/${googleBookId}`).then((res) => {
-                console.log(googleBookId);
+                // console.log(googleBookId);
                 setBookInfo(res.data);
             })
         }
@@ -38,8 +36,7 @@ export default function DisplayModal() {
     // Display modal with all of the content
     useEffect(() => {
         if (bookInfo) {
-            setShowModal("block");
-            console.log(bookInfo.volumeInfo.imageLinks.large)
+            console.log(bookInfoRefiner(bookInfo))
         }
     }, [bookInfo])
 
@@ -56,7 +53,7 @@ export default function DisplayModal() {
                     <div className="modal-content">
                         <div className="modal-header">
                             <span className="close" onClick={handleCloseModal}>&times;</span>
-                            <h2>{bookInfo.volumeInfo.title}</h2>
+                            <h2>Title goes here</h2>
                         </div>
                         <div className="modal-body container">
                             <div className="row">
