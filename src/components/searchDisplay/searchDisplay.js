@@ -73,7 +73,7 @@ export default function SearchDisplay() {
                                                         className="coverImage" style={{ width: "100%" }}
                                                     />
                                                     <div className="middle">
-                                                        <div className="button">View more info</div>
+                                                        <div className="coverButton">View more info</div>
                                                     </div>
                                                     <div className="bookTitle">
                                                         <h4>{book.volumeInfo.title}</h4>
@@ -87,7 +87,7 @@ export default function SearchDisplay() {
                                                         className="coverImage" style={{ width: "100%" }}
                                                     />
                                                     <div className="middle">
-                                                        <div className="button">View more info</div>
+                                                        <div className="coverButton">View more info</div>
                                                     </div>
                                                 </div>
 
