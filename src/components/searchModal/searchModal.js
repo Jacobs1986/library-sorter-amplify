@@ -10,6 +10,9 @@ import "./searchModal.css";
 // Import GoogleBookId
 import { GoogleBookId } from "../../pages/search-page";
 
+// Import axios
+import axios from "axios";
+
 export default function DisplayModal() {
     // set googleBookId hook
     const { googleBookId } = useContext(GoogleBookId);
@@ -23,7 +26,9 @@ export default function DisplayModal() {
     // Run when googleBookId changes
     useEffect(() => {
         if (googleBookId) {
-            console.log(googleBookId)
+            axios.get(`https://www.googleapis.com/books/v1/volumes/${googleBookId}`).then((res) => {
+                console.log(res.data);
+            })
         }
     }, [googleBookId])
 
