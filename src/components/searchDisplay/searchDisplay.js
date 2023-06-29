@@ -7,14 +7,18 @@ import React, {
 // CSS File
 import "./searchDisplay.css";
 
-// Import ResultContext
+// Import Contexts
 import { SearchContext } from "../../pages/search-page";
+import { GoogleBookId } from "../../pages/search-page";
 
 // Import axios
 import axios from "axios";
 
 export default function SearchDisplay() {
+    // Import search hook
     const { search } = useContext(SearchContext);
+    // Import setGoogleBookId
+    const { setGoogleBookId } = useContext(GoogleBookId);
     // Make result hook for API
     const [result, setResult] = useState();
     // Creating a display hook 
@@ -44,7 +48,8 @@ export default function SearchDisplay() {
 
     // Function that will handle getting the book id
     const handleGetBookId = (e, book) => {
-        console.log(`The book id is: ${book}`);
+        // Set the googleBookId
+        setGoogleBookId(book);
     }
 
     return (
