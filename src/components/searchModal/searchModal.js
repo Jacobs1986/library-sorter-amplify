@@ -7,9 +7,9 @@ export default function DisplayModal() {
     const [showModal, setShowModal] = useState("none")
 
     // Create the function for opening the modal
-    const handleOpenModal = () => {
-        setShowModal("block");
-    }
+    // const handleOpenModal = () => {
+    //     setShowModal("block");
+    // }
 
     // Close the modal
     const handleCloseModal = () => {
@@ -18,7 +18,7 @@ export default function DisplayModal() {
 
     return (
         <>
-            <button onClick={handleOpenModal}>Open modal</button>
+            {/* <button onClick={handleOpenModal}>Open modal</button> */}
             <div className="modal" style={{ display: `${showModal}` }}>
                 <div className="modal-content">
                     <div className="modal-header">
