@@ -69,7 +69,7 @@ export default function DisplayModal() {
                                     />
                                 </div>
                                 <div className="col-6 bookInfo">
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Author</span>: {bookInfo.volumeInfo.authors[0]}</p>
+                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Author</span>: {volumeInfo.author}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publisher</span>: {bookInfo.volumeInfo.publisher}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span>: {bookInfo.volumeInfo.publishedDate}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {!bookInfo.volumeInfo.industryIdentifiers ? <span></span> : <span>ISBN goes here</span>}</p>
