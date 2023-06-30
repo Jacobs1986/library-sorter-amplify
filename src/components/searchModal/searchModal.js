@@ -18,7 +18,7 @@ import bookInfoRefiner from "./bookInfoRefiner";
 
 export default function DisplayModal() {
     // set googleBookId hook
-    const { googleBookId } = useContext(GoogleBookId);
+    const { googleBookId, setGoogleBookId } = useContext(GoogleBookId);
     // show modal hook
     const [showModal, setShowModal] = useState("none");
     // hook for bookInfo
@@ -47,7 +47,7 @@ export default function DisplayModal() {
     // Close the modal
     const handleCloseModal = () => {
         setShowModal("none");
-        setVolumeInfo('');
+        setGoogleBookId('');
     }
 
     return (
@@ -63,20 +63,20 @@ export default function DisplayModal() {
                             <div className="row">
                                 <div className="col-6">
                                     <img
-                                        src={volumeInfo.image}
+                                        src={volumeInfo.cover}
                                         alt="Book cover"
                                         style={{ width: "100%" }}
                                     />
                                 </div>
                                 <div className="col-6 bookInfo">
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Author</span>: {volumeInfo.author}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publisher</span>: {bookInfo.volumeInfo.publisher}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span>: {bookInfo.volumeInfo.publishedDate}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {!bookInfo.volumeInfo.industryIdentifiers ? <span></span> : <span>ISBN goes here</span>}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {bookInfo.volumeInfo.pageCount}</p>
+                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publisher</span>: {volumeInfo.publisher}</p>
+                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span>: {volumeInfo.publishDate}</p>
+                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {volumeInfo.isbn.identifier}</p>
+                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {volumeInfo.pageCount}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Description</span>:</p>
                                     <p id="descriptionParagraph">
-                                    {bookInfo.volumeInfo.description}
+                                    {volumeInfo.description}
                                     </p>
                                 </div>
                             </div>
