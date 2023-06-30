@@ -8,10 +8,10 @@ const bookInfoRefiner = (bookInfo) => {
     if (!bookInfo.volumeInfo.imageLinks) {
         // If imageLinks is undefined
         cover = "./Images/blank-cover.png"
-    } else if (!bookInfo.volumeInfo.imageLinks.large){
+    } else if (!bookInfo.volumeInfo.imageLinks.medium){
         cover = bookInfo.volumeInfo.imageLinks.thumbnail
     } else {
-        cover = bookInfo.volumeInfo.imageLinks.large
+        cover = bookInfo.volumeInfo.imageLinks.medium
     }
     // Set the author(s)
     const author = bookInfo.volumeInfo.authors.join(", ")
