@@ -63,7 +63,7 @@ export default function DisplayModal() {
                             <div className="row">
                                 <div className="col-6">
                                     <img
-                                        src={volumeInfo.image}
+                                        src={volumeInfo.cover}
                                         alt="Book cover"
                                         style={{ width: "100%" }}
                                     />
