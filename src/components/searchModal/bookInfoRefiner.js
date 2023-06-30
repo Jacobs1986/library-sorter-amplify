@@ -15,9 +15,28 @@ const bookInfoRefiner = (bookInfo) => {
     }
     // Set the author(s)
     const author = bookInfo.volumeInfo.authors.join(", ")
+    // Set the ISBN
+    const isbn = isbnSearch(bookInfo.volumeInfo)
     // Set the information to info
-    const info = {title: title, author: author, cover: cover}
+    const info = {title: title, author: author, cover: cover, isbn: isbn}
     return info
+}
+
+// fucntion for searching for a specific ISBN
+const isbnSearch = (input) => {
+    var result;
+    // First make sure that there is an industryIdentifiers
+    if (!input.industryIdentifiers) {
+        result = "There is no ISBN"
+    } else {
+        // Search for ISBN_13
+        result = input.industryIdentifiers.find(loc => loc.type === "ISBN_13");
+        // If the result comes back undefined
+        if (!result) {
+            result = input.industryIdentifiers.find(loc => loc.type === "ISBN_10")
+        }
+    }
+    return result
 }
 
 export default bookInfoRefiner;
