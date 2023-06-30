@@ -9,16 +9,24 @@ const bookInfoRefiner = (bookInfo) => {
         // If imageLinks is undefined
         cover = "./Images/blank-cover.png"
     } else if (!bookInfo.volumeInfo.imageLinks.medium){
-        cover = bookInfo.volumeInfo.imageLinks.thumbnail
+        cover = bookInfo.volumeInfo.imageLinks.thumbnail;
     } else {
-        cover = bookInfo.volumeInfo.imageLinks.medium
+        cover = bookInfo.volumeInfo.imageLinks.medium;
     }
     // Set the author(s)
-    const author = bookInfo.volumeInfo.authors.join(", ")
+    const author = bookInfo.volumeInfo.authors.join(", ");
     // Set the ISBN
-    const isbn = isbnSearch(bookInfo.volumeInfo)
+    const isbn = isbnSearch(bookInfo.volumeInfo);
+    // Set the publisher
+    const publisher = bookInfo.volumeInfo.publisher;
+    // Set the publishDate
+    const publishDate = bookInfo.volumeInfo.publishedDate;
+    // Set pageCount
+    const pageCount = bookInfo.volumeInfo.pageCount;
+    // Set description
+    const description = bookInfo.volumeInfo.description;
     // Set the information to info
-    const info = {title: title, author: author, cover: cover, isbn: isbn}
+    const info = {title, author, cover, isbn, publisher, publishDate, pageCount, description}
     return info
 }
 
