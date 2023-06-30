@@ -18,7 +18,7 @@ import bookInfoRefiner from "./bookInfoRefiner";
 
 export default function DisplayModal() {
     // set googleBookId hook
-    const { googleBookId } = useContext(GoogleBookId);
+    const { googleBookId, setGoogleBookId } = useContext(GoogleBookId);
     // show modal hook
     const [showModal, setShowModal] = useState("none");
     // hook for bookInfo
@@ -29,7 +29,7 @@ export default function DisplayModal() {
     useEffect(() => {
         if (googleBookId) {
             axios.get(`https://www.googleapis.com/books/v1/volumes/${googleBookId}`).then((res) => {
-                // console.log(googleBookId);
+                console.log(googleBookId);
                 setBookInfo(res.data);
             })
         }
@@ -47,7 +47,7 @@ export default function DisplayModal() {
     // Close the modal
     const handleCloseModal = () => {
         setShowModal("none");
-        setVolumeInfo('');
+        setGoogleBookId('');
     }
 
     return (
@@ -72,7 +72,7 @@ export default function DisplayModal() {
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Author</span>: {volumeInfo.author}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publisher</span>: {bookInfo.volumeInfo.publisher}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span>: {bookInfo.volumeInfo.publishedDate}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {!bookInfo.volumeInfo.industryIdentifiers ? <span></span> : <span>ISBN goes here</span>}</p>
+                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {volumeInfo.isbn.identifier}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {bookInfo.volumeInfo.pageCount}</p>
                                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Description</span>:</p>
                                     <p id="descriptionParagraph">
