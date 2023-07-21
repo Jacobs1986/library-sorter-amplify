@@ -29,7 +29,7 @@ export default function DisplayModal() {
     useEffect(() => {
         if (googleBookId) {
             axios.get(`https://www.googleapis.com/books/v1/volumes/${googleBookId}`).then((res) => {
-                console.log(googleBookId);
+                // console.log(googleBookId);
                 setBookInfo(res.data);
             })
         }
@@ -38,7 +38,7 @@ export default function DisplayModal() {
     // Display modal with all of the content
     useEffect(() => {
         if (bookInfo) {
-            console.log(bookInfoRefiner(bookInfo))
+            // console.log(bookInfoRefiner(bookInfo))
             setVolumeInfo(bookInfoRefiner(bookInfo));
             setShowModal("block");
         }
