@@ -5,11 +5,22 @@ import "./modalver2.css";
 
 export default function ModalVer2() {
     // toggle modal state
-    const [ showModal, setShowModal ] = useState("block")
+    const [showModal, setShowModal] = useState("block")
 
-     // Close the modal
-     const handleCloseModal = () => {
+    // Close the modal
+    const handleCloseModal = () => {
         setShowModal("none");
+    }
+
+    // Function for opening tabs
+    const openTab = (event) => {
+        const tabName = event.target.name;
+        var i;
+        var x = document.getElementsByClassName("tabContent");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
     }
 
     return (
@@ -21,10 +32,11 @@ export default function ModalVer2() {
                 </div>
                 <div className="modal-body">
                     <div className="modal-tabs">
-                        <button className="tab">Tab 1</button>
-                        <button className="tab">Tab 2</button>
+                        <button className="tab" name="Tab1" onClick={openTab}>Tab 1</button>
+                        <button className="tab" name="Tab2" onClick={openTab}>Tab 2</button>
                     </div>
-                    <p>This is the first tab</p>
+                    <div id="Tab1" className="tabContent">This is the first tab</div>
+                    <div id="Tab2" className="tabContent" style={{ display: "none" }}>This is the second tab</div>
                 </div>
             </div>
         </div>
