@@ -69,3 +69,12 @@
     float: left;
     padding: 15px;
 }
+
+/* CSS For display container */
+.displayContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
+    grid-auto-rows: auto;
+    gap: 1rem;
+    margin: 1em 10em 0 10em;
+}
