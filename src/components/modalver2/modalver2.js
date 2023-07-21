@@ -68,13 +68,13 @@ export default function ModalVer2() {
                         </div>
                         <div className="modal-body">
                             <div className="modal-tabs">
-                                <button className="tab" name="Tab1" onClick={openTab}>Book Info</button>
-                                <button className="tab" name="Tab2" onClick={openTab}>Input Data</button>
+                                <button className="tab" name="BookInfo" onClick={openTab}>Book Info</button>
+                                <button className="tab" name="InputData" onClick={openTab}>Input Data</button>
                             </div>
-                            <div id="Tab1" className="tabContent">
+                            <div id="BookInfo" className="tabContent">
                                 This is the book info tab
                             </div>
-                            <div id="Tab2" className="tabContent" style={{ display: "none" }}>
+                            <div id="InputData" className="tabContent" style={{ display: "none" }}>
                                 This is the tab for inputing data
                                 </div>
                         </div>
