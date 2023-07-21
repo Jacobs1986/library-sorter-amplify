@@ -1,11 +1,7 @@
-import React, {
-    useState,
-    useContext,
-    useEffect
-} from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 
 // CSS File
-import "./searchModal.css";
+import "./modalver2.css";
 
 // Import GoogleBookId
 import { GoogleBookId } from "../../pages/search-page";
@@ -16,7 +12,13 @@ import axios from "axios";
 // Import book refiner function
 import bookInfoRefiner from "./bookInfoRefiner";
 
-export default function DisplayModal() {
+// Components
+import BookInfo from "./bookInfoComp";
+
+// Context
+export const SearchModalContext = createContext();
+
+export default function ModalVer2() {
     // set googleBookId hook
     const { googleBookId, setGoogleBookId } = useContext(GoogleBookId);
     // show modal hook
@@ -50,6 +52,17 @@ export default function DisplayModal() {
         setGoogleBookId('');
     }
 
+    // Function for opening tabs
+    const openTab = (event) => {
+        const tabName = event.target.name;
+        var i;
+        var x = document.getElementsByClassName("tabContent");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+
     return (
         <>
             {!volumeInfo ? <div></div> :
@@ -59,32 +72,23 @@ export default function DisplayModal() {
                             <span className="close" onClick={handleCloseModal}>&times;</span>
                             <h2>{volumeInfo.title}</h2>
                         </div>
-                        <div className="modal-body container">
-                            <div className="row">
-                                <div className="col-6">
-                                    <img
-                                        src={volumeInfo.cover}
-                                        alt="Book cover"
-                                        style={{ width: "100%" }}
-                                    />
-                                </div>
-                                <div className="col-6 bookInfo">
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Author</span>: {volumeInfo.author}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publisher</span>: {volumeInfo.publisher}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span>: {volumeInfo.publishDate}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {volumeInfo.isbn.identifier}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {volumeInfo.pageCount}</p>
-                                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Description</span>:</p>
-                                    <p id="descriptionParagraph">
-                                    {volumeInfo.description}
-                                    </p>
-                                </div>
+                        <div className="modal-body">
+                            <div className="modal-tabs">
+                                <button className="tab" name="BookInfo" onClick={openTab}>Book Info</button>
+                                <button className="tab" name="InputData" onClick={openTab}>Input Data</button>
                             </div>
+                            <SearchModalContext.Provider value={{ volumeInfo }}>
+                                <div id="BookInfo" className="tabContent">
+                                    <BookInfo />
+                                </div>
+                                <div id="InputData" className="tabContent" style={{ display: "none" }}>
+                                    This is the tab for inputing data
+                                </div>
+                            </SearchModalContext.Provider>
                         </div>
                     </div>
                 </div>
             }
         </>
-
     );
 };

@@ -5,7 +5,8 @@ export const getBook = /* GraphQL */ `
   query GetBook($id: ID!) {
     getBook(id: $id) {
       id
-      cover
+      googleId
+      coverImage
       createdAt
       updatedAt
       __typename
@@ -21,7 +22,8 @@ export const listBooks = /* GraphQL */ `
     listBooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        cover
+        googleId
+        coverImage
         createdAt
         updatedAt
         __typename

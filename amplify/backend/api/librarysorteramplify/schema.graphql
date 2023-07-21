@@ -4,5 +4,6 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type Book @model {
   id: ID!
-  cover: String!
+  googleId: String
+  coverImage: String
 }

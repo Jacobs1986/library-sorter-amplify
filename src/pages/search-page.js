@@ -3,7 +3,8 @@ import React, { createContext, useState } from "react";
 // Components
 import SearchForm from "../components/searchForm/searchForm";
 import SearchDisplay from "../components/searchDisplay/searchDisplay";
-import DisplayModal from "../components/searchModal/searchModal";
+// import DisplayModal from "../components/searchModal/searchModal";
+import ModalVer2 from "../components/modalver2/modalver2";
 
 // Create a context
 export const SearchContext = createContext();
@@ -19,7 +20,8 @@ export default function Search() {
             <SearchForm />
             <GoogleBookId.Provider value={{ googleBookId, setGoogleBookId }}>
                 <SearchDisplay />
-                <DisplayModal />
+                {/* <DisplayModal /> */}
+                <ModalVer2 />
             </GoogleBookId.Provider>
         </SearchContext.Provider>
     );
