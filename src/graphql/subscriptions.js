@@ -5,7 +5,8 @@ export const onCreateBook = /* GraphQL */ `
   subscription OnCreateBook($filter: ModelSubscriptionBookFilterInput) {
     onCreateBook(filter: $filter) {
       id
-      cover
+      googleId
+      coverImage
       createdAt
       updatedAt
       __typename
@@ -16,7 +17,8 @@ export const onUpdateBook = /* GraphQL */ `
   subscription OnUpdateBook($filter: ModelSubscriptionBookFilterInput) {
     onUpdateBook(filter: $filter) {
       id
-      cover
+      googleId
+      coverImage
       createdAt
       updatedAt
       __typename
@@ -27,7 +29,8 @@ export const onDeleteBook = /* GraphQL */ `
   subscription OnDeleteBook($filter: ModelSubscriptionBookFilterInput) {
     onDeleteBook(filter: $filter) {
       id
-      cover
+      googleId
+      coverImage
       createdAt
       updatedAt
       __typename
