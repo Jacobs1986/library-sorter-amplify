@@ -1,6 +1,7 @@
 // Function for refining the book information
 const bookInfoRefiner = (bookInfo) => {
     let cover;
+    let author;
     // Set the title
     const title = bookInfo.volumeInfo.title;
     // Set the picture
@@ -14,7 +15,12 @@ const bookInfoRefiner = (bookInfo) => {
         cover = bookInfo.volumeInfo.imageLinks.medium;
     }
     // Set the author(s)
-    const author = bookInfo.volumeInfo.authors.join(", ");
+    // Check to see if there is an author array
+    if (Array.isArray(bookInfo.volumeInfo.authors)) {
+        author = bookInfo.volumeInfo.authors.join(", ");
+    } else {
+        author = "NA";
+    }
     // Set the ISBN
     const isbn = isbnSearch(bookInfo.volumeInfo);
     // Set the publisher
