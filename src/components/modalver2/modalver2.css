@@ -78,20 +78,6 @@
     text-align: center;
 }
 
-/* Modal Body */
-.modal-body {
-    padding: 2px 16px;
-}
-
-/* Modal Paragraphs */
-.bookInfo > p {
-    font-size: 1.5em;
-} 
-
-#descriptionParagraph {
-    font-size: 1em;
-}
-
 /* Tabs */
 .modal-tabs .tab {
     background-color: darkgrey;
@@ -105,4 +91,18 @@
 .modal-tabs .tab:hover {
     background-color: lightgray;
     color: black;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 2px 16px;
+}
+
+/* Modal Paragraphs */
+.bookInfo > p {
+    font-size: 1.5em;
+} 
+
+#descriptionParagraph {
+    font-size: 1em;
 }
