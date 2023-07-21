@@ -12,6 +12,9 @@ import axios from "axios";
 // Import book refiner function
 import bookInfoRefiner from "./bookInfoRefiner";
 
+// Components
+import BookInfo from "./bookInfoComp";
+
 export default function ModalVer2() {
     // set googleBookId hook
     const { googleBookId, setGoogleBookId } = useContext(GoogleBookId);
@@ -72,7 +75,7 @@ export default function ModalVer2() {
                                 <button className="tab" name="InputData" onClick={openTab}>Input Data</button>
                             </div>
                             <div id="BookInfo" className="tabContent">
-                                This is the book info tab
+                                <BookInfo />
                             </div>
                             <div id="InputData" className="tabContent" style={{ display: "none" }}>
                                 This is the tab for inputing data
