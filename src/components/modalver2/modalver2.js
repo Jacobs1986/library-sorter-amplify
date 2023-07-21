@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 
 // CSS File
 import "./modalver2.css";
@@ -14,6 +14,9 @@ import bookInfoRefiner from "./bookInfoRefiner";
 
 // Components
 import BookInfo from "./bookInfoComp";
+
+// Context
+export const SearchModalContext = createContext();
 
 export default function ModalVer2() {
     // set googleBookId hook
@@ -74,12 +77,14 @@ export default function ModalVer2() {
                                 <button className="tab" name="BookInfo" onClick={openTab}>Book Info</button>
                                 <button className="tab" name="InputData" onClick={openTab}>Input Data</button>
                             </div>
-                            <div id="BookInfo" className="tabContent">
-                                <BookInfo />
-                            </div>
-                            <div id="InputData" className="tabContent" style={{ display: "none" }}>
-                                This is the tab for inputing data
+                            <SearchModalContext.Provider value={{ volumeInfo }}>
+                                <div id="BookInfo" className="tabContent">
+                                    <BookInfo />
                                 </div>
+                                <div id="InputData" className="tabContent" style={{ display: "none" }}>
+                                    This is the tab for inputing data
+                                </div>
+                            </SearchModalContext.Provider>
                         </div>
                     </div>
                 </div>
