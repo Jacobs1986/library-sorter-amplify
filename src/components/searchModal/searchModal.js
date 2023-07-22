@@ -14,6 +14,7 @@ import bookInfoRefiner from "./bookInfoRefiner";
 
 // Components
 import BookInfo from "./bookInfoComp";
+import InputInfo from "./inputInfo";
 
 // Context
 export const SearchModalContext = createContext();
@@ -82,7 +83,7 @@ export default function DisplayModal() {
                                     <BookInfo />
                                 </div>
                                 <div id="InputData" className="tabContent" style={{ display: "none" }}>
-                                    This is the tab for inputing data
+                                    <InputInfo />
                                 </div>
                             </SearchModalContext.Provider>
                         </div>
