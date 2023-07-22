@@ -4,6 +4,7 @@ import React, { createContext, useState } from "react";
 import SearchForm from "../components/searchForm/searchForm";
 import SearchDisplay from "../components/searchDisplay/searchDisplay";
 import DisplayModal from "../components/searchModal/searchModal";
+import InputModal from "../components/inputModal/inputModal";
 
 // Create a context
 export const SearchContext = createContext();
@@ -21,6 +22,7 @@ export default function Search() {
                 <SearchDisplay />
                 <DisplayModal />
             </GoogleBookId.Provider>
+            <InputModal />
         </SearchContext.Provider>
     );
 };
