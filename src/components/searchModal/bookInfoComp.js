@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
+import parse from 'html-react-parser';
 
 // Import context
-import { SearchModalContext } from "./modalver2";
+import { SearchModalContext } from "./searchModal";
 
 export default function BookInfo() {
     // set volume info
@@ -26,7 +27,8 @@ export default function BookInfo() {
                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {volumeInfo.pageCount}</p>
                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Description</span>:</p>
                     <p id="descriptionParagraph">
-                        {volumeInfo.description}
+                        {/* {volumeInfo.description} */}
+                        {parse(volumeInfo.description)}
                     </p>
                 </div>
             </div>

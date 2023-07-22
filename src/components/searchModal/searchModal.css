@@ -78,9 +78,25 @@
     text-align: center;
 }
 
+/* Tabs */
+.modal-tabs .tab {
+    background-color: darkgrey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-tabs .tab:hover {
+    background-color: lightgray;
+    color: black;
+}
+
 /* Modal Body */
 .modal-body {
     padding: 2px 16px;
+    /* height: 59em; */
 }
 
 /* Modal Paragraphs */
@@ -89,5 +105,5 @@
 } 
 
 #descriptionParagraph {
-    font-size: 1em;
+    font-size: 20px;
 }
