@@ -3,6 +3,9 @@ import React, { useState, useEffect, useContext, createContext } from "react";
 // CSS File
 import "./searchModal.css";
 
+// Import Modal styling
+import "../../styling/modal.css";
+
 // Import GoogleBookId
 import { GoogleBookId } from "../../pages/search-page";
 
