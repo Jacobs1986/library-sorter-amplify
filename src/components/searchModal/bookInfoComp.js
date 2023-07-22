@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 // Import context
-import { SearchModalContext } from "./modalver2";
+import { SearchModalContext } from "./searchModal";
 
 export default function BookInfo() {
     // set volume info
