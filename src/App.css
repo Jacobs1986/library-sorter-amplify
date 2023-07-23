@@ -78,3 +78,9 @@
     gap: 1rem;
     margin: 1em 10em 0 10em;
 }
+
+/* Warnings */
+/* Input Text warning */
+.warningInputText {
+    border: 2px solid red;
+}

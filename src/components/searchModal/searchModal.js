@@ -13,7 +13,7 @@ import { GoogleBookId } from "../../pages/search-page";
 import axios from "axios";
 
 // Import book refiner function
-import bookInfoRefiner from "./bookInfoRefiner";
+import bookInfoRefiner from "../../functions/bookInfoRefiner";
 
 // Components
 import BookInfo from "./bookInfoComp";
