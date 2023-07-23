@@ -20,6 +20,10 @@ export default function InputModal() {
                 <div className="modal-body">
                     <h3>Use the fields below to enter book information</h3>
                     <InputForm />
+                    <h3>Advanced</h3>
+                    <form>
+                        
+                    </form>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@ import "./inputModal.css";
 export default function InputForm() {
     return (
         <form>
-            <div className="container inputNewBookModal">
+            <div className="container inputBasicForm">
                 {/* Input for Title */}
                 <div className="row">
                     <div className="col-12">

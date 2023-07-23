@@ -1,23 +1,24 @@
+/* Basic form styling */
 /* Labels style */
-.inputNewBookModal label {
+.inputBasicForm label {
     font-weight: bold;
 }
 
 /* Number of pages input */
-.inputNewBookModal input[type=number] {
+.inputBasicForm input[type=number] {
     margin: 8px 0;
     padding: 12px 20px;
     width: 8em;
 }
 
 /* Book description */
-.inputNewBookModal textarea {
+.inputBasicForm textarea {
     width: 100%;
     margin: 8px 0;
 }
 
 /* Book Cover */
-.inputNewBookModal img {
+.inputBasicForm img {
     width: 28%;
 }
 
