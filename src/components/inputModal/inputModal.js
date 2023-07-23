@@ -60,14 +60,15 @@ export default function InputModal() {
                                 {/* Book description */}
                                 <div class="col-6">
                                     <label htmlFor="newDescription">Book Description</label>
-                                    <textarea id="newDescription" name="newDescription" />
+                                    <textarea id="newDescription" name="newDescription" rows="18" />
                                 </div>
                                 {/* Book Cover */}
                                 <div class="col-6">
                                     <label htmlFor="newCover">Book Cover</label>
+                                    <p style={{ margin: "5px 0px "}}>Place link to an image here:</p>
                                     <input id="newCover" type="text" name="newCover" />
                                     <img 
-                                        src="http://books.google.com/books/content?id=ron8mWul2EcC&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE72PU-Z4p6_ufnN3fdJFcMYlow3Z5pT6lY-Lg3F8gVCZ8sFHrQDk453-5qRhLj3jC_gcr1ATEqdoxHXYj0eFyxrdaXzmnKgc4Lfd7mAMAUwHMXZv0aWsm8txmlFRrlehy1W0UudU&source=gbs_api"
+                                        src="https://npr.brightspotcdn.com/legacy/sites/wyso/files/201804/00162120-a0cb-0132-a2d3-0e6808eb79bf.jpg"
                                         alt="Book Cover"
                                     />
                                 </div>
