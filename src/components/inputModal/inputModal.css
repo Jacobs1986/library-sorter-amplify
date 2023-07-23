@@ -1,13 +1,18 @@
-/* Basic form styling */
 /* Labels style */
-.inputBasicForm label {
+.inputNewBookModal label {
     font-weight: bold;
 }
 
+/* Input type number */
+.inputBasicForm input[type=number],
+.inputAdvancedForm input[type=number] {
+    padding: 12px 20px;
+}
+
+/* Basic form styling */
 /* Number of pages input */
 .inputBasicForm input[type=number] {
     margin: 8px 0;
-    padding: 12px 20px;
     width: 8em;
 }
 
@@ -24,4 +29,40 @@
 
 #newCover {
     margin: 0px 0px 5px 0px;
+}
+
+/* Advanced form styling */
+/* h3 */
+.inputAdvancedForm h3 {
+   margin: 0px 0px 8px 0px;
+}
+
+/* input[type=number] */
+.inputAdvancedForm input[type=number] {
+    width: 8em;
+}
+
+#newEdition {
+    margin: 0px 0px 8px 13px;
+}
+
+#newPrinting {
+    margin: 0px 0px 0px 7px;
+}
+
+/* Radio styling */
+#newBookCoverNo {
+    margin-left: 10px;
+}
+
+/* Book cover condition select */
+#bookCoverCondition {
+    width: 50%;
+    margin-left: 8px;
+}
+
+/* Book Cover damage description */
+#newCoverDamage {
+    width: 100%;
+    margin: 8px 0;
 }
