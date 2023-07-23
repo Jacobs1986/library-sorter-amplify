@@ -48,8 +48,8 @@ export default function InputForm() {
                 <div className="row">
                     {/* Book description */}
                     <div class="col-6">
-                        <label htmlFor="newDescription">Book Description</label>
-                        <textarea id="newDescription" name="newDescription" rows="18" />
+                        <label htmlFor="newSynopsis">Synopsis</label>
+                        <textarea id="newSynopsis" name="newSynopsis" rows="18" />
                     </div>
                     {/* Book Cover */}
                     <div class="col-6">

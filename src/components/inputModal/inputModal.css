@@ -51,18 +51,18 @@
 }
 
 /* Radio styling */
-#newBookCoverNo {
+#newDustJacketNo {
     margin-left: 10px;
 }
 
 /* Book cover condition select */
-#bookCoverCondition {
+#newBookCondition {
     width: 50%;
     margin-left: 8px;
 }
 
 /* Book Cover damage description */
-#newCoverDamage {
+#newBookDamage {
     width: 100%;
     margin: 8px 0;
 }

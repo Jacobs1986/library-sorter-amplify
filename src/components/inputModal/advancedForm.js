@@ -26,17 +26,17 @@ export default function AdvancedForm() {
                         </div>
                         <div className="col-4">
                             {/* Book Cover */}
-                            <h3>Does the book have a cover?</h3>
+                            <h3>Does the book have a dust jacket?</h3>
                             <div className="row radioRow">
-                                <input type="radio" id="newBookCoverYes" name="bookCoverQuestion" value="Yes" />
-                                <label htmlFor="newBookCoverYes">Yes</label>
-                                <input type="radio" id="newBookCoverNo" name="bookCoverQuestion" value="No" />
-                                <label htmlFor="newBookCoverNo">No</label>
+                                <input type="radio" id="newDustJacketYes" name="bookCoverQuestion" value="Yes" />
+                                <label htmlFor="newDustJacketYes">Yes</label>
+                                <input type="radio" id="newDustJacketNo" name="bookCoverQuestion" value="No" />
+                                <label htmlFor="newDustJacketNo">No</label>
                             </div>
                             {/* Book Cover condition */}
                             <div className="row">
-                                <label htmlFor="bookCoverCondition">Cover Condition:</label>
-                                <select id="bookCoverCondition" name="bookCoverCondition">
+                                <label htmlFor="newBookCondition">Book Condition:</label>
+                                <select id="newBookCondition" name="newBookCondition">
                                     <option value="excellent">Excellent</option>
                                     <option value="veryGood">Very Good</option>
                                     <option value="good">Good</option>
@@ -46,8 +46,8 @@ export default function AdvancedForm() {
                             </div>
                             {/* Description of cover damage */}
                             <div className="row">
-                                <label htmlFor="newCoverDamage">Description of damage:</label>
-                                <textarea id="newCoverDamage" name="newCoverDamage" rows="3" />
+                                <label htmlFor="newBookDamage">Description of damage:</label>
+                                <textarea id="newBookDamage" name="newBookDamage" rows="3" />
                             </div>
                         </div>
                         <div className="col-4">
