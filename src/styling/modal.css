@@ -98,3 +98,46 @@
     padding: 2px 16px;
     /* height: 59em; */
 }
+
+/* Modal Footer */
+.modal-footer {
+    padding: 10px 16px;
+    background-color: lightgrey;
+}
+
+/* Modal Footer button styling */
+.modal-footer button {
+    border: none;
+    font-size: 16px;
+    padding: 15px 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+.modal-footer button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Save button */
+.modal-footer .modal-saveButton {
+    background-color: green;
+    color: white;
+    margin-right: 8px; 
+}
+
+.modal-footer .modal-saveButton:hover {
+    background-color: darkgreen;
+}
+
+/* Close Button */
+.modal-footer .modal-closeButton {
+    background-color: red;
+}
+
+.modal-footer .modal-closeButton:hover {
+    background-color: darkred;
+    color: white;
+}
