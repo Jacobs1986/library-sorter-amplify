@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // CSS File
 import "./inputModal.css";
@@ -7,7 +7,17 @@ import "./inputModal.css";
 import { NewBookInput } from "./inputModal";
 
 export default function InputForm() {
-    const { newBookInfo, setNewBookInfo } = useContext(NewBookInput);
+    const { newBookInfo, setNewBookInfo, missingInfoAlert } = useContext(NewBookInput);
+    // Title class toggle
+    const [missingTitle, setMissingTitle] = useState(false)
+
+    useEffect(() => {
+        if (missingInfoAlert) {
+            setMissingTitle(true)
+        } else {
+            setMissingTitle(false);
+        }
+    }, [missingInfoAlert])
 
     // Function for handling change in the form inputs
     const handleInputChange = event => {
@@ -24,7 +34,7 @@ export default function InputForm() {
                 <div className="row">
                     <div className="col-12">
                         <label htmlFor="newTitle">Title</label>
-                        <input id="newTitle" type="text" name="title" value={newBookInfo.title || ''} onChange={handleInputChange} />
+                        <input id="newTitle" type="text" name="title" value={newBookInfo.title || ''} onChange={handleInputChange} className={missingTitle ? "warningInputText" : null} />
                     </div>
                 </div>
                 <div className="row">
