@@ -24,7 +24,8 @@ export default function InputModal() {
                     <AdvancedForm />
                 </div>
                 <div className="modal-footer">
-                    This is the modal's footer where the save and close buttons go
+                    <button className="modal-saveButton">Save Info</button>
+                    <button className="modal-closeButton">Close</button>
                 </div>
             </div>
         </div>
