@@ -47,12 +47,12 @@ export default function InputForm() {
                 </div>
                 <div className="row">
                     {/* Book description */}
-                    <div class="col-6">
+                    <div className="col-6">
                         <label htmlFor="newSynopsis">Synopsis</label>
                         <textarea id="newSynopsis" name="newSynopsis" rows="18" />
                     </div>
                     {/* Book Cover */}
-                    <div class="col-6">
+                    <div className="col-6">
                         <label htmlFor="newCover">Book Cover</label>
                         <p style={{ margin: "5px 0px " }}>Place link to an image here:</p>
                         <input id="newCover" type="text" name="newCover" />
