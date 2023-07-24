@@ -32,9 +32,22 @@
 }
 
 /* Advanced form styling */
-/* h3 */
-.inputAdvancedForm h3 {
-   margin: 0px 0px 8px 0px;
+/* Advance Button */
+#advancedButton {
+    border: none;
+    font-size: 1.17em;
+    padding: 8px 12px;
+    background-color: white;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+}
+
+#advancedButton:hover {
+    border-bottom: 2px solid black;
 }
 
 /* input[type=number] */
