@@ -54,7 +54,7 @@ export default function InputForm() {
                     {/* ISBN */}
                     <div className="col-4">
                         <label htmlFor="newISBN">ISBN</label>
-                        <input id="newISBN" type="text" name="isbn" value={newBookInfo.isbn || ''} onChange={handleInputChange}/>
+                        <input id="newISBN" type="text" name="isbn" maxLength="13" value={newBookInfo.isbn || ''} onChange={handleInputChange}/>
                     </div>
                     {/* Publication Date */}
                     <div className="col-4">
@@ -72,15 +72,16 @@ export default function InputForm() {
                     {/* Book description */}
                     <div className="col-6">
                         <label htmlFor="newSynopsis">Synopsis</label>
-                        <textarea id="newSynopsis" name="newSynopsis" rows="18" />
+                        <textarea id="newSynopsis" name="synopsis" rows="18" />
                     </div>
                     {/* Book Cover */}
                     <div className="col-6">
                         <label htmlFor="newCover">Book Cover</label>
                         <p style={{ margin: "5px 0px " }}>Place link to an image here:</p>
-                        <input id="newCover" type="text" name="newCover" />
+                        <input id="newCover" type="text" name="cover" value={newBookInfo.cover || ''} onChange={handleInputChange} />
                         <img
-                            src="https://npr.brightspotcdn.com/legacy/sites/wyso/files/201804/00162120-a0cb-0132-a2d3-0e6808eb79bf.jpg"
+                            style={!newBookInfo.cover ? {display: "none"} : {display: "block"}}
+                            src={newBookInfo.cover}
                             alt="Book Cover"
                         />
                     </div>
