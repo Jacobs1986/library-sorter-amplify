@@ -72,7 +72,7 @@ export default function InputForm() {
                     {/* Book description */}
                     <div className="col-6">
                         <label htmlFor="newSynopsis">Synopsis</label>
-                        <textarea id="newSynopsis" name="synopsis" rows="18" />
+                        <textarea id="newSynopsis" name="synopsis" rows="18" value={newBookInfo.synopsis || ''} onChange={handleInputChange} />
                     </div>
                     {/* Book Cover */}
                     <div className="col-6">
