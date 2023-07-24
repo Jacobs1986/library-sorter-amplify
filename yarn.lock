@@ -3109,9 +3109,9 @@
     eslint-visitor-keys "^3.3.0"
 
 "@eslint-community/regexpp@^4.4.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.6.0.tgz#5b63f0df5528a44e28aa8578d393de908cc3d4d0"
-  integrity sha512-uiPeRISaglZnaZk8vwrjQZ1CxogZeY/4IYft6gBOTqu1WhVXWmCmZMWxUv2Q/pxSvPdp1JPaO62kLOcOkMqWrw==
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.6.1.tgz#0b371c118b8e4ebf9dbddb56120ab4befd791211"
+  integrity sha512-O7x6dMstWLn2ktjcoiNLDkAGG2EjveHL+Vvc+n0fXumkJYAcSqcVYKtwDU+hDZ0uDUsnUagSYaZrOLAYE8un1A==
 
 "@eslint/eslintrc@^2.1.0":
   version "2.1.0"
@@ -5485,9 +5485,9 @@ css.escape@^1.5.1:
   integrity sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==
 
 cssdb@^7.1.0:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/cssdb/-/cssdb-7.6.0.tgz#beac8f7a5f676db62d3c33da517ef4c9eb008f8b"
-  integrity sha512-Nna7rph8V0jC6+JBY4Vk4ndErUmfJfV6NJCaZdurL0omggabiy+QB2HCQtu5c/ACLZ0I7REv7A4QyPIoYzZx0w==
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/cssdb/-/cssdb-7.7.0.tgz#8a62f1c825c019134e7830729f050c29e3eca95e"
+  integrity sha512-1hN+I3r4VqSNQ+OmMXxYexnumbOONkSil0TWMebVXHtzYW4tRRPovUNHPHj2d4nrgOuYJ8Vs3XwvywsuwwXNNA==
 
 cssesc@^3.0.0:
   version "3.0.0"
