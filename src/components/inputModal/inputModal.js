@@ -13,6 +13,9 @@ import AdvancedForm from "./advancedForm";
 // Import reducer
 import { reducer as inputNewBookReduc } from "../../functions/reducer";
 
+// Import check list function
+import  inputChecklist from "../../functions/inputChecklist";
+
 // Create and export context
 export const NewBookInput = createContext();
 
@@ -22,11 +25,16 @@ export default function InputModal() {
 
     // Function to save the input nodal inforation
     const handleSubmitInfo = () => {
-        if (!newBookInfo.title) {
-            setMissingInfoAlert(!missingInfoAlert);
-        } else {
-            console.log(newBookInfo);
+        // First run the inputs through inputCheckList
+        const inputCheck = inputChecklist(newBookInfo);
+        // If inputCheck is true set missingInfoAlert to true
+        if (inputCheck === true) {
+            setMissingInfoAlert(true);
+            return
         }
+        // set missingInfoAlert to false
+        setMissingInfoAlert(false);
+        console.log(inputCheck);
     }
 
     return (
