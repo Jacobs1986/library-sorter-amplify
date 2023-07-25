@@ -17,7 +17,7 @@ export const createBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
-      advancedInfo
+      collectorInfo
       edition
       printing
       dustJacket
@@ -48,7 +48,7 @@ export const updateBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
-      advancedInfo
+      collectorInfo
       edition
       printing
       dustJacket
@@ -79,7 +79,7 @@ export const deleteBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
-      advancedInfo
+      collectorInfo
       edition
       printing
       dustJacket

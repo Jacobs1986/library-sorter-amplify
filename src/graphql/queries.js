@@ -14,7 +14,7 @@ export const getBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
-      advancedInfo
+      collectorInfo
       edition
       printing
       dustJacket
@@ -47,7 +47,7 @@ export const listBooks = /* GraphQL */ `
         numOfPages
         synopsis
         cover
-        advancedInfo
+        collectorInfo
         edition
         printing
         dustJacket
