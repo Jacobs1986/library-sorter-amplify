@@ -1,4 +1,4 @@
-import React, { useReducer, createContext, useState } from "react";
+import React, { useReducer, createContext, useState, useContext } from "react";
 
 // CSS File
 import "./inputModal.css";
@@ -22,14 +22,17 @@ import { createBook } from "../../graphql/mutations";
 // Import check list function
 import  inputChecklist from "../../functions/inputChecklist";
 
+// Import context
+import { InputModalState } from "../../pages/search-page";
+
 // Create and export context
 export const NewBookInput = createContext();
 
 export default function InputModal() {
-    const [showInputModal, setShowInputModal] = useState("block");
     const [newBookInfo, setNewBookInfo] = useReducer(inputNewBookReduc, {});
     const [collectorInfo, setCollectorInfo] = useState(false);
     const [missingInfoAlert, setMissingInfoAlert] = useState(false);
+    const { showInputModal, setShowInputModal } = useContext(InputModalState)
 
     // Function to save the input nodal inforation
     const handleSubmitInfo = () => {

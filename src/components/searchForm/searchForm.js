@@ -5,6 +5,7 @@ import "./searchForm.css";
 
 // Import context
 import { SearchContext } from "../../pages/search-page";
+import { InputModalState } from "../../pages/search-page";
 
 // Import search function
 import googleSearch from "./searchRefiner";
@@ -16,6 +17,7 @@ export default function SearchForm() {
     const [searchInput, setSearchInput] = useState('');
     // Import context
     const { setSearch } = useContext(SearchContext);
+    const { setShowInputModal } = useContext(InputModalState)
 
     // Search function
     const handleSubmit = (event) => {
@@ -26,6 +28,11 @@ export default function SearchForm() {
         // Pass info to function and set variable
         setSearch(googleSearch(searchInfo));
         setSearchInput('');
+    }
+
+    // Show the modal
+    const handleShowInputModal = () => {
+        setShowInputModal("block");
     }
 
     return (
@@ -58,8 +65,13 @@ export default function SearchForm() {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-12">
-                        <input type="submit" value="Search" id="searchFormSubmit"/>
+                    <div className="col-1">
+                        <input type="submit" value="Search" id="searchFormSubmit" />
+                    </div>
+                    <div className="col-9">
+                        Can't find the book you're looking for? Input your book manually here <span>
+                            <button onClick={handleShowInputModal}>Input Book</button>
+                        </span>
                     </div>
                 </div>
             </form>
