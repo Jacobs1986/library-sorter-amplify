@@ -26,6 +26,7 @@ import  inputChecklist from "../../functions/inputChecklist";
 export const NewBookInput = createContext();
 
 export default function InputModal() {
+    const [showInputModal, setShowInputModal] = useState("block");
     const [newBookInfo, setNewBookInfo] = useReducer(inputNewBookReduc, {});
     const [missingInfoAlert, setMissingInfoAlert] = useState(false);
 
@@ -49,11 +50,18 @@ export default function InputModal() {
         })
     }
 
+    // Close the input modal
+    const handleCloseModal = () => {
+        setMissingInfoAlert(false);
+        setNewBookInfo({ reset: true });
+        setShowInputModal("none");
+    }
+
     return (
-        <div className="modal inputNewBookModal">
+        <div className="modal inputNewBookModal" style={{ display: `${showInputModal}`}}>
             <div className="modal-content">
                 <div className="modal-header">
-                    <span className="close">&times;</span>
+                    <span className="close" onClick={handleCloseModal}>&times;</span>
                     <h2>Input Book Information</h2>
                 </div>
                 <div className="modal-body">
@@ -65,7 +73,7 @@ export default function InputModal() {
                 </div>
                 <div className="modal-footer">
                     <button className="modal-saveButton" onClick={handleSubmitInfo}>Save Info</button>
-                    <button className="modal-closeButton">Close</button>
+                    <button className="modal-closeButton" onClick={handleCloseModal}>Close</button>
                     <p className={missingInfoAlert ? "moreInfoWarningActive" : "moreInfoWarningNull"}>Information needed</p>
                 </div>
             </div>
