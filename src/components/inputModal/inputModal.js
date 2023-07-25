@@ -13,6 +13,12 @@ import AdvancedForm from "./advancedForm";
 // Import reducer
 import { reducer as inputNewBookReduc } from "../../functions/reducer";
 
+// Import API
+import { API } from "aws-amplify";
+
+// Import mutations
+import { createBook } from "../../graphql/mutations";
+
 // Import check list function
 import  inputChecklist from "../../functions/inputChecklist";
 
@@ -34,7 +40,13 @@ export default function InputModal() {
         }
         // set missingInfoAlert to false
         setMissingInfoAlert(false);
-        console.log(inputCheck);
+        // Send informtion through API
+        API.graphql({
+            query: createBook,
+            variables: { input: inputCheck}
+        }).then(res => {
+            console.log(res.data);
+        })
     }
 
     return (
