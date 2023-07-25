@@ -7,7 +7,7 @@ import "./inputModal.css";
 import { NewBookInput } from "./inputModal";
 
 export default function CollectorInfo() {
-    const { newBookInfo, setNewBookInfo } = useContext(NewBookInput);
+    const { newBookInfo, setNewBookInfo, collectorInfo, setCollectorInfo } = useContext(NewBookInput);
     const [show, setShow] = useState(0)
 
     // Function for handling change in the form inputs
@@ -32,8 +32,10 @@ export default function CollectorInfo() {
         var currentStyle = styles.collectorContent.maxHeight;
         if (currentStyle === 0) {
             setShow("100%")
+            setCollectorInfo(!collectorInfo);
         } else {
-            setShow(0)
+            setShow(0);
+            setCollectorInfo(!collectorInfo);
         }
     }
 
