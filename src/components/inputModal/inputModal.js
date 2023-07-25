@@ -54,6 +54,8 @@ export default function InputModal() {
         }).then(res => {
             console.log(res.data);
             setNewBookInfo({ reset: true });
+            setMissingInfoAlert(false);
+            setShowInputModal("none");
         })
     }
 
