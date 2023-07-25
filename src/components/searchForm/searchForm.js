@@ -31,7 +31,8 @@ export default function SearchForm() {
     }
 
     // Show the modal
-    const handleShowInputModal = () => {
+    const handleShowInputModal = (event) => {
+        event.preventDefault();
         setShowInputModal("block");
     }
 

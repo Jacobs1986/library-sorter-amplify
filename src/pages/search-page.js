@@ -17,16 +17,18 @@ export default function Search() {
     const [showInputModal, setShowInputModal] = useState("none");
 
     return (
-        <SearchContext.Provider value={{ search, setSearch }}>
+        <div>
             <h1>Search for a book</h1>
             <InputModalState.Provider value={{ showInputModal, setShowInputModal }}>
-                <SearchForm />
-                <GoogleBookId.Provider value={{ googleBookId, setGoogleBookId }}>
-                    <SearchDisplay />
-                    <DisplayModal />
-                </GoogleBookId.Provider>
                 <InputModal />
+                <SearchContext.Provider value={{ search, setSearch }}>
+                    <SearchForm />
+                    <GoogleBookId.Provider value={{ googleBookId, setGoogleBookId }}>
+                        <SearchDisplay />
+                        <DisplayModal />
+                    </GoogleBookId.Provider>
+                </SearchContext.Provider>
             </InputModalState.Provider>
-        </SearchContext.Provider>
+        </div>
     );
 };
