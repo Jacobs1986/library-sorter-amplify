@@ -38,7 +38,7 @@ export const searchModalInfo = (volumeInfo) => {
         author: volumeInfo.author,
         publisher: volumeInfo.publisher,
         pubDate: volumeInfo.publishDate,
-        isbn: volumeInfo.isbn,
+        isbn: volumeInfo.isbn.identifier,
         numOfPages: volumeInfo.pageCount,
         synopsis: volumeInfo.description,
         cover: volumeInfo.cover,
