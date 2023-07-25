@@ -8,7 +8,7 @@ import "../../styling/modal.css"
 
 // Components
 import InputForm from "./inputForm";
-import AdvancedForm from "./advancedForm";
+import CollectorInfo from "./collectorInfo";
 
 // Import reducer
 import { reducer as inputNewBookReduc } from "../../functions/reducer";
@@ -28,12 +28,13 @@ export const NewBookInput = createContext();
 export default function InputModal() {
     const [showInputModal, setShowInputModal] = useState("block");
     const [newBookInfo, setNewBookInfo] = useReducer(inputNewBookReduc, {});
+    const [collectorInfo, setCollectorInfo] = useState(false);
     const [missingInfoAlert, setMissingInfoAlert] = useState(false);
 
     // Function to save the input nodal inforation
     const handleSubmitInfo = () => {
         // First run the inputs through inputCheckList
-        const inputCheck = inputChecklist(newBookInfo);
+        const inputCheck = inputChecklist(newBookInfo, collectorInfo);
         // If inputCheck is true set missingInfoAlert to true
         if (inputCheck === true) {
             setMissingInfoAlert(true);
@@ -41,13 +42,14 @@ export default function InputModal() {
         }
         // set missingInfoAlert to false
         setMissingInfoAlert(false);
+        console.log(inputCheck);
         // Send informtion through API
-        API.graphql({
-            query: createBook,
-            variables: { input: inputCheck}
-        }).then(res => {
-            console.log(res.data);
-        })
+        // API.graphql({
+        //     query: createBook,
+        //     variables: { input: inputCheck}
+        // }).then(res => {
+        //     console.log(res.data);
+        // })
     }
 
     // Close the input modal
@@ -66,9 +68,9 @@ export default function InputModal() {
                 </div>
                 <div className="modal-body">
                     <h3>Use the fields below to enter book information</h3>
-                    <NewBookInput.Provider value={{ newBookInfo, setNewBookInfo, missingInfoAlert }}>
+                    <NewBookInput.Provider value={{ newBookInfo, setNewBookInfo, missingInfoAlert, collectorInfo, setCollectorInfo }}>
                         <InputForm />
-                        <AdvancedForm />
+                        <CollectorInfo />
                     </NewBookInput.Provider>
                 </div>
                 <div className="modal-footer">

@@ -17,6 +17,15 @@ export const createBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
+      advancedInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename
@@ -39,6 +48,15 @@ export const updateBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
+      advancedInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename
@@ -61,6 +79,15 @@ export const deleteBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
+      advancedInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename

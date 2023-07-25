@@ -14,6 +14,15 @@ export const getBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
+      advancedInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename
@@ -38,6 +47,15 @@ export const listBooks = /* GraphQL */ `
         numOfPages
         synopsis
         cover
+        advancedInfo
+        edition
+        printing
+        dustJacket
+        bookCondition
+        bookDamage
+        acquisitionDate
+        acquiredFrom
+        aquiredCost
         createdAt
         updatedAt
         __typename
