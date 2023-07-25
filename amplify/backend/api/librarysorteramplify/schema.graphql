@@ -1,6 +1,5 @@
 type Book @model @auth(rules: [{allow: public}]) {
   id: ID!
-  googleId: String
   title: String
   author: String
   publisher: String
@@ -18,4 +17,5 @@ type Book @model @auth(rules: [{allow: public}]) {
   acquisitionDate: AWSDate
   acquiredFrom: String
   aquiredCost: String
-} 
+}
+ 

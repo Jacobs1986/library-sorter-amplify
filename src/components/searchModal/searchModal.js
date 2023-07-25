@@ -68,6 +68,11 @@ export default function DisplayModal() {
         document.getElementById(tabName).style.display = "block";
     }
 
+    // Save the information of the modal
+    const handleSaveGoogleInfo = (event) => {
+        event.preventDefault();
+    }
+
     return (
         <>
             {!volumeInfo ? <div></div> :
@@ -90,6 +95,10 @@ export default function DisplayModal() {
                                     <InputInfo />
                                 </div>
                             </SearchModalContext.Provider>
+                        </div>
+                        <div className="modal-footer">
+                            <button className="modal-saveButton" onClick={handleSaveGoogleInfo}>Save Book</button>
+                            <button className="modal-closeButton" onClick={handleCloseModal}>Close</button>
                         </div>
                     </div>
                 </div>

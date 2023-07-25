@@ -5,7 +5,6 @@ export const getBook = /* GraphQL */ `
   query GetBook($id: ID!) {
     getBook(id: $id) {
       id
-      googleId
       title
       author
       publisher
@@ -38,7 +37,6 @@ export const listBooks = /* GraphQL */ `
     listBooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        googleId
         title
         author
         publisher

@@ -8,7 +8,6 @@ export const createBook = /* GraphQL */ `
   ) {
     createBook(input: $input, condition: $condition) {
       id
-      googleId
       title
       author
       publisher
@@ -39,7 +38,6 @@ export const updateBook = /* GraphQL */ `
   ) {
     updateBook(input: $input, condition: $condition) {
       id
-      googleId
       title
       author
       publisher
@@ -70,7 +68,6 @@ export const deleteBook = /* GraphQL */ `
   ) {
     deleteBook(input: $input, condition: $condition) {
       id
-      googleId
       title
       author
       publisher
