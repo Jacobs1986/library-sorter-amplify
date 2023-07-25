@@ -6,7 +6,14 @@ export const getBook = /* GraphQL */ `
     getBook(id: $id) {
       id
       googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
       createdAt
       updatedAt
       __typename
@@ -23,7 +30,14 @@ export const listBooks = /* GraphQL */ `
       items {
         id
         googleId
-        coverImage
+        title
+        author
+        publisher
+        isbn
+        pubDate
+        numOfPages
+        synopsis
+        cover
         createdAt
         updatedAt
         __typename

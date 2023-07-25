@@ -1,6 +1,13 @@
 type Book @model @auth(rules: [{allow: public}]) {
   id: ID!
   googleId: String
+  title: String
+  author: String
+  publisher: String
+  isbn: String
+  pubDate: String
+  numOfPages: Int
+  synopsis: String
   cover: String
 }
  

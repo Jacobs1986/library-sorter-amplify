@@ -6,7 +6,14 @@ export const onCreateBook = /* GraphQL */ `
     onCreateBook(filter: $filter) {
       id
       googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
       createdAt
       updatedAt
       __typename
@@ -18,7 +25,14 @@ export const onUpdateBook = /* GraphQL */ `
     onUpdateBook(filter: $filter) {
       id
       googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
       createdAt
       updatedAt
       __typename
@@ -30,7 +44,14 @@ export const onDeleteBook = /* GraphQL */ `
     onDeleteBook(filter: $filter) {
       id
       googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
       createdAt
       updatedAt
       __typename
