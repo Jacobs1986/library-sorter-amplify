@@ -51,7 +51,8 @@ export default function DisplayModal() {
     }, [bookInfo])
 
     // Close the modal
-    const handleCloseModal = () => {
+    const handleCloseModal = (event) => {
+        event.preventDefault();
         setShowModal("none");
         setGoogleBookId('');
     }

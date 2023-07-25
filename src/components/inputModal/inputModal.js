@@ -35,7 +35,8 @@ export default function InputModal() {
     const { showInputModal, setShowInputModal } = useContext(InputModalState)
 
     // Function to save the input nodal inforation
-    const handleSubmitInfo = () => {
+    const handleSubmitInfo = (event) => {
+        event.preventDefault();
         // First run the inputs through inputCheckList
         const inputCheck = inputChecklist(newBookInfo, collectorInfo);
         // If inputCheck is true set missingInfoAlert to true
@@ -57,7 +58,8 @@ export default function InputModal() {
     }
 
     // Close the input modal
-    const handleCloseModal = () => {
+    const handleCloseModal = (event) => {
+        event.preventDefault();
         setMissingInfoAlert(false);
         setNewBookInfo({ reset: true });
         setShowInputModal("none");

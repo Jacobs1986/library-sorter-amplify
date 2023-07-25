@@ -28,7 +28,8 @@ export default function CollectorInfo() {
     }
 
     // This function will show the advanced form
-    const handleShowCollectorForm = () => {
+    const handleShowCollectorForm = (event) => {
+        event.preventDefault();
         var currentStyle = styles.collectorContent.maxHeight;
         if (currentStyle === 0) {
             setShow("100%")
