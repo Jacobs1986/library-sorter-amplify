@@ -20,7 +20,7 @@ import { API } from "aws-amplify";
 import { createBook } from "../../graphql/mutations";
 
 // Import check list function
-import  inputChecklist from "../../functions/inputChecklist";
+import  { inputChecklist } from "../../functions/inputChecklist";
 
 // Import context
 import { InputModalState } from "../../pages/search-page";
