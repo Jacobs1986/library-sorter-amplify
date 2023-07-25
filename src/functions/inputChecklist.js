@@ -1,5 +1,5 @@
 // Function that will check the information placed in a modal
-const inputChecklist = (input, collectorInfo) => {
+export const inputChecklist = (input, collectorInfo) => {
     // Check title
     // If there is no title return noTitle as true
     if (!input.title) {
@@ -30,4 +30,19 @@ const inputChecklist = (input, collectorInfo) => {
     return input
 }
 
-export default inputChecklist;
+// Function for search modal
+export const searchModalInfo = (volumeInfo) => {
+    // Save the informatin from vaolumeInfo to saveInfo for the database
+    let saveInfo = {
+        title: volumeInfo.title,
+        author: volumeInfo.author,
+        publisher: volumeInfo.publisher,
+        pubDate: volumeInfo.publishDate,
+        isbn: volumeInfo.isbn,
+        numOfPages: volumeInfo.pageCount,
+        synopsis: volumeInfo.description,
+        cover: volumeInfo.cover,
+        collectorInfo: false
+    }
+    return saveInfo
+}
