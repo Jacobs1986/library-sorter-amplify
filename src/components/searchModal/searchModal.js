@@ -15,6 +15,15 @@ import axios from "axios";
 // Import book refiner function
 import bookInfoRefiner from "../../functions/bookInfoRefiner";
 
+// Import searchModalInfo function from inputCheckList
+import { searchModalInfo } from "../../functions/inputChecklist";
+
+// Import API
+import { API } from "aws-amplify";
+
+// Import mutations
+import { createBook } from "../../graphql/mutations";
+
 // Components
 import BookInfo from "./bookInfoComp";
 import InputInfo from "./inputInfo";
@@ -71,6 +80,16 @@ export default function DisplayModal() {
     // Save the information of the modal
     const handleSaveGoogleInfo = (event) => {
         event.preventDefault();
+        const saveInfo = searchModalInfo(volumeInfo);
+        // console.log(saveInfo);
+        // Send information to the API
+        API.graphql({
+            query: createBook,
+            variables: { input: saveInfo}
+        }).then(res => {
+            console.log(res.data);
+            setShowModal("none");
+        })
     }
 
     return (
