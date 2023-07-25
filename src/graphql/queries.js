@@ -5,8 +5,23 @@ export const getBook = /* GraphQL */ `
   query GetBook($id: ID!) {
     getBook(id: $id) {
       id
-      googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
+      collectorInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename
@@ -22,8 +37,23 @@ export const listBooks = /* GraphQL */ `
     listBooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        googleId
-        coverImage
+        title
+        author
+        publisher
+        isbn
+        pubDate
+        numOfPages
+        synopsis
+        cover
+        collectorInfo
+        edition
+        printing
+        dustJacket
+        bookCondition
+        bookDamage
+        acquisitionDate
+        acquiredFrom
+        aquiredCost
         createdAt
         updatedAt
         __typename

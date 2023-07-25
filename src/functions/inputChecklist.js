@@ -1,27 +1,10 @@
 // Function that will check the information placed in a modal
-const inputChecklist = (input) => {
+export const inputChecklist = (input, collectorInfo) => {
     // Check title
     // If there is no title return noTitle as true
     if (!input.title) {
         const noTitle = true
         return noTitle
-    }
-    // Convert author string into an array
-    // First check to see if input.author is defined
-    if (input.author) {
-        // Split the string
-        let authorArray = input.author.split(",");
-        // set authorArray to author
-        input = {
-            ...input,
-            author: authorArray
-        }
-    } else {
-        // If author is blank set an empty array
-        input = {
-            ...input,
-            author: []
-        }
     }
     // Check the book cover image
     // If it is undefined set to blank-cover.png
@@ -31,7 +14,35 @@ const inputChecklist = (input) => {
             cover: './Images/blank-cover.png'
         }
     }
+    // set collector info
+    input = {
+        ...input,
+        collectorInfo: collectorInfo
+    }
+    // Check bookCondition
+    // If collectorInfo is true and bookCondition is undefined set to Excellent
+    if (collectorInfo === true && !input.bookCondition) {
+        input = {
+            ...input,
+            bookCondition: "Excellent"
+        }
+    }
     return input
 }
 
-export default inputChecklist;
+// Function for search modal
+export const searchModalInfo = (volumeInfo) => {
+    // Save the informatin from vaolumeInfo to saveInfo for the database
+    let saveInfo = {
+        title: volumeInfo.title,
+        author: volumeInfo.author,
+        publisher: volumeInfo.publisher,
+        pubDate: volumeInfo.publishDate,
+        isbn: volumeInfo.isbn.identifier,
+        numOfPages: volumeInfo.pageCount,
+        synopsis: volumeInfo.description,
+        cover: volumeInfo.cover,
+        collectorInfo: false
+    }
+    return saveInfo
+}

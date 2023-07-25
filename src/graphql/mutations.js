@@ -8,8 +8,23 @@ export const createBook = /* GraphQL */ `
   ) {
     createBook(input: $input, condition: $condition) {
       id
-      googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
+      collectorInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename
@@ -23,8 +38,23 @@ export const updateBook = /* GraphQL */ `
   ) {
     updateBook(input: $input, condition: $condition) {
       id
-      googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
+      collectorInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename
@@ -38,8 +68,23 @@ export const deleteBook = /* GraphQL */ `
   ) {
     deleteBook(input: $input, condition: $condition) {
       id
-      googleId
-      coverImage
+      title
+      author
+      publisher
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      cover
+      collectorInfo
+      edition
+      printing
+      dustJacket
+      bookCondition
+      bookDamage
+      acquisitionDate
+      acquiredFrom
+      aquiredCost
       createdAt
       updatedAt
       __typename

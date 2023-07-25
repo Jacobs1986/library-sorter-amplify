@@ -27,3 +27,17 @@ input[type=submit] {
 #searchFormSubmit {
     font-size: 17px;
 }
+
+/* Input Modal Button */
+.inputBookButton {
+    border: none;
+    background-color: #04AA6D;
+    padding: 6px 12px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.inputModalCol {
+    padding: 22px 15px;
+}

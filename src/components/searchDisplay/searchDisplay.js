@@ -49,6 +49,7 @@ export default function SearchDisplay() {
     // Function that will handle getting the book id
     const handleGetBookId = (e, book) => {
         // Set the googleBookId
+        e.preventDefault();
         setGoogleBookId(book);
     }
 

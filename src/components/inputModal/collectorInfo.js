@@ -6,8 +6,8 @@ import "./inputModal.css";
 // Import context
 import { NewBookInput } from "./inputModal";
 
-export default function AdvancedForm() {
-    const { newBookInfo, setNewBookInfo } = useContext(NewBookInput);
+export default function CollectorInfo() {
+    const { newBookInfo, setNewBookInfo, collectorInfo, setCollectorInfo } = useContext(NewBookInput);
     const [show, setShow] = useState(0)
 
     // Function for handling change in the form inputs
@@ -20,27 +20,30 @@ export default function AdvancedForm() {
 
     // Styling for the advanced content
     const styles = {
-        advancedContent: {
+        collectorContent: {
             maxHeight: show,
             overflow: "hidden",
-            transition: "max-height 0.5s ease-out"
+            transition: "max-height 0.2s ease-out"
         }
     }
 
     // This function will show the advanced form
-    const handleShowAdvancedForm = () => {
-        var currentStyle = styles.advancedContent.maxHeight;
+    const handleShowCollectorForm = (event) => {
+        event.preventDefault();
+        var currentStyle = styles.collectorContent.maxHeight;
         if (currentStyle === 0) {
             setShow("100%")
+            setCollectorInfo(!collectorInfo);
         } else {
-            setShow(0)
+            setShow(0);
+            setCollectorInfo(!collectorInfo);
         }
     }
 
     return (
         <div>
-            <button id="advancedButton" className="collapsible" onClick={handleShowAdvancedForm}>Advanced</button>
-            <div className="advancedContent" style={styles.advancedContent}>
+            <button id="advancedButton" className="collapsible" onClick={handleShowCollectorForm}>Collector Information</button>
+            <div className="collectorContent" style={styles.collectorContent}>
                 <form>
                     <div className="container inputAdvancedForm">
                         {/* Publication information */}

@@ -1,6 +1,6 @@
 // Input reducer
 export function reducer(state, event) {
-    if (event.rest) {
+    if (event.reset) {
         state = {}
         return state
     } 

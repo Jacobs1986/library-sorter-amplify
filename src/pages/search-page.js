@@ -9,20 +9,26 @@ import InputModal from "../components/inputModal/inputModal";
 // Create a context
 export const SearchContext = createContext();
 export const GoogleBookId = createContext();
+export const InputModalState = createContext();
 
 export default function Search() {
     const [search, setSearch] = useState('');
     const [googleBookId, setGoogleBookId] = useState('');
+    const [showInputModal, setShowInputModal] = useState("none");
 
     return (
-        <SearchContext.Provider value={{ search, setSearch }}>
+        <div>
             <h1>Search for a book</h1>
-            <SearchForm />
-            <GoogleBookId.Provider value={{ googleBookId, setGoogleBookId }}>
-                <SearchDisplay />
-                <DisplayModal />
-            </GoogleBookId.Provider>
-            <InputModal />
-        </SearchContext.Provider>
+            <InputModalState.Provider value={{ showInputModal, setShowInputModal }}>
+                <InputModal />
+                <SearchContext.Provider value={{ search, setSearch }}>
+                    <SearchForm />
+                    <GoogleBookId.Provider value={{ googleBookId, setGoogleBookId }}>
+                        <SearchDisplay />
+                        <DisplayModal />
+                    </GoogleBookId.Provider>
+                </SearchContext.Provider>
+            </InputModalState.Provider>
+        </div>
     );
 };

@@ -15,6 +15,15 @@ import axios from "axios";
 // Import book refiner function
 import bookInfoRefiner from "../../functions/bookInfoRefiner";
 
+// Import searchModalInfo function from inputCheckList
+import { searchModalInfo } from "../../functions/inputChecklist";
+
+// Import API
+import { API } from "aws-amplify";
+
+// Import mutations
+import { createBook } from "../../graphql/mutations";
+
 // Components
 import BookInfo from "./bookInfoComp";
 import InputInfo from "./inputInfo";
@@ -51,7 +60,8 @@ export default function DisplayModal() {
     }, [bookInfo])
 
     // Close the modal
-    const handleCloseModal = () => {
+    const handleCloseModal = (event) => {
+        event.preventDefault();
         setShowModal("none");
         setGoogleBookId('');
     }
@@ -65,6 +75,21 @@ export default function DisplayModal() {
             x[i].style.display = "none";
         }
         document.getElementById(tabName).style.display = "block";
+    }
+
+    // Save the information of the modal
+    const handleSaveGoogleInfo = (event) => {
+        event.preventDefault();
+        const saveInfo = searchModalInfo(volumeInfo);
+        // console.log(saveInfo);
+        // Send information to the API
+        API.graphql({
+            query: createBook,
+            variables: { input: saveInfo}
+        }).then(res => {
+            console.log(res.data);
+            setShowModal("none");
+        })
     }
 
     return (
@@ -89,6 +114,10 @@ export default function DisplayModal() {
                                     <InputInfo />
                                 </div>
                             </SearchModalContext.Provider>
+                        </div>
+                        <div className="modal-footer">
+                            <button className="modal-saveButton" onClick={handleSaveGoogleInfo}>Save Book</button>
+                            <button className="modal-closeButton" onClick={handleCloseModal}>Close</button>
                         </div>
                     </div>
                 </div>
