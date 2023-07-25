@@ -9,5 +9,14 @@ type Book @model @auth(rules: [{allow: public}]) {
   numOfPages: Int
   synopsis: String
   cover: String
+  advancedInfo: Boolean
+  edition: String
+  printing: String
+  dustJacket: String
+  bookCondition: String
+  bookDamage: String
+  acquisitionDate: AWSDate
+  acquiredFrom: String
+  aquiredCost: String
 }
  
