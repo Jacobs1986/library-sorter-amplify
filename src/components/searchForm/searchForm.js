@@ -69,9 +69,9 @@ export default function SearchForm() {
                     <div className="col-1">
                         <input type="submit" value="Search" id="searchFormSubmit" />
                     </div>
-                    <div className="col-9">
+                    <div className="col-9 inputModalCol">
                         Can't find the book you're looking for? Input your book manually here <span>
-                            <button onClick={handleShowInputModal}>Input Book</button>
+                            <button className="inputBookButton" onClick={handleShowInputModal}>Input Book</button>
                         </span>
                     </div>
                 </div>
