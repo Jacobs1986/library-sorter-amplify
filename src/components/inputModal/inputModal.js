@@ -42,14 +42,15 @@ export default function InputModal() {
         }
         // set missingInfoAlert to false
         setMissingInfoAlert(false);
-        console.log(inputCheck);
+        // console.log(inputCheck);
         // Send informtion through API
-        // API.graphql({
-        //     query: createBook,
-        //     variables: { input: inputCheck}
-        // }).then(res => {
-        //     console.log(res.data);
-        // })
+        API.graphql({
+            query: createBook,
+            variables: { input: inputCheck}
+        }).then(res => {
+            console.log(res.data);
+            setNewBookInfo({ reset: true });
+        })
     }
 
     // Close the input modal
