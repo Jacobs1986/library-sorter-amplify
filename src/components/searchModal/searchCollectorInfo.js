@@ -6,15 +6,15 @@ import { CollectorInfoInput } from "./searchModal";
 export default function CollectorInfo() {
     // Set reducers
     const { inputCollectorInfo, setInputCollectorInfo } = useContext(CollectorInfoInput)
-    // Set toggle collector state
-    const [collectorInfoState, setCollectorInfoState] = useState(false)
     // Checkbox state
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
-        setCollectorInfoState(checked);
-        console.log(checked);
-    }, [checked])
+        setInputCollectorInfo({
+            name: "collectorInfo",
+            value: checked
+        })
+    }, [checked, setInputCollectorInfo])
     
     // Toggle checked state
     const handleToggleCheckedState = event => {
@@ -34,7 +34,7 @@ export default function CollectorInfo() {
             <div className="container inputAdvancedForm">
                 <div className="row">
                     <div className="col-12">
-                        <input type="checkbox"  name="collectorInfo" value={collectorInfoState} checked={checked} onChange={handleToggleCheckedState} /><label>Click here to input collector information</label>
+                        <input type="checkbox"  name="collectorInfo" checked={checked} onChange={handleToggleCheckedState} /><label>Click here to input collector information</label>
                     </div>
                 </div>
                 <div className="row">
