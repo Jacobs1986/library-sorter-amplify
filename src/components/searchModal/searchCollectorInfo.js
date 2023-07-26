@@ -1,25 +1,23 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 // Inport context
 import { CollectorInfoInput } from "./searchModal";
 
 export default function CollectorInfo() {
     // Set reducers
-    const { inputCollectorInfo, setInputCollectorInfo } = useContext(CollectorInfoInput)
-    // Checkbox state
-    const [checked, setChecked] = useState(false);
+    const { inputCollectorInfo, setInputCollectorInfo, collectorInfoCheck, setCollectorInfoCheck } = useContext(CollectorInfoInput)
 
     useEffect(() => {
         setInputCollectorInfo({
             name: "collectorInfo",
-            value: checked
+            value: collectorInfoCheck
         })
-    }, [checked, setInputCollectorInfo])
+    }, [collectorInfoCheck, setInputCollectorInfo])
     
     // Toggle checked state
-    const handleToggleCheckedState = event => {
+    const handleToggleCheckedState = () => {
         // event.preventDefault();
-        setChecked(!checked);
+        setCollectorInfoCheck(!collectorInfoCheck);
     }
  
     // Function for handling change in the form inputs
@@ -34,7 +32,7 @@ export default function CollectorInfo() {
             <div className="container inputAdvancedForm">
                 <div className="row">
                     <div className="col-12">
-                        <input type="checkbox"  name="collectorInfo" checked={checked} onChange={handleToggleCheckedState} /><label>Click here to input collector information</label>
+                        <input type="checkbox"  name="collectorInfo" checked={collectorInfoCheck} onChange={handleToggleCheckedState} /><label>Click here to input collector information</label>
                     </div>
                 </div>
                 <div className="row">

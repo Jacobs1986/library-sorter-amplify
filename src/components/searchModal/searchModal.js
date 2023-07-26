@@ -46,6 +46,8 @@ export default function DisplayModal() {
     const [volumeInfo, setVolumeInfo] = useState()
     // Set the collector info
     const [inputCollectorInfo, setInputCollectorInfo] = useReducer(searchCollectorReduc, {});
+    // set the collectorInfo check state
+    const [collectorInfoCheck, setCollectorInfoCheck] = useState(false);
 
     useEffect(() => {
         if (googleBookId) {
@@ -97,6 +99,7 @@ export default function DisplayModal() {
             setShowModal("none");
             setInputCollectorInfo({ reset: true })
             setGoogleBookId('');
+            setCollectorInfoCheck(false);
         })
     }
 
@@ -119,7 +122,7 @@ export default function DisplayModal() {
                                     <BookInfo />
                                 </div>
                             </SearchModalContext.Provider>
-                            <CollectorInfoInput.Provider value={{ inputCollectorInfo, setInputCollectorInfo }}>
+                            <CollectorInfoInput.Provider value={{ inputCollectorInfo, setInputCollectorInfo, collectorInfoCheck, setCollectorInfoCheck }}>
                                 <div id="InputData" className="tabContent" style={{ display: "none" }}>
                                     <CollectorInfo />
                                 </div>
