@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext, createContext, useReducer } from "react";
 
 // CSS File
 import "./searchModal.css";
@@ -18,6 +18,9 @@ import bookInfoRefiner from "../../functions/bookInfoRefiner";
 // Import searchModalInfo function from inputCheckList
 import { searchModalInfo } from "../../functions/inputChecklist";
 
+// Import reducer
+import { reducer as searchCollectorReduc } from "../../functions/reducer";
+
 // Import API
 import { API } from "aws-amplify";
 
@@ -26,10 +29,11 @@ import { createBook } from "../../graphql/mutations";
 
 // Components
 import BookInfo from "./bookInfoComp";
-import InputInfo from "./inputInfo";
+import CollectorInfo from "./searchCollectorInfo";
 
 // Context
 export const SearchModalContext = createContext();
+export const CollectorInfoInput = createContext();
 
 export default function DisplayModal() {
     // set googleBookId hook
@@ -40,6 +44,12 @@ export default function DisplayModal() {
     const [bookInfo, setBookInfo] = useState();
     // Set the volumeInfo
     const [volumeInfo, setVolumeInfo] = useState()
+    // Set the collector info
+    const [inputCollectorInfo, setInputCollectorInfo] = useReducer(searchCollectorReduc, {});
+    // set the collectorInfo check state
+    const [collectorInfoCheck, setCollectorInfoCheck] = useState(false);
+    // Hooks for radio selection
+    const [selectedRadio, setSelectedRadio] = useState('');
 
     useEffect(() => {
         if (googleBookId) {
@@ -62,8 +72,7 @@ export default function DisplayModal() {
     // Close the modal
     const handleCloseModal = (event) => {
         event.preventDefault();
-        setShowModal("none");
-        setGoogleBookId('');
+        handleResetModal();
     }
 
     // Function for opening tabs
@@ -80,16 +89,27 @@ export default function DisplayModal() {
     // Save the information of the modal
     const handleSaveGoogleInfo = (event) => {
         event.preventDefault();
-        const saveInfo = searchModalInfo(volumeInfo);
+        const saveInfo = searchModalInfo(volumeInfo, inputCollectorInfo);
         // console.log(saveInfo);
         // Send information to the API
         API.graphql({
             query: createBook,
-            variables: { input: saveInfo}
+            variables: { input: saveInfo }
         }).then(res => {
             console.log(res.data);
-            setShowModal("none");
+            handleResetModal();
         })
+    }
+
+    // Function that resets the modal
+    const handleResetModal = () => {
+        setShowModal("none");
+        setInputCollectorInfo({ reset: true })
+        setGoogleBookId('');
+        setCollectorInfoCheck(false);
+        setSelectedRadio('');
+        document.getElementById("BookInfo").style.display = "block";
+        document.getElementById("InputData").style.display = "none";
     }
 
     return (
@@ -104,16 +124,19 @@ export default function DisplayModal() {
                         <div className="modal-body">
                             <div className="modal-tabs">
                                 <button className="tab" name="BookInfo" onClick={openTab}>Book Info</button>
-                                <button className="tab" name="InputData" onClick={openTab}>Input Data</button>
+                                <button className="tab" name="InputData" onClick={openTab}>Collector Info</button>
                             </div>
                             <SearchModalContext.Provider value={{ volumeInfo }}>
                                 <div id="BookInfo" className="tabContent">
                                     <BookInfo />
                                 </div>
-                                <div id="InputData" className="tabContent" style={{ display: "none" }}>
-                                    <InputInfo />
-                                </div>
                             </SearchModalContext.Provider>
+                            <CollectorInfoInput.Provider value={{ inputCollectorInfo, setInputCollectorInfo, collectorInfoCheck, setCollectorInfoCheck, selectedRadio, setSelectedRadio }}>
+                                <div id="InputData" className="tabContent" style={{ display: "none" }}>
+                                    <CollectorInfo />
+                                </div>
+                            </CollectorInfoInput.Provider>
+
                         </div>
                         <div className="modal-footer">
                             <button className="modal-saveButton" onClick={handleSaveGoogleInfo}>Save Book</button>

@@ -31,7 +31,7 @@ export const inputChecklist = (input, collectorInfo) => {
 }
 
 // Function for search modal
-export const searchModalInfo = (volumeInfo) => {
+export const searchModalInfo = (volumeInfo, inputCollectorInfo) => {
     // Save the informatin from vaolumeInfo to saveInfo for the database
     let saveInfo = {
         title: volumeInfo.title,
@@ -41,8 +41,29 @@ export const searchModalInfo = (volumeInfo) => {
         isbn: volumeInfo.isbn.identifier,
         numOfPages: volumeInfo.pageCount,
         synopsis: volumeInfo.description,
-        cover: volumeInfo.cover,
-        collectorInfo: false
+        cover: volumeInfo.cover
+    }
+    // Check to see the sate of collectorInfo
+    // If collectorInfo is false, then don't add any collector information
+    if (inputCollectorInfo.collectorInfo === false) {
+        saveInfo = {
+            ...saveInfo,
+            collectorInfo: false
+        }
+    // If collectorInfo is true then add collector info
+    } else {
+        saveInfo = {
+            ...saveInfo,
+            collectorInfo: true,
+            edition: inputCollectorInfo.edition,
+            printing: inputCollectorInfo.printing,
+            dustJacket: inputCollectorInfo.dustJacket,
+            bookCondition: inputCollectorInfo.bookCondition,
+            bookDamage: inputCollectorInfo.bookDamage,
+            acquisitionDate: inputCollectorInfo.acquisitionDate,
+            acquiredFrom: inputCollectorInfo.acquiredFrom,
+            aquiredCost: inputCollectorInfo.aquiredCost
+        }
     }
     return saveInfo
 }

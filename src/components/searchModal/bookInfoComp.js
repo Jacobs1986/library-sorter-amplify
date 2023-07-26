@@ -25,11 +25,11 @@ export default function BookInfo() {
                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span>: {volumeInfo.publishDate}</p>
                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {volumeInfo.isbn.identifier}</p>
                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {volumeInfo.pageCount}</p>
-                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Description</span>:</p>
-                    <p id="descriptionParagraph">
-                        {/* {volumeInfo.description} */}
-                        {parse(volumeInfo.description)}
-                    </p>
+                    <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Synopsis</span>:</p>
+                    <div id="descriptionParagraph">
+                        {!volumeInfo.description ? volumeInfo.description : parse(volumeInfo.description)}
+                        {/* {parse(volumeInfo.description)} */}
+                    </div>
                 </div>
             </div>
         </div>
