@@ -26,7 +26,7 @@ import { createBook } from "../../graphql/mutations";
 
 // Components
 import BookInfo from "./bookInfoComp";
-import InputInfo from "./inputInfo";
+import CollectorInfo from "./searchCollectorInfo";
 
 // Context
 export const SearchModalContext = createContext();
@@ -104,14 +104,14 @@ export default function DisplayModal() {
                         <div className="modal-body">
                             <div className="modal-tabs">
                                 <button className="tab" name="BookInfo" onClick={openTab}>Book Info</button>
-                                <button className="tab" name="InputData" onClick={openTab}>Input Data</button>
+                                <button className="tab" name="InputData" onClick={openTab}>Collector Info</button>
                             </div>
                             <SearchModalContext.Provider value={{ volumeInfo }}>
                                 <div id="BookInfo" className="tabContent">
                                     <BookInfo />
                                 </div>
                                 <div id="InputData" className="tabContent" style={{ display: "none" }}>
-                                    <InputInfo />
+                                    <CollectorInfo />
                                 </div>
                             </SearchModalContext.Provider>
                         </div>
