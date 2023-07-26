@@ -22,10 +22,10 @@ import { searchModalInfo } from "../../functions/inputChecklist";
 import { reducer as searchCollectorReduc } from "../../functions/reducer";
 
 // Import API
-import { API } from "aws-amplify";
+// import { API } from "aws-amplify";
 
 // Import mutations
-import { createBook } from "../../graphql/mutations";
+// import { createBook } from "../../graphql/mutations";
 
 // Components
 import BookInfo from "./bookInfoComp";
@@ -89,18 +89,22 @@ export default function DisplayModal() {
     const handleSaveGoogleInfo = (event) => {
         event.preventDefault();
         const saveInfo = searchModalInfo(volumeInfo, inputCollectorInfo);
-        // console.log(saveInfo);
+        console.log(saveInfo);
+        setShowModal("none");
+        setInputCollectorInfo({ reset: true })
+        setGoogleBookId('');
+        setCollectorInfoCheck(false);
         // Send information to the API
-        API.graphql({
-            query: createBook,
-            variables: { input: saveInfo }
-        }).then(res => {
-            console.log(res.data);
-            setShowModal("none");
-            setInputCollectorInfo({ reset: true })
-            setGoogleBookId('');
-            setCollectorInfoCheck(false);
-        })
+        // API.graphql({
+        //     query: createBook,
+        //     variables: { input: saveInfo }
+        // }).then(res => {
+        //     console.log(res.data);
+        //     setShowModal("none");
+        //     setInputCollectorInfo({ reset: true })
+        //     setGoogleBookId('');
+        //     setCollectorInfoCheck(false);
+        // })
     }
 
     return (
