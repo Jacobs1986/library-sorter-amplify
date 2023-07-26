@@ -27,8 +27,8 @@ export default function BookInfo() {
                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {volumeInfo.pageCount}</p>
                     <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Description</span>:</p>
                     <p id="descriptionParagraph">
-                        {/* {volumeInfo.description} */}
-                        {parse(volumeInfo.description)}
+                        {!volumeInfo.description ? volumeInfo.description : parse(volumeInfo.description)}
+                        {/* {parse(volumeInfo.description)} */}
                     </p>
                 </div>
             </div>
