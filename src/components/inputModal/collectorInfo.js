@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 // CSS File
 import "./inputModal.css";
@@ -7,8 +7,7 @@ import "./inputModal.css";
 import { NewBookInput } from "./inputModal";
 
 export default function CollectorInfo() {
-    const { newBookInfo, setNewBookInfo, collectorInfo, setCollectorInfo } = useContext(NewBookInput);
-    const [show, setShow] = useState(0)
+    const { newBookInfo, setNewBookInfo, collectorInfo, setCollectorInfo, selectedRadio, setSelectedRadio, showCollector, setShowCollector } = useContext(NewBookInput);
 
     // Function for handling change in the form inputs
     const handleInputChange = event => {
@@ -18,10 +17,19 @@ export default function CollectorInfo() {
         })
     }
 
+    // Handle radio selection
+    const handleRadioSelect = (event) => {
+        setSelectedRadio(event.target.value)
+        setNewBookInfo({
+            name: event.target.name,
+            value: event.target.value
+        })
+    }
+
     // Styling for the advanced content
     const styles = {
         collectorContent: {
-            maxHeight: show,
+            maxHeight: showCollector,
             overflow: "hidden",
             transition: "max-height 0.2s ease-out"
         }
@@ -32,10 +40,10 @@ export default function CollectorInfo() {
         event.preventDefault();
         var currentStyle = styles.collectorContent.maxHeight;
         if (currentStyle === 0) {
-            setShow("100%")
+            setShowCollector("100%")
             setCollectorInfo(!collectorInfo);
         } else {
-            setShow(0);
+            setShowCollector(0);
             setCollectorInfo(!collectorInfo);
         }
     }
@@ -65,9 +73,21 @@ export default function CollectorInfo() {
                                 {/* Book Cover */}
                                 <h3>Does the book have a dust jacket?</h3>
                                 <div className="row radioRow">
-                                    <input type="radio" id="newDustJacketYes" name="dustJacket" value="Yes" onChange={handleInputChange} />
+                                    <input
+                                        type="radio"
+                                        id="newDustJacketYes"
+                                        name="dustJacket"
+                                        value="Yes"
+                                        checked={selectedRadio === 'Yes'}
+                                        onChange={handleRadioSelect} />
                                     <label htmlFor="newDustJacketYes">Yes</label>
-                                    <input type="radio" id="newDustJacketNo" name="dustJacket" value="No" onChange={handleInputChange} />
+                                    <input
+                                        type="radio"
+                                        id="newDustJacketNo"
+                                        name="dustJacket"
+                                        value="No"
+                                        checked={selectedRadio === 'No'}
+                                        onChange={handleRadioSelect} />
                                     <label htmlFor="newDustJacketNo">No</label>
                                 </div>
                                 {/* Book Cover condition */}

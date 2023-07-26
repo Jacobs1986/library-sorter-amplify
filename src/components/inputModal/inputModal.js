@@ -14,10 +14,10 @@ import CollectorInfo from "./collectorInfo";
 import { reducer as inputNewBookReduc } from "../../functions/reducer";
 
 // Import API
-import { API } from "aws-amplify";
+// import { API } from "aws-amplify";
 
 // Import mutations
-import { createBook } from "../../graphql/mutations";
+// import { createBook } from "../../graphql/mutations";
 
 // Import check list function
 import  { inputChecklist } from "../../functions/inputChecklist";
@@ -32,6 +32,8 @@ export default function InputModal() {
     const [newBookInfo, setNewBookInfo] = useReducer(inputNewBookReduc, {});
     const [collectorInfo, setCollectorInfo] = useState(false);
     const [missingInfoAlert, setMissingInfoAlert] = useState(false);
+    const [selectedRadio, setSelectedRadio] = useState('');
+    const [showCollector, setShowCollector] = useState(0)
     const { showInputModal, setShowInputModal } = useContext(InputModalState)
 
     // Function to save the input nodal inforation
@@ -46,17 +48,20 @@ export default function InputModal() {
         }
         // set missingInfoAlert to false
         setMissingInfoAlert(false);
-        // console.log(inputCheck);
+        console.log(inputCheck);
+        setSelectedRadio('');
+        setCollectorInfo(false);
+        setShowCollector(0);
         // Send informtion through API
-        API.graphql({
-            query: createBook,
-            variables: { input: inputCheck}
-        }).then(res => {
-            console.log(res.data);
-            setNewBookInfo({ reset: true });
-            setMissingInfoAlert(false);
-            setShowInputModal("none");
-        })
+        // API.graphql({
+        //     query: createBook,
+        //     variables: { input: inputCheck}
+        // }).then(res => {
+        //     console.log(res.data);
+        //     setNewBookInfo({ reset: true });
+        //     setMissingInfoAlert(false);
+        //     setShowInputModal("none");
+        // })
     }
 
     // Close the input modal
@@ -65,6 +70,9 @@ export default function InputModal() {
         setMissingInfoAlert(false);
         setNewBookInfo({ reset: true });
         setShowInputModal("none");
+        setSelectedRadio('');
+        setCollectorInfo(false);
+        setShowCollector(0);
     }
 
     return (
@@ -76,7 +84,7 @@ export default function InputModal() {
                 </div>
                 <div className="modal-body">
                     <h3>Use the fields below to enter book information</h3>
-                    <NewBookInput.Provider value={{ newBookInfo, setNewBookInfo, missingInfoAlert, collectorInfo, setCollectorInfo }}>
+                    <NewBookInput.Provider value={{ newBookInfo, setNewBookInfo, missingInfoAlert, collectorInfo, setCollectorInfo, selectedRadio, setSelectedRadio, showCollector, setShowCollector }}>
                         <InputForm />
                         <CollectorInfo />
                     </NewBookInput.Provider>
