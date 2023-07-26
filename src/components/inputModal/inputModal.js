@@ -55,20 +55,20 @@ export default function InputModal() {
             variables: { input: inputCheck }
         }).then(res => {
             console.log(res.data);
-            setNewBookInfo({ reset: true });
-            setMissingInfoAlert(false);
-            setShowInputModal("none");
-            setSelectedRadio('');
-            setCollectorInfo(false);
-            setShowCollector(0);
+            handleResetInputModal();
         })
     }
 
     // Close the input modal
     const handleCloseModal = (event) => {
         event.preventDefault();
-        setMissingInfoAlert(false);
+        handleResetInputModal();
+    }
+
+    // function that will reset this modal
+    const handleResetInputModal = () => {
         setNewBookInfo({ reset: true });
+        setMissingInfoAlert(false);
         setShowInputModal("none");
         setSelectedRadio('');
         setCollectorInfo(false);

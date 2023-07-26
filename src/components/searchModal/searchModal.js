@@ -22,10 +22,10 @@ import { searchModalInfo } from "../../functions/inputChecklist";
 import { reducer as searchCollectorReduc } from "../../functions/reducer";
 
 // Import API
-// import { API } from "aws-amplify";
+import { API } from "aws-amplify";
 
 // Import mutations
-// import { createBook } from "../../graphql/mutations";
+import { createBook } from "../../graphql/mutations";
 
 // Components
 import BookInfo from "./bookInfoComp";
@@ -48,6 +48,8 @@ export default function DisplayModal() {
     const [inputCollectorInfo, setInputCollectorInfo] = useReducer(searchCollectorReduc, {});
     // set the collectorInfo check state
     const [collectorInfoCheck, setCollectorInfoCheck] = useState(false);
+    // Hooks for radio selection
+    const [selectedRadio, setSelectedRadio] = useState('');
 
     useEffect(() => {
         if (googleBookId) {
@@ -70,8 +72,7 @@ export default function DisplayModal() {
     // Close the modal
     const handleCloseModal = (event) => {
         event.preventDefault();
-        setShowModal("none");
-        setGoogleBookId('');
+        handleResetModal();
     }
 
     // Function for opening tabs
@@ -89,22 +90,26 @@ export default function DisplayModal() {
     const handleSaveGoogleInfo = (event) => {
         event.preventDefault();
         const saveInfo = searchModalInfo(volumeInfo, inputCollectorInfo);
-        console.log(saveInfo);
+        // console.log(saveInfo);
+        // Send information to the API
+        API.graphql({
+            query: createBook,
+            variables: { input: saveInfo }
+        }).then(res => {
+            console.log(res.data);
+            handleResetModal();
+        })
+    }
+
+    // Function that resets the modal
+    const handleResetModal = () => {
         setShowModal("none");
         setInputCollectorInfo({ reset: true })
         setGoogleBookId('');
         setCollectorInfoCheck(false);
-        // Send information to the API
-        // API.graphql({
-        //     query: createBook,
-        //     variables: { input: saveInfo }
-        // }).then(res => {
-        //     console.log(res.data);
-        //     setShowModal("none");
-        //     setInputCollectorInfo({ reset: true })
-        //     setGoogleBookId('');
-        //     setCollectorInfoCheck(false);
-        // })
+        setSelectedRadio('');
+        document.getElementById("BookInfo").style.display = "block";
+        document.getElementById("InputData").style.display = "none";
     }
 
     return (
@@ -126,7 +131,7 @@ export default function DisplayModal() {
                                     <BookInfo />
                                 </div>
                             </SearchModalContext.Provider>
-                            <CollectorInfoInput.Provider value={{ inputCollectorInfo, setInputCollectorInfo, collectorInfoCheck, setCollectorInfoCheck }}>
+                            <CollectorInfoInput.Provider value={{ inputCollectorInfo, setInputCollectorInfo, collectorInfoCheck, setCollectorInfoCheck, selectedRadio, setSelectedRadio }}>
                                 <div id="InputData" className="tabContent" style={{ display: "none" }}>
                                     <CollectorInfo />
                                 </div>

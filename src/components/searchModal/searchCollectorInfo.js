@@ -5,7 +5,7 @@ import { CollectorInfoInput } from "./searchModal";
 
 export default function CollectorInfo() {
     // Set reducers
-    const { inputCollectorInfo, setInputCollectorInfo, collectorInfoCheck, setCollectorInfoCheck } = useContext(CollectorInfoInput)
+    const { inputCollectorInfo, setInputCollectorInfo, collectorInfoCheck, setCollectorInfoCheck, selectedRadio, setSelectedRadio } = useContext(CollectorInfoInput)
 
     useEffect(() => {
         setInputCollectorInfo({
@@ -13,13 +13,13 @@ export default function CollectorInfo() {
             value: collectorInfoCheck
         })
     }, [collectorInfoCheck, setInputCollectorInfo])
-    
+
     // Toggle checked state
     const handleToggleCheckedState = () => {
         // event.preventDefault();
         setCollectorInfoCheck(!collectorInfoCheck);
     }
- 
+
     // Function for handling change in the form inputs
     const handleInputChange = event => {
         setInputCollectorInfo({
@@ -27,12 +27,22 @@ export default function CollectorInfo() {
             value: event.target.value
         })
     }
+
+    // Handle radio selection
+    const handleRadioSelect = (event) => {
+        setSelectedRadio(event.target.value)
+        setInputCollectorInfo({
+            name: event.target.name,
+            value: event.target.value
+        })
+    }
+
     return (
         <div>
             <div className="container inputAdvancedForm">
                 <div className="row">
                     <div className="col-12">
-                        <input type="checkbox"  name="collectorInfo" checked={collectorInfoCheck} onChange={handleToggleCheckedState} /><label>Click here to input collector information</label>
+                        <input type="checkbox" name="collectorInfo" checked={collectorInfoCheck} onChange={handleToggleCheckedState} /><label>Click here to input collector information</label>
                     </div>
                 </div>
                 <div className="row">
@@ -53,9 +63,21 @@ export default function CollectorInfo() {
                         {/* Book Cover */}
                         <h3>Does the book have a dust jacket?</h3>
                         <div className="row radioRow">
-                            <input type="radio" id="newDustJacketYes" name="dustJacket" value="Yes" onChange={handleInputChange} />
+                            <input
+                                type="radio"
+                                id="newDustJacketYes"
+                                name="dustJacket"
+                                value="Yes"
+                                checked={selectedRadio === 'Yes'}
+                                onChange={handleRadioSelect} />
                             <label htmlFor="newDustJacketYes">Yes</label>
-                            <input type="radio" id="newDustJacketNo" name="dustJacket" value="No" onChange={handleInputChange} />
+                            <input
+                                type="radio"
+                                id="newDustJacketNo"
+                                name="dustJacket"
+                                value="No"
+                                checked={selectedRadio === 'No'}
+                                onChange={handleRadioSelect} />
                             <label htmlFor="newDustJacketNo">No</label>
                         </div>
                         {/* Book Cover condition */}
