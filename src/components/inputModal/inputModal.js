@@ -14,13 +14,13 @@ import CollectorInfo from "./collectorInfo";
 import { reducer as inputNewBookReduc } from "../../functions/reducer";
 
 // Import API
-// import { API } from "aws-amplify";
+import { API } from "aws-amplify";
 
 // Import mutations
-// import { createBook } from "../../graphql/mutations";
+import { createBook } from "../../graphql/mutations";
 
 // Import check list function
-import  { inputChecklist } from "../../functions/inputChecklist";
+import { inputChecklist } from "../../functions/inputChecklist";
 
 // Import context
 import { InputModalState } from "../../pages/search-page";
@@ -48,20 +48,20 @@ export default function InputModal() {
         }
         // set missingInfoAlert to false
         setMissingInfoAlert(false);
-        console.log(inputCheck);
-        setSelectedRadio('');
-        setCollectorInfo(false);
-        setShowCollector(0);
+        // console.log(inputCheck);
         // Send informtion through API
-        // API.graphql({
-        //     query: createBook,
-        //     variables: { input: inputCheck}
-        // }).then(res => {
-        //     console.log(res.data);
-        //     setNewBookInfo({ reset: true });
-        //     setMissingInfoAlert(false);
-        //     setShowInputModal("none");
-        // })
+        API.graphql({
+            query: createBook,
+            variables: { input: inputCheck }
+        }).then(res => {
+            console.log(res.data);
+            setNewBookInfo({ reset: true });
+            setMissingInfoAlert(false);
+            setShowInputModal("none");
+            setSelectedRadio('');
+            setCollectorInfo(false);
+            setShowCollector(0);
+        })
     }
 
     // Close the input modal
@@ -76,7 +76,7 @@ export default function InputModal() {
     }
 
     return (
-        <div className="modal inputNewBookModal" style={{ display: `${showInputModal}`}}>
+        <div className="modal inputNewBookModal" style={{ display: `${showInputModal}` }}>
             <div className="modal-content">
                 <div className="modal-header">
                     <span className="close" onClick={handleCloseModal}>&times;</span>
