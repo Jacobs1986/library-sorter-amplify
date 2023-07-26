@@ -41,7 +41,7 @@ export const searchModalInfo = (volumeInfo, inputCollectorInfo) => {
         isbn: volumeInfo.isbn.identifier,
         numOfPages: volumeInfo.pageCount,
         synopsis: volumeInfo.description,
-        cover: volumeInfo.cover,
+        cover: volumeInfo.cover
     }
     // Check to see the sate of collectorInfo
     // If collectorInfo is false, then don't add any collector information
@@ -50,10 +50,19 @@ export const searchModalInfo = (volumeInfo, inputCollectorInfo) => {
             ...saveInfo,
             collectorInfo: false
         }
+    // If collectorInfo is true then add collector info
     } else {
         saveInfo = {
             ...saveInfo,
-            collectorInfo: true
+            collectorInfo: true,
+            edition: inputCollectorInfo.edition,
+            printing: inputCollectorInfo.printing,
+            dustJacket: inputCollectorInfo.dustJacket,
+            bookCondition: inputCollectorInfo.bookCondition,
+            bookDamage: inputCollectorInfo.bookDamage,
+            acquisitionDate: inputCollectorInfo.acquisitionDate,
+            acquiredFrom: inputCollectorInfo.acquiredFrom,
+            aquiredCost: inputCollectorInfo.aquiredCost
         }
     }
     return saveInfo

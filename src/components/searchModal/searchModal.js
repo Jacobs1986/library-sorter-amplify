@@ -95,6 +95,8 @@ export default function DisplayModal() {
         }).then(res => {
             console.log(res.data);
             setShowModal("none");
+            setInputCollectorInfo({ reset: true })
+            setGoogleBookId('');
         })
     }
 
