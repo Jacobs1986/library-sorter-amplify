@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext, createContext, useReducer } from "react";
 
 // CSS File
 import "./searchModal.css";
@@ -18,6 +18,9 @@ import bookInfoRefiner from "../../functions/bookInfoRefiner";
 // Import searchModalInfo function from inputCheckList
 import { searchModalInfo } from "../../functions/inputChecklist";
 
+// Import reducer
+import { reducer as searchCollectorReduc } from "../../functions/reducer";
+
 // Import API
 import { API } from "aws-amplify";
 
@@ -30,6 +33,7 @@ import CollectorInfo from "./searchCollectorInfo";
 
 // Context
 export const SearchModalContext = createContext();
+export const CollectorInfoInput = createContext();
 
 export default function DisplayModal() {
     // set googleBookId hook
@@ -40,6 +44,8 @@ export default function DisplayModal() {
     const [bookInfo, setBookInfo] = useState();
     // Set the volumeInfo
     const [volumeInfo, setVolumeInfo] = useState()
+    // Set the collector info
+    const [inputCollectorInfo, setInputCollectorInfo] = useReducer(searchCollectorReduc, {});
 
     useEffect(() => {
         if (googleBookId) {
@@ -85,7 +91,7 @@ export default function DisplayModal() {
         // Send information to the API
         API.graphql({
             query: createBook,
-            variables: { input: saveInfo}
+            variables: { input: saveInfo }
         }).then(res => {
             console.log(res.data);
             setShowModal("none");
@@ -110,10 +116,13 @@ export default function DisplayModal() {
                                 <div id="BookInfo" className="tabContent">
                                     <BookInfo />
                                 </div>
+                            </SearchModalContext.Provider>
+                            <CollectorInfoInput.Provider value={{ inputCollectorInfo, setInputCollectorInfo }}>
                                 <div id="InputData" className="tabContent" style={{ display: "none" }}>
                                     <CollectorInfo />
                                 </div>
-                            </SearchModalContext.Provider>
+                            </CollectorInfoInput.Provider>
+
                         </div>
                         <div className="modal-footer">
                             <button className="modal-saveButton" onClick={handleSaveGoogleInfo}>Save Book</button>
