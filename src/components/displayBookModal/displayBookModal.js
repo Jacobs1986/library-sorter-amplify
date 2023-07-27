@@ -1,9 +1,9 @@
 import React, {
+    createContext,
     useState,
     useEffect,
     useContext
 } from "react";
-import parse from 'html-react-parser';
 
 // CSS File
 import "./displayBookModal.css";
@@ -16,6 +16,12 @@ import { getBook } from "../../graphql/queries";
 
 // Import BookIdContext
 import { BookIdContext } from "../homeDisplay/homeDisplay";
+
+// Import components
+import BasicBookInfo from "./basicBookInfo";
+
+// Create context
+export const BookInfoContext = createContext();
 
 export default function DisplayBookModal() {
     // Set hooks from context
@@ -53,28 +59,9 @@ export default function DisplayBookModal() {
                             <h2>{bookInfo.title}</h2>
                         </div>
                         <div className="modal-body">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-5">
-                                        <img
-                                            src={bookInfo.cover}
-                                            alt="Book cover"
-                                            style={{ width: "100%" }}
-                                        />
-                                    </div>
-                                    <div className="col-7 bookInfo">
-                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Author</span>: {bookInfo.author}</p>
-                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publisher</span>: {bookInfo.publisher}</p>
-                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span> {bookInfo.pubDate}</p>
-                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {bookInfo.isbn}</p>
-                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {bookInfo.numOfPages}</p>
-                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Synopsis</span>:</p>
-                                        <div id="descriptionParagraph">
-                                            {!bookInfo.synopsis ? bookInfo.synopsis : parse(bookInfo.synopsis)}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <BookInfoContext.Provider value={{ bookInfo }}>
+                                <BasicBookInfo />
+                            </BookInfoContext.Provider>
                         </div>
                         <div className="modal-footer">
                             <button className="modal-closeButton" onClick={handleCloseDisplay}>Close</button>
