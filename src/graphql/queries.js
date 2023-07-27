@@ -63,3 +63,14 @@ export const listBooks = /* GraphQL */ `
     }
   }
 `;
+export const listBooksDisplay = /* GraphQL */ `
+  query ListBookDisplay {
+    listBooks {
+      items {
+        cover
+        id
+        title
+      }
+    }
+  }
+`;

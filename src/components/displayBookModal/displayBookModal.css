@@ -1,0 +1,35 @@
+.collectorInfoDisplayLabel {
+    font-weight: bold;
+}
+
+.displayCollectorInfo p {
+    font-size: 18px;
+}
+
+.displayEditForm label {
+    font-weight: bold;
+}
+
+.displayEditForm input[type=number] {
+    padding: 12px 20px;
+}
+
+.displayEditForm input[type=number] {
+    margin: 8px 0;
+    width: 8em;
+}
+
+/* Book description */
+.displayEditForm textarea {
+    width: 100%;
+    margin: 8px 0;
+}
+
+/* Book Cover */
+.displayEditForm img {
+    width: 28%;
+}
+
+#editCover {
+    margin: 0px 0px 5px 0px;
+}
