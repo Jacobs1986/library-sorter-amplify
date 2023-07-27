@@ -20,6 +20,7 @@ import { BookIdContext } from "../homeDisplay/homeDisplay";
 // Import components
 import BasicBookInfo from "./basicBookInfo";
 import CollectorInfo from "./collectorInfo";
+import EditBookInfo from "./editBookInfo";
 
 // Create context
 export const BookInfoContext = createContext();
@@ -44,6 +45,17 @@ export default function DisplayBookModal() {
         }
     }, [bookId])
 
+    // Function for opening tabs
+    const openTab = (event) => {
+        const tabName = event.target.name;
+        var i;
+        var x = document.getElementsByClassName("tabContent");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+
     // Function for closing the modal
     const handleCloseDisplay = () => {
         setShowDisplayModal("none")
@@ -60,9 +72,18 @@ export default function DisplayBookModal() {
                             <h2>{bookInfo.title}</h2>
                         </div>
                         <div className="modal-body">
+                            <div className="modal-tabs">
+                                <button className="tab" name="BookInfo" onClick={openTab}>Book Info</button>
+                                <button className="tab" name="EditData" onClick={openTab}>Edit Info</button>
+                            </div>
                             <BookInfoContext.Provider value={{ bookInfo }}>
-                                <BasicBookInfo />
-                                <CollectorInfo />
+                                <div id="BookInfo" class="tabContent">
+                                    <BasicBookInfo />
+                                    <CollectorInfo />
+                                </div>
+                                <div id="EditData" className="tabContent">
+                                    <EditBookInfo />
+                                </div>
                             </BookInfoContext.Provider>
                         </div>
                         <div className="modal-footer">

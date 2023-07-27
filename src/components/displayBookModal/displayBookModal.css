@@ -5,3 +5,7 @@
 .displayCollectorInfo p {
     font-size: 18px;
 }
+
+.displayEditForm label {
+    font-weight: bold;
+}
