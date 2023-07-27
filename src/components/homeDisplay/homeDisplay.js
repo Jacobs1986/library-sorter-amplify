@@ -12,6 +12,9 @@ import { listBooksDisplay } from "../../graphql/queries";
 // CSS File
 import "./homeDisplay.css";
 
+// Import Display Book Modal
+import DisplayBookModal from "../displayBookModal/displayBookModal";
+
 export default function HomeDisplay() {
     // Book list hook
     const [bookList, setBookList] = useState();
@@ -59,6 +62,7 @@ export default function HomeDisplay() {
                     ))}
                 </div>
             }
+            <DisplayBookModal />
         </div>
     );
 };
