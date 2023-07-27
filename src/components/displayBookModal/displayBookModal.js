@@ -1,13 +1,32 @@
 import React, {
-    useState
+    useState,
+    useEffect
 } from "react";
+import parse from 'html-react-parser';
 
 // CSS File
 import "./displayBookModal.css";
 
+// Import API
+import { API } from "aws-amplify";
+
+// Import getBook from queries
+import { getBook } from "../../graphql/queries";
+
 export default function DisplayBookModal() {
     // Hook for showing displayModal
     const [showDisplayModal, setShowDisplayModal] = useState("block");
+    // Book info hook
+    const [bookInfo, setBookInfo] = useState();
+
+    useEffect(() => {
+        API.graphql({
+            query: getBook,
+            variables: { id: "deef7c1f-18f6-49d9-a16d-950d0b22ad46" }
+        }).then(res => {
+            setBookInfo(res.data.getBook);
+        })
+    }, [])
 
     // Function for closing the modal
     const handleCloseDisplay = () => {
@@ -15,13 +34,44 @@ export default function DisplayBookModal() {
     }
 
     return (
-        <div className="modal" style={{ display: `${showDisplayModal}` }}>
-            <div className="modal-content">
-                <div className="modal-header">
-                    <span className="close" onClick={handleCloseDisplay}>&times;</span>
-                    <h2>Book Title</h2>
+        <div>
+            {!bookInfo ? <div></div> :
+                <div className="modal" style={{ display: `${showDisplayModal}` }}>
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <span className="close" onClick={handleCloseDisplay}>&times;</span>
+                            <h2>{bookInfo.title}</h2>
+                        </div>
+                        <div className="modal-body">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-5">
+                                        <img
+                                            src={bookInfo.cover}
+                                            alt="Book cover"
+                                            style={{ width: "100%" }}
+                                        />
+                                    </div>
+                                    <div className="col-7 bookInfo">
+                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Author</span>: {bookInfo.author}</p>
+                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publisher</span>: {bookInfo.publisher}</p>
+                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Publication Date:</span> {bookInfo.pubDate}</p>
+                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>ISBN</span>: {bookInfo.isbn}</p>
+                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Page Count</span>: {bookInfo.numOfPages}</p>
+                                        <p><span className="modalInlineLabel" style={{ fontWeight: "bold" }}>Synopsis</span>:</p>
+                                        <div id="descriptionParagraph">
+                                            {!bookInfo.synopsis ? bookInfo.synopsis : parse(bookInfo.synopsis)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button className="modal-closeButton" onClick={handleCloseDisplay}>Close</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     );
 };
