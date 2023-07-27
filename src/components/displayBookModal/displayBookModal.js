@@ -1,6 +1,7 @@
 import React, {
     useState,
-    useEffect
+    useEffect,
+    useContext
 } from "react";
 import parse from 'html-react-parser';
 
@@ -13,24 +14,33 @@ import { API } from "aws-amplify";
 // Import getBook from queries
 import { getBook } from "../../graphql/queries";
 
+// Import BookIdContext
+import { BookIdContext } from "../homeDisplay/homeDisplay";
+
 export default function DisplayBookModal() {
+    // Set hooks from context
+    const { bookId, setBookId } = useContext(BookIdContext)
     // Hook for showing displayModal
-    const [showDisplayModal, setShowDisplayModal] = useState("block");
+    const [showDisplayModal, setShowDisplayModal] = useState("none");
     // Book info hook
     const [bookInfo, setBookInfo] = useState();
 
     useEffect(() => {
-        API.graphql({
-            query: getBook,
-            variables: { id: "deef7c1f-18f6-49d9-a16d-950d0b22ad46" }
-        }).then(res => {
-            setBookInfo(res.data.getBook);
-        })
-    }, [])
+        if (bookId) {
+            API.graphql({
+                query: getBook,
+                variables: { id: bookId }
+            }).then(res => {
+                setBookInfo(res.data.getBook);
+                setShowDisplayModal("block")
+            })
+        }
+    }, [bookId])
 
     // Function for closing the modal
     const handleCloseDisplay = () => {
         setShowDisplayModal("none")
+        setBookId('');
     }
 
     return (

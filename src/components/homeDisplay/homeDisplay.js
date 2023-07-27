@@ -1,4 +1,5 @@
 import React, {
+    createContext,
     useState,
     useEffect
 } from "react";
@@ -15,9 +16,14 @@ import "./homeDisplay.css";
 // Import Display Book Modal
 import DisplayBookModal from "../displayBookModal/displayBookModal";
 
+// Create and export 
+export const BookIdContext = createContext();
+
 export default function HomeDisplay() {
     // Book list hook
     const [bookList, setBookList] = useState();
+    // Hook for the bookId
+    const [bookId, setBookId] = useState();
 
     useEffect(() => {
         // Get all of the books from the database
@@ -29,9 +35,9 @@ export default function HomeDisplay() {
     })
 
     // Function for handling viewing a book
-    const handleViewBook = (event, bookId) => {
+    const handleViewBook = (event, buttonId) => {
         event.preventDefault();
-        console.log(bookId);
+        setBookId(buttonId);
     }
 
     return (
@@ -62,7 +68,9 @@ export default function HomeDisplay() {
                     ))}
                 </div>
             }
-            <DisplayBookModal />
+            <BookIdContext.Provider value={{ bookId, setBookId }}>
+                <DisplayBookModal />
+            </BookIdContext.Provider>
         </div>
     );
 };
