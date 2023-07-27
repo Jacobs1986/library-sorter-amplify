@@ -77,7 +77,7 @@ export default function DisplayBookModal() {
                                 <button className="tab" name="EditData" onClick={openTab}>Edit Info</button>
                             </div>
                             <BookInfoContext.Provider value={{ bookInfo }}>
-                                <div id="BookInfo" class="tabContent">
+                                <div id="BookInfo" className="tabContent">
                                     <BasicBookInfo />
                                     <CollectorInfo />
                                 </div>
