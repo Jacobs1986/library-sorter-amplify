@@ -19,6 +19,7 @@ import { BookIdContext } from "../homeDisplay/homeDisplay";
 
 // Import components
 import BasicBookInfo from "./basicBookInfo";
+import CollectorInfo from "./collectorInfo";
 
 // Create context
 export const BookInfoContext = createContext();
@@ -61,6 +62,7 @@ export default function DisplayBookModal() {
                         <div className="modal-body">
                             <BookInfoContext.Provider value={{ bookInfo }}>
                                 <BasicBookInfo />
+                                <CollectorInfo />
                             </BookInfoContext.Provider>
                         </div>
                         <div className="modal-footer">
