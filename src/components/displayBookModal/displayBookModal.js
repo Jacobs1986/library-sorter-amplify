@@ -28,10 +28,12 @@ import { reducer as editReducer } from "../../functions/reducer";
 import BasicBookInfo from "./basicBookInfo";
 import CollectorInfo from "./collectorInfo";
 import EditBookInfo from "./editBookInfo";
+import DeleteModal from "../deleteModal/deleteModal";
 
 // Create context
 export const BookInfoContext = createContext();
 export const EditBookInfoContext = createContext();
+export const DeleteBookContext = createContext();
 
 export default function DisplayBookModal() {
     // Set hooks from context
@@ -44,6 +46,8 @@ export default function DisplayBookModal() {
     const [editInfo, setEditInfo] = useReducer(editReducer, {})
     // Get information again
     const [getUpdated, setGetUpdated] = useState(false);
+    // Show delete modal
+    const [showDeleteModal, setShowDeleteModal] = useState("none");
 
     // Initial get information
     useEffect(() => {
@@ -103,6 +107,12 @@ export default function DisplayBookModal() {
         })
     }
 
+    // Show the delete modal
+    const handleShowDeleteModal = event => {
+        event.preventDefault();
+        setShowDeleteModal("block");
+    }
+
     // Function for closing the modal
     const handleCloseDisplay = () => {
         setShowDisplayModal("none")
@@ -144,9 +154,12 @@ export default function DisplayBookModal() {
                             </BookInfoContext.Provider>
                         </div>
                         <div className="modal-footer">
-                            <button className="modal-deleteButton">Delete</button>
+                            <button className="modal-deleteButton" onClick={handleShowDeleteModal}>Delete</button>
                             <button className="modal-closeButton" onClick={handleCloseDisplay}>Close</button>
                         </div>
+                        <DeleteBookContext.Provider value={{ showDeleteModal, setShowDeleteModal, bookInfo }}>
+                            <DeleteModal />
+                        </DeleteBookContext.Provider>
                     </div>
                 </div>
             }
