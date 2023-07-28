@@ -106,7 +106,13 @@ export default function DisplayBookModal() {
     // Function for closing the modal
     const handleCloseDisplay = () => {
         setShowDisplayModal("none")
-        setBookId('');
+        handleReset();
+    }
+
+    // Function for resetting everything
+    const handleReset = () => {
+        setBookId('')
+        setEditInfo({ reset: true })
         document.getElementById("BookInfo").style.display = "block";
         document.getElementById("EditData").style.display = "none";
     }
@@ -131,7 +137,7 @@ export default function DisplayBookModal() {
                                     <CollectorInfo />
                                 </div>
                                 <EditBookInfoContext.Provider value={{ setEditInfo, handleSaveEdit }}>
-                                    <div id="EditData" className="tabContent">
+                                    <div id="EditData" className="tabContent" style={{ display: "none" }}>
                                         <EditBookInfo />
                                     </div>
                                 </EditBookInfoContext.Provider>
