@@ -17,6 +17,7 @@ import { getBook } from "../../graphql/queries";
 
 // Import updateBook from mutations
 import { updateBook } from "../../graphql/mutations";
+import { deleteBook } from "../../graphql/mutations";
 
 // Import BookIdContext
 import { BookIdContext } from "../homeDisplay/homeDisplay";
@@ -113,14 +114,37 @@ export default function DisplayBookModal() {
         setShowDeleteModal("block");
     }
 
+    // handle delete a book
+    const handleDeleteBook = event => {
+        event.preventDefault();
+        // console.log(event.target.name)
+        // Check to see which button has been clicked
+        switch (event.target.name) {
+            // If the name is yesDeleteButton then the book will be deleted
+            case "yesDeleteButton": {
+                API.graphql({
+                    query: deleteBook,
+                    variables: { input: { id: bookId } }
+                }).then(res => {
+                    console.log(res.data);
+                    handleReset();
+                })
+                break
+            }
+            default:
+                setShowDeleteModal("none");
+        }
+    }
+
     // Function for closing the modal
     const handleCloseDisplay = () => {
-        setShowDisplayModal("none")
         handleReset();
     }
 
     // Function for resetting everything
     const handleReset = () => {
+        setShowDeleteModal("none");
+        setShowDisplayModal("none");
         setBookId('')
         setEditInfo({ reset: true })
         document.getElementById("BookInfo").style.display = "block";
@@ -157,7 +181,7 @@ export default function DisplayBookModal() {
                             <button className="modal-deleteButton" onClick={handleShowDeleteModal}>Delete</button>
                             <button className="modal-closeButton" onClick={handleCloseDisplay}>Close</button>
                         </div>
-                        <DeleteBookContext.Provider value={{ showDeleteModal, setShowDeleteModal, bookInfo }}>
+                        <DeleteBookContext.Provider value={{ showDeleteModal, handleDeleteBook, bookInfo }}>
                             <DeleteModal />
                         </DeleteBookContext.Provider>
                     </div>
