@@ -111,3 +111,17 @@ export const listBooksByTitle = /* GraphQL */ `
     }
   }
 `;
+export const listByTitleASC = /*GraphQL*/`
+  query ListBooksASC {
+    listBooksByTitle(
+      type: "Book", 
+      sortDirection: ASC
+      ) {
+      items {
+        id
+        title
+        cover
+      }
+    }
+  }
+`;

@@ -38,7 +38,7 @@ export const DeleteBookContext = createContext();
 
 export default function DisplayBookModal() {
     // Set hooks from context
-    const { bookId, setBookId } = useContext(BookIdContext)
+    const { bookId, setBookId, setUpdateInfo } = useContext(BookIdContext)
     // Hook for showing displayModal
     const [showDisplayModal, setShowDisplayModal] = useState("none");
     // Book info hook
@@ -72,11 +72,12 @@ export default function DisplayBookModal() {
             }).then(res => {
                 setBookInfo(res.data.getBook);
                 setGetUpdated(false);
+                setUpdateInfo(true)
                 document.getElementById("BookInfo").style.display = "block";
                 document.getElementById("EditData").style.display = "none";
             })
         }
-    }, [getUpdated, bookId])
+    }, [getUpdated, bookId, setUpdateInfo])
 
     // Function for opening tabs
     const openTab = (event) => {
