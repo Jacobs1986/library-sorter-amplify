@@ -144,6 +144,7 @@ export default function DisplayBookModal() {
                             </BookInfoContext.Provider>
                         </div>
                         <div className="modal-footer">
+                            <button className="modal-deleteButton">Delete</button>
                             <button className="modal-closeButton" onClick={handleCloseDisplay}>Close</button>
                         </div>
                     </div>

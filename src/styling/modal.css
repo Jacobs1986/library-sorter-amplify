@@ -112,6 +112,7 @@
     padding: 15px 32px;
     border-radius: 4px;
     cursor: pointer;
+    margin-right: 8px; 
     -webkit-transition-duration: 0.4s;
     /* Safari */
     transition-duration: 0.4s;
@@ -125,7 +126,6 @@
 .modal-footer .modal-saveButton {
     background-color: green;
     color: white;
-    margin-right: 8px; 
 }
 
 .modal-footer .modal-saveButton:hover {
@@ -140,4 +140,13 @@
 .modal-footer .modal-closeButton:hover {
     background-color: darkred;
     color: white;
+}
+
+/* Delete Button */
+.modal-footer .modal-deleteButton {
+    background-color: cornsilk;
+}
+
+.modal-footer .modal-deleteButton:hover {
+    background-color: goldenrod;
 }
