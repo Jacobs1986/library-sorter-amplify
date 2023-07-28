@@ -5,6 +5,7 @@ export const getBook = /* GraphQL */ `
   query GetBook($id: ID!) {
     getBook(id: $id) {
       id
+      type
       title
       author
       publisher
@@ -37,6 +38,7 @@ export const listBooks = /* GraphQL */ `
     listBooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        type
         title
         author
         publisher
@@ -63,14 +65,49 @@ export const listBooks = /* GraphQL */ `
     }
   }
 `;
-export const listBooksDisplay = /* GraphQL */ `
-  query ListBookDisplay {
-    listBooks {
+export const listBooksByTitle = /* GraphQL */ `
+  query ListBooksByTitle(
+    $type: String!
+    $title: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelBookFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBooksByTitle(
+      type: $type
+      title: $title
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
       items {
-        cover
         id
+        type
         title
+        author
+        publisher
+        isbn
+        pubDate
+        numOfPages
+        synopsis
+        cover
+        collectorInfo
+        edition
+        printing
+        dustJacket
+        bookCondition
+        bookDamage
+        acquisitionDate
+        acquiredFrom
+        aquiredCost
+        createdAt
+        updatedAt
+        __typename
       }
+      nextToken
+      __typename
     }
   }
 `;

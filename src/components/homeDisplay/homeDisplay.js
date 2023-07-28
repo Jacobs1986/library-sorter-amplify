@@ -30,9 +30,10 @@ export default function HomeDisplay() {
         API.graphql({
             query: listBooksDisplay
         }).then(res => {
-            setBookList(res.data.listBooks.items)
+            console.log(res.data.listBooks.items);
+            setBookList(res.data.listBooks.items);
         })
-    })
+    }, [])
 
     // Function for handling viewing a book
     const handleViewBook = (event, buttonId) => {
@@ -42,7 +43,7 @@ export default function HomeDisplay() {
 
     return (
         <div>
-            {!bookList ? <div>No Books</div> :
+            {!bookList || bookList.length === 0 ? <div>No Books</div> :
                 <div className="displayContainer homePageDisplay">
                     {bookList.map(book => (
                         <div className="coverContainer" key={book.id}>
