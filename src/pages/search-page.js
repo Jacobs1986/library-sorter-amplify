@@ -18,7 +18,7 @@ export default function Search() {
 
     return (
         <div>
-            <h1>Search for a book</h1>
+            <h1>Search for a book</h1><a href="/">Back</a>
             <InputModalState.Provider value={{ showInputModal, setShowInputModal }}>
                 <InputModal />
                 <SearchContext.Provider value={{ search, setSearch }}>
