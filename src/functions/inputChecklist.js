@@ -35,6 +35,7 @@ export const searchModalInfo = (volumeInfo, inputCollectorInfo) => {
     // Save the informatin from vaolumeInfo to saveInfo for the database
     let saveInfo = {
         title: volumeInfo.title,
+        type: "Book",
         author: volumeInfo.author,
         publisher: volumeInfo.publisher,
         pubDate: volumeInfo.publishDate,

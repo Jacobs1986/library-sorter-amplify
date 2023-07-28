@@ -5,7 +5,7 @@ export const onCreateBook = /* GraphQL */ `
   subscription OnCreateBook($filter: ModelSubscriptionBookFilterInput) {
     onCreateBook(filter: $filter) {
       id
-      googleId
+      type
       title
       author
       publisher
@@ -14,7 +14,7 @@ export const onCreateBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
-      advancedInfo
+      collectorInfo
       edition
       printing
       dustJacket
@@ -33,7 +33,7 @@ export const onUpdateBook = /* GraphQL */ `
   subscription OnUpdateBook($filter: ModelSubscriptionBookFilterInput) {
     onUpdateBook(filter: $filter) {
       id
-      googleId
+      type
       title
       author
       publisher
@@ -42,7 +42,7 @@ export const onUpdateBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
-      advancedInfo
+      collectorInfo
       edition
       printing
       dustJacket
@@ -61,7 +61,7 @@ export const onDeleteBook = /* GraphQL */ `
   subscription OnDeleteBook($filter: ModelSubscriptionBookFilterInput) {
     onDeleteBook(filter: $filter) {
       id
-      googleId
+      type
       title
       author
       publisher
@@ -70,7 +70,7 @@ export const onDeleteBook = /* GraphQL */ `
       numOfPages
       synopsis
       cover
-      advancedInfo
+      collectorInfo
       edition
       printing
       dustJacket

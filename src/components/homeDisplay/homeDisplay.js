@@ -8,7 +8,7 @@ import React, {
 import { API } from "aws-amplify";
 
 // Import GraphQl query
-import { listBooksDisplay } from "../../graphql/queries";
+import { listByTitleASC } from "../../graphql/queries";
 
 // CSS File
 import "./homeDisplay.css";
@@ -24,15 +24,19 @@ export default function HomeDisplay() {
     const [bookList, setBookList] = useState();
     // Hook for the bookId
     const [bookId, setBookId] = useState();
+    // hook to update the information so that everything isn't running continously
+    const [updateInfo, setUpdateInfo] = useState(false);
 
     useEffect(() => {
         // Get all of the books from the database
         API.graphql({
-            query: listBooksDisplay
+            query: listByTitleASC
         }).then(res => {
-            setBookList(res.data.listBooks.items)
+            // console.log(res.data.listBooksByTitle.items);
+            setBookList(res.data.listBooksByTitle.items);
+            setUpdateInfo(false);
         })
-    })
+    }, [updateInfo])
 
     // Function for handling viewing a book
     const handleViewBook = (event, buttonId) => {
@@ -42,7 +46,7 @@ export default function HomeDisplay() {
 
     return (
         <div>
-            {!bookList ? <div>No Books</div> :
+            {!bookList || bookList.length === 0 ? <div>No Books</div> :
                 <div className="displayContainer homePageDisplay">
                     {bookList.map(book => (
                         <div className="coverContainer" key={book.id}>
@@ -68,7 +72,7 @@ export default function HomeDisplay() {
                     ))}
                 </div>
             }
-            <BookIdContext.Provider value={{ bookId, setBookId }}>
+            <BookIdContext.Provider value={{ bookId, setBookId, setUpdateInfo }}>
                 <DisplayBookModal />
             </BookIdContext.Provider>
         </div>

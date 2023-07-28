@@ -17,6 +17,7 @@ import { getBook } from "../../graphql/queries";
 
 // Import updateBook from mutations
 import { updateBook } from "../../graphql/mutations";
+import { deleteBook } from "../../graphql/mutations";
 
 // Import BookIdContext
 import { BookIdContext } from "../homeDisplay/homeDisplay";
@@ -28,14 +29,16 @@ import { reducer as editReducer } from "../../functions/reducer";
 import BasicBookInfo from "./basicBookInfo";
 import CollectorInfo from "./collectorInfo";
 import EditBookInfo from "./editBookInfo";
+import DeleteModal from "../deleteModal/deleteModal";
 
 // Create context
 export const BookInfoContext = createContext();
 export const EditBookInfoContext = createContext();
+export const DeleteBookContext = createContext();
 
 export default function DisplayBookModal() {
     // Set hooks from context
-    const { bookId, setBookId } = useContext(BookIdContext)
+    const { bookId, setBookId, setUpdateInfo } = useContext(BookIdContext)
     // Hook for showing displayModal
     const [showDisplayModal, setShowDisplayModal] = useState("none");
     // Book info hook
@@ -44,6 +47,8 @@ export default function DisplayBookModal() {
     const [editInfo, setEditInfo] = useReducer(editReducer, {})
     // Get information again
     const [getUpdated, setGetUpdated] = useState(false);
+    // Show delete modal
+    const [showDeleteModal, setShowDeleteModal] = useState("none");
 
     // Initial get information
     useEffect(() => {
@@ -67,11 +72,12 @@ export default function DisplayBookModal() {
             }).then(res => {
                 setBookInfo(res.data.getBook);
                 setGetUpdated(false);
+                setUpdateInfo(true)
                 document.getElementById("BookInfo").style.display = "block";
                 document.getElementById("EditData").style.display = "none";
             })
         }
-    }, [getUpdated, bookId])
+    }, [getUpdated, bookId, setUpdateInfo])
 
     // Function for opening tabs
     const openTab = (event) => {
@@ -103,10 +109,45 @@ export default function DisplayBookModal() {
         })
     }
 
+    // Show the delete modal
+    const handleShowDeleteModal = event => {
+        event.preventDefault();
+        setShowDeleteModal("block");
+    }
+
+    // handle delete a book
+    const handleDeleteBook = event => {
+        event.preventDefault();
+        // console.log(event.target.name)
+        // Check to see which button has been clicked
+        switch (event.target.name) {
+            // If the name is yesDeleteButton then the book will be deleted
+            case "yesDeleteButton": {
+                API.graphql({
+                    query: deleteBook,
+                    variables: { input: { id: bookId } }
+                }).then(res => {
+                    console.log(res.data);
+                    handleReset();
+                })
+                break
+            }
+            default:
+                setShowDeleteModal("none");
+        }
+    }
+
     // Function for closing the modal
     const handleCloseDisplay = () => {
-        setShowDisplayModal("none")
-        setBookId('');
+        handleReset();
+    }
+
+    // Function for resetting everything
+    const handleReset = () => {
+        setShowDeleteModal("none");
+        setShowDisplayModal("none");
+        setBookId('')
+        setEditInfo({ reset: true })
         document.getElementById("BookInfo").style.display = "block";
         document.getElementById("EditData").style.display = "none";
     }
@@ -131,15 +172,19 @@ export default function DisplayBookModal() {
                                     <CollectorInfo />
                                 </div>
                                 <EditBookInfoContext.Provider value={{ setEditInfo, handleSaveEdit }}>
-                                    <div id="EditData" className="tabContent">
+                                    <div id="EditData" className="tabContent" style={{ display: "none" }}>
                                         <EditBookInfo />
                                     </div>
                                 </EditBookInfoContext.Provider>
                             </BookInfoContext.Provider>
                         </div>
                         <div className="modal-footer">
+                            <button className="modal-deleteButton" onClick={handleShowDeleteModal}>Delete</button>
                             <button className="modal-closeButton" onClick={handleCloseDisplay}>Close</button>
                         </div>
+                        <DeleteBookContext.Provider value={{ showDeleteModal, handleDeleteBook, bookInfo }}>
+                            <DeleteModal />
+                        </DeleteBookContext.Provider>
                     </div>
                 </div>
             }
