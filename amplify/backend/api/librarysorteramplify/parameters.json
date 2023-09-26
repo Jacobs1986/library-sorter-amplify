@@ -1,6 +1,0 @@
-{
-  "AppSyncApiName": "librarysorteramplify",
-  "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2023-07-25T16:59:11.868Z"
-}
