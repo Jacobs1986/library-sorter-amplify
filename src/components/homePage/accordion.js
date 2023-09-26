@@ -5,6 +5,6 @@ import "./homePage-styles.css";
 
 export default function AccordionView() {
     return (
-        <div>This is the accordion view.</div>
+        <div className="row"><div className="col-xs-12">This is the accordion view.</div></div>
     );
 };

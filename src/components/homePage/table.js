@@ -5,6 +5,6 @@ import "./homePage-styles.css";
 
 export default function TableView() {
     return (
-        <div>This is the table view.</div>
+        <div className="row"><div className="col-xs-12">This is the table view.</div></div>
     );
 };
