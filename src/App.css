@@ -1,0 +1,14 @@
+/* Import layout */
+@import "./styles/layout.css";
+
+/* Styling for the site */
+
+/* Remove the margins */
+body {
+    margin: 0px;
+}
+
+/* Center text */
+.centerText {
+    text-align: center;
+}
