@@ -23,17 +23,6 @@
     display: block;
     overflow: hidden;
     height: 0em;
-    animation-name: hideLib;
-    animation-duration: 0.5s;
-}
-
-@keyframes hideLib {
-    from {
-        height: 9em;
-    }
-    to {
-        height: 0em;
-    }
 }
 
 .panel.responsive {
