@@ -23,10 +23,11 @@ export default function HomePage() {
             <LibInfo.Provider value={{ libraryView, setLibraryView }}>
                 {/* Radios */}
                 <ViewerRadios />
-                {/* Accordion View */}
-                <AccordionView />
-                {/* Table view */}
-                <TableView />
+                {libraryView === "Accordion" ?
+                    // Accordion view
+                    <AccordionView /> :
+                    // Table view
+                    <TableView /> }
                 {/* New Library form */}
                 <NewLibraryForm />
             </LibInfo.Provider>
