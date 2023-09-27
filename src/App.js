@@ -6,7 +6,8 @@ import {
 } from "react-router-dom";
 
  // Styling
-import './App.css'
+import './App.css';
+import "./styles/layout.css";
 
 // Pages
 import HomePage from "./pages/home-page";
