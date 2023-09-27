@@ -20,6 +20,33 @@
 .panel {
     padding: 0px 18px;
     background-color: white;
-    display: none;
+    display: block;
     overflow: hidden;
+    height: 0em;
+    animation-name: hideLib;
+    animation-duration: 0.5s;
+}
+
+@keyframes hideLib {
+    from {
+        height: 9em;
+    }
+    to {
+        height: 0em;
+    }
+}
+
+.panel.responsive {
+    height: 9em;
+    animation-name: showLib;
+    animation-duration: 0.5s;
+}
+
+@keyframes showLib {
+    from {
+        height: 0em;
+    }
+    to {
+        height: 9em;
+    }
 }
