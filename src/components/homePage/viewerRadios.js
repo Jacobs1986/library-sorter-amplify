@@ -3,7 +3,8 @@ import React, {
 } from "react";
 
 // CSS File
-import "./homePage-styles.css";
+import "./styles/radio-styles.css";
+import "./styles/media-queries.css";
 
 // Import context
 import { LibInfo } from "../../pages/home-page";

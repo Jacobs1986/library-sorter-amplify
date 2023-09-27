@@ -1,8 +1,8 @@
 import React from "react";
 
 // CSS File
-import "./homePage-styles.css";
-import "./homePage-styles-media.css";
+import "./styles/banner-styles.css";
+import "./styles/media-queries.css";
 
 export default function HomePageBanner() {
     return (
