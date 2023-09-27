@@ -1,0 +1,10 @@
+/* Styling for the radioDiv */
+/* Span */
+.radioDiv span {
+    font-weight: bold;
+}
+
+/* labels */
+.radioDiv label {
+    padding: 0.3em;
+}
