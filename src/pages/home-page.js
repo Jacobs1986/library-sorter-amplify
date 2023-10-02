@@ -21,6 +21,8 @@ export default function HomePage() {
             {/* Home Page Banner */}
             <HomePageBanner />
             <LibInfo.Provider value={{ libraryView, setLibraryView }}>
+                {/* New Library form */}
+                <NewLibraryForm />
                 {/* Radios */}
                 <ViewerRadios />
                 {libraryView === "Accordion" ?
@@ -28,8 +30,6 @@ export default function HomePage() {
                     <AccordionView /> :
                     // Table view
                     <TableView /> }
-                {/* New Library form */}
-                <NewLibraryForm />
             </LibInfo.Provider>
         </div>
     );
