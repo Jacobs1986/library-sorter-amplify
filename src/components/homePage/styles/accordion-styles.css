@@ -26,9 +26,10 @@
 }
 
 .panel.responsive {
-    height: 9em;
+    height: 24em;
     animation-name: showLib;
     animation-duration: 0.5s;
+    overflow: scroll;
 }
 
 @keyframes showLib {
@@ -36,6 +37,6 @@
         height: 0em;
     }
     to {
-        height: 9em;
+        height: 24em;
     }
 }

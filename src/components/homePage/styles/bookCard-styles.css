@@ -1,0 +1,11 @@
+/* Card div */
+.bookCard {
+    width: 15em;
+    border: 1px solid lightgray;
+    margin-top: 5px;
+}
+
+/* Book info */
+.bookCard-info {
+    text-align: center;
+}
