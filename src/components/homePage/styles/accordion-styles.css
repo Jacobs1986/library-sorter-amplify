@@ -1,0 +1,42 @@
+/* Style for the accordion buttons */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Background color for active class and hovering over the button */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+/* Panel styling */
+.panel {
+    padding: 0px 18px;
+    background-color: white;
+    display: block;
+    overflow: hidden;
+    height: 0em;
+}
+
+.panel.responsive {
+    height: 24em;
+    animation-name: showLib;
+    animation-duration: 0.5s;
+    overflow: scroll;
+}
+
+@keyframes showLib {
+    from {
+        height: 0em;
+    }
+    to {
+        height: 24em;
+    }
+}

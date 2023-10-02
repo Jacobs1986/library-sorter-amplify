@@ -1,0 +1,14 @@
+/* Card div */
+.bookCard {
+    width: auto;
+}
+
+/* No cover */
+.noCover {
+    border: 1px solid lightgray;
+}
+
+/* Book info */
+.bookCard-info {
+    text-align: center;
+}

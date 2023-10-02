@@ -1,0 +1,35 @@
+/* Image container */
+.bannerContainer {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* text, center */
+.centerBannerText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.53em;
+}
+
+/* text, bottom right */
+.bottom-right {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+
+/* Attribution link */
+.attributionLink {
+    font-size: 0.7em;
+}
+.attributionLink a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+/* Styling for the radioDiv */
+
+/* Media breaks */
