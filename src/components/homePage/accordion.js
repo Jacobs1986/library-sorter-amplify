@@ -1,4 +1,5 @@
 import React, {
+    createContext,
     useContext,
     useState
 } from "react";
@@ -11,6 +12,9 @@ import BookCards from "./bookCards";
 
 // Import context
 import { LibInfo } from "../../pages/home-page";
+
+// Create a BookList context
+export const BookList = createContext();
 
 export default function AccordionView() {
     // prevId
@@ -45,7 +49,7 @@ export default function AccordionView() {
                 // Set to have panel class only
                 panel.className = "panel"
             }
-        } 
+        }
         // The default
         else {
             // Open the new panel
@@ -64,7 +68,9 @@ export default function AccordionView() {
                     <button className="accordion" id={library.id} onClick={handleShowLib}>{library.name}</button>
                     {/* Panel for the accordion */}
                     <div className="panel">
-                        <BookCards />
+                        <BookList.Provider value={{ library }}>
+                            <BookCards />
+                        </BookList.Provider>
                     </div>
                 </div>
             ))}
