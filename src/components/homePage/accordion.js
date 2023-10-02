@@ -19,21 +19,21 @@ export default function AccordionView() {
         let panel = document.getElementById(elementId).nextElementSibling;
          // Check to see if the prevId is unknown
         // If it is defined then the previous panel needs to be closed
-        if (prevId !== "") {
+        // if (prevId !== "") {
             // Set prevPanel variable
-            let prevPanel = document.getElementById(prevId).nextElementSibling;
+            // let prevPanel = document.getElementById(prevId).nextElementSibling;
             // add responsive to panel.className
-            panel.className += " responsive";
+            // panel.className += " responsive";
             // Remove responsive from the previous panel
-            prevPanel.className = "panel";
+            // prevPanel.className = "panel";
             // set elementId to prevId
-            setPrevId(elementId);
-        } else {
+            // setPrevId(elementId);
+        // } else {
             // add responsive to the panel.className
-            panel.className += " responsive";
+            // panel.className += " responsive";
             // set elementId to prevId
-            setPrevId(elementId);
-        }
+            // setPrevId(elementId);
+        // }
     }
     
     return (
