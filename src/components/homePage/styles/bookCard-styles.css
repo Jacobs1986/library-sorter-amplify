@@ -1,6 +1,10 @@
 /* Card div */
 .bookCard {
     width: auto;
+}
+
+/* No cover */
+.noCover {
     border: 1px solid lightgray;
 }
 
