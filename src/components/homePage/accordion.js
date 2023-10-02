@@ -5,6 +5,9 @@ import React, {
 // CSS File
 import "./styles/accordion-styles.css";
 
+// Components
+import BookCards from "./bookCards";
+
 export default function AccordionView() {
     // prevId
     const [prevId, setPrevId] = useState("");
@@ -35,17 +38,17 @@ export default function AccordionView() {
     
     return (
         <div className="row">
-            <div className="col-xs-12">
+            <div className="col-xs-12 col-s-12">
                 {/* Accordion button */}
                 <button className="accordion" id="libButton1" onClick={handleShowLib}>Library 1</button>
                 {/* Panel for the accordion */}
                 <div className="panel">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <BookCards />
                 </div>
                 <button className="accordion" id="libButton2" onClick={handleShowLib}>Library 2</button>
                 {/* Panel for the accordion */}
                 <div className="panel">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <BookCards />
                 </div>
             </div>
         </div>
