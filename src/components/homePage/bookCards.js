@@ -6,7 +6,7 @@ import "./styles/bookCard-styles.css";
 export default function BookCards() {
     return (
         <div className="row">
-            <div className="col-xs-12 col-s-4 col-xl-3">
+            <div className="col-xs-12 col-s-4 col-xl-2">
                 {/* The card div */}
                 <div className="bookCard">
                     {/* Book image */}
@@ -22,7 +22,7 @@ export default function BookCards() {
                     </div>
                 </div>
             </div>
-            <div className="col-xs-12 col-s-4 col-xl-3">
+            <div className="col-xs-12 col-s-4 col-xl-2">
                 {/* The card div */}
                 <div className="bookCard">
                     {/* Book image */}
@@ -38,7 +38,7 @@ export default function BookCards() {
                     </div>
                 </div>
             </div>
-            <div className="col-xs-12 col-s-4 col-xl-3">
+            <div className="col-xs-12 col-s-4 col-xl-2">
                 {/* The card div */}
                 <div className="bookCard">
                     {/* Book image */}
