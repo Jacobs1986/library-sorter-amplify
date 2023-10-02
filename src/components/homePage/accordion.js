@@ -17,25 +17,28 @@ export default function AccordionView() {
         let elementId = event.target.id;
         // Get the next sibling
         let panel = document.getElementById(elementId).nextElementSibling;
-         // Check to see if the prevId is unknown
+        // Begin the switch statment
+        // If prevId is the same as elementId
+        // default
+        // Check to see if the prevId is unknown
         // If it is defined then the previous panel needs to be closed
-        // if (prevId !== "") {
-            // Set prevPanel variable
-            // let prevPanel = document.getElementById(prevId).nextElementSibling;
-            // add responsive to panel.className
-            // panel.className += " responsive";
-            // Remove responsive from the previous panel
-            // prevPanel.className = "panel";
-            // set elementId to prevId
-            // setPrevId(elementId);
+        // if (prevId !== elementId && prevId !== "") {
+        // Set prevPanel variable
+        // let prevPanel = document.getElementById(prevId).nextElementSibling;
+        // add responsive to panel.className
+        // panel.className += " responsive";
+        // Remove responsive from the previous panel
+        // prevPanel.className = "panel";
+        // set elementId to prevId
+        // setPrevId(elementId);
         // } else {
-            // add responsive to the panel.className
-            // panel.className += " responsive";
-            // set elementId to prevId
-            // setPrevId(elementId);
+        // add responsive to the panel.className
+        // panel.className += " responsive";
+        // set elementId to prevId
+        // setPrevId(elementId);
         // }
     }
-    
+
     return (
         <div className="row">
             <div className="col-xs-12 col-s-12">
