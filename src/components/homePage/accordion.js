@@ -11,27 +11,42 @@ import BookCards from "./bookCards";
 export default function AccordionView() {
     // prevId
     const [prevId, setPrevId] = useState("");
-    const [prevPanel, setPrevPanel] = useState("");
 
     const handleShowLib = event => {
         // First get the id of the element
         let elementId = event.target.id;
         // Get the next sibling
         let panel = document.getElementById(elementId).nextElementSibling;
-        // Check to see if there is a prevId
-            // set the prevPanel
-        // Begin the switch statment
-            // If elementId and prevId do not match
-                // Close the prevPanel
-                // Open the new panel
-                // set elementId to prevId
-            // If elementId and prevId do match
-                // Check the state of panel.className
-                    // add responsive class
-                    // set to panel class only
-            // The default
-                // Open the new panel
-                // Set elementId to prevId
+        // Begin conditional
+        // If elementId and prevId do not match AND prevId is defined
+        if (elementId !== prevId && prevId !== "") {
+            // Get the state of the prevPanel
+            let prevPanel = document.getElementById(prevId).nextElementSibling;
+            // Close the prev panel
+            prevPanel.className = "panel";
+            // Open the new panel
+            panel.className += " responsive";
+            // Set elementId to prevId
+            setPrevId(elementId);
+        }
+        // If elementId and prevId match
+        else if (elementId === prevId) {
+            // Check the state of panel.className
+            if (panel.className === "panel") {
+                // Add the responsive class
+                panel.className += " responsive";
+            } else {
+                // Set to have panel class only
+                panel.className = "panel"
+            }
+        } 
+        // The default
+        else {
+            // Open the new panel
+            panel.className += " responsive";
+            // Set elementId to prevId
+            setPrevId(elementId);
+        }
     }
 
     return (
