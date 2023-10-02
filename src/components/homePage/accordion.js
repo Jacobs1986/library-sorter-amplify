@@ -1,4 +1,5 @@
 import React, {
+    useContext,
     useState
 } from "react";
 
@@ -8,12 +9,14 @@ import "./styles/accordion-styles.css";
 // Components
 import BookCards from "./bookCards";
 
-// Import json file
-import libraryList from "./testLibrary.json";
+// Import context
+import { LibInfo } from "../../pages/home-page";
 
 export default function AccordionView() {
     // prevId
     const [prevId, setPrevId] = useState("");
+    // libraryList
+    const { libraryList } = useContext(LibInfo);
 
     const handleShowLib = event => {
         // First get the id of the element

@@ -10,17 +10,21 @@ import NewLibraryForm from "../components/homePage/newLibraryForm";
 import TableView from "../components/homePage/table";
 import ViewerRadios from "../components/homePage/viewerRadios";
 
+// Import testLibrary
+import libraryList from "./testLibrary.json";
+
 // Context
 export const LibInfo = createContext();
 
 export default function HomePage() {
     // Set the library view
-    const [libraryView, setLibraryView] = useState("Accordion")
+    const [libraryView, setLibraryView] = useState("Accordion");
+
     return (
         <div>
             {/* Home Page Banner */}
             <HomePageBanner />
-            <LibInfo.Provider value={{ libraryView, setLibraryView }}>
+            <LibInfo.Provider value={{ libraryView, setLibraryView, libraryList }}>
                 {/* New Library form */}
                 <NewLibraryForm />
                 {/* Radios */}
