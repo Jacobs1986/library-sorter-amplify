@@ -11,7 +11,7 @@ export default function BookCards() {
         <div className="row">
             {/* Map the information */}
             {bookList.map((book, i) => (
-                <div className="col-xs-12 col-s-4 col-xl-2" key={i}>
+                <div className="col-xs-12 col-s-4 col-lg-3 col-xl-2" key={i}>
                     {/* The card div */}
                     <div className={book.cover === "blank-cover.png" ? "bookCard noCover" : "bookCard"}>
                         {/* Book image */}

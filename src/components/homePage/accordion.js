@@ -8,6 +8,9 @@ import "./styles/accordion-styles.css";
 // Components
 import BookCards from "./bookCards";
 
+// Import json file
+import libraryList from "./testLibrary.json";
+
 export default function AccordionView() {
     // prevId
     const [prevId, setPrevId] = useState("");
@@ -51,19 +54,17 @@ export default function AccordionView() {
 
     return (
         <div className="row">
-            <div className="col-xs-12 col-s-12">
-                {/* Accordion button */}
-                <button className="accordion" id="libButton1" onClick={handleShowLib}>Library 1</button>
-                {/* Panel for the accordion */}
-                <div className="panel">
-                    <BookCards />
+            {/* Begin mapping the information */}
+            {libraryList.map((library, i) => (
+                <div className="col-xs-12 col-s-12" key={i}>
+                    {/* Accordion button */}
+                    <button className="accordion" id={library.id} onClick={handleShowLib}>{library.name}</button>
+                    {/* Panel for the accordion */}
+                    <div className="panel">
+                        <BookCards />
+                    </div>
                 </div>
-                <button className="accordion" id="libButton2" onClick={handleShowLib}>Library 2</button>
-                {/* Panel for the accordion */}
-                <div className="panel">
-                    <BookCards />
-                </div>
-            </div>
+            ))}
         </div>
     );
 };
