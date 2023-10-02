@@ -30,5 +30,10 @@
                 "author": "Peter Grey"
             }
         ]
+    },
+    {
+        "name": "Test Library 3",
+        "id": "testLib3",
+        "bookList": []
     }
 ]
