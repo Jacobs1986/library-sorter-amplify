@@ -4,7 +4,7 @@ import React, {
 } from "react";
 
 // Components
-import AccordionView from "../components/homePage/accordion";
+import CoverView from "../components/homePage/coverView";
 import HomePageBanner from "../components/homePage/banner";
 import NewLibraryForm from "../components/homePage/newLibraryForm";
 import TableView from "../components/homePage/table";
@@ -18,7 +18,7 @@ export const LibInfo = createContext();
 
 export default function HomePage() {
     // Set the library view
-    const [libraryView, setLibraryView] = useState("Accordion");
+    const [libraryView, setLibraryView] = useState("Covers");
 
     return (
         <div>
@@ -29,9 +29,9 @@ export default function HomePage() {
                 <NewLibraryForm />
                 {/* Radios */}
                 <ViewerRadios />
-                {libraryView === "Accordion" ?
-                    // Accordion view
-                    <AccordionView /> :
+                {libraryView === "Covers" ?
+                    // Images view
+                    <CoverView /> :
                     // Table view
                     <TableView /> }
             </LibInfo.Provider>

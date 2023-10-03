@@ -16,7 +16,7 @@ import { LibInfo } from "../../pages/home-page";
 // Create a BookList context
 export const BookList = createContext();
 
-export default function AccordionView() {
+export default function CoverView() {
     // prevId
     const [prevId, setPrevId] = useState("");
     // libraryList

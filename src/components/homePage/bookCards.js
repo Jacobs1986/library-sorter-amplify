@@ -7,7 +7,7 @@ import React, {
 import "./styles/bookCard-styles.css";
 
 // Import context
-import { BookList } from "./accordion";
+import { BookList } from "./coverView";
 
 export default function BookCards() {
     // libraryList
