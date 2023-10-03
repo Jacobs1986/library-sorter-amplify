@@ -30,7 +30,7 @@ export default function BookCards() {
                         <div className={book.cover === "blank-cover.png" ? "bookCard noCover" : "bookCard"}>
                             {/* Book Cover */}
                             <img
-                                src={`./Images/${book.cover}`}
+                                src={book.cover === "blank-cover.png" ? `./Images/${book.cover}` : book.cover }
                                 alt="A picture of the book cover."
                                 width={"100%"}
                             />
