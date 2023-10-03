@@ -60,7 +60,7 @@ export default function AccordionView() {
     }
 
     return (
-        <div className="row">
+        <div className="row accordion-row">
             {/* Begin mapping the information */}
             {libraryList.map((library, i) => (
                 <div className="col-xs-12 col-s-12" key={i}>
