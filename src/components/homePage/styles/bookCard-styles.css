@@ -1,6 +1,12 @@
 /* Card div */
 .bookCard {
     width: auto;
+    transition: 0.3s;
+}
+
+.bookCard:hover {
+    cursor: pointer;
+    box-shadow: 5px 10px 25px 0 grey;
 }
 
 /* No cover */
