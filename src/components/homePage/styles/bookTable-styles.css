@@ -1,0 +1,21 @@
+.bookTable {
+    width: 100%;
+}
+
+.bookTable, .bookTable th, .bookTable td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.bookTable th,
+.bookTable td {
+    padding: 8px;
+}
+
+.bookTable td {
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
