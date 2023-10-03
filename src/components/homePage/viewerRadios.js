@@ -32,7 +32,7 @@ export default function ViewerRadios() {
     }
 
     return (
-        <div className="row">
+        <div className="row md-font-size lg-font-size xl-font-size">
             <div className="col-xs-12 radioDiv">
                 <span>Toggle Library View:</span>
                 {/* Radio for the covers view */}
