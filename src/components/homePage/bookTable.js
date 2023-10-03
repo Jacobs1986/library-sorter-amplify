@@ -23,19 +23,23 @@ export default function BookTable() {
                 <div className="col-xs-12" style={{ overflowX: "auto" }}>
                     <table className="bookTable">
                         {/* Table header */}
-                        <tr>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>ISBN</th>
-                        </tr>
-                        {/* Table row */}
-                        {library.bookList.map((book, i) => (
-                            <tr key={i}>
-                                <td>{book.title}</td>
-                                <td>{book.author}</td>
-                                <td>{book.isbn}</td>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>ISBN</th>
                             </tr>
-                        ))}
+                        </thead>
+                        {/* Table Body */}
+                        <tbody>
+                            {library.bookList.map((book, i) => (
+                                <tr key={i}>
+                                    <td>{book.title}</td>
+                                    <td>{book.author}</td>
+                                    <td>{book.isbn}</td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 </div>
             }
