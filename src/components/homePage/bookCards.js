@@ -1,21 +1,16 @@
 import React, {
-    useContext,
-    useEffect
+    useContext
 } from "react";
 
 // CSS File
 import "./styles/bookCard-styles.css";
 
 // Import context
-import { BookList } from "./accordion";
+import { BookList } from "./coverView";
 
 export default function BookCards() {
     // libraryList
     const { library } = useContext(BookList);
-
-    useEffect(() => {
-        console.log(library.bookList.length)
-    }, [])
 
     return (
         <div className="row">

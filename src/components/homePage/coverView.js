@@ -16,7 +16,7 @@ import { LibInfo } from "../../pages/home-page";
 // Create a BookList context
 export const BookList = createContext();
 
-export default function AccordionView() {
+export default function CoverView() {
     // prevId
     const [prevId, setPrevId] = useState("");
     // libraryList
@@ -60,7 +60,7 @@ export default function AccordionView() {
     }
 
     return (
-        <div className="row">
+        <div className="row accordion-row md-font-size lg-font-size xl-font-size">
             {/* Begin mapping the information */}
             {libraryList.map((library, i) => (
                 <div className="col-xs-12 col-s-12" key={i}>

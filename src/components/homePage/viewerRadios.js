@@ -24,26 +24,26 @@ export default function ViewerRadios() {
                 // set libraryView to Table
                 setLibraryView("Table");
                 break
-            // default is Accordion
+            // default is Cover
             default:
-                setLibraryView("Accordion");
+                setLibraryView("Covers");
         }
 
     }
 
     return (
-        <div className="row">
+        <div className="row md-font-size lg-font-size xl-font-size">
             <div className="col-xs-12 radioDiv">
                 <span>Toggle Library View:</span>
-                {/* Radio for the accordion view */}
+                {/* Radio for the covers view */}
                 <label>
                     <input
                         type="radio"
                         name="library-display"
-                        value="Accordion"
-                        checked={libraryView === "Accordion"}
+                        value="Covers"
+                        checked={libraryView === "Covers"}
                         onChange={handleChangeLibDisplay}
-                    /> Accordion
+                    /> Covers
                 </label>
                 {/* Radio for the table view */}
                 <label>

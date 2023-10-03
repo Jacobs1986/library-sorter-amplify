@@ -10,3 +10,24 @@ body {
 .centerText {
     text-align: center;
 }
+
+/* Font-size for a medium screen */
+@media screen and (min-width: 768px){
+    .md-font-size, .md-font-size button, .md-font-size input {
+        font-size: 25px;
+    }
+}
+
+/* Font-size for a large screen  */
+@media screen and (min-width: 992px){
+    .lg-font-size, .lg-font-size button, .lg-font-size input {
+        font-size: 20px;
+    }
+}
+
+/* Font-size for a extra large screen  */
+@media screen and (min-width: 1200px){
+    .xl-font-size, .xl-font-size button, .xl-font-size input {
+        font-size: inherit;
+    }
+}

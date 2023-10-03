@@ -32,4 +32,10 @@
     .centerBannerText {
         font-size: 5.9em;
     }
+
+    /* Accordion row */
+    .accordion-row {
+        height: 25em;
+        overflow: scroll;
+    }
 }
