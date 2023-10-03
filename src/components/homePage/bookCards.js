@@ -1,6 +1,5 @@
 import React, {
-    useContext,
-    useEffect
+    useContext
 } from "react";
 
 // CSS File
@@ -12,10 +11,6 @@ import { BookList } from "./coverView";
 export default function BookCards() {
     // libraryList
     const { library } = useContext(BookList);
-
-    useEffect(() => {
-        console.log(library.bookList.length)
-    }, [])
 
     return (
         <div className="row">
