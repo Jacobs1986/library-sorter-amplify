@@ -9,7 +9,7 @@ export default function NewLibraryForm() {
             {/* Button to show the form */}
             <div className="row">
                 <div className="col-xs-12">
-                    <button>Add New Library</button>
+                    <div className="button">Add New Library</div>
                 </div>
             </div>
             {/* The form */}
@@ -20,10 +20,12 @@ export default function NewLibraryForm() {
                         <div className="col-xs-12 col-s-3 col-lg-2 center-form-label">
                             <label className="boldLabel" htmlFor="newLibName">Library Name:</label>
                         </div>
+                        {/* Input */}
                         <div className="col-xs-12 col-s-7 col-lg-4">
                             <input type="text" id="newLibName" name="newName" />
                         </div>
                     </div>
+                    {/* Submit and Cancel buttons */}
                     <div className="row">
                         <div className="col-xs-12">
                             <button className="formButton-btm">Submit</button>

@@ -1,0 +1,11 @@
+/* Styling for a basic button */
+.button {
+    background-color: #eee9e9;
+    padding: 7px;
+    border-radius: 4px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #cec6c6;
+}
