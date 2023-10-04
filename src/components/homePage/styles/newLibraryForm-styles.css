@@ -4,6 +4,17 @@
     padding: 7px;
 }
 
+/* Right caret */
+.buttonCaretRight {
+    float: right;
+    rotate: 0deg;
+    transition: 0.3s;
+}
+
+.buttonCaretRight.activeForm {
+    rotate: 90deg;
+}
+
 /* Label styling */
 .boldLabel {
     font-weight: bold;

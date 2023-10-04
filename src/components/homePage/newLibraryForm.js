@@ -1,10 +1,13 @@
-import React from "react";
-import { AiFillCaretRight } from "react-icons/ai";
+import React, {
+    useState
+} from "react";
+import { AiFillCaretRight, AiFillCaretDown } from "react-icons/ai";
 
 // CSS File
 import "./styles/newLibraryForm-styles.css";
 
 export default function NewLibraryForm() {
+    const [showForm, setShowForm] = useState(false);
 
     // Funtion to show the form
     const handleShowForm = event => {
@@ -15,15 +18,16 @@ export default function NewLibraryForm() {
         // Begin the switch statement
         switch (currentClass.className) {
             // If the currentClass is rightArrow
-            case "rightArrow":
+            case "buttonCaretRight":
                 // Add activeForm
                 currentClass.className += " activeForm";
                 break
             // Default
             default:
                 // Remove activeForm
-                currentClass.className = "rightArrow";
+                currentClass.className = "buttonCaretRight";
         }
+        console.log(currentClass);
     }
 
     return (
@@ -33,7 +37,7 @@ export default function NewLibraryForm() {
                 <div className="col-xs-12">
                     <div className="button" onClick={handleShowForm} id="showNewLibForm">
                         Add New Library
-                        <span className="rightArrow" ><AiFillCaretRight /></span>
+                        <div className="buttonCaretRight"><AiFillCaretRight/></div>
                     </div>
                 </div>
             </div>
