@@ -1,0 +1,27 @@
+type Library @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  Books: [Books] @hasMany(indexName: "byLibrary", fields: ["id"])
+}
+
+type Books @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  libraryID: ID! @index(name: "byLibrary")
+  title: String!
+  authorNameFirst: String
+  authorLastName: String
+  cover: String
+  isbn: String
+  pubDate: String
+  numOfPages: Int
+  synopsis: String
+  collectorItem: Boolean
+  edition: String
+  printing: String
+  dustJacket: String
+  condition: String
+  damage: String
+  aquisitionDate: String
+  acquiredFrom: String
+  aquisitionCost: String
+}
