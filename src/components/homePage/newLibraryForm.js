@@ -1,18 +1,34 @@
 import React, {
-    useState
+    useEffect,
+    useState,
+    useReducer
 } from "react";
 import { AiFillCaretRight } from "react-icons/ai";
 
 // CSS File
 import "./styles/newLibraryForm-styles.css";
 
+// Import reducer
+import { reducer as newLibReducer } from "../../functions/reducer";
+
 export default function NewLibraryForm() {
     const [showForm, setShowForm] = useState(true);
+    const [newLibName, setNewLibName] = useReducer(newLibReducer, {});
 
     // Funtion to show the form
     const handleShowForm = event => {
         // Change showForm state
         setShowForm(!showForm);
+    }
+
+    // Function for handling the name input
+    const handleNewNameInput = event => {
+        // Input new name
+        setNewLibName({
+            type: 'add',
+            name: event.target.name,
+            value: event.target.value
+        })
     }
 
     return (
@@ -38,7 +54,7 @@ export default function NewLibraryForm() {
                         </div>
                         {/* Input */}
                         <div className="col-xs-12 col-s-7 col-lg-4">
-                            <input type="text" id="newLibName" name="newName" />
+                            <input type="text" id="newLibName" name="name" value={newLibName.name || ""} onChange={handleNewNameInput} />
                         </div>
                     </div>
                     {/* Submit and Cancel buttons */}
