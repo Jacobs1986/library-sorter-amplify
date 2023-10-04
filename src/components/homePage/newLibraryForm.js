@@ -3,16 +3,20 @@ import React, {
     useState,
     useReducer
 } from "react";
+// Icon
 import { AiFillCaretRight } from "react-icons/ai";
 
 // CSS File
 import "./styles/newLibraryForm-styles.css";
 
+// Import API
+// import { API } from "aws-amplify";
+
 // Import reducer
 import { reducer as newLibReducer } from "../../functions/reducer";
 
 export default function NewLibraryForm() {
-    const [showForm, setShowForm] = useState(true);
+    const [showForm, setShowForm] = useState(false);
     const [newLibName, setNewLibName] = useReducer(newLibReducer, {});
 
     // Funtion to show the form
@@ -29,6 +33,27 @@ export default function NewLibraryForm() {
             name: event.target.name,
             value: event.target.value
         })
+    }
+
+    // Function for creating a new library
+    const handleCreateLib = () => {
+        // API.graphql({
+        //     query: listLibraries
+        // }).then(res => {
+        //     console.log(res.data);
+        // })
+        // Send information to the GraphQL database
+        // API.graphql({
+        //     query: createLibrary,
+        //     variables: { 
+        //         input: {
+        //             "name": newLibName.name,
+        //             "books": []
+        //         } }
+        // }).then(res => {
+        //     console.log(res.data);
+        //     handleCloseForm();
+        // })
     }
 
     // Function to close the form and clear the data
@@ -68,7 +93,7 @@ export default function NewLibraryForm() {
                     {/* Submit and Cancel buttons */}
                     <div className="row">
                         <div className="col-xs-12">
-                            <div className="button formButton-btm btnGo">Submit</div>
+                            <div className="button formButton-btm btnGo" onClick={handleCreateLib}>Submit</div>
                             <div className="button formButton-btm btnStop" onClick={handleCloseForm}>Cancel</div>
                         </div>
                     </div>
