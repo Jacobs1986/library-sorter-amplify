@@ -7,7 +7,7 @@ import { AiFillCaretRight } from "react-icons/ai";
 import "./styles/newLibraryForm-styles.css";
 
 export default function NewLibraryForm() {
-    const [showForm, setShowForm] = useState(false);
+    const [showForm, setShowForm] = useState(true);
 
     // Funtion to show the form
     const handleShowForm = event => {
@@ -44,8 +44,8 @@ export default function NewLibraryForm() {
                     {/* Submit and Cancel buttons */}
                     <div className="row">
                         <div className="col-xs-12">
-                            <button className="formButton-btm">Submit</button>
-                            <button>Cancel</button>
+                            <div className="button formButton-btm btnGo">Submit</div>
+                            <div className="button formButton-btm btnStop">Cancel</div>
                         </div>
                     </div>
                 </form>
