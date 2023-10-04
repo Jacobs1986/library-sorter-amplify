@@ -4,26 +4,12 @@
 export const createLibrary = /* GraphQL */ `
   mutation CreateLibrary(
     $input: CreateLibraryInput!
-    $condition: ModelLibraryConditionInput
   ) {
-    createLibrary(input: $input, condition: $condition) {
+    createLibrary(input: $input) {
       id
-      name
-      books {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          libraryBooksId
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdAt
+      name
       updatedAt
-      __typename
     }
   }
 `;

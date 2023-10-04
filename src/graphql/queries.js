@@ -25,25 +25,24 @@ export const getLibrary = /* GraphQL */ `
   }
 `;
 export const listLibraries = /* GraphQL */ `
-  query ListLibraries(
-    $filter: ModelLibraryFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listLibraries(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  query ListLibraries {
+    listLibraries {
       items {
-        id
         name
-        books {
-          nextToken
-          __typename
-        }
+        id
         createdAt
         updatedAt
-        __typename
+        Books {
+          items {
+            authorLastName
+            authorNameFirst
+            cover
+            id
+            isbn
+            title
+          }
+        }
       }
-      nextToken
-      __typename
     }
   }
 `;

@@ -10,7 +10,10 @@ import { AiFillCaretRight } from "react-icons/ai";
 import "./styles/newLibraryForm-styles.css";
 
 // Import API
-// import { API } from "aws-amplify";
+import { API } from "aws-amplify";
+
+// Import createLibrary
+import { createLibrary } from "../../graphql/mutations";
 
 // Import reducer
 import { reducer as newLibReducer } from "../../functions/reducer";
@@ -37,23 +40,14 @@ export default function NewLibraryForm() {
 
     // Function for creating a new library
     const handleCreateLib = () => {
-        // API.graphql({
-        //     query: listLibraries
-        // }).then(res => {
-        //     console.log(res.data);
-        // })
         // Send information to the GraphQL database
-        // API.graphql({
-        //     query: createLibrary,
-        //     variables: { 
-        //         input: {
-        //             "name": newLibName.name,
-        //             "books": []
-        //         } }
-        // }).then(res => {
-        //     console.log(res.data);
-        //     handleCloseForm();
-        // })
+        API.graphql({
+            query: createLibrary,
+            variables: { input: newLibName }
+        }).then(res => {
+            console.log(res.data);
+            handleCloseForm();
+        })
     }
 
     // Function to close the form and clear the data
