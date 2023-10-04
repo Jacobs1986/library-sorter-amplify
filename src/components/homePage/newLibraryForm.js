@@ -11,22 +11,6 @@ export default function NewLibraryForm() {
 
     // Funtion to show the form
     const handleShowForm = event => {
-        // Get the elements id
-        let elementId = event.target.id;
-        // Get the next className of the span
-        let currentClass = document.getElementById(elementId).firstElementChild;
-        // Begin the switch statement
-        switch (currentClass.className) {
-            // If the currentClass is rightArrow
-            case "buttonCaretRight":
-                // Add activeForm
-                currentClass.className += " activeForm";
-                break
-            // Default
-            default:
-                // Remove activeForm
-                currentClass.className = "buttonCaretRight";
-        }
         // Change showForm state
         setShowForm(!showForm);
     }
@@ -38,13 +22,15 @@ export default function NewLibraryForm() {
                 <div className="col-xs-12">
                     <div className="button" onClick={handleShowForm} id="showNewLibForm">
                         Add New Library
-                        <div className="buttonCaretRight"><AiFillCaretRight/></div>
+                        <div className="buttonCaretRight" style={!showForm ? { rotate: "0deg" } : { rotate: "90deg" }}>
+                            <AiFillCaretRight />
+                        </div>
                     </div>
                 </div>
             </div>
             {/* The form */}
             <div className="row">
-                <form style={ !showForm ? { height: "0em" } : { height: "6em"} } className="newLibForm">
+                <form style={!showForm ? { height: "0em" } : { height: "6em" }} className="newLibForm">
                     <div className="row">
                         {/* Label */}
                         <div className="col-xs-12 col-s-3 col-lg-2 center-form-label">

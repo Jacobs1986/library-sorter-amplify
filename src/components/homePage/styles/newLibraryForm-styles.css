@@ -7,12 +7,7 @@
 /* Right caret */
 .buttonCaretRight {
     float: right;
-    rotate: 0deg;
     transition: 0.3s;
-}
-
-.buttonCaretRight.activeForm {
-    rotate: 90deg;
 }
 
 /* NewLib form */
@@ -20,6 +15,7 @@
     overflow: hidden;
     transition: 0.3s;
 }
+
 /* Label styling */
 .boldLabel {
     font-weight: bold;
