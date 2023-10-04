@@ -31,6 +31,14 @@ export default function NewLibraryForm() {
         })
     }
 
+    // Function to close the form and clear the data
+    const handleCloseForm = () => {
+        // Change showForm state
+        setShowForm(!showForm);
+        // Reset newLibName
+        setNewLibName({ type: 'reset' });
+    }
+
     return (
         <div className="md-font-size lg-font-size xl-font-size">
             {/* Button to show the form */}
@@ -61,7 +69,7 @@ export default function NewLibraryForm() {
                     <div className="row">
                         <div className="col-xs-12">
                             <div className="button formButton-btm btnGo">Submit</div>
-                            <div className="button formButton-btm btnStop">Cancel</div>
+                            <div className="button formButton-btm btnStop" onClick={handleCloseForm}>Cancel</div>
                         </div>
                     </div>
                 </form>
