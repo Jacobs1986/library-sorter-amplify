@@ -1,0 +1,33 @@
+/* Styling for a basic button */
+.button {
+    background-color: #eee9e9;
+    padding: 7px;
+    border-radius: 4px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #cec6c6;
+}
+
+/* Go/Run button style */
+.btnGo {
+    background-color: limegreen;
+}
+
+.btnGo:hover {
+    background-color: rgb(42, 159, 42);
+    color: white;
+    font-weight: bold;
+}
+
+/* Stop/Cancel button style */
+.btnStop {
+    background-color: orangered;
+}
+
+.btnStop:hover {
+    background-color: rgb(208, 61, 8);
+    color: white;
+    font-weight: bold;
+}

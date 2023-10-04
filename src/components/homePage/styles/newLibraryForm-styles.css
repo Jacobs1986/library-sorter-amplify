@@ -4,6 +4,18 @@
     padding: 7px;
 }
 
+/* Right caret */
+.buttonCaretRight {
+    float: right;
+    transition: 0.3s;
+}
+
+/* NewLib form */
+.newLibForm {
+    overflow: hidden;
+    transition: 0.3s;
+}
+
 /* Label styling */
 .boldLabel {
     font-weight: bold;
@@ -11,6 +23,7 @@
 
 /* Form Buttons */
 .formButton-btm {
+    float: left;
     margin-right: 10px;
 }
 

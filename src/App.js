@@ -8,6 +8,7 @@ import {
  // Styling
 import './App.css';
 import "./styles/layout.css";
+import "./styles/buttons.css";
 
 // Pages
 import HomePage from "./pages/home-page";
