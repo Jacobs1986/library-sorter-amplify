@@ -1,7 +1,7 @@
 import React, {
     useState
 } from "react";
-import { AiFillCaretRight, AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretRight } from "react-icons/ai";
 
 // CSS File
 import "./styles/newLibraryForm-styles.css";
@@ -27,7 +27,8 @@ export default function NewLibraryForm() {
                 // Remove activeForm
                 currentClass.className = "buttonCaretRight";
         }
-        console.log(currentClass);
+        // Change showForm state
+        setShowForm(!showForm);
     }
 
     return (
@@ -43,7 +44,7 @@ export default function NewLibraryForm() {
             </div>
             {/* The form */}
             <div className="row">
-                <form>
+                <form style={ !showForm ? { height: "0em" } : { height: "6em"} } className="newLibForm">
                     <div className="row">
                         {/* Label */}
                         <div className="col-xs-12 col-s-3 col-lg-2 center-form-label">

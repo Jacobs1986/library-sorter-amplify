@@ -15,6 +15,11 @@
     rotate: 90deg;
 }
 
+/* NewLib form */
+.newLibForm {
+    overflow: hidden;
+    transition: 0.3s;
+}
 /* Label styling */
 .boldLabel {
     font-weight: bold;
