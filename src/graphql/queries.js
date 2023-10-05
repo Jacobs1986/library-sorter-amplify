@@ -35,6 +35,35 @@ export const listLibraries = /* GraphQL */ `
     }
   }
 `;
+export const libByName = /* GraphQL */ `
+  query LibByName(
+    $createdAt: AWSDate!
+    $name: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelLibraryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    libByName(
+      createdAt: $createdAt
+      name: $name
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getBooks = /* GraphQL */ `
   query GetBooks($id: ID!) {
     getBooks(id: $id) {
