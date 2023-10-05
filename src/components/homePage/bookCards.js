@@ -6,7 +6,7 @@ import React, {
 import "./styles/bookCard-styles.css";
 
 // Import context
-import { BookList } from "./coverView";
+import { BookList } from "./homePageAccordion";
 
 export default function BookCards() {
     // libraryList

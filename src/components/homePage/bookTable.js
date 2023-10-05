@@ -6,7 +6,7 @@ import React, {
 import "./styles/bookTable-styles.css";
 
 // Import context
-import { BookList } from "./table";
+import { BookList } from "./homePageAccordion";
 
 export default function BookTable() {
     // library
