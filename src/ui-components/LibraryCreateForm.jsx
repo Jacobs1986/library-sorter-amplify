@@ -24,19 +24,15 @@ export default function LibraryCreateForm(props) {
   } = props;
   const initialValues = {
     name: "",
-    createdAt: "",
   };
   const [name, setName] = React.useState(initialValues.name);
-  const [createdAt, setCreatedAt] = React.useState(initialValues.createdAt);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
-    setCreatedAt(initialValues.createdAt);
     setErrors({});
   };
   const validations = {
     name: [{ type: "Required" }],
-    createdAt: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -65,7 +61,6 @@ export default function LibraryCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
-          createdAt,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -129,7 +124,6 @@ export default function LibraryCreateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
-              createdAt,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -143,32 +137,6 @@ export default function LibraryCreateForm(props) {
         errorMessage={errors.name?.errorMessage}
         hasError={errors.name?.hasError}
         {...getOverrideProps(overrides, "name")}
-      ></TextField>
-      <TextField
-        label="Created at"
-        isRequired={false}
-        isReadOnly={false}
-        type="date"
-        value={createdAt}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              createdAt: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.createdAt ?? value;
-          }
-          if (errors.createdAt?.hasError) {
-            runValidationTasks("createdAt", value);
-          }
-          setCreatedAt(value);
-        }}
-        onBlur={() => runValidationTasks("createdAt", createdAt)}
-        errorMessage={errors.createdAt?.errorMessage}
-        hasError={errors.createdAt?.hasError}
-        {...getOverrideProps(overrides, "createdAt")}
       ></TextField>
       <Flex
         justifyContent="space-between"
