@@ -24,8 +24,3 @@
     height: 0em;
     transition: 0.3s ease-out;
 }
-
-/* Styling for showPanel */
-.panel.showPanel {
-   height: 24em;
-}
