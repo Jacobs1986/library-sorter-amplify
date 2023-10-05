@@ -2,6 +2,7 @@ type Library @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   Books: [Books] @hasMany(indexName: "byLibrary", fields: ["id"])
+  createdAt: AWSDate
 }
 
 type Books @model @auth(rules: [{allow: public}]) {
