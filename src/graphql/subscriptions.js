@@ -6,15 +6,7 @@ export const onCreateLibrary = /* GraphQL */ `
     onCreateLibrary(filter: $filter) {
       id
       name
-      books {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          libraryBooksId
-          __typename
-        }
+      Books {
         nextToken
         __typename
       }
@@ -29,15 +21,7 @@ export const onUpdateLibrary = /* GraphQL */ `
     onUpdateLibrary(filter: $filter) {
       id
       name
-      books {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          libraryBooksId
-          __typename
-        }
+      Books {
         nextToken
         __typename
       }
@@ -52,15 +36,7 @@ export const onDeleteLibrary = /* GraphQL */ `
     onDeleteLibrary(filter: $filter) {
       id
       name
-      books {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          libraryBooksId
-          __typename
-        }
+      Books {
         nextToken
         __typename
       }
@@ -70,38 +46,86 @@ export const onDeleteLibrary = /* GraphQL */ `
     }
   }
 `;
-export const onCreateBook = /* GraphQL */ `
-  subscription OnCreateBook($filter: ModelSubscriptionBookFilterInput) {
-    onCreateBook(filter: $filter) {
+export const onCreateBooks = /* GraphQL */ `
+  subscription OnCreateBooks($filter: ModelSubscriptionBooksFilterInput) {
+    onCreateBooks(filter: $filter) {
       id
+      libraryID
       title
+      authorFirstName
+      authorLastName
+      cover
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      collectorItem
+      edition
+      printing
+      dustJacket
+      condition
+      damage
+      aquisitionDate
+      acquiredFrom
+      aquisitionCost
       createdAt
       updatedAt
-      libraryBooksId
       __typename
     }
   }
 `;
-export const onUpdateBook = /* GraphQL */ `
-  subscription OnUpdateBook($filter: ModelSubscriptionBookFilterInput) {
-    onUpdateBook(filter: $filter) {
+export const onUpdateBooks = /* GraphQL */ `
+  subscription OnUpdateBooks($filter: ModelSubscriptionBooksFilterInput) {
+    onUpdateBooks(filter: $filter) {
       id
+      libraryID
       title
+      authorFirstName
+      authorLastName
+      cover
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      collectorItem
+      edition
+      printing
+      dustJacket
+      condition
+      damage
+      aquisitionDate
+      acquiredFrom
+      aquisitionCost
       createdAt
       updatedAt
-      libraryBooksId
       __typename
     }
   }
 `;
-export const onDeleteBook = /* GraphQL */ `
-  subscription OnDeleteBook($filter: ModelSubscriptionBookFilterInput) {
-    onDeleteBook(filter: $filter) {
+export const onDeleteBooks = /* GraphQL */ `
+  subscription OnDeleteBooks($filter: ModelSubscriptionBooksFilterInput) {
+    onDeleteBooks(filter: $filter) {
       id
+      libraryID
       title
+      authorFirstName
+      authorLastName
+      cover
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      collectorItem
+      edition
+      printing
+      dustJacket
+      condition
+      damage
+      aquisitionDate
+      acquiredFrom
+      aquisitionCost
       createdAt
       updatedAt
-      libraryBooksId
       __typename
     }
   }

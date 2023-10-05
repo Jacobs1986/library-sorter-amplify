@@ -4,12 +4,18 @@
 export const createLibrary = /* GraphQL */ `
   mutation CreateLibrary(
     $input: CreateLibraryInput!
+    $condition: ModelLibraryConditionInput
   ) {
-    createLibrary(input: $input) {
+    createLibrary(input: $input, condition: $condition) {
       id
-      createdAt
       name
+      Books {
+        nextToken
+        __typename
+      }
+      createdAt
       updatedAt
+      __typename
     }
   }
 `;
@@ -21,15 +27,7 @@ export const updateLibrary = /* GraphQL */ `
     updateLibrary(input: $input, condition: $condition) {
       id
       name
-      books {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          libraryBooksId
-          __typename
-        }
+      Books {
         nextToken
         __typename
       }
@@ -47,15 +45,7 @@ export const deleteLibrary = /* GraphQL */ `
     deleteLibrary(input: $input, condition: $condition) {
       id
       name
-      books {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          libraryBooksId
-          __typename
-        }
+      Books {
         nextToken
         __typename
       }
@@ -65,47 +55,95 @@ export const deleteLibrary = /* GraphQL */ `
     }
   }
 `;
-export const createBook = /* GraphQL */ `
-  mutation CreateBook(
-    $input: CreateBookInput!
-    $condition: ModelBookConditionInput
+export const createBooks = /* GraphQL */ `
+  mutation CreateBooks(
+    $input: CreateBooksInput!
+    $condition: ModelBooksConditionInput
   ) {
-    createBook(input: $input, condition: $condition) {
+    createBooks(input: $input, condition: $condition) {
       id
+      libraryID
       title
+      authorFirstName
+      authorLastName
+      cover
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      collectorItem
+      edition
+      printing
+      dustJacket
+      condition
+      damage
+      aquisitionDate
+      acquiredFrom
+      aquisitionCost
       createdAt
       updatedAt
-      libraryBooksId
       __typename
     }
   }
 `;
-export const updateBook = /* GraphQL */ `
-  mutation UpdateBook(
-    $input: UpdateBookInput!
-    $condition: ModelBookConditionInput
+export const updateBooks = /* GraphQL */ `
+  mutation UpdateBooks(
+    $input: UpdateBooksInput!
+    $condition: ModelBooksConditionInput
   ) {
-    updateBook(input: $input, condition: $condition) {
+    updateBooks(input: $input, condition: $condition) {
       id
+      libraryID
       title
+      authorFirstName
+      authorLastName
+      cover
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      collectorItem
+      edition
+      printing
+      dustJacket
+      condition
+      damage
+      aquisitionDate
+      acquiredFrom
+      aquisitionCost
       createdAt
       updatedAt
-      libraryBooksId
       __typename
     }
   }
 `;
-export const deleteBook = /* GraphQL */ `
-  mutation DeleteBook(
-    $input: DeleteBookInput!
-    $condition: ModelBookConditionInput
+export const deleteBooks = /* GraphQL */ `
+  mutation DeleteBooks(
+    $input: DeleteBooksInput!
+    $condition: ModelBooksConditionInput
   ) {
-    deleteBook(input: $input, condition: $condition) {
+    deleteBooks(input: $input, condition: $condition) {
       id
+      libraryID
       title
+      authorFirstName
+      authorLastName
+      cover
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      collectorItem
+      edition
+      printing
+      dustJacket
+      condition
+      damage
+      aquisitionDate
+      acquiredFrom
+      aquisitionCost
       createdAt
       updatedAt
-      libraryBooksId
       __typename
     }
   }
