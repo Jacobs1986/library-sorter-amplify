@@ -4,11 +4,12 @@ import React, {
 } from "react";
 
 // Components
-import CoverView from "../components/homePage/coverView";
+// import CoverView from "../components/homePage/coverView";
 import HomePageBanner from "../components/homePage/banner";
 import NewLibraryForm from "../components/homePage/newLibraryForm";
-import TableView from "../components/homePage/table";
+// import TableView from "../components/homePage/table";
 import ViewerRadios from "../components/homePage/viewerRadios";
+import HomePageAccordion from "../components/homePage/homePageAccordion";
 
 // Import testLibrary
 import libraryList from "./testLibrary.json";
@@ -29,11 +30,12 @@ export default function HomePage() {
                 <NewLibraryForm />
                 {/* Radios */}
                 <ViewerRadios />
-                {libraryView === "Covers" ?
+                <HomePageAccordion />
+                {/* {libraryView === "Covers" ?
                     // Images view
                     <CoverView /> :
                     // Table view
-                    <TableView /> }
+                    <TableView /> } */}
             </LibInfo.Provider>
         </div>
     );
