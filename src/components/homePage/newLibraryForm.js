@@ -1,4 +1,5 @@
 import React, {
+    useContext,
     useState,
     useReducer
 } from "react";
@@ -17,8 +18,15 @@ import { createLibrary } from "../../graphql/mutations";
 // Import reducer
 import { reducer as newLibReducer } from "../../functions/reducer";
 
+// Import context
+import { LibInfo } from "../../pages/home-page";
+
 export default function NewLibraryForm() {
+    // setGetLibrary
+    const { setGetLibrary } = useContext(LibInfo);
+    // showForm
     const [showForm, setShowForm] = useState(false);
+    // newLibName
     const [newLibName, setNewLibName] = useReducer(newLibReducer, {});
 
     // Funtion to show the form
@@ -45,6 +53,9 @@ export default function NewLibraryForm() {
             variables: { input: newLibName }
         }).then(res => {
             console.log(res.data);
+            // set getLibrary to true
+            setGetLibrary(true);
+            // close the form
             handleCloseForm();
         })
     }
@@ -72,7 +83,7 @@ export default function NewLibraryForm() {
             </div>
             {/* The form */}
             <div className="row">
-                <form style={!showForm ? { height: "0em" } : { height: "6em" }} className="newLibForm">
+                <form style={!showForm ? { height: "0em" } : { height: "7em" }} className="newLibForm">
                     <div className="row">
                         {/* Label */}
                         <div className="col-xs-12 col-s-3 col-lg-2 center-form-label">

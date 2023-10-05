@@ -1,0 +1,18 @@
+projects:
+  librarysorteramplify:
+    schemaPath: amplify/backend/api/librarysorteramplify/build/schema.graphql
+    includes:
+      - src/graphql/
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: us-east-1
+        apiId: null
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

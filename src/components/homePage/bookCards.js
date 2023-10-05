@@ -6,7 +6,7 @@ import React, {
 import "./styles/bookCard-styles.css";
 
 // Import context
-import { BookList } from "./coverView";
+import { BookList } from "./homePageAccordion";
 
 export default function BookCards() {
     // libraryList
@@ -15,11 +15,11 @@ export default function BookCards() {
     return (
         <div className="row">
             {/* Check the length of the bookList array */}
-            {library.bookList.length === 0 ? 
-                <div className="col-xs-12 col-s-4 col-lg-3 col-xl-2">
+            {library.Books.items.length === 0 ? 
+                <div className="col-xs-12 col-s-5 col-lg-3 col-xl-2">
                     Time to add some books!
                 </div> :
-                library.bookList.map((book, i) => (
+                library.Books.items.map((book, i) => (
                     <div className="col-xs-12 col-s-4 col-lg-3 col-xl-2" key={i}>
                         {/* The card div */}
                         <div className={book.cover === "blank-cover.png" ? "bookCard noCover" : "bookCard"}>

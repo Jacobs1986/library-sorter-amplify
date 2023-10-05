@@ -6,15 +6,7 @@ export const getLibrary = /* GraphQL */ `
     getLibrary(id: $id) {
       id
       name
-      books {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          libraryBooksId
-          __typename
-        }
+      Books {
         nextToken
         __typename
       }
@@ -25,52 +17,125 @@ export const getLibrary = /* GraphQL */ `
   }
 `;
 export const listLibraries = /* GraphQL */ `
-  query ListLibraries {
-    listLibraries {
+  query ListLibraries(
+    $filter: ModelLibraryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listLibraries(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        name
         id
+        name
         createdAt
         updatedAt
-        Books {
-          items {
-            authorLastName
-            authorNameFirst
-            cover
-            id
-            isbn
-            title
-          }
-        }
+        __typename
       }
+      nextToken
+      __typename
     }
   }
 `;
-export const getBook = /* GraphQL */ `
-  query GetBook($id: ID!) {
-    getBook(id: $id) {
+export const getBooks = /* GraphQL */ `
+  query GetBooks($id: ID!) {
+    getBooks(id: $id) {
       id
+      libraryID
       title
+      authorFirstName
+      authorLastName
+      cover
+      isbn
+      pubDate
+      numOfPages
+      synopsis
+      collectorItem
+      edition
+      printing
+      dustJacket
+      condition
+      damage
+      aquisitionDate
+      acquiredFrom
+      aquisitionCost
       createdAt
       updatedAt
-      libraryBooksId
       __typename
     }
   }
 `;
 export const listBooks = /* GraphQL */ `
   query ListBooks(
-    $filter: ModelBookFilterInput
+    $filter: ModelBooksFilterInput
     $limit: Int
     $nextToken: String
   ) {
     listBooks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        libraryID
         title
+        authorFirstName
+        authorLastName
+        cover
+        isbn
+        pubDate
+        numOfPages
+        synopsis
+        collectorItem
+        edition
+        printing
+        dustJacket
+        condition
+        damage
+        aquisitionDate
+        acquiredFrom
+        aquisitionCost
         createdAt
         updatedAt
-        libraryBooksId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const booksByLibraryID = /* GraphQL */ `
+  query BooksByLibraryID(
+    $libraryID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelBooksFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    booksByLibraryID(
+      libraryID: $libraryID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        libraryID
+        title
+        authorFirstName
+        authorLastName
+        cover
+        isbn
+        pubDate
+        numOfPages
+        synopsis
+        collectorItem
+        edition
+        printing
+        dustJacket
+        condition
+        damage
+        aquisitionDate
+        acquiredFrom
+        aquisitionCost
+        createdAt
+        updatedAt
         __typename
       }
       nextToken

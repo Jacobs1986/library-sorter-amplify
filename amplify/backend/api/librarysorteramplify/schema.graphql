@@ -8,7 +8,7 @@ type Books @model @auth(rules: [{allow: public}]) {
   id: ID!
   libraryID: ID! @index(name: "byLibrary")
   title: String!
-  authorNameFirst: String
+  authorFirstName: String
   authorLastName: String
   cover: String
   isbn: String
@@ -25,3 +25,4 @@ type Books @model @auth(rules: [{allow: public}]) {
   acquiredFrom: String
   aquisitionCost: String
 }
+ 
