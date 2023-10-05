@@ -1,11 +1,18 @@
-import React from "react";
+import React, {
+    useContext
+} from "react";
 
 // CSS Files
 import "./styles/homePageAccordion-styles.css";
 // Accordion style
 import "../../styles/accordion.css";
 
+// Import context
+import { LibInfo } from "../../pages/home-page";
+
 export default function HomePageAccordion() {
+    // libraryList
+    const { libraryList } = useContext(LibInfo);
 
     // Function for showing a panel
     const handleShowPanel = event => {
@@ -31,31 +38,19 @@ export default function HomePageAccordion() {
     return (
         <div className="row">
             <div className="col-xs-12 col-xl-12">
-                {/* Accordion button */}
-                <button className="accordion" id="button1" onClick={handleShowPanel}>Section 1</button>
-                {/* Accordion panel */}
-                <div className="panel">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                {/* Accordion button */}
-                <button className="accordion" id="button2" onClick={handleShowPanel}>Section 2</button>
-                {/* Accordion panel */}
-                <div className="panel">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                {/* Accordion button */}
-                <button className="accordion" id="button3" onClick={handleShowPanel}>Section 3</button>
-                {/* Accordion panel */}
-                <div className="panel">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
+                {libraryList.map((library, i) => (
+                    <div key={i}>
+                        {/* Accordion button */}
+                        <button className="accordion" id={library.id} onClick={handleShowPanel}>{library.name}</button>
+                        {/* Accordion panel */}
+                        <div className="panel">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </div>
+                    </div>
+                ))}
             </div>
-        </div>
+        </div >
     );
 };

@@ -72,7 +72,7 @@ export default function NewLibraryForm() {
             </div>
             {/* The form */}
             <div className="row">
-                <form style={!showForm ? { height: "0em" } : { height: "6em" }} className="newLibForm">
+                <form style={!showForm ? { height: "0em" } : { height: "7em" }} className="newLibForm">
                     <div className="row">
                         {/* Label */}
                         <div className="col-xs-12 col-s-3 col-lg-2 center-form-label">
