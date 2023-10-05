@@ -21,10 +21,11 @@
     padding: 0 18px;
     background-color: white;
     overflow: hidden;
-    display: none;
+    height: 0em;
+    transition: 0.3s ease-out;
 }
 
 /* Styling for showPanel */
 .panel.showPanel {
-    display: block;
+   height: 24em;
 }
