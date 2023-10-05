@@ -1,4 +1,5 @@
 import React, {
+    createContext,
     useContext
 } from "react";
 
@@ -10,9 +11,16 @@ import "../../styles/accordion.css";
 // Import context
 import { LibInfo } from "../../pages/home-page";
 
+// Import components
+import BookCards from "./bookCards";
+import BookTable from "./bookTable";
+
+// Create and export BookList context
+export const BookList = createContext();
+
 export default function HomePageAccordion() {
     // libraryList
-    const { libraryList } = useContext(LibInfo);
+    const { libraryList, libraryView } = useContext(LibInfo);
 
     // Function for showing a panel
     const handleShowPanel = event => {
@@ -44,9 +52,12 @@ export default function HomePageAccordion() {
                         <button className="accordion" id={library.id} onClick={handleShowPanel}>{library.name}</button>
                         {/* Accordion panel */}
                         <div className="panel">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
+                            <BookList.Provider value={{ library }}>
+                                {libraryView === "Covers" ?
+                                    <BookCards /> :
+                                    <BookTable />
+                                }
+                            </BookList.Provider>
                         </div>
                     </div>
                 ))}
