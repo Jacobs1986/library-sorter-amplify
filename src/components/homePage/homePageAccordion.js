@@ -46,22 +46,25 @@ export default function HomePageAccordion() {
     return (
         <div className="row">
             <div className="col-xs-12 col-s-12">
-                {libraryList.map((library, i) => (
-                    <div key={i}>
-                        {/* Accordion button */}
-                        <button className="accordion" id={library.id} onClick={handleShowPanel}>{library.name}</button>
-                        {/* Accordion panel */}
-                        <div className="panel">
-                            <BookList.Provider value={{ library }}>
-                                {libraryView === "Covers" ?
-                                    <BookCards /> :
-                                    // <div>This is the table view</div>
-                                    <BookTable />
-                                }
-                            </BookList.Provider>
+                {/* Check to see if there are any libraries in the database */}
+                {libraryList.length === 0 ? <div>Let's make some libraries!</div> :
+                    libraryList.map((library, i) => (
+                        <div key={i}>
+                            {/* Accordion button */}
+                            <button className="accordion" id={library.id} onClick={handleShowPanel}>{library.name}</button>
+                            {/* Accordion panel */}
+                            <div className="panel">
+                                <BookList.Provider value={{ library }}>
+                                    {libraryView === "Covers" ?
+                                        <BookCards /> :
+                                        // <div>This is the table view</div>
+                                        <BookTable />
+                                    }
+                                </BookList.Provider>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))
+                }
             </div>
         </div >
     );
