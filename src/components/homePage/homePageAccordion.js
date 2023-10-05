@@ -45,7 +45,7 @@ export default function HomePageAccordion() {
     }
     return (
         <div className="row">
-            <div className="col-xs-12 col-xl-12">
+            <div className="col-xs-12 col-s-12">
                 {libraryList.map((library, i) => (
                     <div key={i}>
                         {/* Accordion button */}
@@ -55,6 +55,7 @@ export default function HomePageAccordion() {
                             <BookList.Provider value={{ library }}>
                                 {libraryView === "Covers" ?
                                     <BookCards /> :
+                                    // <div>This is the table view</div>
                                     <BookTable />
                                 }
                             </BookList.Provider>
