@@ -31,11 +31,6 @@ export default function HomePage() {
                 {/* Radios */}
                 <ViewerRadios />
                 <HomePageAccordion />
-                {/* {libraryView === "Covers" ?
-                    // Images view
-                    <CoverView /> :
-                    // Table view
-                    <TableView /> } */}
             </LibInfo.Provider>
         </div>
     );
