@@ -19,6 +19,7 @@ export const createLibrary = /* GraphQL */ `
     }
   }
 `;
+
 export const updateLibrary = /* GraphQL */ `
   mutation UpdateLibrary(
     $input: UpdateLibraryInput!

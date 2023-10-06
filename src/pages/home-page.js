@@ -5,10 +5,10 @@ import React, {
 } from "react";
 
 // Components
-import HomePageBanner from "../components/homePage/banner";
-import NewLibraryForm from "../components/homePage/newLibraryForm";
-import ViewerRadios from "../components/homePage/viewerRadios";
-import HomePageAccordion from "../components/homePage/homePageAccordion";
+import HomePageBanner from "../components/homePage/banner/banner";
+import NewLibraryForm from "../components/homePage/newLibraryForm/newLibraryForm";
+import ViewerRadios from "../components/homePage/viewerRadios/viewerRadios";
+import HomePageAccordion from "../components/homePage/homePageAccordion/homePageAccordion";
 
 // Import testLibrary
 // import libraryList from "./testLibrary.json";
@@ -18,6 +18,9 @@ import { API } from "aws-amplify";
 
 // Import listLibraries
 import { listLibraries } from "../graphql/queries";
+
+// Import nameASC function
+import { nameASC } from "../functions/arraySortFuncs";
 
 // Context
 export const LibInfo = createContext();
@@ -37,8 +40,11 @@ export default function HomePage() {
             query: listLibraries
         }).then(res => {
             // Set libraryList
-            setLibraryList(res.data.listLibraries.items);
-            // console.log(res.data.listLibraries.items);
+            let resArray = res.data.listLibraries.items;
+            // Sort the list
+            let sorted = resArray.sort( nameASC );
+            // Set sorted to setLibraryList
+            setLibraryList(sorted);
             // set getLibrary to false
             setGetLibrary(false);
         })

@@ -4,16 +4,16 @@ import React, {
 } from "react";
 
 // CSS Files
-import "./styles/homePageAccordion-styles.css";
+import "./homePageAccordion-styles.css";
 // Accordion style
-import "../../styles/accordion.css";
+import "../../../styles/accordion.css";
 
 // Import context
-import { LibInfo } from "../../pages/home-page";
+import { LibInfo } from "../../../pages/home-page";
 
 // Import components
-import BookCards from "./bookCards";
-import BookTable from "./bookTable";
+import BookCards from "../bookCards/bookCards";
+import BookTable from "../bookTable/bookTable";
 
 // Create and export BookList context
 export const BookList = createContext();
@@ -43,8 +43,9 @@ export default function HomePageAccordion() {
                 panel.className = "panel"
         }
     }
+
     return (
-        <div className="row">
+        <div className="row accordionRow">
             <div className="col-xs-12 col-s-12">
                 {/* Check to see if there are any libraries in the database */}
                 {libraryList.length === 0 ? <div>Let's make some libraries!</div> :
@@ -55,6 +56,7 @@ export default function HomePageAccordion() {
                             {/* Accordion panel */}
                             <div className="panel">
                                 <BookList.Provider value={{ library }}>
+                                    <div><a href="/search">Add books</a></div>
                                     {libraryView === "Covers" ?
                                         <BookCards /> :
                                         // <div>This is the table view</div>

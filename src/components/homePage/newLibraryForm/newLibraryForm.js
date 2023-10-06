@@ -7,19 +7,19 @@ import React, {
 import { AiFillCaretRight } from "react-icons/ai";
 
 // CSS File
-import "./styles/newLibraryForm-styles.css";
+import "./newLibraryForm-styles.css";
 
 // Import API
 import { API } from "aws-amplify";
 
 // Import createLibrary
-import { createLibrary } from "../../graphql/mutations";
+import { createLibrary } from "../../../graphql/mutations";
 
 // Import reducer
-import { reducer as newLibReducer } from "../../functions/reducer";
+import { reducer as newLibReducer } from "../../../functions/reducer";
 
 // Import context
-import { LibInfo } from "../../pages/home-page";
+import { LibInfo } from "../../../pages/home-page";
 
 export default function NewLibraryForm() {
     // setGetLibrary

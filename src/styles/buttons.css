@@ -1,6 +1,6 @@
 /* Styling for a basic button */
 .button {
-    background-color: #eee9e9;
+    background-color: #ededed;
     padding: 7px;
     border-radius: 4px;
 }
@@ -30,4 +30,10 @@
     background-color: rgb(208, 61, 8);
     color: white;
     font-weight: bold;
+}
+
+/* Form Buttons */
+.formButton-btm {
+    float: left;
+    margin-right: 10px;
 }

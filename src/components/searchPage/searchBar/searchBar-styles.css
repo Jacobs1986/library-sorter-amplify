@@ -1,0 +1,55 @@
+/* formPart class */
+.formPart {
+    margin-top: 0.5em;
+}
+
+/* Styling for the search select */
+#searchSelect {
+    width: 8em;
+    margin-left: 1.2em;
+}
+
+/* Styling for searchParams */
+#searchParams {
+    width: 18em;
+    margin-left: 1em;
+}
+
+#searchParams, #searchSelect {
+    padding: 3px;
+}
+
+/* Search button */
+#searchBtn {
+    width: 4em;
+}
+
+/* Media breaks */
+/* Small screen */
+@media screen and (min-width: 600px) {
+    .formCol {
+        margin: 1.9em 0em;
+    }
+
+    #searchParams {
+        width: 15em;
+    }
+}
+/* Medium screen */
+@media screen and (min-width: 768px) {
+    .formCol {
+        margin: 3.14em 0em;
+    }
+}
+/* large screen */
+@media screen and (min-width: 992px) {
+    .formCol {
+        margin: 5.9em 0em;
+    }
+}
+/* extra large screen */
+@media screen and (min-width: 1200px) {
+    .formCol {
+        margin: 8em 0em;
+    }
+}

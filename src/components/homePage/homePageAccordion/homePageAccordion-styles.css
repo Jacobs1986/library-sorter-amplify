@@ -1,0 +1,17 @@
+/* Styling for the accordionRow */
+.accordionRow {
+    height: auto;
+}
+
+/* Styling for showPanel */
+.panel.showPanel {
+    height: 24em;
+    overflow: scroll;
+ }
+
+ @media screen and (min-width: 1200px) {
+    .accordionRow {
+        height: 20em;
+        overflow: scroll;
+    }
+ }
