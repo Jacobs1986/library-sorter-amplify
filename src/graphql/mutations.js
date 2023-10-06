@@ -2,12 +2,20 @@
 // this is an auto generated file. This will be overwritten
 
 export const createLibrary = /* GraphQL */ `
-  mutation CreateLibrary {
+  mutation CreateLibrary(
+    $input: CreateLibraryInput!
+    $condition: ModelLibraryConditionInput
+  ) {
     createLibrary(input: $input, condition: $condition) {
-      createdAt
       id
       name
+      Books {
+        nextToken
+        __typename
+      }
+      createdAt
       updatedAt
+      __typename
     }
   }
 `;
