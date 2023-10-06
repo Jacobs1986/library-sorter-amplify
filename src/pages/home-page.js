@@ -19,6 +19,9 @@ import { API } from "aws-amplify";
 // Import listLibraries
 import { listLibraries } from "../graphql/queries";
 
+// Import nameASC function
+import { nameASC } from "../functions/arraySortFuncs";
+
 // Context
 export const LibInfo = createContext();
 
@@ -37,8 +40,11 @@ export default function HomePage() {
             query: listLibraries
         }).then(res => {
             // Set libraryList
-            setLibraryList(res.data.listLibraries.items);
-            // console.log(res.data.listLibraries);
+            let resArray = res.data.listLibraries.items;
+            // Sort the list
+            let sorted = resArray.sort( nameASC );
+            // Set sorted to setLibraryList
+            setLibraryList(sorted);
             // set getLibrary to false
             setGetLibrary(false);
         })
