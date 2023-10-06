@@ -9,7 +9,7 @@ export default function SearchBar() {
             <div className="row">
                 {/* Picture */}
                 <div className="col-xs-12 col-s-6 imgCol">
-                    <div className="bannerContainer">
+                    <div className="bannerContainer searchImageContainer">
                         <img
                             src={require("./books-magnifying-glass.jpg")}
                             width={"100%"}
