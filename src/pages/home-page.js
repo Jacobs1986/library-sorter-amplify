@@ -38,7 +38,7 @@ export default function HomePage() {
         }).then(res => {
             // Set libraryList
             setLibraryList(res.data.listLibraries.items);
-            // console.log(res.data.listLibraries.items);
+            // console.log(res.data.listLibraries);
             // set getLibrary to false
             setGetLibrary(false);
         })
