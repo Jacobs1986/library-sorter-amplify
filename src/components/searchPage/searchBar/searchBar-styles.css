@@ -1,37 +1,55 @@
+/* formPart class */
+.formPart {
+    margin-top: 0.5em;
+}
+
 /* Styling for the search select */
 #searchSelect {
-    width: 100%;
+    width: 8em;
+    margin-left: 1.2em;
+}
+
+/* Styling for searchParams */
+#searchParams {
+    width: 18em;
+    margin-left: 1em;
 }
 
 #searchParams, #searchSelect {
-    margin-top: 0.5em;
     padding: 3px;
 }
 
 /* Search button */
 #searchBtn {
-    padding: 3px 4px;
-    width: 3.7em;
+    width: 4em;
 }
 
 /* Media breaks */
+/* Small screen */
 @media screen and (min-width: 600px) {
-    #searchSelect {
-        width: 50%;
-    }
-
-    #searchSelect, #searchParams {
-        margin-top: 0em;
-        margin-left: 1em;
+    .formCol {
+        margin: 1.9em 0em;
     }
 
     #searchParams {
-        width: 66%;
+        width: 15em;
     }
 }
-
+/* Medium screen */
+@media screen and (min-width: 768px) {
+    .formCol {
+        margin: 3.14em 0em;
+    }
+}
+/* large screen */
 @media screen and (min-width: 992px) {
-    #searchParams {
-        width: 77%;
+    .formCol {
+        margin: 5.9em 0em;
+    }
+}
+/* extra large screen */
+@media screen and (min-width: 1200px) {
+    .formCol {
+        margin: 8em 0em;
     }
 }
