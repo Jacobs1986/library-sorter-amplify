@@ -1,0 +1,37 @@
+/* Styling for the search select */
+#searchSelect {
+    width: 100%;
+}
+
+#searchParams, #searchSelect {
+    margin-top: 0.5em;
+    padding: 3px;
+}
+
+/* Search button */
+#searchBtn {
+    padding: 3px 4px;
+    width: 3.7em;
+}
+
+/* Media breaks */
+@media screen and (min-width: 600px) {
+    #searchSelect {
+        width: 50%;
+    }
+
+    #searchSelect, #searchParams {
+        margin-top: 0em;
+        margin-left: 1em;
+    }
+
+    #searchParams {
+        width: 66%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #searchParams {
+        width: 77%;
+    }
+}

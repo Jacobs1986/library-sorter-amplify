@@ -31,3 +31,9 @@
     color: white;
     font-weight: bold;
 }
+
+/* Form Buttons */
+.formButton-btm {
+    float: left;
+    margin-right: 10px;
+}
