@@ -1,8 +1,8 @@
 import React from "react";
 
 // CSS File
-import "./styles/banner-styles.css";
-import "./styles/media-queries.css";
+import "./banner-styles.css";
+import "../styles/media-queries.css";
 
 export default function HomePageBanner() {
     return (
@@ -10,7 +10,7 @@ export default function HomePageBanner() {
             <div className="bannerContainer">
                 {/* Image */}
                 <img
-                    src="./Images/home-page-banner.jpg"
+                    src={require("./home-page-banner.jpg")}
                     alt="Picture of an antique bookshelf. Image provided by vecstock."
                     width={"100%"}
                 />

@@ -3,11 +3,11 @@ import React, {
 } from "react";
 
 // CSS File
-import "./styles/radio-styles.css";
-import "./styles/media-queries.css";
+import "./radio-styles.css";
+import "../styles/media-queries.css";
 
 // Import context
-import { LibInfo } from "../../pages/home-page";
+import { LibInfo } from "../../../pages/home-page";
 
 export default function ViewerRadios() {
     // libraryView variable

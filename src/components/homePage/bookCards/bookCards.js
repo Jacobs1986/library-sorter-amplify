@@ -3,10 +3,10 @@ import React, {
 } from "react";
 
 // CSS File
-import "./styles/bookCard-styles.css";
+import "./bookCard-styles.css";
 
 // Import context
-import { BookList } from "./homePageAccordion";
+import { BookList } from "../homePageAccordion/homePageAccordion";
 
 export default function BookCards() {
     // libraryList

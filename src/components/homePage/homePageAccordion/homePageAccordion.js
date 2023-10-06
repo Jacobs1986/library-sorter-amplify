@@ -4,16 +4,16 @@ import React, {
 } from "react";
 
 // CSS Files
-import "./styles/homePageAccordion-styles.css";
+import "./homePageAccordion-styles.css";
 // Accordion style
-import "../../styles/accordion.css";
+import "../../../styles/accordion.css";
 
 // Import context
-import { LibInfo } from "../../pages/home-page";
+import { LibInfo } from "../../../pages/home-page";
 
 // Import components
-import BookCards from "./bookCards";
-import BookTable from "./bookTable";
+import BookCards from "../bookCards/bookCards";
+import BookTable from "../bookTable/bookTable";
 
 // Create and export BookList context
 export const BookList = createContext();
