@@ -1,7 +1,7 @@
 import React from "react";
 
 // CSS File
-import "./styles/searchResults-styles.css";
+import "./searchResults-styles.css";
 
 export default function SearchResults() {
     return (
