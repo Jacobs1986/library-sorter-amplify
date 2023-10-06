@@ -20,7 +20,7 @@ export default function HomePageBanner() {
                 </div>
                 {/* Attribution link */}
                 <div className="bottom-right attributionLink">
-                    Image By <a href="https://www.freepik.com/free-ai-image/abundant-collection-antique-books-wooden-shelves-generated-by-ai_42138866.htm#query=library%20background&position=0&from_view=keyword&track=ais">vecstock</a>
+                    Image By <a href="https://www.freepik.com/free-ai-image/abundant-collection-antique-books-wooden-shelves-generated-by-ai_42138866.htm#query=library%20background&position=0&from_view=keyword&track=ais" target="_blank">vecstock</a>
                 </div>
             </div>
         </div>
