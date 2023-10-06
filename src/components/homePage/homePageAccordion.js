@@ -43,8 +43,9 @@ export default function HomePageAccordion() {
                 panel.className = "panel"
         }
     }
+
     return (
-        <div className="row">
+        <div className="row accordionRow">
             <div className="col-xs-12 col-s-12">
                 {/* Check to see if there are any libraries in the database */}
                 {libraryList.length === 0 ? <div>Let's make some libraries!</div> :
