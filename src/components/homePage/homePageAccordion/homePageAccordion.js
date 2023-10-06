@@ -56,6 +56,7 @@ export default function HomePageAccordion() {
                             {/* Accordion panel */}
                             <div className="panel">
                                 <BookList.Provider value={{ library }}>
+                                    <div><a href="/search">Add books</a></div>
                                     {libraryView === "Covers" ?
                                         <BookCards /> :
                                         // <div>This is the table view</div>
