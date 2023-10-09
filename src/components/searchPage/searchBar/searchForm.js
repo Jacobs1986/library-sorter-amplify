@@ -1,26 +1,19 @@
 import React, {
-    useEffect,
-    useReducer,
+    useContext,
     useState
 } from "react";
 
 // CSS File
 import "./searchBar-styles.css";
 
-// Import the reducer
-import { reducer as searchReducer} from "../../../functions/reducer";
+// Import context
+import { SearchContext } from "../../../pages/book-search-page";
 
 export default function SearchForm() {
+    // Context values
+    const { setSearchValue, searchInfo, setSearchInfo, handleSearch } = useContext(SearchContext)
     // titleAuthor
     const [titleAuthor, setTitleAuthor] = useState(false);
-    // searchValue
-    const [searchValue, setSearchValue] = useState("");
-    // searchReducer
-    const [searchInfo, setSearchInfo] = useReducer(searchReducer, {});
-
-    useEffect(() => {
-        console.log(searchInfo);
-    }, [searchInfo])
 
     // Function for handling select value
     const handleSearchOption = event => {
@@ -84,7 +77,7 @@ export default function SearchForm() {
 
             </div>
             <div className="formPart">
-                <div className="button" id="searchBtn">Search</div>
+                <div className="button" id="searchBtn" onClick={handleSearch}>Search</div>
             </div>
         </>
     );
