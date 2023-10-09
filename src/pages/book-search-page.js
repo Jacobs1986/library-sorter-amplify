@@ -1,5 +1,6 @@
 import React, {
     createContext,
+    useEffect,
     useReducer,
     useState
 } from "react";
@@ -9,8 +10,7 @@ import SearchBar from "../components/searchPage/searchBar/searchBar";
 import SearchResults from "../components/searchPage/searchResults/searchResults";
 
 
-// Import the reducer
-import { reducer as searchReducer} from "../../../functions/reducer";
+import { reducer as searchReducer} from '../functions/reducer'
 
 // Create a context
 export const SearchContext = createContext();
@@ -20,10 +20,15 @@ export default function BookSearch() {
      const [searchValue, setSearchValue] = useState("title");
      // searchReducer
      const [searchInfo, setSearchInfo] = useReducer(searchReducer, {});
+     const [runSearch, setRunSearch] = useState(false)
+
+     useEffect(() => {
+        console.log(searchInfo);
+     }, [runSearch])
 
     // function for searching with the google API
-    const handleSearch = event => {
-        console.log(`searchValue: ${searchValue}, searchInfo: ${searchInfo}`);
+    const handleSearch = () => {
+        setRunSearch(!runSearch);
     }
 
     return (

@@ -33,8 +33,8 @@ export default function SearchForm() {
         }
         // Set searchValue to currentValue
         setSearchValue(currentValue);
-         // Reset searchInfo
-         setSearchInfo({ type: 'reset' })
+        // Reset searchInfo
+        setSearchInfo({ type: 'reset' })
     }
 
     // Function for search input
