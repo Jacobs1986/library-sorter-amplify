@@ -5,7 +5,7 @@ import "./searchBar-styles.css";
 
 // Components
 import SearchForm from "./searchForm";
-import SearchBarImage from "./searcBar-image";
+import SearchBarImage from "./searchBar-image";
 
 export default function SearchBar() {
     return (
