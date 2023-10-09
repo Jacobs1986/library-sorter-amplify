@@ -19,12 +19,12 @@
 }
 
 /* Styling for searchParams */
-#searchParams {
+#searchParams, #titleSearch, #authorSearch {
     width: 18em;
     margin-left: 1em;
 }
 
-#searchParams, #searchSelect {
+#searchParams, #searchSelect, #titleSearch, #authorSearch {
     padding: 3px;
 }
 
@@ -40,7 +40,7 @@
         margin: 1.9em 0em;
     }
 
-    #searchParams {
+    #searchParams, #titleSearch, #authorSearch {
         width: 15em;
     }
 }

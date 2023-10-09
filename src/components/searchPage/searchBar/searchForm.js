@@ -52,6 +52,14 @@ export default function SearchForm() {
             <div className="formPart">
                 <label className="boldLabel" htmlFor="searchParams">Search for:</label>
                 <input type="text" id="searchParams" name="searchParams" />
+                <div>
+                    <label className="boldLabel" htmlFor="titleSearch">Title:</label>
+                    <input type="text" id="titleSearch" name="titleSearch" />
+                </div>
+                <div>
+                    <label className="boldLabel" htmlFor="authorSearch">Author:</label>
+                    <input type="text" id="authorSearch" name="authorSearch" />
+                </div>
             </div>
             <div className="formPart">
                 <div className="button" id="searchBtn">Search</div>
