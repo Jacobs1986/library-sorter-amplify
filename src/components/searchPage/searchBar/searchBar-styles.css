@@ -1,3 +1,12 @@
+/* Style for the search image */
+.searchImageContainer {
+    color: black;
+}
+
+.searchImageContainer .bottom-right.attributionLink a {
+    color: rgb(61 99 112);
+}
+
 /* formPart class */
 .formPart {
     margin-top: 0.5em;
@@ -10,13 +19,20 @@
 }
 
 /* Styling for searchParams */
-#searchParams {
+#searchParams, #titleSearch, #authorSearch {
     width: 18em;
+}
+
+#searchParams, #searchSelect, #titleSearch, #authorSearch {
+    padding: 3px;
+}
+
+#searchParams, #authorSearch {
     margin-left: 1em;
 }
 
-#searchParams, #searchSelect {
-    padding: 3px;
+#titleSearch {
+    margin-left: 2.47em;
 }
 
 /* Search button */
@@ -31,8 +47,16 @@
         margin: 1.9em 0em;
     }
 
-    #searchParams {
+    #searchParams{
         width: 15em;
+    }
+
+    #titleSearch, #authorSearch {
+        width: 6em;
+    }
+
+    #authorSearchLabel, #titleSearch {
+        margin-left: 1em
     }
 }
 /* Medium screen */
@@ -40,11 +64,19 @@
     .formCol {
         margin: 3.14em 0em;
     }
+
+    #titleSearch, #authorSearch {
+        width: 9em;
+    }
 }
 /* large screen */
 @media screen and (min-width: 992px) {
     .formCol {
         margin: 5.9em 0em;
+    }
+
+    #titleSearch, #authorSearch {
+        width: 15em;
     }
 }
 /* extra large screen */
@@ -52,4 +84,6 @@
     .formCol {
         margin: 8em 0em;
     }
+
+    
 }
