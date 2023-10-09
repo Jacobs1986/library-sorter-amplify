@@ -11,6 +11,9 @@ import SearchResults from "../components/searchPage/searchResults/searchResults"
 // Reducer
 import { reducer as searchReducer} from '../functions/reducer'
 
+// Import axios
+import axios from "axios";
+
 // API setup function
 import { apiSearch } from "../functions/apiSetup";
 
@@ -25,7 +28,12 @@ export default function BookSearch() {
 
     // function for searching with the google API
     const handleSearch = () => {
-        console.log(apiSearch(searchValue, searchInfo));
+        // Set the apiURL value
+        let apiURL = apiSearch(searchValue, searchInfo);
+        // Get the infomration from Google
+        axios.get(apiURL).then(res => {
+            console.log(res.data.items);
+        })
     }
 
     return (
