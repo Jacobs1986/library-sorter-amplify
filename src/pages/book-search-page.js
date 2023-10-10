@@ -27,7 +27,7 @@ export default function BookSearch() {
      // searchReducer
      const [searchInfo, setSearchInfo] = useReducer(searchReducer, {});
     //  searchArray
-    const [searchArray, setSearchArray] = useState("");
+    const [searchArray, setSearchArray] = useState([]);
 
     // function for searching with the google API
     const handleSearch = () => {
@@ -37,6 +37,7 @@ export default function BookSearch() {
         axios.get(apiURL).then(res => {
             // Set the results array
             setSearchArray(res.data.items);
+            console.log(res.data.items);
         })
     }
 
