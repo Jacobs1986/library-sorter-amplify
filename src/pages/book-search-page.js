@@ -17,14 +17,17 @@ import axios from "axios";
 // API setup function
 import { apiSearch } from "../functions/apiSetup";
 
-// Create a context
+// Create a contexts
 export const SearchContext = createContext();
+export const SearchInfo = createContext();
 
 export default function BookSearch() {
      // searchValue
      const [searchValue, setSearchValue] = useState("title");
      // searchReducer
      const [searchInfo, setSearchInfo] = useReducer(searchReducer, {});
+    //  searchArray
+    const [searchArray, setSearchArray] = useState("");
 
     // function for searching with the google API
     const handleSearch = () => {
@@ -32,7 +35,8 @@ export default function BookSearch() {
         let apiURL = apiSearch(searchValue, searchInfo);
         // Get the infomration from Google
         axios.get(apiURL).then(res => {
-            console.log(res.data.items);
+            // Set the results array
+            setSearchArray(res.data.items);
         })
     }
 
@@ -41,7 +45,9 @@ export default function BookSearch() {
             <SearchContext.Provider value={{ setSearchValue, searchInfo, setSearchInfo, handleSearch }}>
                 <SearchBar />
             </SearchContext.Provider>
-            <SearchResults />
+            <SearchInfo.Provider value={{ searchArray }}>
+                <SearchResults />
+            </SearchInfo.Provider>
         </div>
     );
 };
