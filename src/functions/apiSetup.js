@@ -12,6 +12,7 @@ export const apiSearch = (value, info) => {
             info = info.searchParams.toLowerCase().replace(/ /g, "+");
             // Create the url
             searchURL = `${apiURL}+inauthor:${info}`;
+            break
         }
         // If the value is title+author
         case "title+author": {

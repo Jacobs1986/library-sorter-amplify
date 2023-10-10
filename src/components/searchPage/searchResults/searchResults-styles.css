@@ -1,0 +1,72 @@
+/* searchCard styling */
+.searchCard {
+    border-radius: 4px;
+    height: 15em;
+    overflow: hidden;
+    transition: 0.3s ease-in;
+}
+
+.searchCard:hover {
+    cursor: pointer;
+    box-shadow: 7px 10px 10px darkgray;
+}
+
+/* Styling for the searchRow */
+.searchRow {
+    height: 23em;
+    overflow: scroll;
+}
+
+/* Styling for cardTitle */
+.cardTitle {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Small screen */
+@media screen and (min-width: 600px) {
+    .searchRow {
+        height: 13em;
+    }
+
+    .searchCard {
+        height: 13em;
+    }
+}
+
+/* Medium screen */
+@media screen and (min-width: 768px) {
+    .searchRow {
+        height: 60em;
+    }
+
+    .searchCard {
+        height: 23em;
+    }
+
+    .cardTitle {
+        font-size: 1.4em;
+    }
+}
+
+/* Large screen */
+@media screen and (min-width: 992px) {
+    .searchRow {
+        height: 32.45em;
+    }
+
+    .searchCard {
+        height: 24.7em;
+    }
+}
+
+/* Extra large screen */
+@media screen and (min-width: 1200px) {
+    .searchRow {
+        height: 20em;
+    }
+
+    .searchCard {
+        height: 20em;
+    }
+}

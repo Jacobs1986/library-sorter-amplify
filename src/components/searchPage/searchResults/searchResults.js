@@ -1,10 +1,35 @@
-import React from "react";
+import React, {
+    useContext, useReducer
+} from "react";
 
 // CSS File
 import "./searchResults-styles.css";
 
+// Import the context
+import { SearchInfo } from "../../../pages/book-search-page";
+
 export default function SearchResults() {
+    // Values
+    const { searchArray } = useContext(SearchInfo);
+
     return (
-        <div>This is where the search results go.</div>
+        <div className="row searchRow">
+            {!searchArray ? <div>Loading...</div> :
+                // Begin mapping the array
+                searchArray.map(book => (
+                    <div className="col-xs-6 col-s-3 col-m-4 col-lg-3 col-xl-2" key={book.etag}>
+                        <div className="searchCard">
+                            {/* Book Cover */}
+                            <img
+                                src={!book.volumeInfo.imageLinks ? "./Images/blank-cover.png" : book.volumeInfo.imageLinks.thumbnail}
+                                width={"100%"}
+                            />
+                            {/* Card title */}
+                            {!book.volumeInfo.imageLinks ? <div className="cardTitle">{book.volumeInfo.title}</div> : <div></div>}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
     );
 };
