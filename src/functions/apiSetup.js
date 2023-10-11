@@ -8,10 +8,10 @@ export const apiSearch = (value, info) => {
     switch (value) {
         // If the value is author
         case "author": {
-            // Make the string lower case and replace " " with "_"
-            info = info.searchParams.toLowerCase().replace(/ /g, "+");
+            // Make the string lower case and replace " " with "+"
+            let author = info.searchParams.toLowerCase().replace(/ /g, "+");
             // Create the url
-            searchURL = `${apiURL}+inauthor:${info}`;
+            searchURL = `${apiURL}+inauthor:${author}&maxResults=${info.numOfResults}`;
             break
         }
         // If the value is title+author
@@ -21,22 +21,22 @@ export const apiSearch = (value, info) => {
             // Make the authorSearch lowerCase and replace " " with "+"
             let author = info.authorSearch.toLowerCase().replace(/ /g, "+");
             // Create the url
-            searchURL = `${apiURL}${title}+inauthor:${author}`;
+            searchURL = `${apiURL}${title}+inauthor:${author}&maxResults=${info.numOfResults}`;
             break
         }
         // if the value is isbn
         case "isbn": {
             // Get the isbn
-            info = info.searchParams;
+            let isbn = info.searchParams;
             // Create the url
-            searchURL = `${apiURL}+isbn:${info}`;
+            searchURL = `${apiURL}+isbn:${isbn}`;
             break
         }
         default: {
-            // Make the string lower case and replace " " with "_"
-            info = info.searchParams.toLowerCase().replace(/ /g, "+");
+            // Make the string lower case and replace " " with "+"
+            let title = info.searchParams.toLowerCase().replace(/ /g, "+");
             // Create the url
-            searchURL = `${apiURL}+intitle:${info}`
+            searchURL = `${apiURL}+intitle:${title}&maxResults=${info.numOfResults}`
         }
     }
     // Return the searchURL

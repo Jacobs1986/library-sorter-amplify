@@ -18,21 +18,32 @@
     margin-left: 1.2em;
 }
 
+/* Styling for numOfResults */
+#numOfResults{
+    width: 4em;
+}
+
 /* Styling for searchParams */
 #searchParams, #titleSearch, #authorSearch {
     width: 18em;
 }
 
-#searchParams, #searchSelect, #titleSearch, #authorSearch {
+#searchParams, #searchSelect, #titleSearch, #authorSearch, #numOfResults {
     padding: 3px;
 }
 
-#searchParams, #authorSearch {
+#searchParams, #authorSearch, #numOfResults {
     margin-left: 1em;
 }
 
 #titleSearch {
     margin-left: 2.47em;
+}
+
+/* resultError styling */
+#resultError {
+    color: red;
+    margin-top: 0.3em
 }
 
 /* Search button */
@@ -44,7 +55,7 @@
 /* Small screen */
 @media screen and (min-width: 600px) {
     .formCol {
-        margin: 1.9em 0em;
+        margin: 0.9em 0em;
     }
 
     #searchParams{
@@ -62,7 +73,7 @@
 /* Medium screen */
 @media screen and (min-width: 768px) {
     .formCol {
-        margin: 3.14em 0em;
+        margin: 2.14em 0em;
     }
 
     #titleSearch, #authorSearch {
@@ -72,18 +83,25 @@
 /* large screen */
 @media screen and (min-width: 992px) {
     .formCol {
-        margin: 5.9em 0em;
+        margin: 4.9em 0em;
     }
 
     #titleSearch, #authorSearch {
         width: 15em;
     }
+
+    #resultError {
+        float: right;
+        margin-right: 3em;
+    }
 }
 /* extra large screen */
 @media screen and (min-width: 1200px) {
     .formCol {
-        margin: 8em 0em;
+        margin: 7em 0em;
     }
 
-    
+    #resultError {
+        margin-right: 11em;
+    }
 }
