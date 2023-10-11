@@ -7,6 +7,7 @@ import React, {
 // Components
 import SearchBar from "../components/searchPage/searchBar/searchBar";
 import SearchResults from "../components/searchPage/searchResults/searchResults";
+import SearchModal from "../components/searchPage/searchModal/searchModal";
 
 // Reducer
 import { reducer as searchReducer } from '../functions/reducer'
@@ -30,6 +31,8 @@ export default function BookSearch() {
     const [searchArray, setSearchArray] = useState([]);
     // resultError
     const [resultError, setResultError] = useState(false);
+    // showModal
+    const [showModal, setShowModal] = useState(false);
 
     // function for searching with the google API
     const handleSearch = () => {
@@ -58,8 +61,9 @@ export default function BookSearch() {
             <SearchContext.Provider value={{ searchValue, setSearchValue, searchInfo, setSearchInfo, handleSearch, resultError }}>
                 <SearchBar />
             </SearchContext.Provider>
-            <SearchInfo.Provider value={{ searchArray }}>
+            <SearchInfo.Provider value={{ searchArray, showModal, setShowModal }}>
                 <SearchResults />
+                <SearchModal />
             </SearchInfo.Provider>
         </div>
     );
