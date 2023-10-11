@@ -26,7 +26,7 @@
 /* Small screen */
 @media screen and (min-width: 600px) {
     .searchRow {
-        height: 13em;
+        height: 12.7em;
     }
 
     .searchCard {
@@ -37,7 +37,7 @@
 /* Medium screen */
 @media screen and (min-width: 768px) {
     .searchRow {
-        height: 60em;
+        height: 60.5em;
     }
 
     .searchCard {

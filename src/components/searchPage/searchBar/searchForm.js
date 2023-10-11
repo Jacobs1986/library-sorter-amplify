@@ -74,7 +74,11 @@ export default function SearchForm() {
                         <input type="text" id="authorSearch" name="authorSearch" value={searchInfo.authorSearch || ""} onChange={handleSearchInput} />
                     </div>
                 }
-
+            </div>
+            {/* Number of results */}
+            <div className="formPart">
+                <label className="boldLabel" htmlFor="numOfResults">Number of Results:</label>
+                <input type="number" id="numOfResults" name="numOfResults" min="10" max="40" value={searchInfo.numOfResults || ""} />
             </div>
             <div className="formPart">
                 <div className="button" id="searchBtn" onClick={handleSearch}>Search</div>
