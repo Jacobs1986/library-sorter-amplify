@@ -9,7 +9,7 @@ import SearchBar from "../components/searchPage/searchBar/searchBar";
 import SearchResults from "../components/searchPage/searchResults/searchResults";
 
 // Reducer
-import { reducer as searchReducer} from '../functions/reducer'
+import { reducer as searchReducer } from '../functions/reducer'
 
 // Import axios
 import axios from "axios";
@@ -22,28 +22,40 @@ export const SearchContext = createContext();
 export const SearchInfo = createContext();
 
 export default function BookSearch() {
-     // searchValue
-     const [searchValue, setSearchValue] = useState("title");
-     // searchReducer
-     const [searchInfo, setSearchInfo] = useReducer(searchReducer, {});
+    // searchValue
+    const [searchValue, setSearchValue] = useState("title");
+    // searchReducer
+    const [searchInfo, setSearchInfo] = useReducer(searchReducer, { numOfResults: 10 });
     //  searchArray
     const [searchArray, setSearchArray] = useState([]);
+    // resultError
+    const [resultError, setResultError] = useState(false);
 
     // function for searching with the google API
     const handleSearch = () => {
-        // Set the apiURL value
-        let apiURL = apiSearch(searchValue, searchInfo);
-        // Get the infomration from Google
-        axios.get(apiURL).then(res => {
-            // Set the results array
-            setSearchArray(res.data.items);
-            console.log(res.data.items);
-        })
+        // Check to see if numOfResults is greater than 40 or less than 10
+        switch (true) {
+            case (searchInfo.numOfResults > 40 || searchInfo.numOfResults < 10): {
+                // Display resultError
+                setResultError(true);
+                break
+            }
+            default:
+                setResultError(false);
+            // Set the apiURL value
+            let apiURL = apiSearch(searchValue, searchInfo);
+            // Get the infomration from Google
+            axios.get(apiURL).then(res => {
+                // Set the results array
+                setSearchArray(res.data.items);
+                console.log(res.data.items);
+            })
+        }
     }
 
     return (
         <div>
-            <SearchContext.Provider value={{ setSearchValue, searchInfo, setSearchInfo, handleSearch }}>
+            <SearchContext.Provider value={{ setSearchValue, searchInfo, setSearchInfo, handleSearch, resultError }}>
                 <SearchBar />
             </SearchContext.Provider>
             <SearchInfo.Provider value={{ searchArray }}>

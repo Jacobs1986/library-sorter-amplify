@@ -40,6 +40,12 @@
     margin-left: 2.47em;
 }
 
+/* resultError styling */
+#resultError {
+    color: red;
+    margin-top: 0.3em
+}
+
 /* Search button */
 #searchBtn {
     width: 4em;
@@ -83,10 +89,19 @@
     #titleSearch, #authorSearch {
         width: 15em;
     }
+
+    #resultError {
+        float: right;
+        margin-right: 3em;
+    }
 }
 /* extra large screen */
 @media screen and (min-width: 1200px) {
     .formCol {
         margin: 7em 0em;
+    }
+
+    #resultError {
+        margin-right: 11em;
     }
 }
