@@ -55,7 +55,7 @@ export default function BookSearch() {
 
     return (
         <div>
-            <SearchContext.Provider value={{ setSearchValue, searchInfo, setSearchInfo, handleSearch, resultError }}>
+            <SearchContext.Provider value={{ searchValue, setSearchValue, searchInfo, setSearchInfo, handleSearch, resultError }}>
                 <SearchBar />
             </SearchContext.Provider>
             <SearchInfo.Provider value={{ searchArray }}>

@@ -11,7 +11,7 @@ import { SearchContext } from "../../../pages/book-search-page";
 
 export default function SearchForm() {
     // Context values
-    const { setSearchValue, searchInfo, setSearchInfo, handleSearch, resultError } = useContext(SearchContext)
+    const { searchValue, setSearchValue, searchInfo, setSearchInfo, handleSearch, resultError } = useContext(SearchContext)
     // titleAuthor
     const [titleAuthor, setTitleAuthor] = useState(false);
 
@@ -34,7 +34,11 @@ export default function SearchForm() {
         // Set searchValue to currentValue
         setSearchValue(currentValue);
         // Reset searchInfo
-        setSearchInfo({ type: 'reset' })
+        setSearchInfo({
+            type: 'setToDefault',
+            name: 'numOfResults',
+            value: 10
+        })
     }
 
     // Function for search input
@@ -76,12 +80,13 @@ export default function SearchForm() {
                 }
             </div>
             {/* Number of results */}
-            <div className="formPart">
-                <label className="boldLabel" htmlFor="numOfResults">Number of Results:</label>
-                <input type="number" id="numOfResults" name="numOfResults" min="10" max="40" value={searchInfo.numOfResults || ""} onChange={handleSearchInput} />
-                {/* Result error */}
-                {!resultError ? <div></div> : <div className="boldLabel" id="resultError">The number must between 10 and 40</div>}
-            </div>
+            {searchValue === "isbn" ? <div></div> :
+                <div className="formPart">
+                    <label className="boldLabel" htmlFor="numOfResults">Number of Results:</label>
+                    <input type="number" id="numOfResults" name="numOfResults" min="10" max="40" value={searchInfo.numOfResults || ""} onChange={handleSearchInput} />
+                    {/* Result error */}
+                    {!resultError ? <div></div> : <div className="boldLabel" id="resultError">The number must between 10 and 40</div>}
+                </div>}
             <div className="formPart">
                 <div className="button" id="searchBtn" onClick={handleSearch}>Search</div>
             </div>
