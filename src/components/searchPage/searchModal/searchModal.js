@@ -28,6 +28,8 @@ export default function SearchModal() {
     const [showModal, setShowModal] = useState(false);
     // googleInfo value
     const [googleInfo, setGoogleInfo] = useState();
+    // googleISBN value
+    const [googleISBN, setGoogleISBN] = useState();
 
     useEffect(() => {
         // If googleId is not undefined
@@ -37,6 +39,10 @@ export default function SearchModal() {
             .then(response => {
                 // Set the googleInfo value
                 setGoogleInfo(response.data.volumeInfo);
+                // Find the ISBN_13
+                let isbnSearch = response.data.volumeInfo.industryIdentifiers.find(o => o.type === "ISBN_13");
+                // Set the isbn
+                setGoogleISBN(isbnSearch);
                 // show the modal
                 setShowModal(!showModal);
             })
@@ -63,7 +69,7 @@ export default function SearchModal() {
                         </div>
                         {/* Modal Body */}
                         <div className="modal-body">
-                            <BookInfo.Provider value={{ googleInfo }} >
+                            <BookInfo.Provider value={{ googleInfo, googleISBN }} >
                                 <BasicInfo />
                             </BookInfo.Provider>
                         </div>
