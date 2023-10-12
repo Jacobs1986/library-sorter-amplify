@@ -1,0 +1,20 @@
+/* Styling for book-title */
+.book-title {
+    text-align: center;
+}
+
+/* Styling for modal labels */
+.modal-label {
+    font-weight: bold;
+}
+
+/* styling for book-info */
+.book-info {
+    margin-left: 1em;
+}
+
+/* Styling for modal-row */
+.modal-row {
+    margin-top: 0.5em;
+    clear: left;
+}

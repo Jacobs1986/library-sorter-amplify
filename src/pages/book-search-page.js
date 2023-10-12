@@ -31,8 +31,8 @@ export default function BookSearch() {
     const [searchArray, setSearchArray] = useState([]);
     // resultError
     const [resultError, setResultError] = useState(false);
-    // showModal
-    const [showModal, setShowModal] = useState(false);
+    // googleId
+    const [googleId, setGoogleId] = useState();
 
     // function for searching with the google API
     const handleSearch = () => {
@@ -61,7 +61,7 @@ export default function BookSearch() {
             <SearchContext.Provider value={{ searchValue, setSearchValue, searchInfo, setSearchInfo, handleSearch, resultError }}>
                 <SearchBar />
             </SearchContext.Provider>
-            <SearchInfo.Provider value={{ searchArray, showModal, setShowModal }}>
+            <SearchInfo.Provider value={{ searchArray, googleId, setGoogleId }}>
                 <SearchResults />
                 <SearchModal />
             </SearchInfo.Provider>
