@@ -42,7 +42,7 @@ export default function LibraryUpdateForm(props) {
       const record = idProp
         ? (
             await API.graphql({
-              query: getLibrary,
+              query: getLibrary.replaceAll("__typename", ""),
               variables: { id: idProp },
             })
           )?.data?.getLibrary
@@ -112,7 +112,7 @@ export default function LibraryUpdateForm(props) {
             }
           });
           await API.graphql({
-            query: updateLibrary,
+            query: updateLibrary.replaceAll("__typename", ""),
             variables: {
               input: {
                 id: libraryRecord.id,
