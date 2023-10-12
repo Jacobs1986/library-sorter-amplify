@@ -1,28 +1,79 @@
-import React from "react";
+import React, {
+    createContext,
+    useContext,
+    useEffect,
+    useState
+} from "react";
 
 // CSS File
 import "./searchModal-styles.css";
 import "../../../styles/modal.css";
 
+// Axios
+import axios from "axios";
+
+// Components
+import BasicInfo from "./basicInfo";
+
+// Import contexts
+import { SearchInfo } from "../../../pages/book-search-page";
+
+// Export context
+export const BookInfo = createContext();
+
 export default function SearchModal() {
+    // SearchInfo values
+    const { googleId, setGoogleId } = useContext(SearchInfo);
+    // showModal value
+    const [showModal, setShowModal] = useState(false);
+    // googleInfo value
+    const [googleInfo, setGoogleInfo] = useState();
+
+    useEffect(() => {
+        // If googleId is not undefined
+        if (googleId) {
+            // Run the api
+            axios.get(`https://www.googleapis.com/books/v1/volumes/${googleId}`)
+            .then(response => {
+                // Set the googleInfo value
+                setGoogleInfo(response.data.volumeInfo);
+                // show the modal
+                setShowModal(!showModal);
+            })
+        }
+    }, [googleId])
+
+    // Function for closing the modal
+    const handleHideModal = () => {
+        // Clear googleId
+        setGoogleId("");
+        // toggle showModal
+        setShowModal(!showModal);
+    }
+
     return (
-        <div className="modal">
-            <div className="modal-content">
-                {/* Modal Header */}
-                <div class="modal-header">
-                    <span className="close">&times;</span>
-                    <h2>Modal Header</h2>
+        <>
+            {!showModal ? <></> :
+                <div className="modal">
+                    <div className="modal-content">
+                        {/* Modal Header */}
+                        <div className="modal-header">
+                            <span className="close" onClick={handleHideModal}>&times;</span>
+                            <h2 className="book-title">{googleInfo.title}</h2>
+                        </div>
+                        {/* Modal Body */}
+                        <div className="modal-body">
+                            <BookInfo.Provider value={{ googleInfo }} >
+                                <BasicInfo />
+                            </BookInfo.Provider>
+                        </div>
+                        {/* Modal Footer */}
+                        <div className="modal-footer">
+                            <h3>Modal Footer</h3>
+                        </div>
+                    </div>
                 </div>
-                {/* Modal Body */}
-                <div className="modal-body">
-                    <p>Some text in the Modal Body</p>
-                    <p>Some other text...</p>
-                </div>
-                {/* Modal Footer */}
-                <div className="modal-footer">
-                    <h3>Modal Footer</h3>
-                </div>
-            </div>
-        </div>
+            }
+        </>
     );
 };
