@@ -14,6 +14,7 @@ import axios from "axios";
 
 // Components
 import BasicInfo from "./basicInfo";
+import CollectorForm from "./collectorForm";
 
 // Import contexts
 import { SearchInfo } from "../../../pages/book-search-page";
@@ -72,6 +73,7 @@ export default function SearchModal() {
                             <BookInfo.Provider value={{ googleInfo, googleISBN }} >
                                 <BasicInfo />
                             </BookInfo.Provider>
+                            <CollectorForm />
                         </div>
                         {/* Modal Footer */}
                         <div className="modal-footer">

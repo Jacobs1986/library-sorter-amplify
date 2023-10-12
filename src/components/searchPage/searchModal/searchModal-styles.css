@@ -17,3 +17,21 @@
 .modal-row {
     margin-top: 0.5em;
 }
+
+/* Styling for collectorBtn */
+.collectorBtn {
+    width: 9em;
+}
+
+/* Styling for collectorInput */
+.collectorInput {
+    padding: 3px;
+    width: 100%;
+}
+
+/* Styling for addtionalNotes */
+#addtionalNotes {
+    padding: 3px;
+    width: 100%;
+    height: 5em;
+}
