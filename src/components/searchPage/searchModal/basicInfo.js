@@ -3,8 +3,8 @@ import React from "react";
 // CSS File
 import "./searchModal-styles.css";
 
-export default function SearchModal() {
+export default function BasicInfo() {
     return (
-        <div>The search modal goes here.</div>
+        <div>The basic information goes here</div>
     );
 };
