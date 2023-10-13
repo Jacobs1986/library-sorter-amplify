@@ -9,12 +9,24 @@ import "./searchModal-styles.css";
 // Import contexts
 import { Libraries } from "../../../App";
 import { BookInfo } from "./searchModal";
+import { DataBaseInfo } from "./searchModal";
 
 export default function BasicInfo() {
     // Libraries value
     const { libraries } = useContext(Libraries);
     // BookInfo values
     const { googleInfo, googleISBN } = useContext(BookInfo);
+    // DataBaseInfo values
+    const { dbInfo, setDbInfo } = useContext(DataBaseInfo);
+
+    // Set the libraryId
+    const handleSetLibraryId = event => {
+        setDbInfo({
+            type: 'add',
+            name: event.target.name,
+            value: event.target.value
+        })
+    }
 
     return (
         <>
@@ -80,7 +92,7 @@ export default function BasicInfo() {
                             Add to Library:
                         </div>
                         <div className="col-xs-12 col-s-6 col-m-6 col-lg-4 col-xl-3">
-                            <select id="librarySelect">
+                            <select id="librarySelect" name="libraryID" value={dbInfo.libraryID} onChange={handleSetLibraryId}>
                                 <option value="">---</option>
                                 {libraries.map(name => (
                                     <option key={name.id} value={name.id}>{name.name}</option>

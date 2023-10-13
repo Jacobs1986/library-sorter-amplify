@@ -2,6 +2,7 @@ import React, {
     createContext,
     useContext,
     useEffect,
+    useReducer,
     useState
 } from "react";
 
@@ -12,6 +13,9 @@ import "../../../styles/modal.css";
 // Axios
 import axios from "axios";
 
+// Import reducer
+import { reducer as dataReduc } from "../../../functions/reducer";
+
 // Components
 import BasicInfo from "./basicInfo";
 import CollectorForm from "./collectorForm";
@@ -19,8 +23,24 @@ import CollectorForm from "./collectorForm";
 // Import contexts
 import { SearchInfo } from "../../../pages/book-search-page";
 
+// default vaules
+let dataDefaults = {
+    libraryID: "",
+    collectorInfo: false,
+    acquisitionDate: "",
+    acquiredFrom: "",
+    acquisitionCost: "",
+    edition: "",
+    printing: "",
+    condition: "",
+    dustJacket: "",
+    jacketCondition: "",
+    additionalNotes: ""
+}
+
 // Export context
 export const BookInfo = createContext();
+export const DataBaseInfo = createContext();
 
 export default function SearchModal() {
     // SearchInfo values
@@ -31,6 +51,8 @@ export default function SearchModal() {
     const [googleInfo, setGoogleInfo] = useState();
     // googleISBN value
     const [googleISBN, setGoogleISBN] = useState();
+    // dbInfo value
+    const [dbInfo, setDbInfo] = useReducer(dataReduc, dataDefaults);
 
     useEffect(() => {
         // If googleId is not undefined
@@ -56,6 +78,16 @@ export default function SearchModal() {
         setGoogleId("");
         // toggle showModal
         setShowModal(!showModal);
+        // Clear dbInfo
+        setDbInfo({
+            type: 'setDefault',
+            value: dataDefaults
+        })
+    }
+
+    // Function for saving the info
+    const handleSaveData = () => {
+        console.log(dbInfo);
     }
 
     return (
@@ -70,15 +102,17 @@ export default function SearchModal() {
                         </div>
                         {/* Modal Body */}
                         <div className="modal-body">
-                            <BookInfo.Provider value={{ googleInfo, googleISBN }} >
-                                <BasicInfo />
-                            </BookInfo.Provider>
-                            <CollectorForm />
+                            <DataBaseInfo.Provider value={{ dbInfo, setDbInfo }}>
+                                <BookInfo.Provider value={{ googleInfo, googleISBN }} >
+                                    <BasicInfo />
+                                </BookInfo.Provider>
+                                <CollectorForm />
+                            </DataBaseInfo.Provider>
                         </div>
                         {/* Modal Footer */}
                         <div className="modal-footer searchModal-footer">
                            <div className="button modalButton-btm btnStop" onClick={handleHideModal}>Cancel</div>
-                           <div className="button modalButton-btm btnGo">Save</div>
+                           <div className="button modalButton-btm btnGo" onClick={handleSaveData}>Save</div>
                         </div>
                     </div>
                 </div>
