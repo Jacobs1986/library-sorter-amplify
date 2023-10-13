@@ -15,7 +15,7 @@ export default function BasicInfo() {
     // Libraries value
     const { libraries } = useContext(Libraries);
     // BookInfo values
-    const { googleInfo, googleISBN, libraryIdError } = useContext(BookInfo);
+    const { googleInfo, googleISBN, coverImage, libraryIdError } = useContext(BookInfo);
     // DataBaseInfo values
     const { dbInfo, setDbInfo } = useContext(DataBaseInfo);
 
@@ -35,7 +35,7 @@ export default function BasicInfo() {
                 <div className="col-xs-12 col-s-4 col-m-5 col-lg-4 col-xl-3">
                     {/* Book Cover */}
                     <img
-                        src={!googleInfo.imageLinks ? "./Images/blank-cover.png" : googleInfo.imageLinks.thumbnail}
+                        src={coverImage}
                         alt="The image of the book cover will display here."
                         width={"100%"}
                     />

@@ -51,6 +51,8 @@ export default function SearchModal() {
     const [googleInfo, setGoogleInfo] = useState();
     // googleISBN value
     const [googleISBN, setGoogleISBN] = useState();
+    // coverImage value
+    const [coverImage, setCoverImage] = useState();
     // dbInfo value
     const [dbInfo, setDbInfo] = useReducer(dataReduc, dataDefaults);
     // libraryIdError
@@ -62,12 +64,20 @@ export default function SearchModal() {
             // Run the api
             axios.get(`https://www.googleapis.com/books/v1/volumes/${googleId}`)
             .then(response => {
+                // Set the recievedData value
+                let recievedData = response.data.volumeInfo;
                 // Set the googleInfo value
-                setGoogleInfo(response.data.volumeInfo);
+                setGoogleInfo(recievedData);
                 // Find the ISBN_13
-                let isbnSearch = response.data.volumeInfo.industryIdentifiers.find(o => o.type === "ISBN_13");
+                let isbnSearch = recievedData.industryIdentifiers.find(o => o.type === "ISBN_13");
                 // Set the isbn
                 setGoogleISBN(isbnSearch);
+                // Set the coverImage
+                if (!recievedData.imageLinks) {
+                    setCoverImage("./Images/blank-cover.png");
+                } else {
+                    setCoverImage(recievedData.imageLinks.thumbnail)
+                }
                 // show the modal
                 setShowModal(!showModal);
             })
@@ -97,6 +107,7 @@ export default function SearchModal() {
         }
         // Hide the libraryId error
         setLibraryIdError(false);
+        // 
         console.log(dbInfo);
 
     }
@@ -114,7 +125,7 @@ export default function SearchModal() {
                         {/* Modal Body */}
                         <div className="modal-body">
                             <DataBaseInfo.Provider value={{ dbInfo, setDbInfo }}>
-                                <BookInfo.Provider value={{ googleInfo, googleISBN, libraryIdError }} >
+                                <BookInfo.Provider value={{ googleInfo, coverImage, googleISBN, libraryIdError }} >
                                     <BasicInfo />
                                 </BookInfo.Provider>
                                 <CollectorForm />
