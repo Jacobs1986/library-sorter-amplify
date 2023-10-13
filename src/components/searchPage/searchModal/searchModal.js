@@ -76,8 +76,9 @@ export default function SearchModal() {
                             <CollectorForm />
                         </div>
                         {/* Modal Footer */}
-                        <div className="modal-footer">
-                            <h3>Modal Footer</h3>
+                        <div className="modal-footer searchModal-footer">
+                           <div className="button modalButton-btm btnStop">Cancel</div>
+                           <div className="button modalButton-btm btnGo">Save</div>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
     background-color: #ededed;
     padding: 7px;
     border-radius: 4px;
+    color: black
 }
 
 .button:hover {
@@ -36,4 +37,10 @@
 .formButton-btm {
     float: left;
     margin-right: 10px;
+}
+
+/* Modal buttons */
+.modalButton-btm {
+    float: right;
+    margin-left: 1em;
 }
