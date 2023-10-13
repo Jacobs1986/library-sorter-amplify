@@ -53,36 +53,84 @@ export default function SearchModal() {
     const [googleISBN, setGoogleISBN] = useState();
     // coverImage value
     const [coverImage, setCoverImage] = useState();
-    // dbInfo value
-    const [dbInfo, setDbInfo] = useReducer(dataReduc, dataDefaults);
+    // description value
+    const [description, setDescription] = useState();
+    // collectorInfo value
+    const [collectorInfo, setCollectorInfo] = useReducer(dataReduc, dataDefaults);
     // libraryIdError
     const [libraryIdError, setLibraryIdError] = useState(false);
+    // basicInfo value
+    const [basicInfo, setBasicInfo] = useState();
+    // dbInfo value
+    const [dbInfo, setDbInfo] = useState();
+    // addInfo value
+    const [addInfo, setAddInfo] = useState(false);
+    // saveInfo value
+    const [saveInfo, setSaveInfo] = useState(false);
 
+    // Get the book information from google 
     useEffect(() => {
         // If googleId is not undefined
         if (googleId) {
             // Run the api
             axios.get(`https://www.googleapis.com/books/v1/volumes/${googleId}`)
-            .then(response => {
-                // Set the recievedData value
-                let recievedData = response.data.volumeInfo;
-                // Set the googleInfo value
-                setGoogleInfo(recievedData);
-                // Find the ISBN_13
-                let isbnSearch = recievedData.industryIdentifiers.find(o => o.type === "ISBN_13");
-                // Set the isbn
-                setGoogleISBN(isbnSearch);
-                // Set the coverImage
-                if (!recievedData.imageLinks) {
-                    setCoverImage("./Images/blank-cover.png");
-                } else {
-                    setCoverImage(recievedData.imageLinks.thumbnail)
-                }
-                // show the modal
-                setShowModal(!showModal);
-            })
+                .then(response => {
+                    // Set the recievedData value
+                    let recievedData = response.data.volumeInfo;
+                    // Set the googleInfo value
+                    setGoogleInfo(recievedData);
+                    // Find the ISBN_13
+                    let isbnSearch = recievedData.industryIdentifiers.find(o => o.type === "ISBN_13");
+                    // Set the isbn
+                    setGoogleISBN(isbnSearch);
+                    // Set the coverImage
+                    if (!recievedData.imageLinks) {
+                        setCoverImage("./Images/blank-cover.png");
+                    } else {
+                        setCoverImage(recievedData.imageLinks.thumbnail)
+                    }
+                    // Get the description
+                    if (!recievedData.description) {
+                        setDescription("NA")
+                    } else {
+                        setDescription(recievedData.description);
+                    }
+                    // show the modal
+                    setShowModal(!showModal);
+                })
         }
     }, [googleId])
+
+    // Add collectorInfo to basicInfo
+    useEffect(() => {
+        if (addInfo) {
+            // Check to see if there is collector info
+            switch (collectorInfo.collectorInfo) {
+                case true:
+                    setDbInfo({
+                        ...basicInfo,
+                        ...collectorInfo
+                    })
+                    break
+                default:
+                    setDbInfo({
+                        ...basicInfo,
+                        libraryID: collectorInfo.libraryID,
+                        collectorInfo: collectorInfo.collectorInfo
+                    })
+            }
+            setSaveInfo(true);
+        }
+    }, [addInfo])
+
+    // Save the info
+    useEffect(() => {
+        if (saveInfo) {
+            console.log(dbInfo);
+        }
+        setAddInfo(false);
+        setSaveInfo(false);
+    }, [saveInfo])
 
     // Function for closing the modal
     const handleHideModal = () => {
@@ -91,7 +139,7 @@ export default function SearchModal() {
         // toggle showModal
         setShowModal(!showModal);
         // Clear dbInfo
-        setDbInfo({
+        setCollectorInfo({
             type: 'setDefault',
             value: dataDefaults
         })
@@ -100,16 +148,24 @@ export default function SearchModal() {
     // Function for saving the info
     const handleSaveData = () => {
         // Check to see if there is a libraryId
-        if (!dbInfo.libraryID) {
+        if (!collectorInfo.libraryID) {
             // Display the error
             setLibraryIdError(true);
             return
         }
         // Hide the libraryId error
         setLibraryIdError(false);
-        // 
-        console.log(dbInfo);
-
+        // Set the basic info
+        setBasicInfo({
+            title: googleInfo.title,
+            cover: coverImage,
+            author: googleInfo.authors,
+            isbn: googleISBN.identifier,
+            publisher: googleInfo.publisher,
+            pubDate: googleInfo.publishedDate,
+            description: description
+        })
+        setAddInfo(true);
     }
 
     return (
@@ -124,8 +180,8 @@ export default function SearchModal() {
                         </div>
                         {/* Modal Body */}
                         <div className="modal-body">
-                            <DataBaseInfo.Provider value={{ dbInfo, setDbInfo }}>
-                                <BookInfo.Provider value={{ googleInfo, coverImage, googleISBN, libraryIdError }} >
+                            <DataBaseInfo.Provider value={{ collectorInfo, setCollectorInfo }}>
+                                <BookInfo.Provider value={{ googleInfo, coverImage, googleISBN, description, libraryIdError }} >
                                     <BasicInfo />
                                 </BookInfo.Provider>
                                 <CollectorForm />
@@ -133,8 +189,8 @@ export default function SearchModal() {
                         </div>
                         {/* Modal Footer */}
                         <div className="modal-footer searchModal-footer">
-                           <div className="button modalButton-btm btnStop" onClick={handleHideModal}>Cancel</div>
-                           <div className="button modalButton-btm btnGo" onClick={handleSaveData}>Save</div>
+                            <div className="button modalButton-btm btnStop" onClick={handleHideModal}>Cancel</div>
+                            <div className="button modalButton-btm btnGo" onClick={handleSaveData}>Save</div>
                         </div>
                     </div>
                 </div>

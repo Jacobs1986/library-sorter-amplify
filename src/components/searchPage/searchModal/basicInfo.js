@@ -15,13 +15,13 @@ export default function BasicInfo() {
     // Libraries value
     const { libraries } = useContext(Libraries);
     // BookInfo values
-    const { googleInfo, googleISBN, coverImage, libraryIdError } = useContext(BookInfo);
+    const { googleInfo, googleISBN, coverImage, description, libraryIdError } = useContext(BookInfo);
     // DataBaseInfo values
-    const { dbInfo, setDbInfo } = useContext(DataBaseInfo);
+    const { collectorInfo, setCollectorInfo } = useContext(DataBaseInfo);
 
     // Set the libraryId
     const handleSetLibraryId = event => {
-        setDbInfo({
+        setCollectorInfo({
             type: 'add',
             name: event.target.name,
             value: event.target.value
@@ -83,7 +83,7 @@ export default function BasicInfo() {
                             Description:
                         </div>
                         <div className="col-xs-12">
-                            {!googleInfo.description ? "NA" : parse(googleInfo.description)}
+                            {parse(description)}
                         </div>
                     </div>
                     {/* Add library select */}
@@ -92,7 +92,7 @@ export default function BasicInfo() {
                             Add to Library:
                         </div>
                         <div className="col-xs-12 col-s-6 col-m-6 col-lg-4 col-xl-3">
-                            <select id="librarySelect" name="libraryID" value={dbInfo.libraryID} onChange={handleSetLibraryId}>
+                            <select id="librarySelect" name="libraryID" value={collectorInfo.libraryID} onChange={handleSetLibraryId}>
                                 <option value="">---</option>
                                 {libraries.map(name => (
                                     <option key={name.id} value={name.id}>{name.name}</option>

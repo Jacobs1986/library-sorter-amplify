@@ -12,21 +12,21 @@ import { DataBaseInfo } from "./searchModal";
 
 export default function CollectorForm() {
     // DataBaseInfo values
-    const { dbInfo, setDbInfo } = useContext(DataBaseInfo);
+    const { collectorInfo, setCollectorInfo } = useContext(DataBaseInfo);
 
     // function to show the collector form
     const handleShowForm = () => {
         // Toggle the value
-         setDbInfo({
+        setCollectorInfo({
             type: 'add',
             name: 'collectorInfo',
-            value: !dbInfo.collectorInfo
+            value: !collectorInfo.collectorInfo
         })
     }
 
     // Function for inputing the collector data
     const handleCollectorDataInput = event => {
-        setDbInfo({
+        setCollectorInfo({
             type: 'add',
             name: event.target.name,
             value: event.target.value
@@ -43,7 +43,7 @@ export default function CollectorForm() {
             </div>
             {/* Collector Form */}
             <div className="row">
-                <div className="collectorForm" style={!dbInfo.collectorInfo ? { height: "0" } : { height: "100%" }}>
+                <div className="collectorForm" style={!collectorInfo.collectorInfo ? { height: "0" } : { height: "100%" }}>
                     <div className="col-xs-12 col-s-12 col-lg-6 col-xl-6">
                         {/* Acquisition Date */}
                         <div className="row">
@@ -51,7 +51,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="acquiredDate">Acquisition Date:</label>
                             </div>
                             <div className="col-xs-12 col-s-4 col-m-4 col-lg-5 col-xl-4">
-                                <input type="date" id="acquiredDate" className="collectorInput" name="acquisitionDate" value={dbInfo.acquisitionDate} onChange={handleCollectorDataInput} />
+                                <input type="date" id="acquiredDate" className="collectorInput" name="acquisitionDate" value={collectorInfo.acquisitionDate} onChange={handleCollectorDataInput} />
                             </div>
                         </div>
                         {/* Acquired From */}
@@ -60,7 +60,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="acquiredFrom">Aquired From:</label>
                             </div>
                             <div className="col-xs-12 col-s-7 col-m-4 col-lg-7 col-xl-8">
-                                <input type="text" id="acquiredFrom" className="collectorInput" name="acquiredFrom" value={dbInfo.acquiredFrom} onChange={handleCollectorDataInput} />
+                                <input type="text" id="acquiredFrom" className="collectorInput" name="acquiredFrom" value={collectorInfo.acquiredFrom} onChange={handleCollectorDataInput} />
                             </div>
                         </div>
                         {/* Acquisition Cost */}
@@ -69,7 +69,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="acquisitionCost">Acquisition Cost:</label>
                             </div>
                             <div className="col-xs-6 col-s-3 col-m-2 col-lg-3 col-xl-3">
-                                <input type="text" id="acquisitionCost" className="collectorInput" name="acquisitionCost" value={dbInfo.acquisitionCost} onChange={handleCollectorDataInput} />
+                                <input type="text" id="acquisitionCost" className="collectorInput" name="acquisitionCost" value={collectorInfo.acquisitionCost} onChange={handleCollectorDataInput} />
                             </div>
                         </div>
                         {/* Edition */}
@@ -78,7 +78,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="edition">Edition:</label>
                             </div>
                             <div className="col-xs-5 col-s-3 col-m-2 col-lg-2 col-xl-2">
-                                <input type="text" id="edition" className="collectorInput" name="edition" value={dbInfo.edition} onChange={handleCollectorDataInput} />
+                                <input type="text" id="edition" className="collectorInput" name="edition" value={collectorInfo.edition} onChange={handleCollectorDataInput} />
                             </div>
                         </div>
                         {/* Printing */}
@@ -87,7 +87,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="printing">Printing:</label>
                             </div>
                             <div className="col-xs-5 col-s-3 col-m-2 col-lg-2 col-xl-2">
-                                <input type="text" id="printing" className="collectorInput" name="printing" value={dbInfo.printing} onChange={handleCollectorDataInput} />
+                                <input type="text" id="printing" className="collectorInput" name="printing" value={collectorInfo.printing} onChange={handleCollectorDataInput} />
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="condition">Condition:</label>
                             </div>
                             <div className="col-xs-7 col-s-4 col-m-3 col-lg-5 col-xl-4">
-                                <select id="condition" style={{ width: "100%", padding: "3px" }} name="condition" value={dbInfo.condition} onChange={handleCollectorDataInput} >
+                                <select id="condition" style={{ width: "100%", padding: "3px" }} name="condition" value={collectorInfo.condition} onChange={handleCollectorDataInput} >
                                     <option value="">---</option>
                                     <option value="Poor">Poor</option>
                                     <option value="Fair">Fair</option>
@@ -137,7 +137,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="dustJacketCondition">Dust jacket condition:</label>
                             </div>
                             <div className="col-xs-12 col-s-5 col-m-4 col-lg-5 col-xl-4">
-                                <select id="dustJacketCondition" style={{ width: "100%", padding: "3px" }} name="jacketCondition" value={dbInfo.jacketCondition} onChange={handleCollectorDataInput} >
+                                <select id="dustJacketCondition" style={{ width: "100%", padding: "3px" }} name="jacketCondition" value={collectorInfo.jacketCondition} onChange={handleCollectorDataInput} >
                                     <option value="">---</option>
                                     <option value="Poor">Poor</option>
                                     <option value="Fair">Fair</option>
@@ -153,7 +153,7 @@ export default function CollectorForm() {
                                 <label className="boldLabel" htmlFor="addtionalNotes">Additional Notes:</label>
                             </div>
                             <div className="col-xs-12 col-s-7 col-m-8 col-lg-7 col-xl-8">
-                                <textarea id="addtionalNotes" name="additionalNotes" value={dbInfo.additionalNotes} onChange={handleCollectorDataInput} />
+                                <textarea id="addtionalNotes" name="additionalNotes" value={collectorInfo.additionalNotes} onChange={handleCollectorDataInput} />
                             </div>
                         </div>
                     </div>
