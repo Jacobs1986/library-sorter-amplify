@@ -23,6 +23,12 @@ import CollectorForm from "./collectorForm";
 // Import contexts
 import { SearchInfo } from "../../../pages/book-search-page";
 
+// Import API
+import { API } from "aws-amplify";
+
+// Import createBooks
+import { createBooks } from "../../../graphql/mutations";
+
 // default vaules
 let dataDefaults = {
     libraryID: "",
@@ -126,7 +132,12 @@ export default function SearchModal() {
     // Save the info
     useEffect(() => {
         if (saveInfo) {
-            console.log(dbInfo);
+            API.graphql({
+                query: createBooks,
+                variables: { input: dbInfo}
+            }).then(() => {
+                handleHideModal();
+            })
         }
         setAddInfo(false);
         setSaveInfo(false);
