@@ -15,7 +15,7 @@ export default function BasicInfo() {
     // Libraries value
     const { libraries } = useContext(Libraries);
     // BookInfo values
-    const { googleInfo, googleISBN } = useContext(BookInfo);
+    const { googleInfo, googleISBN, libraryIdError } = useContext(BookInfo);
     // DataBaseInfo values
     const { dbInfo, setDbInfo } = useContext(DataBaseInfo);
 
@@ -98,6 +98,9 @@ export default function BasicInfo() {
                                     <option key={name.id} value={name.id}>{name.name}</option>
                                 ))}
                             </select>
+                            <div className="modal-error" style={!libraryIdError ? { display: "none"} : { display: "block" } }>
+                                You must choose a library.
+                            </div>
                         </div>
                     </div>
                 </div>

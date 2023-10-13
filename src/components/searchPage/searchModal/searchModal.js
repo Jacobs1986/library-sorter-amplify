@@ -53,6 +53,8 @@ export default function SearchModal() {
     const [googleISBN, setGoogleISBN] = useState();
     // dbInfo value
     const [dbInfo, setDbInfo] = useReducer(dataReduc, dataDefaults);
+    // libraryIdError
+    const [libraryIdError, setLibraryIdError] = useState(false);
 
     useEffect(() => {
         // If googleId is not undefined
@@ -87,7 +89,16 @@ export default function SearchModal() {
 
     // Function for saving the info
     const handleSaveData = () => {
+        // Check to see if there is a libraryId
+        if (!dbInfo.libraryID) {
+            // Display the error
+            setLibraryIdError(true);
+            return
+        }
+        // Hide the libraryId error
+        setLibraryIdError(false);
         console.log(dbInfo);
+
     }
 
     return (
@@ -103,7 +114,7 @@ export default function SearchModal() {
                         {/* Modal Body */}
                         <div className="modal-body">
                             <DataBaseInfo.Provider value={{ dbInfo, setDbInfo }}>
-                                <BookInfo.Provider value={{ googleInfo, googleISBN }} >
+                                <BookInfo.Provider value={{ googleInfo, googleISBN, libraryIdError }} >
                                     <BasicInfo />
                                 </BookInfo.Provider>
                                 <CollectorForm />
