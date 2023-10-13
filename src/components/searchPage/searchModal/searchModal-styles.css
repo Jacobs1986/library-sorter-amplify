@@ -1,3 +1,7 @@
+.collectorForm {
+    overflow: hidden;
+}
+
 /* Styling for book-title */
 .book-title {
     text-align: center;
