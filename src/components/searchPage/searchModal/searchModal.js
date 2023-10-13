@@ -77,7 +77,7 @@ export default function SearchModal() {
                         </div>
                         {/* Modal Footer */}
                         <div className="modal-footer searchModal-footer">
-                           <div className="button modalButton-btm btnStop">Cancel</div>
+                           <div className="button modalButton-btm btnStop" onClick={handleHideModal}>Cancel</div>
                            <div className="button modalButton-btm btnGo">Save</div>
                         </div>
                     </div>
