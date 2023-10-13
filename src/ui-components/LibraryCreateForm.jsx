@@ -91,7 +91,7 @@ export default function LibraryCreateForm(props) {
             }
           });
           await API.graphql({
-            query: createLibrary,
+            query: createLibrary.replaceAll("__typename", ""),
             variables: {
               input: {
                 ...modelFields,

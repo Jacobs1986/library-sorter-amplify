@@ -30,8 +30,7 @@ export const listLibraries = /* GraphQL */ `
             cover
             id
             isbn
-            authorFirstName
-            authorLastName
+            author
           }
         }
       }
@@ -44,8 +43,7 @@ export const getBooks = /* GraphQL */ `
       id
       libraryID
       title
-      authorFirstName
-      authorLastName
+      author
       cover
       isbn
       pubDate
@@ -77,8 +75,7 @@ export const listBooks = /* GraphQL */ `
         id
         libraryID
         title
-        authorFirstName
-        authorLastName
+        author
         cover
         isbn
         pubDate
@@ -121,8 +118,7 @@ export const booksByLibraryID = /* GraphQL */ `
         id
         libraryID
         title
-        authorFirstName
-        authorLastName
+        author
         cover
         isbn
         pubDate

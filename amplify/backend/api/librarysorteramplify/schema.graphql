@@ -8,21 +8,20 @@ type Books @model @auth(rules: [{allow: public}]) {
   id: ID!
   libraryID: ID! @index(name: "byLibrary")
   title: String!
-  authorFirstName: String
-  authorLastName: String
   cover: String
+  author: [String]
   isbn: String
+  publisher: String
   pubDate: String
-  numOfPages: Int
-  synopsis: String
-  collectorItem: Boolean
+  description: String
+  collectorInfo: Boolean
+  acquisitionDate: AWSDate
+  acquiredFrom: String
+  acquisitionCost: String
   edition: String
   printing: String
-  dustJacket: String
   condition: String
-  damage: String
-  aquisitionDate: String
-  acquiredFrom: String
-  aquisitionCost: String
-}
- 
+  dustJacket: String
+  jacketCondition: String
+  additionalNotes: String
+} 
