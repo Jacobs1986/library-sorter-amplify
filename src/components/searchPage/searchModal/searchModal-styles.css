@@ -12,8 +12,8 @@
     width: 9em;
 }
 
-/* Styling for collectorInput */
-.collectorInput {
+/* Styling for collectorInput and librarySelect */
+.collectorInput, #librarySelect {
     padding: 3px;
     width: 100%;
 }
