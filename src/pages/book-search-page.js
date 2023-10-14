@@ -51,7 +51,7 @@ export default function BookSearch() {
             axios.get(apiURL).then(res => {
                 // Set the results array
                 setSearchArray(res.data.items);
-                console.log(res.data.items);
+                // console.log(res.data.items);
             })
         }
     }

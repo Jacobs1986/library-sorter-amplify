@@ -19,6 +19,11 @@ export const reducer =  (state, action) => {
             state = {[action.name]: action.value};
             return state
         }
+        // set the state to default 2
+        case 'setDefault': {
+            state = action.value;
+            return state
+        }
         // reset the state
         case 'reset': {
             state = {};

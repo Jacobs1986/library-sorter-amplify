@@ -62,25 +62,25 @@ export const createBooks = /* GraphQL */ `
     $condition: ModelBooksConditionInput
   ) {
     createBooks(input: $input, condition: $condition) {
-      id
-      libraryID
-      title
-      authorFirstName
-      authorLastName
-      cover
-      isbn
-      pubDate
-      numOfPages
-      synopsis
-      collectorItem
-      edition
-      printing
-      dustJacket
-      condition
-      damage
-      aquisitionDate
       acquiredFrom
-      aquisitionCost
+      acquisitionCost
+      acquisitionDate
+      additionalNotes
+      author
+      collectorInfo
+      condition
+      cover
+      description
+      dustJacket
+      edition
+      id
+      isbn
+      jacketCondition
+      libraryID
+      printing
+      pubDate
+      publisher
+      title
       createdAt
       updatedAt
       __typename
