@@ -26,8 +26,7 @@ export default function BookTable() {
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Author(s)</th>
                                 <th>ISBN</th>
                             </tr>
                         </thead>
@@ -36,8 +35,7 @@ export default function BookTable() {
                             {library.Books.items.map((book, i) => (
                                 <tr key={i}>
                                     <td>{book.title}</td>
-                                    <td>{book.authorNameFirst}</td>
-                                    <td>{book.authorLastName}</td>
+                                    <td>{book.author}</td>
                                     <td>{book.isbn}</td>
                                 </tr>
                             ))}
