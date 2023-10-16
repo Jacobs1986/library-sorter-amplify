@@ -22,6 +22,11 @@
     margin-top: 5px;
 }
 
+/* Styling for newBookCover */
+.newBookCover {
+    height: 15em;
+}
+
 /* Media queries */
 @media screen and (min-width: 992px) {
     /* Styling for alt-width */
