@@ -20,7 +20,11 @@ import BasicInfoForm from "./basicInfoForm";
 // Default values
 let defaultValues = {
     libraryID: "",
-    title: ""
+    title: "",
+    author: "",
+    isbn: "",
+    publisher: "",
+    pubDate: ""
 }
 
 // Context
@@ -61,37 +65,32 @@ export default function AddBookModal() {
                     <h2 className="addModal-header">Add a Book</h2>
                 </div>
                 {/* Modal Body */}
+                {/* Library select */}
+                <div className="row">
+                    <div className="col-xs-12 col-s-4 col-m-3 col-lg-2 col-xl-2 modal-label">
+                        Add to Library:
+                    </div>
+                    <div className="col-xs-12 col-s-4 col-m-4 col-lg-3 col-xl-2">
+                        {!libraries ?
+                            <select className="modal-input">
+                                <option value="">---</option>
+                            </select> :
+                            <select className="modal-input" name="libraryID" value={newInfo.libraryID} onChange={handleInputBookInfo} >
+                                <option value="">---</option>
+                                {libraries.map(name => (
+                                    <option key={name.id} value={name.id}>{name.name}</option>
+                                ))}
+                            </select>}
+                    </div>
+                </div>
                 <div className="modal-body">
-                    {/* Library select */}
                     <div className="row">
-                        <div className="col-xs-12 col-s-4 col-m-3 col-lg-2 col-xl-2 modal-label">
-                            Add to Library:
-                        </div>
-                        <div className="col-xs-12 col-s-4 col-m-4 col-lg-3 col-xl-2">
-                            {!libraries ?
-                                <select className="modal-form">
-                                    <option value="">---</option>
-                                </select> :
-                                <select className="modal-form" name="libraryID" value={newInfo.libraryID} onChange={handleInputBookInfo} >
-                                    <option value="">---</option>
-                                    {libraries.map(name => (
-                                        <option key={name.id} value={name.id}>{name.name}</option>
-                                    ))}
-                                </select>}
-                        </div>
+                        <div className="modalHeader-3">Book Information</div>
                     </div>
                     {/* Forms */}
                     <NewInfoContext.Provider value={{ newInfo, setNewInfo, handleInputBookInfo }}>
-                        <div className="row">
-                            <div className="col-xs-12 col-s-12 col-m-12 col-lg-12 col-xl-12">
-                                <BasicInfoForm />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-xs-12 col-s-12 col-m-12 col-lg-12 col-xl-12">
-                                The collector information form goes here.
-                            </div>
-                        </div>
+                        <BasicInfoForm />
+                        The collector form goes here
                     </NewInfoContext.Provider>
                 </div>
                 {/* Modal Footer */}

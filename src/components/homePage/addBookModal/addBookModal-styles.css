@@ -4,7 +4,28 @@
 }
 
 /* Styling for modal-form */
-.modal-form {
+.modal-input {
     width: 100%;
     padding: 3px;
+}
+
+/* Styling for modalHeader-3 */
+.modalHeader-3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Styling for form-subText */
+.form-subText {
+    font-size: 75%;
+    margin-top: 5px;
+}
+
+/* Media queries */
+@media screen and (min-width: 992px) {
+    /* Styling for alt-width */
+    .alt-width {
+        width: 60%;
+    }
 }
