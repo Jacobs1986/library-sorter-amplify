@@ -2,3 +2,9 @@
 .addModal-header {
     text-align: center;
 }
+
+/* Styling for modal-form */
+.modal-form {
+    width: 100%;
+    padding: 3px;
+}
