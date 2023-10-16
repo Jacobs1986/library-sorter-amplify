@@ -9,7 +9,7 @@ import "./addBookModal-styles.css";
 // Import context
 import { NewInfoContext } from "./addBookModal";
 
-export default function CoverForm() {
+export default function CoverAndDescription() {
     // NewInfoContext values
     const { newInfo, handleInputBookInfo } = useContext(NewInfoContext)
     // checked value
@@ -22,14 +22,12 @@ export default function CoverForm() {
 
     return (
         <div>
-            {/* Cover */}
-            <div className="row">
-                <div className="modalHeader-3">Cover</div>
-            </div>
+            {/* Cover Column */}
             <div className="row">
                 <div className="col-xs-12 col-s-6">
+                    <div className="modalHeader-3">Cover</div>
                     <div className="col-xs-12 col-s-12 modal-label">
-                        Input link to cover image here:
+                        Link to cover image:
                     </div>
                     {/* Links input */}
                     <div className="col-xs-12 col-s-12">
@@ -55,16 +53,24 @@ export default function CoverForm() {
                     </div>
                     {/* Image */}
                     <div className="col-xs-12">
-                        <img
-                            className="newBookCover"
-                            src={!checkedState ? newInfo.cover : "./Images/blank-cover.png"}
-                            alt="Cover image"
-                        />
+                        {!checkedState && !newInfo.cover ? <div></div> :
+                            <img
+                                className="newBookCover"
+                                src={!checkedState ? newInfo.cover : "./Images/blank-cover.png"}
+                                alt="Cover image"
+                            />
+                        }
                     </div>
                 </div>
-                {/* Image column */}
+                {/* Description Column */}
                 <div className="col-xs-12 col-s-6">
-
+                    <div className="modalHeader-3">Description</div>
+                    {/* Description input */}
+                    <div className="col-xs-12 col-s-12">
+                        <textarea
+                            className="modal-input modal-textArea"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

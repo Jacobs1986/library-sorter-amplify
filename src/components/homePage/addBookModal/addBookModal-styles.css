@@ -27,6 +27,11 @@
     height: 15em;
 }
 
+/* Styling for modal-textArea */
+.modal-textArea {
+    height: 25em;
+}
+
 /* Media queries */
 @media screen and (min-width: 992px) {
     /* Styling for alt-width */
