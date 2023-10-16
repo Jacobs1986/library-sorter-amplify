@@ -9,7 +9,7 @@ import React, {
 import "./addBookModal-styles.css";
 
 // Import contexts
-import { Libraries } from "../../../App";
+import { LibInfo } from "../../../pages/home-page";
 
 // Reducer
 import { reducer as newBookReduc } from "../../../functions/reducer";
@@ -34,7 +34,7 @@ export const NewInfoContext = createContext();
 
 export default function AddBookModal() {
     // Libraries value
-    const { libraries } = useContext(Libraries);
+    const { libraries } = useContext(LibInfo);
     // showModal value
     const [showModal, setShowModal] = useState(false);
     // newInfo value
@@ -51,14 +51,12 @@ export default function AddBookModal() {
 
     // Function for hiding the modal
     const handleHideModal = () => {
-        // Libraries values
-        const { libraries } = useContext(Libraries);
         // toggle showModal
         setShowModal(!showModal);
     }
 
     return (
-        <div className="modal">
+        <div className="modal" style={showModal ? { display: "block" } : { display: "none" }}>
             {/* Modal Content */}
             <div className="modal-content">
                 {/* Modal Header */}
@@ -73,16 +71,12 @@ export default function AddBookModal() {
                         Add to Library:
                     </div>
                     <div className="col-xs-12 col-s-4 col-m-4 col-lg-3 col-xl-2">
-                        {!libraries ?
-                            <select className="modal-input">
-                                <option value="">---</option>
-                            </select> :
-                            <select className="modal-input" name="libraryID" value={newInfo.libraryID} onChange={handleInputBookInfo} >
-                                <option value="">---</option>
-                                {libraries.map(name => (
-                                    <option key={name.id} value={name.id}>{name.name}</option>
-                                ))}
-                            </select>}
+                        <select className="modal-input" name="libraryID" value={newInfo.libraryID} onChange={handleInputBookInfo} >
+                            <option value="">---</option>
+                            {libraries.map(name => (
+                                <option key={name.id} value={name.id}>{name.name}</option>
+                            ))}
+                        </select>
                     </div>
                 </div>
                 <div className="modal-body">
