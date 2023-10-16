@@ -8,6 +8,7 @@ import HomePageBanner from "../components/homePage/banner/banner";
 import NewLibraryForm from "../components/homePage/newLibraryForm/newLibraryForm";
 import ViewerRadios from "../components/homePage/viewerRadios/viewerRadios";
 import HomePageAccordion from "../components/homePage/homePageAccordion/homePageAccordion";
+import AddBookModal from "../components/homePage/addBookModal/addBookModal";
 
 // Context
 export const LibInfo = createContext();
@@ -25,7 +26,10 @@ export default function HomePage() {
                 <NewLibraryForm />
                 {/* Radios */}
                 <ViewerRadios />
+                {/* Library Accordion */}
                 <HomePageAccordion />
+                {/* Add Book Modal */}
+                <AddBookModal />
             </LibInfo.Provider>
         </div>
     );
