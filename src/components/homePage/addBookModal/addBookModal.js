@@ -84,9 +84,6 @@ export default function AddBookModal() {
                     </div>
                 </div>
                 <div className="modal-body">
-                    <div className="row">
-                        <div className="modalHeader-3">Book Information</div>
-                    </div>
                     {/* Forms */}
                     <NewInfoContext.Provider value={{ newInfo, setNewInfo, handleInputBookInfo }}>
                         <BasicInfoForm />

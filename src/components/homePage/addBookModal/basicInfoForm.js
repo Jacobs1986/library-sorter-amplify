@@ -14,6 +14,9 @@ export default function BasicInfoForm() {
 
     return (
         <div>
+            <div className="row">
+                <div className="modalHeader-3">Book Information</div>
+            </div>
             {/* Basic information inputes */}
             <div className="row">
                 <div className="col-xs-12 col-s-6">
@@ -61,7 +64,6 @@ export default function BasicInfoForm() {
                     </div>
                 </div>
             </div>
-            {/* Cover */}
         </div>
     );
 };
