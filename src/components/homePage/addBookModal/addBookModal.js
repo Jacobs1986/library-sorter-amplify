@@ -1,5 +1,6 @@
 import React, {
     useContext,
+    useReducer,
     useState
 } from "react";
 
@@ -9,11 +10,34 @@ import "./addBookModal-styles.css";
 // Import contexts
 import { Libraries } from "../../../App";
 
+// Reducer
+import { reducer as newBookReduc } from "../../../functions/reducer";
+
+// Components
+import BasicInfoForm from "./basicInfoForm";
+
+// Default values
+let defaultValues = {
+    libraryID: "",
+    title: ""
+}
+
 export default function AddBookModal() {
     // Libraries value
     const { libraries } = useContext(Libraries);
     // showModal value
     const [showModal, setShowModal] = useState(false);
+    // newInfo value
+    const [newInfo, setNewInfo] = useReducer(newBookReduc, defaultValues)
+
+    // Function for inputing the new information
+    const handleInputBookInfo = event => {
+        setNewInfo({
+            type: 'add',
+            name: event.target.name,
+            value: event.target.value
+        })
+    }
 
     // Function for hiding the modal
     const handleHideModal = () => {
@@ -44,7 +68,7 @@ export default function AddBookModal() {
                                 <select className="modal-form">
                                     <option value="">---</option>
                                 </select> :
-                                <select className="modal-form" name="libraryID">
+                                <select className="modal-form" name="libraryID" value={newInfo.libraryID} onChange={handleInputBookInfo} >
                                     <option value="">---</option>
                                     {libraries.map(name => (
                                         <option key={name.id} value={name.id}>{name.name}</option>
@@ -55,7 +79,7 @@ export default function AddBookModal() {
                     {/* Forms */}
                     <div className="row">
                         <div className="col-xs-12 col-s-12 col-m-12 col-lg-12 col-xl-12">
-                            The basic information form goes here.
+                            <BasicInfoForm />
                         </div>
                     </div>
                     <div className="row">
