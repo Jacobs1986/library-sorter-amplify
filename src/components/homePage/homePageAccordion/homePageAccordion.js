@@ -9,7 +9,6 @@ import "./homePageAccordion-styles.css";
 import "../../../styles/accordion.css";
 
 // Import contexts
-import { Libraries } from "../../../App";
 import { LibInfo } from "../../../pages/home-page";
 
 // Import components
@@ -20,10 +19,8 @@ import BookTable from "../bookTable/bookTable";
 export const BookList = createContext();
 
 export default function HomePageAccordion() {
-    // Libraries value
-    const { libraries } = useContext(Libraries);
     // LibInfo values
-    const { libraryView } = useContext(LibInfo);
+    const { libraryView, libraries } = useContext(LibInfo);
 
     // Function for showing a panel
     const handleShowPanel = event => {
@@ -49,32 +46,34 @@ export default function HomePageAccordion() {
 
     return (
         <>
-            {!libraries ? <>Loading...</> :
-                <div className="row accordionRow">
-                    <div className="col-xs-12 col-s-12">
-                        {/* Check to see if there are any libraries in the database */}
-                        {libraries.length === 0 ? <div>Let's make some libraries!</div> :
-                            libraries.map((library, i) => (
-                                <div key={i}>
-                                    {/* Accordion button */}
-                                    <button className="accordion" id={library.id} onClick={handleShowPanel}>{library.name}</button>
-                                    {/* Accordion panel */}
-                                    <div className="panel">
-                                        <BookList.Provider value={{ library }}>
-                                            <div><a href="/search">Add books</a></div>
-                                            {libraryView === "Covers" ?
-                                                <BookCards /> :
-                                                // <div>This is the table view</div>
-                                                <BookTable />
-                                            }
-                                        </BookList.Provider>
-                                    </div>
+            <div className="row accordionRow">
+                <div className="col-xs-12 col-s-12">
+                    {/* Check to see if there are any libraries in the database */}
+                    {libraries.length === 0 ? <div>Let's make some libraries!</div> :
+                        libraries.map((library, i) => (
+                            <div key={i}>
+                                {/* Accordion button */}
+                                <button className="accordion" id={library.id} onClick={handleShowPanel}>{library.name}</button>
+                                {/* Accordion panel */}
+                                <div className="panel">
+                                    <BookList.Provider value={{ library }}>
+                                        {/* Add book links */}
+                                        <div>
+                                            <a href="/search">Search for books</a>
+                                            <span>Add book manually</span>
+                                        </div>
+                                        {libraryView === "Covers" ?
+                                            <BookCards /> :
+                                            // <div>This is the table view</div>
+                                            <BookTable />
+                                        }
+                                    </BookList.Provider>
                                 </div>
-                            ))
-                        }
-                    </div>
-                </div >
-            }
+                            </div>
+                        ))
+                    }
+                </div>
+            </div >
         </>
     );
 };
