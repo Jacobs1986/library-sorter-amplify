@@ -1,4 +1,5 @@
 import React, {
+    createContext,
     useContext,
     useReducer,
     useState
@@ -21,6 +22,9 @@ let defaultValues = {
     libraryID: "",
     title: ""
 }
+
+// Context
+export const NewInfoContext = createContext();
 
 export default function AddBookModal() {
     // Libraries value
@@ -77,16 +81,18 @@ export default function AddBookModal() {
                         </div>
                     </div>
                     {/* Forms */}
-                    <div className="row">
-                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-12 col-xl-12">
-                            <BasicInfoForm />
+                    <NewInfoContext.Provider value={{ newInfo, setNewInfo, handleInputBookInfo }}>
+                        <div className="row">
+                            <div className="col-xs-12 col-s-12 col-m-12 col-lg-12 col-xl-12">
+                                <BasicInfoForm />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-12 col-xl-12">
-                            The collector information form goes here.
+                        <div className="row">
+                            <div className="col-xs-12 col-s-12 col-m-12 col-lg-12 col-xl-12">
+                                The collector information form goes here.
+                            </div>
                         </div>
-                    </div>
+                    </NewInfoContext.Provider>
                 </div>
                 {/* Modal Footer */}
                 <div className="modal-footer">
