@@ -7,12 +7,15 @@ import "./bookCard-styles.css";
 import "../../../styles/cards.css";
 
 // Import context
+import { LibInfo } from "../../../pages/home-page";
 import { BookList } from "../homePageAccordion/homePageAccordion";
 
 // Import sorting function
 import { titleASC } from "../../../functions/arraySortFuncs";
 
 export default function BookCards() {
+    // LibInfo values
+    const { setBookId } = useContext(LibInfo);
     // libraryList
     const { library } = useContext(BookList);
     // titleSort values
@@ -27,6 +30,11 @@ export default function BookCards() {
         // Make sortList titleSort
         setTitleSort(sortList);
     }, [])
+
+    // Set the bookId
+    const handleSetBookId = event => {
+        console.log(event.target.id);
+    }
 
     return (
         <div className="row">
@@ -45,6 +53,8 @@ export default function BookCards() {
                                     className="card-image"
                                     src={book.cover}
                                     alt={`Image of the cover for ${book.title}`}
+                                    id={book.id} 
+                                    onClick={handleSetBookId}
                                 />
                                 {/* Card title */}
                                 <div className="card-title" style={book.cover === "./Images/blank-cover.png" ? { display: "block" } : { display: "none" }} >

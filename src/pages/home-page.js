@@ -24,12 +24,14 @@ export default function HomePage() {
     const [libraryView, setLibraryView] = useState("Covers");
     // showModal value
     const [showAddModal, setAddShowModal] = useState(false);
+    // bookId value
+    const [bookId, setBookId] = useState();
 
     return (
         <div>
             {/* Home Page Banner */}
             <HomePageBanner />
-            <LibInfo.Provider value={{ libraryView, setLibraryView, libraries, showAddModal, setAddShowModal }}>
+            <LibInfo.Provider value={{ libraryView, setLibraryView, libraries, showAddModal, setAddShowModal, bookId, setBookId }}>
                 {/* New Library form */}
                 <NewLibraryForm />
                 {/* Radios */}
