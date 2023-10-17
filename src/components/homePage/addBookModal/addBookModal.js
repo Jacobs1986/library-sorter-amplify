@@ -17,6 +17,7 @@ import { reducer as newBookReduc } from "../../../functions/reducer";
 // Components
 import BasicInfoForm from "./basicInfoForm";
 import CoverAndDescription from "./coverAndDescriptionForm";
+import CollectorForm from "./collectorForm";
 
 // Default values
 let defaultValues = {
@@ -84,7 +85,7 @@ export default function AddBookModal() {
                     <NewInfoContext.Provider value={{ newInfo, setNewInfo, handleInputBookInfo }}>
                         <BasicInfoForm />
                         <CoverAndDescription />
-                        The collector form goes here
+                        <CollectorForm />
                     </NewInfoContext.Provider>
                 </div>
                 {/* Modal Footer */}
