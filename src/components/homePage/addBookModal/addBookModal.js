@@ -46,9 +46,7 @@ export const NewInfoContext = createContext();
 
 export default function AddBookModal() {
     // Libraries value
-    const { libraries } = useContext(LibInfo);
-    // showModal value
-    const [showModal, setShowModal] = useState(true);
+    const { libraries, showAddModal, setAddShowModal } = useContext(LibInfo);
     // newInfo value
     const [newInfo, setNewInfo] = useReducer(newBookReduc, defaultValues)
 
@@ -64,11 +62,29 @@ export default function AddBookModal() {
     // Function for hiding the modal
     const handleHideModal = () => {
         // toggle showModal
-        setShowModal(!showModal);
+        setAddShowModal(false);
+        // reset information
+        setNewInfo({
+            type: 'setDefault',
+            value: defaultValues
+        })
+    }
+
+    // Function for saving the information
+    const handleSaveInfo = () => {
+        // Convert author string into array
+        let authorArray = newInfo.author.split(",");
+        // Put authorArray into newInfo
+        setNewInfo({
+            type: 'add',
+            name: 'author',
+            value: authorArray
+        })
+        console.log(newInfo);
     }
 
     return (
-        <div className="modal" style={showModal ? { display: "block" } : { display: "none" }}>
+        <div className="modal" style={showAddModal ? { display: "block" } : { display: "none" }}>
             {/* Modal Content */}
             <div className="modal-content">
                 {/* Modal Header */}
@@ -101,8 +117,8 @@ export default function AddBookModal() {
                 </div>
                 {/* Modal Footer */}
                 <div className="modal-footer addBookModal-footer">
-                    <div className="button modalButton-btm btnStop">Cancel</div>
-                    <div className="button modalButton-btm btnGo">Save</div>
+                    <div className="button modalButton-btm btnStop" onClick={handleHideModal}>Cancel</div>
+                    <div className="button modalButton-btm btnGo" onClick={handleSaveInfo}>Save</div>
                 </div>
             </div>
         </div>

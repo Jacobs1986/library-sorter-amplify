@@ -46,7 +46,7 @@ function App() {
                 let sortList = libList.sort(nameASC);
                 // set the list
                 setLibraries(sortList);
-                console.log(sortList);
+                // console.log(sortList);
             })
     }, [])
 

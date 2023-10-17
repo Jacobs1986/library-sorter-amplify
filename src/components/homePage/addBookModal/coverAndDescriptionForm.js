@@ -11,13 +11,20 @@ import { NewInfoContext } from "./addBookModal";
 
 export default function CoverAndDescription() {
     // NewInfoContext values
-    const { newInfo, handleInputBookInfo } = useContext(NewInfoContext)
+    const { newInfo, setNewInfo, handleInputBookInfo } = useContext(NewInfoContext)
     // checked value
     const [checkedState, setCheckedState] = useState(false);
 
     // Funtion for toggoling the checkedState
     const handleToggleChecked = () => {
+        // Change the checked state
         setCheckedState(!checkedState);
+        // Set the default to newInfo.cover
+        setNewInfo({
+            type: 'add',
+            name: 'cover',
+            value: './Images/blank-cover.png'
+        })
     }
 
     return (

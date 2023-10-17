@@ -20,7 +20,7 @@ export const BookList = createContext();
 
 export default function HomePageAccordion() {
     // LibInfo values
-    const { libraryView, libraries } = useContext(LibInfo);
+    const { libraryView, libraries, setAddShowModal } = useContext(LibInfo);
 
     // Function for showing a panel
     const handleShowPanel = event => {
@@ -44,6 +44,11 @@ export default function HomePageAccordion() {
         }
     }
 
+    // Function for showing the add book modal
+    const handleShowAddModal = () => {
+        setAddShowModal(true);
+    }
+
     return (
         <>
             <div className="row accordionRow">
@@ -59,8 +64,7 @@ export default function HomePageAccordion() {
                                     <BookList.Provider value={{ library }}>
                                         {/* Add book links */}
                                         <div>
-                                            <a href="/search">Search for books</a>
-                                            <span>Add book manually</span>
+                                            <a href="/search">Search for books</a> or <span className="span-link" onClick={handleShowAddModal}>Add book manually</span>
                                         </div>
                                         {libraryView === "Covers" ?
                                             <BookCards /> :

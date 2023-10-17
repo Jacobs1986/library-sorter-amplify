@@ -9,6 +9,13 @@
     overflow: scroll;
  }
 
+ /* Styling for span-link */
+ .span-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+ }
+
  @media screen and (min-width: 1200px) {
     .accordionRow {
         height: 20em;
