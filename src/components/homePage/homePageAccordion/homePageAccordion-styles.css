@@ -5,7 +5,7 @@
 
 /* Styling for showPanel */
 .panel.showPanel {
-    height: 24em;
+    height: 22em;
     overflow: scroll;
  }
 
