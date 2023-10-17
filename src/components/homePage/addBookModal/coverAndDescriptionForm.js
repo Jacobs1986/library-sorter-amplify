@@ -69,6 +69,9 @@ export default function CoverAndDescription() {
                     <div className="col-xs-12 col-s-12">
                         <textarea
                             className="modal-input modal-textArea"
+                            name="description"
+                            value={newInfo.description}
+                            onChange={handleInputBookInfo}
                         />
                     </div>
                 </div>

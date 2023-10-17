@@ -27,7 +27,18 @@ let defaultValues = {
     author: "",
     isbn: "",
     publisher: "",
-    pubDate: ""
+    pubDate: "",
+    description: "",
+    collectorInfo: false,
+    acquisitionDate: "",
+    acquiredFrom: "",
+    acquisitionCost: "",
+    edition: "",
+    printing: "",
+    condition: "",
+    dustJacket: "",
+    jacketCondition: "",
+    additionalNotes: ""
 }
 
 // Context
