@@ -32,10 +32,27 @@
     height: 25em;
 }
 
+/* Styling for mdoal-textarea */
+.collector-textarea {
+    height: 5.7em;
+}
+
+/* Styling for addBookModal-footer */
+.addBookModal-footer {
+    height: 2.7em;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
 /* Media queries */
 @media screen and (min-width: 992px) {
     /* Styling for alt-width */
     .alt-width {
         width: 60%;
+    }
+
+    /* Styling for modal-select */
+    .modal-select {
+        width: 10em;
     }
 }

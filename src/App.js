@@ -34,25 +34,32 @@ function App() {
     // libraries value
     const [libraries, setLibraries] = useState();
     // getLibrary
-    const [getLibrary, setGetLibrary] = useState(false);
+    const [getLibrary, setGetLibrary] = useState(true);
 
     // Get the libraries from the database
     useEffect(() => {
-        API.graphql({ query: listLibraries })
-            .then(response => {
-                // set the response to libList
-                let libList = response.data.listLibraries.items;
-                // sort the list
-                let sortList = libList.sort(nameASC);
-                // set the list
-                setLibraries(sortList);
-                console.log(sortList);
-            })
-    }, [])
+        switch (true) {
+            case getLibrary: {
+                API.graphql({ query: listLibraries })
+                    .then(response => {
+                        // set the response to libList
+                        let libList = response.data.listLibraries.items;
+                        // sort the list
+                        let sortList = libList.sort(nameASC);
+                        // set the list
+                        setLibraries(sortList);
+                        console.log(sortList);
+                    })
+                break
+            }
+            default:
+        }
+        setGetLibrary(false);
+    }, [getLibrary])
 
     return (
         <div>
-            <Libraries.Provider value={{ libraries }} >
+            <Libraries.Provider value={{ libraries, setGetLibrary }} >
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<HomePage />} />

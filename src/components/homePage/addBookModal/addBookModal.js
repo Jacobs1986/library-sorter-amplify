@@ -9,6 +9,7 @@ import React, {
 import "./addBookModal-styles.css";
 
 // Import contexts
+import { Libraries } from "../../../App";
 import { LibInfo } from "../../../pages/home-page";
 
 // Reducer
@@ -17,16 +18,38 @@ import { reducer as newBookReduc } from "../../../functions/reducer";
 // Components
 import BasicInfoForm from "./basicInfoForm";
 import CoverAndDescription from "./coverAndDescriptionForm";
+import CollectorForm from "./collectorForm";
 
-// Default values
-let defaultValues = {
+// Import API
+import { API } from "aws-amplify";
+
+// Import createBooks
+import { createBooks } from "../../../graphql/mutations";
+
+// Basic default values
+let basicDefaultValues = {
     libraryID: "",
     title: "",
     cover: "",
     author: "",
     isbn: "",
     publisher: "",
-    pubDate: ""
+    pubDate: "",
+    description: ""
+}
+
+// Collector default values
+let collectorDefaultValues = {
+    collectorInfo: false,
+    acquisitionDate: "",
+    acquiredFrom: "",
+    acquisitionCost: "",
+    edition: "",
+    printing: "",
+    condition: "",
+    dustJacket: "",
+    jacketCondition: "",
+    additionalNotes: ""
 }
 
 // Context
@@ -34,29 +57,88 @@ export const NewInfoContext = createContext();
 
 export default function AddBookModal() {
     // Libraries value
-    const { libraries } = useContext(LibInfo);
-    // showModal value
-    const [showModal, setShowModal] = useState(false);
-    // newInfo value
-    const [newInfo, setNewInfo] = useReducer(newBookReduc, defaultValues)
+    const { setGetLibrary } = useContext(Libraries)
+    // LibInfo value
+    const { libraries, showAddModal, setAddShowModal } = useContext(LibInfo);
+    // basicInfo value
+    const [basicInfo, setBasicInfo] = useReducer(newBookReduc, basicDefaultValues)
+    // collectorInfo value
+    const [collectorInfo, setCollectorInfo] = useReducer(newBookReduc, collectorDefaultValues);
 
-    // Function for inputing the new information
+    // Function for hiding the modal
+    const handleHideModal = () => {
+        // toggle showModal
+        setAddShowModal(false);
+        // reset basicInfo
+        setBasicInfo({
+            type: 'setDefault',
+            value: basicDefaultValues
+        })
+        // reset collectorInfo
+        setCollectorInfo({
+            type: 'setDefault',
+            value: collectorDefaultValues
+        })
+    }
+
+    // Function for inputing new information
     const handleInputBookInfo = event => {
-        setNewInfo({
+        setBasicInfo({
             type: 'add',
             name: event.target.name,
             value: event.target.value
         })
     }
 
-    // Function for hiding the modal
-    const handleHideModal = () => {
-        // toggle showModal
-        setShowModal(!showModal);
+    // Function for when the save button is clicked
+    const handleSaveInfo = () => {
+        // Check the state of collectorInfo.collectorInfo
+        switch (true) {
+            case collectorInfo.collectorInfo:
+                handleSaveAllInfo();
+                break
+            default:
+                handleSaveBasicOnly();
+        }
+    }
+
+    // Function for saving the basic information only
+    const handleSaveBasicOnly = () => {
+        // Add collectorInfo.collectorInfo to the basicInfo
+        let newInfo = {
+            ...basicInfo,
+            collectorInfo: collectorInfo.collectorInfo
+        }
+        // Save the information to the database
+        API.graphql({
+            query: createBooks,
+            variables: { input: newInfo }
+        }).then(() => {
+            // Hide the modal
+            handleHideModal();
+            // Set getLibraries to true
+            setGetLibrary(true);
+        })
+    }
+
+    // Function for saving all the information
+    const handleSaveAllInfo = () => {
+        // Add collectorInfo to basicInfo
+        let newInfo = { ...basicInfo, ...collectorInfo }
+        // Save the information to the database
+        API.graphql({
+            query: createBooks,
+            variables: { input: newInfo }
+        }).then(() => {
+            // Hide the modal
+            handleHideModal();
+            // Set getLibraries to true
+            setGetLibrary(true);
+        })
     }
 
     return (
-        <div className="modal" style={showModal ? { display: "block" } : { display: "none" }}>
+        <div className="modal" style={showAddModal ? { display: "block" } : { display: "none" }}>
             {/* Modal Content */}
             <div className="modal-content">
                 {/* Modal Header */}
@@ -71,7 +153,7 @@ export default function AddBookModal() {
                         Add to Library:
                     </div>
                     <div className="col-xs-12 col-s-4 col-m-4 col-lg-3 col-xl-2">
-                        <select className="modal-input" name="libraryID" value={newInfo.libraryID} onChange={handleInputBookInfo} >
+                        <select className="modal-input" name="libraryID" value={basicInfo.libraryID} onChange={handleInputBookInfo} >
                             <option value="">---</option>
                             {libraries.map(name => (
                                 <option key={name.id} value={name.id}>{name.name}</option>
@@ -81,15 +163,16 @@ export default function AddBookModal() {
                 </div>
                 <div className="modal-body">
                     {/* Forms */}
-                    <NewInfoContext.Provider value={{ newInfo, setNewInfo, handleInputBookInfo }}>
+                    <NewInfoContext.Provider value={{ basicInfo, setBasicInfo, collectorInfo, setCollectorInfo }}>
                         <BasicInfoForm />
                         <CoverAndDescription />
-                        The collector form goes here
+                        <CollectorForm />
                     </NewInfoContext.Provider>
                 </div>
                 {/* Modal Footer */}
-                <div className="modal-footer">
-                    <h3>Footer content</h3>
+                <div className="modal-footer addBookModal-footer">
+                    <div className="button modalButton-btm btnStop" onClick={handleHideModal}>Cancel</div>
+                    <div className="button modalButton-btm btnGo" onClick={handleSaveInfo}>Save</div>
                 </div>
             </div>
         </div>

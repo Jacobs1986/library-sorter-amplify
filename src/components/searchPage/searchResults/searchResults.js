@@ -4,6 +4,7 @@ import React, {
 
 // CSS File
 import "./searchResults-styles.css";
+import "../../../styles/cards.css";
 
 // Import the context
 import { SearchInfo } from "../../../pages/book-search-page";
@@ -22,16 +23,17 @@ export default function SearchResults() {
             {!searchArray ? <div>Loading...</div> :
                 // Begin mapping the array
                 searchArray.map(book => (
-                    <div className="col-xs-6 col-s-3 col-m-4 col-lg-3 col-xl-2" key={book.etag} onClick={handleGetBookId}>
-                        <div className="searchCard">
+                    <div className="col-xs-6 col-s-3 col-m-4 col-lg-2 col-xl-2" key={book.etag} onClick={handleGetBookId}>
+                        <div className="card searchResult-cards">
                             {/* Book Cover */}
                             <img
+                                className="card-image"
                                 src={!book.volumeInfo.imageLinks ? "./Images/blank-cover.png" : book.volumeInfo.imageLinks.thumbnail}
-                                width={"100%"}
                                 id={book.id}
+                                alt={`Cover image for ${book.volumeInfo.title}`}
                             />
                             {/* Card title */}
-                            {!book.volumeInfo.imageLinks ? <div className="cardTitle">{book.volumeInfo.title}</div> : <div></div>}
+                            {!book.volumeInfo.imageLinks ? <div className="card-title">{book.volumeInfo.title}</div> : <div></div>}
                         </div>
                     </div>
                 ))

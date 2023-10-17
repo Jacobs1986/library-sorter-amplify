@@ -1,72 +1,33 @@
-/* searchCard styling */
-.searchCard {
-    border-radius: 4px;
-    height: 15em;
-    overflow: hidden;
-    transition: 0.3s ease-in;
+/* Styling for searchResult-cards */
+.searchResult-cards {
+    height: 16em;
 }
 
-.searchCard:hover {
-    cursor: pointer;
-    box-shadow: 7px 10px 10px darkgray;
-}
-
-/* Styling for the searchRow */
-.searchRow {
-    height: 23em;
-    overflow: scroll;
-}
-
-/* Styling for cardTitle */
-.cardTitle {
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Small screen */
+/* Media queries */
+/* Small screens */
 @media screen and (min-width: 600px) {
-    .searchRow {
-        height: 12.7em;
-    }
-
-    .searchCard {
-        height: 13em;
+    .searchResult-cards {
+        height: 14em;
     }
 }
 
-/* Medium screen */
+/* Medium screens */
 @media screen and (min-width: 768px) {
-    .searchRow {
-        height: 60.5em;
-    }
-
-    .searchCard {
-        height: 23em;
-    }
-
-    .cardTitle {
-        font-size: 1.4em;
+    .searchResult-cards {
+        height: 25em;
     }
 }
 
-/* Large screen */
+/* Large screens */
 @media screen and (min-width: 992px) {
-    .searchRow {
-        height: 32.45em;
-    }
-
-    .searchCard {
-        height: 24.7em;
+    .searchResult-cards {
+        height: 17em;
     }
 }
 
-/* Extra large screen */
+/* Extra large screens */
 @media screen and (min-width: 1200px) {
-    .searchRow {
-        height: 20em;
-    }
-
-    .searchCard {
-        height: 20em;
+    .searchResult-cards {
+        height: 21.4em;
     }
 }

@@ -11,13 +11,29 @@ import { NewInfoContext } from "./addBookModal";
 
 export default function CoverAndDescription() {
     // NewInfoContext values
-    const { newInfo, handleInputBookInfo } = useContext(NewInfoContext)
+    const { basicInfo, setBasicInfo } = useContext(NewInfoContext)
     // checked value
     const [checkedState, setCheckedState] = useState(false);
 
     // Funtion for toggoling the checkedState
     const handleToggleChecked = () => {
+        // Change the checked state
         setCheckedState(!checkedState);
+        // Set the default to newInfo.cover
+        setBasicInfo({
+            type: 'add',
+            name: 'cover',
+            value: './Images/blank-cover.png'
+        })
+    }
+
+    // Function for inputting information
+    const handleInputBasicInfo = event => {
+        setBasicInfo({
+            type: 'add',
+            name: event.target.name,
+            value: event.target.value
+        })
     }
 
     return (
@@ -35,8 +51,8 @@ export default function CoverAndDescription() {
                             className="modal-input"
                             type="text"
                             name="cover"
-                            value={newInfo.cover}
-                            onChange={handleInputBookInfo}
+                            value={basicInfo.cover}
+                            onChange={handleInputBasicInfo}
                             disabled={!checkedState ? false : true}
                         />
                     </div>
@@ -53,10 +69,10 @@ export default function CoverAndDescription() {
                     </div>
                     {/* Image */}
                     <div className="col-xs-12">
-                        {!checkedState && !newInfo.cover ? <div></div> :
+                        {!checkedState && !basicInfo.cover ? <div></div> :
                             <img
                                 className="newBookCover"
-                                src={!checkedState ? newInfo.cover : "./Images/blank-cover.png"}
+                                src={!checkedState ? basicInfo.cover : "./Images/blank-cover.png"}
                                 alt="Cover image"
                             />
                         }
@@ -69,6 +85,9 @@ export default function CoverAndDescription() {
                     <div className="col-xs-12 col-s-12">
                         <textarea
                             className="modal-input modal-textArea"
+                            name="description"
+                            value={basicInfo.description}
+                            onChange={handleInputBasicInfo}
                         />
                     </div>
                 </div>
