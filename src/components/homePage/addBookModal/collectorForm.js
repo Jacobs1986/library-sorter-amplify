@@ -15,11 +15,17 @@ export default function CollectorForm() {
     // showCollectorForm value
     const [showCollectorForm, setShowCollectorForm] = useState(false);
 
+    // Function for toggling showCollectorForm
+    const handleToggleShowForm = () => {
+        // Toggle showCollectorForm
+        setShowCollectorForm(!showCollectorForm);
+    }
+
     return (
         <div>
             {/* Add Collector Info button */}
             <div className="row">
-                <div className="modal-label">Add Collector Info</div>
+                <div className="button" onClick={handleToggleShowForm}>Add Collector Info</div>
             </div>
             {/* Collector form */}
             <div className="row" style={!showCollectorForm ? { display: "none" } : { display: "block" }}>

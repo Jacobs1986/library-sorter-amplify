@@ -3,7 +3,8 @@
     background-color: #ededed;
     padding: 7px;
     border-radius: 4px;
-    color: black
+    color: black;
+    width: max-content;
 }
 
 .button:hover {
