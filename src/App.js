@@ -52,7 +52,7 @@ function App() {
 
     return (
         <div>
-            <Libraries.Provider value={{ libraries }} >
+            <Libraries.Provider value={{ libraries, setGetLibrary }} >
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
