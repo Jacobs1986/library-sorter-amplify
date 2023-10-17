@@ -52,7 +52,7 @@ export default function CoverAndDescription() {
                             type="text"
                             name="cover"
                             value={basicInfo.cover}
-                            onChange={handleInputBookInfo}
+                            onChange={handleInputBasicInfo}
                             disabled={!checkedState ? false : true}
                         />
                     </div>
@@ -69,7 +69,7 @@ export default function CoverAndDescription() {
                     </div>
                     {/* Image */}
                     <div className="col-xs-12">
-                        {!checkedState && !newInfo.cover ? <div></div> :
+                        {!checkedState && !basicInfo.cover ? <div></div> :
                             <img
                                 className="newBookCover"
                                 src={!checkedState ? basicInfo.cover : "./Images/blank-cover.png"}
@@ -87,7 +87,7 @@ export default function CoverAndDescription() {
                             className="modal-input modal-textArea"
                             name="description"
                             value={basicInfo.description}
-                            onChange={handleInputBookInfo}
+                            onChange={handleInputBasicInfo}
                         />
                     </div>
                 </div>

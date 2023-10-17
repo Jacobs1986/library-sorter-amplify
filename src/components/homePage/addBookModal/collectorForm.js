@@ -19,6 +19,12 @@ export default function CollectorForm() {
     const handleToggleShowForm = () => {
         // Toggle showCollectorForm
         setShowCollectorForm(!showCollectorForm);
+        // Set the information into collectorInfo
+        setCollectorInfo({
+            type: 'add',
+            name: 'collectorInfo',
+            value: !showCollectorForm
+        })
     }
 
     return (

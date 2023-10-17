@@ -9,6 +9,7 @@ import React, {
 import "./addBookModal-styles.css";
 
 // Import contexts
+import { Libraries } from "../../../App";
 import { LibInfo } from "../../../pages/home-page";
 
 // Reducer
@@ -56,8 +57,10 @@ export const NewInfoContext = createContext();
 
 export default function AddBookModal() {
     // Libraries value
+    const { setGetLibrary } = useContext(Libraries)
+    // LibInfo value
     const { libraries, showAddModal, setAddShowModal } = useContext(LibInfo);
-    // newInfo value
+    // basicInfo value
     const [basicInfo, setBasicInfo] = useReducer(newBookReduc, basicDefaultValues)
     // collectorInfo value
     const [collectorInfo, setCollectorInfo] = useReducer(newBookReduc, collectorDefaultValues);
@@ -67,21 +70,44 @@ export default function AddBookModal() {
         // toggle showModal
         setAddShowModal(false);
         // reset information
-        setNewInfo({
+        setBasicInfo({
             type: 'setDefault',
-            value: defaultValues
+            value: basicDefaultValues
         })
     }
 
-    // Function for saving the information
-    const handleSaveInfo = () => {
-        // Convert author string into array
-        let authorArray = basicInfo.author.split(",");
-        // Put authorArray into newInfo
-        setNewInfo({
+    // Function for inputing new information
+    const handleInputBookInfo = event => {
+        setBasicInfo({
             type: 'add',
-            name: 'author',
-            value: authorArray
+            name: event.target.name,
+            value: event.target.value
+        })
+    }
+
+    // Function for when the save button is clicked
+    const handleSaveInfo = () => {
+        // Check the state of collectorInfo.collectorInfo
+        switch (true) {
+            case collectorInfo.collectorInfo:
+                console.log('Basic data and collector data will be saved');
+                break
+            default:
+                handleSaveBasicOnly();
+        }
+    }
+
+    // Function for saving the basic information only
+    const handleSaveBasicOnly = () => {
+        // Save the information to the database
+        API.graphql({
+            query: createBooks,
+            variables: { input: basicInfo }
+        }).then(res => {
+            // Hide the modal
+            handleHideModal();
+            // Set getLibraries to true
+            setGetLibrary(true);
         })
     }
 
@@ -101,7 +127,7 @@ export default function AddBookModal() {
                         Add to Library:
                     </div>
                     <div className="col-xs-12 col-s-4 col-m-4 col-lg-3 col-xl-2">
-                        <select className="modal-input" name="libraryID" value={newInfo.libraryID} onChange={handleInputBookInfo} >
+                        <select className="modal-input" name="libraryID" value={basicInfo.libraryID} onChange={handleInputBookInfo} >
                             <option value="">---</option>
                             {libraries.map(name => (
                                 <option key={name.id} value={name.id}>{name.name}</option>
