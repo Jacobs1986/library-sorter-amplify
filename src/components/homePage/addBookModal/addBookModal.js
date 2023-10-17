@@ -19,8 +19,14 @@ import BasicInfoForm from "./basicInfoForm";
 import CoverAndDescription from "./coverAndDescriptionForm";
 import CollectorForm from "./collectorForm";
 
-// Default values
-let defaultValues = {
+// Import API
+import { API } from "aws-amplify";
+
+// Import createBooks
+import { createBooks } from "../../../graphql/mutations";
+
+// Basic default values
+let basicDefaultValues = {
     libraryID: "",
     title: "",
     cover: "",
@@ -28,7 +34,11 @@ let defaultValues = {
     isbn: "",
     publisher: "",
     pubDate: "",
-    description: "",
+    description: ""
+}
+
+// Collector default values
+let collectorDefaultValues = {
     collectorInfo: false,
     acquisitionDate: "",
     acquiredFrom: "",
@@ -48,16 +58,9 @@ export default function AddBookModal() {
     // Libraries value
     const { libraries, showAddModal, setAddShowModal } = useContext(LibInfo);
     // newInfo value
-    const [newInfo, setNewInfo] = useReducer(newBookReduc, defaultValues)
-
-    // Function for inputing the new information
-    const handleInputBookInfo = event => {
-        setNewInfo({
-            type: 'add',
-            name: event.target.name,
-            value: event.target.value
-        })
-    }
+    const [basicInfo, setBasicInfo] = useReducer(newBookReduc, basicDefaultValues)
+    // collectorInfo value
+    const [collectorInfo, setCollectorInfo] = useReducer(newBookReduc, collectorDefaultValues);
 
     // Function for hiding the modal
     const handleHideModal = () => {
@@ -73,14 +76,21 @@ export default function AddBookModal() {
     // Function for saving the information
     const handleSaveInfo = () => {
         // Convert author string into array
-        let authorArray = newInfo.author.split(",");
+        // let authorArray = newInfo.author.split(",");
         // Put authorArray into newInfo
-        setNewInfo({
-            type: 'add',
-            name: 'author',
-            value: authorArray
+        // setNewInfo({
+        //     type: 'add',
+        //     name: 'author',
+        //     value: authorArray
+        // })
+        // Send to the database
+        API.graphql({
+            query: createBooks,
+            variables: { input: newInfo } 
+        }).then(response => {
+            console.log(response.data);
+            
         })
-        console.log(newInfo);
     }
 
     return (
@@ -109,7 +119,7 @@ export default function AddBookModal() {
                 </div>
                 <div className="modal-body">
                     {/* Forms */}
-                    <NewInfoContext.Provider value={{ newInfo, setNewInfo, handleInputBookInfo }}>
+                    <NewInfoContext.Provider value={{ basicInfo, setBasicInfo, collectorInfo, setCollectorInfo }}>
                         <BasicInfoForm />
                         <CoverAndDescription />
                         <CollectorForm />
