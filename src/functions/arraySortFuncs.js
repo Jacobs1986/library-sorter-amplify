@@ -8,3 +8,14 @@ export const nameASC = (a, b) => {
     }
     return 0
 }
+
+// Sort an array by title ASC
+export const titleASC = (a, b) => {
+    if (a.title < b.title) {
+        return -1;
+    }
+    if (a.title > b.title) {
+        return 1
+    }
+    return 0
+}
