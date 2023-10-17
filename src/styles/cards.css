@@ -1,0 +1,23 @@
+/* card styling */
+.card {
+    border-radius: 4px;
+    overflow: scroll;
+    transition: 0.3s ease-in;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 7px 10px 10px darkgray;
+}
+
+/* Card Image */
+.card-image {
+    width: 100%;
+    /* height: 100%; */
+}
+
+/* Card title */
+.card-title {
+    text-align: center;
+    font-weight: bold;
+}

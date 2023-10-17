@@ -4,6 +4,7 @@ import React, {
 
 // CSS File
 import "./bookCard-styles.css";
+import "../../../styles/cards.css";
 
 // Import context
 import { BookList } from "../homePageAccordion/homePageAccordion";
@@ -19,20 +20,19 @@ export default function BookCards() {
                 <div className="col-xs-12 col-s-5 col-lg-3 col-xl-2">
                     Time to add some books!
                 </div> :
-                library.Books.items.map((book, i) => (
-                    <div className="col-xs-12 col-s-4 col-lg-3 col-xl-2" key={i}>
-                        {/* The card div */}
-                        <div className={book.cover === "blank-cover.png" ? "bookCard noCover" : "bookCard"}>
-                            {/* Book Cover */}
-                            <img
-                                src={book.cover === "blank-cover.png" ? `./Images/${book.cover}` : book.cover }
-                                alt="A picture of the book cover."
-                                width={"100%"}
+                library.Books.items.map(book => (
+                    <div className="col-xl-2">
+                        {/* Card body */}
+                        <div className="card">
+                            {/* Card Image */}
+                            <img 
+                                className="card-image"
+                                src={book.cover}
+                                alt={`Image of the cover for ${book.title}`}
                             />
-                            {/* Book Info */}
-                            <div className="bookCard-info" style={book.cover === "blank-cover.png" ? { display: "block" } : { display: "none" }}>
-                                <h4><b>{book.title}</b></h4>
-                                <p>{book.author}</p>
+                            {/* Card title */}
+                            <div className="card-title" style={book.cover === "./Images/blank-cover.png" ? { display: "block" } : { display: "none" } } >
+                                {book.title}
                             </div>
                         </div>
                     </div>

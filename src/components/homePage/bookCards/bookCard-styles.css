@@ -1,21 +1,33 @@
-/* Card div */
-.bookCard {
-    width: auto;
-    transition: 0.3s;
+/* Styling for searchResult-cards */
+.searchResult-cards {
+    height: 16em;
 }
 
-.bookCard:hover {
-    cursor: pointer;
-    box-shadow: 5px 10px 25px 0 grey;
+/* Media queries */
+/* Small screens */
+@media screen and (min-width: 600px) {
+    .searchResult-cards {
+        height: 14em;
+    }
 }
 
-/* No cover */
-.noCover {
-    border: 1px solid lightgray;
+/* Medium screens */
+@media screen and (min-width: 768px) {
+    .searchResult-cards {
+        height: 25em;
+    }
 }
 
-/* Book info */
-.bookCard-info {
-    text-align: center;
-    padding: 5px;
+/* Large screens */
+@media screen and (min-width: 992px) {
+    .searchResult-cards {
+        height: 17em;
+    }
+}
+
+/* Extra large screens */
+@media screen and (min-width: 1200px) {
+    .searchResult-cards {
+        height: 21.4em;
+    }
 }
