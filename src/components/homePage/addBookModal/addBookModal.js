@@ -36,7 +36,7 @@ export default function AddBookModal() {
     // Libraries value
     const { libraries } = useContext(LibInfo);
     // showModal value
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(true);
     // newInfo value
     const [newInfo, setNewInfo] = useReducer(newBookReduc, defaultValues)
 

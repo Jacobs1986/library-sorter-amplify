@@ -48,17 +48,17 @@ export default function BasicInfoForm() {
                 <div className="col-xs-12 col-s-6">
                     <div className="row">
                         {/* Publisher */}
-                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-5 col-xl-2 modal-label">
+                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-5 col-xl-4 modal-label">
                             Publisher:
                         </div>
-                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-7 col-xl-10">
+                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-7 col-xl-8">
                             <input className="modal-input alt-width" type="text" name="publisher" value={newInfo.publisher} onChange={handleInputBookInfo} />
                         </div>
                         {/* Publication Date */}
-                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-5 col-xl-2 modal-label">
+                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-5 col-xl-4 modal-label">
                             Publication Date:
                         </div>
-                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-7 col-xl-10">
+                        <div className="col-xs-12 col-s-12 col-m-12 col-lg-7 col-xl-8">
                             <input className="modal-input alt-width" type="text" name="pubDate" value={newInfo.pubDate} onChange={handleInputBookInfo} />
                         </div>
                     </div>
