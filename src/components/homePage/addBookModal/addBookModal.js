@@ -100,8 +100,9 @@ export default function AddBookModal() {
                     </NewInfoContext.Provider>
                 </div>
                 {/* Modal Footer */}
-                <div className="modal-footer">
-                    <h3>Footer content</h3>
+                <div className="modal-footer addBookModal-footer">
+                    <div className="button modalButton-btm btnStop">Cancel</div>
+                    <div className="button modalButton-btm btnGo">Save</div>
                 </div>
             </div>
         </div>
