@@ -11,7 +11,7 @@ import { NewInfoContext } from "./addBookModal";
 
 export default function CoverAndDescription() {
     // NewInfoContext values
-    const { newInfo, setNewInfo, handleInputBookInfo } = useContext(NewInfoContext)
+    const { basicInfo, setBasicInfo } = useContext(NewInfoContext)
     // checked value
     const [checkedState, setCheckedState] = useState(false);
 
@@ -20,10 +20,19 @@ export default function CoverAndDescription() {
         // Change the checked state
         setCheckedState(!checkedState);
         // Set the default to newInfo.cover
-        setNewInfo({
+        setBasicInfo({
             type: 'add',
             name: 'cover',
             value: './Images/blank-cover.png'
+        })
+    }
+
+    // Function for inputting information
+    const handleInputBasicInfo = event => {
+        setBasicInfo({
+            type: 'add',
+            name: event.target.name,
+            value: event.target.value
         })
     }
 
@@ -42,7 +51,7 @@ export default function CoverAndDescription() {
                             className="modal-input"
                             type="text"
                             name="cover"
-                            value={newInfo.cover}
+                            value={basicInfo.cover}
                             onChange={handleInputBookInfo}
                             disabled={!checkedState ? false : true}
                         />
@@ -63,7 +72,7 @@ export default function CoverAndDescription() {
                         {!checkedState && !newInfo.cover ? <div></div> :
                             <img
                                 className="newBookCover"
-                                src={!checkedState ? newInfo.cover : "./Images/blank-cover.png"}
+                                src={!checkedState ? basicInfo.cover : "./Images/blank-cover.png"}
                                 alt="Cover image"
                             />
                         }
@@ -77,7 +86,7 @@ export default function CoverAndDescription() {
                         <textarea
                             className="modal-input modal-textArea"
                             name="description"
-                            value={newInfo.description}
+                            value={basicInfo.description}
                             onChange={handleInputBookInfo}
                         />
                     </div>

@@ -76,20 +76,12 @@ export default function AddBookModal() {
     // Function for saving the information
     const handleSaveInfo = () => {
         // Convert author string into array
-        // let authorArray = newInfo.author.split(",");
+        let authorArray = basicInfo.author.split(",");
         // Put authorArray into newInfo
-        // setNewInfo({
-        //     type: 'add',
-        //     name: 'author',
-        //     value: authorArray
-        // })
-        // Send to the database
-        API.graphql({
-            query: createBooks,
-            variables: { input: newInfo } 
-        }).then(response => {
-            console.log(response.data);
-            
+        setNewInfo({
+            type: 'add',
+            name: 'author',
+            value: authorArray
         })
     }
 

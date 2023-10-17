@@ -11,7 +11,7 @@ import { NewInfoContext } from "./addBookModal";
 
 export default function CollectorForm() {
     // NewInfoContext values
-    const { newInfo, handleInputBookInfo } = useContext(NewInfoContext);
+    const { collectorInfo, setCollectorInfo } = useContext(NewInfoContext);
     // showCollectorForm value
     const [showCollectorForm, setShowCollectorForm] = useState(false);
 
