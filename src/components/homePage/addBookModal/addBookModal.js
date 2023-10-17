@@ -69,10 +69,15 @@ export default function AddBookModal() {
     const handleHideModal = () => {
         // toggle showModal
         setAddShowModal(false);
-        // reset information
+        // reset basicInfo
         setBasicInfo({
             type: 'setDefault',
             value: basicDefaultValues
+        })
+        // reset collectorInfo
+        setCollectorInfo({
+            type: 'setDefault',
+            value: collectorDefaultValues
         })
     }
 
@@ -90,7 +95,7 @@ export default function AddBookModal() {
         // Check the state of collectorInfo.collectorInfo
         switch (true) {
             case collectorInfo.collectorInfo:
-                console.log('Basic data and collector data will be saved');
+                handleSaveAllInfo();
                 break
             default:
                 handleSaveBasicOnly();
@@ -108,7 +113,23 @@ export default function AddBookModal() {
         API.graphql({
             query: createBooks,
             variables: { input: newInfo }
-        }).then(res => {
+        }).then(() => {
+            // Hide the modal
+            handleHideModal();
+            // Set getLibraries to true
+            setGetLibrary(true);
+        })
+    }
+
+    // Function for saving all the information
+    const handleSaveAllInfo = () => {
+        // Add collectorInfo to basicInfo
+        let newInfo = { ...basicInfo, ...collectorInfo }
+        // Save the information to the database
+        API.graphql({
+            query: createBooks,
+            variables: { input: newInfo }
+        }).then(() => {
             // Hide the modal
             handleHideModal();
             // Set getLibraries to true
