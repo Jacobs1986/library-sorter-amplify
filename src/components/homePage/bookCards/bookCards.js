@@ -21,7 +21,7 @@ export default function BookCards() {
                     Time to add some books!
                 </div> :
                 library.Books.items.map(book => (
-                    <div className="col-xl-2">
+                    <div className="col-xs-6 col-s-3 col-m-4 col-lg-2 col-xl-2" key={book.id}>
                         {/* Card body */}
                         <div className="card">
                             {/* Card Image */}

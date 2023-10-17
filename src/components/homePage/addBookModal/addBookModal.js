@@ -99,10 +99,15 @@ export default function AddBookModal() {
 
     // Function for saving the basic information only
     const handleSaveBasicOnly = () => {
+        // Add collectorInfo.collectorInfo to the basicInfo
+        let newInfo = {
+            ...basicInfo,
+            collectorInfo: collectorInfo.collectorInfo
+        }
         // Save the information to the database
         API.graphql({
             query: createBooks,
-            variables: { input: basicInfo }
+            variables: { input: newInfo }
         }).then(res => {
             // Hide the modal
             handleHideModal();
