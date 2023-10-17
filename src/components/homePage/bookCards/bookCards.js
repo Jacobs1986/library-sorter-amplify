@@ -33,7 +33,7 @@ export default function BookCards() {
 
     // Set the bookId
     const handleSetBookId = event => {
-        console.log(event.target.id);
+        setBookId(event.target.id);
     }
 
     return (
