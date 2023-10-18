@@ -15,6 +15,7 @@ import { LibInfo } from "../../../pages/home-page";
 // Components
 import BasicInfo from "./basicInfo";
 import CollectorInfo from "./collectorInfo";
+import DeleteBook from "./deleteBook";
 
 // Import API
 import { API } from "aws-amplify";
@@ -32,6 +33,8 @@ export default function ViewBookModal() {
     const [showViewModal, setShowViewModal] = useState(false);
     // bookData value
     const [bookData, setBookData] = useState();
+    // showDeleteModal
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     // Get the book information
     useEffect(() => {
@@ -56,6 +59,16 @@ export default function ViewBookModal() {
         setShowViewModal(false);
     }
 
+    // Function for showing the delete modal
+    const handleShowDeleteModal = () => {
+        setShowDeleteModal(true);
+    }
+
+    // Function for deleting the book
+    const handleDeleteBook = () => {
+        console.log(bookId);
+    }
+
     return (
         <div className="modal" style={!showViewModal ? { display: "none" } : { display: "block" }}>
             {/* Modal Content */}
@@ -69,15 +82,16 @@ export default function ViewBookModal() {
                         </div>
                         {/* Modal Body */}
                         <div className="modal-body">
-                            <BookData.Provider value={{ bookData }}>
+                            <BookData.Provider value={{ bookData, showDeleteModal, setShowDeleteModal, handleDeleteBook }}>
                                 <BasicInfo />
-                                {!bookData.collectorInfo ? <></> : <CollectorInfo /> } 
+                                {!bookData.collectorInfo ? <></> : <CollectorInfo /> }
+                                <DeleteBook /> 
                             </BookData.Provider>
                         </div>
                         {/* Modal Footer */}
                         <div className="modal-footer viewBookModal-footer">
                             <div className="button modalButton-btm" onClick={handleHideModal}>Close</div>
-                            <div className="button modalButton-btm btnStop">Delete Book</div>
+                            <div className="button modalButton-btm btnStop" onClick={handleShowDeleteModal}>Delete Book</div>
                         </div>
                     </>
                 }
