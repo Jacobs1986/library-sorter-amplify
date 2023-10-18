@@ -55,7 +55,7 @@ function App() {
             default:
         }
         setGetLibrary(false);
-    }, [getLibrary])
+    }, [getLibrary]);
 
     return (
         <div>
