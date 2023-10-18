@@ -10,6 +10,7 @@ import "./viewBookModal-styles.css";
 import "../../../styles/modal.css";
 
 // Import context
+import { Libraries } from "../../../App";
 import { LibInfo } from "../../../pages/home-page";
 
 // Components
@@ -23,10 +24,15 @@ import { API } from "aws-amplify";
 // Import getBooks
 import { getBooks } from "../../../graphql/queries";
 
+// Import deleteBooks
+import { deleteBooks } from "../../../graphql/mutations";
+
 // Create context
 export const BookData = createContext();
 
 export default function ViewBookModal() {
+    // Libraries value
+    const { setGetLibrary } = useContext(Libraries);
     // LibInfo values
     const { bookId, setBookId } = useContext(LibInfo);
     // showViewModal value
@@ -66,7 +72,18 @@ export default function ViewBookModal() {
 
     // Function for deleting the book
     const handleDeleteBook = () => {
-        console.log(bookId);
+        // Delete the book
+        API.graphql({
+            query: deleteBooks,
+            variables: { input: { id: bookId }}
+        }).then(() => {
+            // Hide deleteModal
+            setShowDeleteModal(false);
+            // Set getLibraries to true
+            setGetLibrary(true);
+            // Run hide modal function
+            handleHideModal();
+        })
     }
 
     return (
