@@ -71,7 +71,7 @@ export default function ViewBookModal() {
                         <div className="modal-body">
                             <BookData.Provider value={{ bookData }}>
                                 <BasicInfo />
-                                <CollectorInfo />
+                                {!bookData.collectorInfo ? <></> : <CollectorInfo /> } 
                             </BookData.Provider>
                         </div>
                         {/* Modal Footer */}
