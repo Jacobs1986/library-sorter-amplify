@@ -43,6 +43,7 @@ export default function ViewBookModal() {
                 setBookData(res.data.getBooks);
                 // Show the modal
                 setShowViewModal(true);
+                console.log(res.data.getBooks);
             })
         }
     }, [bookId])

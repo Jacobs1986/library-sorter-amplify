@@ -1,7 +1,7 @@
 /* card styling */
 .card {
     border-radius: 4px;
-    overflow: scroll;
+    overflow: hidden;
     transition: 0.3s ease-in;
 }
 
