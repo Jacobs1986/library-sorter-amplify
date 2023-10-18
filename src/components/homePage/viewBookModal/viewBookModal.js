@@ -75,8 +75,9 @@ export default function ViewBookModal() {
                             </BookData.Provider>
                         </div>
                         {/* Modal Footer */}
-                        <div className="modal-footer">
-                            <h3>Footer content</h3>
+                        <div className="modal-footer viewBookModal-footer">
+                            <div className="button modalButton-btm" onClick={handleHideModal}>Close</div>
+                            <div className="button modalButton-btm btnStop">Delete Book</div>
                         </div>
                     </>
                 }
