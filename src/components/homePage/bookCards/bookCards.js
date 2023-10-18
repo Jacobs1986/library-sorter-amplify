@@ -31,8 +31,8 @@ export default function BookCards() {
         setTitleSort(sortList);
     }, [])
 
-    // Set the bookId
-    const handleSetBookId = event => {
+    // Get information about the book
+    const handleGetBookInfo = event => {
         setBookId(event.target.id);
     }
 
@@ -54,7 +54,7 @@ export default function BookCards() {
                                     src={book.cover}
                                     alt={`Image of the cover for ${book.title}`}
                                     id={book.id} 
-                                    onClick={handleSetBookId}
+                                    onClick={handleGetBookInfo}
                                 />
                                 {/* Card title */}
                                 <div className="card-title" style={book.cover === "./Images/blank-cover.png" ? { display: "block" } : { display: "none" }} >
