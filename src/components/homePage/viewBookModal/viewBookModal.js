@@ -1,4 +1,5 @@
 import React, {
+    createContext,
     useContext,
     useEffect,
     useState
@@ -11,11 +12,18 @@ import "../../../styles/modal.css";
 // Import context
 import { LibInfo } from "../../../pages/home-page";
 
+// Components
+import BasicInfo from "./basicInfo";
+import CollectorInfo from "./collectorInfo";
+
 // Import API
 import { API } from "aws-amplify";
 
 // Import getBooks
 import { getBooks } from "../../../graphql/queries";
+
+// Create context
+export const BookData = createContext();
 
 export default function ViewBookModal() {
     // LibInfo values
@@ -60,7 +68,10 @@ export default function ViewBookModal() {
                         </div>
                         {/* Modal Body */}
                         <div className="modal-body">
-                            Modal body goes here.
+                            <BookData.Provider value={{ bookData }}>
+                                <BasicInfo />
+                                <CollectorInfo />
+                            </BookData.Provider>
                         </div>
                         {/* Modal Footer */}
                         <div className="modal-footer">

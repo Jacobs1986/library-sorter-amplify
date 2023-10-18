@@ -47,7 +47,7 @@ export default function BookCards() {
                     titleSort.map(book => (
                         <div className="col-xs-6 col-s-3 col-m-4 col-lg-2 col-xl-2" key={book.id}>
                             {/* Card body */}
-                            <div className="card">
+                            <div className="card library-card">
                                 {/* Card Image */}
                                 <img
                                     className="card-image"

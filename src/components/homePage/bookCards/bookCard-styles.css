@@ -1,33 +1,33 @@
-/* Styling for searchResult-cards */
-.searchResult-cards {
+/* Styling for library-card */
+.library-card {
     height: 16em;
 }
 
 /* Media queries */
 /* Small screens */
 @media screen and (min-width: 600px) {
-    .searchResult-cards {
+    .library-card {
         height: 14em;
     }
 }
 
 /* Medium screens */
 @media screen and (min-width: 768px) {
-    .searchResult-cards {
+    .library-card {
         height: 25em;
     }
 }
 
 /* Large screens */
 @media screen and (min-width: 992px) {
-    .searchResult-cards {
+    .library-card {
         height: 17em;
     }
 }
 
 /* Extra large screens */
 @media screen and (min-width: 1200px) {
-    .searchResult-cards {
+    .library-card {
         height: 21.4em;
     }
 }
