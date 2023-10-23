@@ -1,0 +1,27 @@
+/* Styling for viewBookModal-footer */
+.viewBookModal-footer, #deleteModal-footer {
+    height: 2.5em;
+    padding: 4px 16px !important;
+}
+
+/* Center the modal header */
+.center-modal-header {
+    text-align: center;
+}
+
+/* Media queries */
+/* Medium screens */
+@media screen and (min-width: 768px) {
+    /* Styling for deleteModal-content */
+    #deleteModal-content {
+        width: 50%;
+    }
+}
+
+/* Extra larget screens */
+@media screen and (min-width: 1200px) {
+    /* Styling for deleteModal-content */
+    #deleteModal-content {
+        width: 35%;
+    }
+}

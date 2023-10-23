@@ -57,9 +57,9 @@ export const NewInfoContext = createContext();
 
 export default function AddBookModal() {
     // Libraries value
-    const { setGetLibrary } = useContext(Libraries)
+    const { handleGetInfoAgain, libraries } = useContext(Libraries)
     // LibInfo value
-    const { libraries, showAddModal, setAddShowModal } = useContext(LibInfo);
+    const { showAddModal, setAddShowModal } = useContext(LibInfo);
     // basicInfo value
     const [basicInfo, setBasicInfo] = useReducer(newBookReduc, basicDefaultValues)
     // collectorInfo value
@@ -117,7 +117,7 @@ export default function AddBookModal() {
             // Hide the modal
             handleHideModal();
             // Set getLibraries to true
-            setGetLibrary(true);
+            handleGetInfoAgain();
         })
     }
 

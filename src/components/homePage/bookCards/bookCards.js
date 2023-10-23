@@ -7,12 +7,15 @@ import "./bookCard-styles.css";
 import "../../../styles/cards.css";
 
 // Import context
+import { LibInfo } from "../../../pages/home-page";
 import { BookList } from "../homePageAccordion/homePageAccordion";
 
 // Import sorting function
 import { titleASC } from "../../../functions/arraySortFuncs";
 
 export default function BookCards() {
+    // LibInfo values
+    const { setBookId } = useContext(LibInfo);
     // libraryList
     const { library } = useContext(BookList);
     // titleSort values
@@ -28,6 +31,11 @@ export default function BookCards() {
         setTitleSort(sortList);
     }, [])
 
+    // Get information about the book
+    const handleGetBookInfo = event => {
+        setBookId(event.target.id);
+    }
+
     return (
         <div className="row">
             {!titleSort ? <div>Loading...</div> :
@@ -39,12 +47,14 @@ export default function BookCards() {
                     titleSort.map(book => (
                         <div className="col-xs-6 col-s-3 col-m-4 col-lg-2 col-xl-2" key={book.id}>
                             {/* Card body */}
-                            <div className="card">
+                            <div className="card library-card">
                                 {/* Card Image */}
                                 <img
                                     className="card-image"
                                     src={book.cover}
                                     alt={`Image of the cover for ${book.title}`}
+                                    id={book.id} 
+                                    onClick={handleGetBookInfo}
                                 />
                                 {/* Card title */}
                                 <div className="card-title" style={book.cover === "./Images/blank-cover.png" ? { display: "block" } : { display: "none" }} >

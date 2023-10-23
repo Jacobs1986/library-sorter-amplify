@@ -10,6 +10,7 @@ import NewLibraryForm from "../components/homePage/newLibraryForm/newLibraryForm
 import ViewerRadios from "../components/homePage/viewerRadios/viewerRadios";
 import HomePageAccordion from "../components/homePage/homePageAccordion/homePageAccordion";
 import AddBookModal from "../components/homePage/addBookModal/addBookModal";
+import ViewBookModal from "../components/homePage/viewBookModal/viewBookModal";
 
 // Import context
 import { Libraries } from "../App";
@@ -24,12 +25,14 @@ export default function HomePage() {
     const [libraryView, setLibraryView] = useState("Covers");
     // showModal value
     const [showAddModal, setAddShowModal] = useState(false);
+    // bookId value
+    const [bookId, setBookId] = useState("");
 
     return (
         <div>
             {/* Home Page Banner */}
             <HomePageBanner />
-            <LibInfo.Provider value={{ libraryView, setLibraryView, libraries, showAddModal, setAddShowModal }}>
+            <LibInfo.Provider value={{ libraryView, setLibraryView, showAddModal, setAddShowModal, bookId, setBookId }}>
                 {/* New Library form */}
                 <NewLibraryForm />
                 {/* Radios */}
@@ -40,6 +43,8 @@ export default function HomePage() {
                         <HomePageAccordion />
                         {/* Add Book Modal */}
                         <AddBookModal />
+                        {/* View Book Modal */}
+                        <ViewBookModal />
                     </>
                 }
             </LibInfo.Provider>

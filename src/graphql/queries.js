@@ -40,25 +40,26 @@ export const listLibraries = /* GraphQL */ `
 export const getBooks = /* GraphQL */ `
   query GetBooks($id: ID!) {
     getBooks(id: $id) {
-      id
-      libraryID
-      title
-      author
-      cover
-      isbn
-      pubDate
-      numOfPages
-      synopsis
-      collectorItem
-      edition
-      printing
-      dustJacket
-      condition
-      damage
-      aquisitionDate
       acquiredFrom
-      aquisitionCost
+      acquisitionCost
+      acquisitionDate
+      additionalNotes
+      author
+      collectorInfo
+      condition
+      cover
       createdAt
+      description
+      dustJacket
+      edition
+      id
+      isbn
+      jacketCondition
+      libraryID
+      printing
+      pubDate
+      publisher
+      title
       updatedAt
       __typename
     }

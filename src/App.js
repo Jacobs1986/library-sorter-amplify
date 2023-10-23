@@ -55,11 +55,15 @@ function App() {
             default:
         }
         setGetLibrary(false);
-    }, [getLibrary])
+    }, [getLibrary]);
+
+    const handleGetInfoAgain = () => {
+        setGetLibrary(true);
+    }
 
     return (
         <div>
-            <Libraries.Provider value={{ libraries, setGetLibrary }} >
+            <Libraries.Provider value={{ libraries, setGetLibrary, handleGetInfoAgain }} >
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
