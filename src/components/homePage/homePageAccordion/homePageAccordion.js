@@ -9,6 +9,7 @@ import "./homePageAccordion-styles.css";
 import "../../../styles/accordion.css";
 
 // Import contexts
+import { Libraries } from "../../../App";
 import { LibInfo } from "../../../pages/home-page";
 
 // Import components
@@ -19,8 +20,10 @@ import BookTable from "../bookTable/bookTable";
 export const BookList = createContext();
 
 export default function HomePageAccordion() {
+    // Libraries values
+    const { libraries } = useContext(Libraries)
     // LibInfo values
-    const { libraryView, libraries, setAddShowModal } = useContext(LibInfo);
+    const { libraryView, setAddShowModal } = useContext(LibInfo);
 
     // Function for showing a panel
     const handleShowPanel = event => {

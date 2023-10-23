@@ -32,7 +32,7 @@ export default function HomePage() {
         <div>
             {/* Home Page Banner */}
             <HomePageBanner />
-            <LibInfo.Provider value={{ libraryView, setLibraryView, libraries, showAddModal, setAddShowModal, bookId, setBookId }}>
+            <LibInfo.Provider value={{ libraryView, setLibraryView, showAddModal, setAddShowModal, bookId, setBookId }}>
                 {/* New Library form */}
                 <NewLibraryForm />
                 {/* Radios */}
