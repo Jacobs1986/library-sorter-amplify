@@ -29,7 +29,7 @@ export default function BookCards() {
         let sortList = bookList.sort(titleASC);
         // Make sortList titleSort
         setTitleSort(sortList);
-    })
+    }, [])
 
     // Get information about the book
     const handleGetBookInfo = event => {
