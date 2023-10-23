@@ -19,11 +19,11 @@ import { createLibrary } from "../../../graphql/mutations";
 import { reducer as newLibReducer } from "../../../functions/reducer";
 
 // Import context
-import { LibInfo } from "../../../pages/home-page";
+import { Libraries } from "../../../App";
 
 export default function NewLibraryForm() {
     // setGetLibrary
-    const { setGetLibrary } = useContext(LibInfo);
+    const { setGetLibrary } = useContext(Libraries);
     // showForm
     const [showForm, setShowForm] = useState(false);
     // newLibName
