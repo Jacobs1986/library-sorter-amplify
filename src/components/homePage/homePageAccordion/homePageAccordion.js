@@ -1,6 +1,8 @@
 import React, {
     createContext,
-    useContext
+    useContext,
+    useEffect,
+    useState
 } from "react";
 
 // CSS Files
@@ -16,6 +18,9 @@ import { LibInfo } from "../../../pages/home-page";
 import BookCards from "../bookCards/bookCards";
 import BookTable from "../bookTable/bookTable";
 
+// Import sorting function 
+import { nameASC } from "../../../functions/arraySortFuncs";
+
 // Create and export BookList context
 export const BookList = createContext();
 
@@ -24,6 +29,16 @@ export default function HomePageAccordion() {
     const { libraries } = useContext(Libraries)
     // LibInfo values
     const { libraryView, setAddShowModal } = useContext(LibInfo);
+    // sortedLibs value
+    const [sortedLibs, setSortedLibs] = useState();
+
+    // Sort the libraries by name
+    useEffect(() => {
+        // Set sorList value
+        let sortList = libraries.sort(nameASC);
+        // set sortedLibs
+       setSortedLibs(sortList);
+    }, [libraries]);
 
     // Function for showing a panel
     const handleShowPanel = event => {
@@ -58,7 +73,7 @@ export default function HomePageAccordion() {
                 <div className="col-xs-12 col-s-12">
                     {/* Check to see if there are any libraries in the database */}
                     {libraries.length === 0 ? <div>Let's make some libraries!</div> :
-                        libraries.map((library, i) => (
+                        !sortedLibs ? <div></div> : sortedLibs.map((library, i) => (
                             <div key={i}>
                                 {/* Accordion button */}
                                 <button className="accordion" id={library.id} onClick={handleShowPanel}>{library.name}</button>

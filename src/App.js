@@ -40,30 +40,44 @@ function App() {
     useEffect(() => {
         switch (true) {
             case getLibrary: {
-                API.graphql({ query: listLibraries })
-                    .then(response => {
-                        // set the response to libList
-                        let libList = response.data.listLibraries.items;
-                        // sort the list
-                        let sortList = libList.sort(nameASC);
-                        // set the list
-                        setLibraries(sortList);
-                        console.log(sortList);
-                    })
+                API.graphql({
+                    query: listLibraries
+                }).then(response => {
+                    // Set libraries value
+                    setLibraries(response.data.listLibraries.items);
+                    console.log(response.data.listLibraries.items);
+                })
                 break
             }
             default:
         }
+        // Set getLibrary to false
         setGetLibrary(false);
     }, [getLibrary]);
 
-    const handleGetInfoAgain = () => {
-        setGetLibrary(true);
-    }
+    // useEffect(() => {
+    //     switch (true) {
+    //         case getLibrary: {
+    //             API.graphql({ query: listLibraries })
+    //                 .then(response => {
+    //                     // set the response to libList
+    //                     let libList = response.data.listLibraries.items;
+    //                     // sort the list
+    //                     let sortList = libList.sort(nameASC);
+    //                     // set the list
+    //                     setLibraries(sortList);
+    //                     console.log(sortList);
+    //                 })
+    //             break
+    //         }
+    //         default:
+    //     }
+    //     setGetLibrary(false);
+    // }, [getLibrary]);
 
     return (
         <div>
-            <Libraries.Provider value={{ libraries, setGetLibrary, handleGetInfoAgain }} >
+            <Libraries.Provider value={{ libraries, setGetLibrary }} >
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<HomePage />} />

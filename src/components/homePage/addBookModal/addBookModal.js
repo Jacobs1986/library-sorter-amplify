@@ -57,7 +57,7 @@ export const NewInfoContext = createContext();
 
 export default function AddBookModal() {
     // Libraries value
-    const { handleGetInfoAgain, libraries } = useContext(Libraries)
+    const { setGetLibrary, libraries } = useContext(Libraries)
     // LibInfo value
     const { showAddModal, setAddShowModal } = useContext(LibInfo);
     // basicInfo value
@@ -99,14 +99,18 @@ export default function AddBookModal() {
                 break
             default:
                 handleSaveBasicOnly();
+                // handleTestFunction();
         }
     }
 
     // Function for saving the basic information only
     const handleSaveBasicOnly = () => {
-        // Add collectorInfo.collectorInfo to the basicInfo
+        // set the synopsis value and replace any \n with a ,
+        let synopsis = basicInfo.description.replace(/\n/g, "<br>");
+        // Add synosis and collectorInfo.collectorInfo to the basicInfo
         let newInfo = {
             ...basicInfo,
+            description: synopsis,
             collectorInfo: collectorInfo.collectorInfo
         }
         // Save the information to the database
@@ -117,7 +121,7 @@ export default function AddBookModal() {
             // Hide the modal
             handleHideModal();
             // Set getLibraries to true
-            handleGetInfoAgain();
+            setGetLibrary(true);
         })
     }
 
